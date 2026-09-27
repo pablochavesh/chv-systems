@@ -191,9 +191,9 @@
   nav.links a:hover{ color: var(--ink); }
   nav.links a:hover::after{ right: 0; }
 
-  .nav__actions{ display: flex; align-items: center; gap: 14px; }
+  .nav__actions{ display: flex; align-items: center; gap: 10px; }
 
-  .theme-btn{
+  .theme-btn, .menu-btn{
     width: 38px; height: 38px;
     border-radius: 999px;
     border: 1px solid var(--line-strong);
@@ -202,12 +202,36 @@
     display: grid; place-items: center;
     cursor: pointer;
     transition: border-color .25s ease, color .25s ease, transform .2s ease;
+    flex-shrink: 0;
   }
-  .theme-btn:hover{ color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-  .theme-btn svg{ width: 17px; height: 17px; }
+  .theme-btn:hover, .menu-btn:hover{ color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-btn svg, .menu-btn svg{ width: 17px; height: 17px; }
   .theme-btn .i-sun{ display: none; }
   :root[data-theme="light"] .theme-btn .i-moon{ display: none; }
   :root[data-theme="light"] .theme-btn .i-sun{ display: block; }
+
+  .menu-btn{ display: none; }
+  .menu-btn .i-close{ display: none; }
+  .menu-btn[aria-expanded="true"] .i-burger{ display: none; }
+  .menu-btn[aria-expanded="true"] .i-close{ display: block; }
+
+  .lang-btn{
+    min-width: 38px; height: 38px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-1);
+    color: var(--ink-dim);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: border-color .25s ease, color .25s ease, transform .2s ease;
+    flex-shrink: 0;
+  }
+  .lang-btn:hover{ color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
 
   .btn{
     display: inline-flex;
@@ -231,6 +255,9 @@
   }
   .btn--ghost:hover{ border-color: var(--accent); color: var(--accent); }
   .btn--sm{ padding: 9px 16px; font-size: .8rem; }
+
+  /* Mobile nav menu */
+  .mobile-menu{ display: none; }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -285,6 +312,7 @@
     width: 7px; height: 7px; border-radius: 999px; background: var(--accent);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
     animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
   }
   @keyframes pulse{ 0%,100%{ opacity: 1; } 50%{ opacity: .45; } }
 
@@ -349,10 +377,6 @@
   }
   .proof{ display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 0; overflow: hidden; }
   .proof__copy{ padding: clamp(28px, 4vw, 48px); }
-  .proof__chip{
-    display: inline-block; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em;
-    color: var(--accent); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 12px; margin-bottom: 16px;
-  }
   .proof__copy h3{ font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 14px; }
   .proof__copy p{ color: var(--ink-dim); }
   .proof__list{ list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
@@ -389,7 +413,7 @@
 
   /* Founder */
   .founder{ display: grid; grid-template-columns: 220px 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
-  .monogram{ position: relative; width: 100%; aspect-ratio: 1/1; }
+  .monogram{ position: relative; width: 100%; aspect-ratio: 1/1; margin-inline: auto; }
   .monogram svg{ width: 100%; height: 100%; }
   .founder__copy h3{ font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
   .founder__copy p{ margin-top: 16px; color: var(--ink-dim); max-width: 62ch; }
@@ -426,23 +450,65 @@
   .foot__row{ display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
   .foot__row p{ font-family: var(--font-mono); font-size: .72rem; color: var(--ink-faint); letter-spacing: .04em; }
 
+  /* WhatsApp floating action button */
+  .fab-wa{
+    position: fixed;
+    right: max(20px, env(safe-area-inset-right, 0px) + 16px);
+    bottom: max(20px, env(safe-area-inset-bottom, 0px) + 16px);
+    z-index: 60;
+    width: 56px; height: 56px;
+    border-radius: 999px;
+    background: var(--accent-2);
+    color: var(--btn-primary-ink);
+    display: grid; place-items: center;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
+  }
+  .fab-wa:hover{ transform: translateY(-3px) scale(1.05); box-shadow: 0 16px 34px -12px rgba(231,182,92,.55); }
+  .fab-wa svg{ width: 26px; height: 26px; }
+
   [data-reveal]{ will-change: transform, opacity; }
 
   @media (max-width: 880px){
     .hero__grid{ grid-template-columns: 1fr; }
     .constellation{ max-width: 320px; margin-top: 10px; }
     nav.links{ display: none; }
+    .menu-btn{ display: grid; }
+    .mobile-menu:not([hidden]){
+      display: block;
+      border-top: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .mobile-menu nav{ display: flex; flex-direction: column; }
+    .mobile-menu nav a{
+      padding: 16px max(20px, env(safe-area-inset-left, 0px) + 20px);
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+    }
+    .mobile-menu__cta{ padding: 16px max(20px, env(safe-area-inset-left, 0px) + 20px) 20px; }
+    .mobile-menu__cta .btn{ width: 100%; justify-content: center; }
     .proof{ grid-template-columns: 1fr; }
     .proof__chrome{ border-left: none; border-top: 1px solid var(--line); }
     .process{ grid-template-columns: 1fr 1fr; }
-    .founder{ grid-template-columns: 1fr; }
+    .founder{ grid-template-columns: 1fr; text-align: center; }
+    .founder__copy p{ margin-inline: auto; }
+    .founder__meta{ justify-content: center; text-align: left; }
     .monogram{ max-width: 160px; }
     .work{ grid-template-columns: 1fr; }
     .contact{ grid-template-columns: 1fr; }
     .svc__row{ grid-template-columns: 1fr; gap: 10px; }
   }
+  @media (max-width: 560px){
+    .nav__actions .btn--sm{ display: none; }
+  }
   @media (max-width: 520px){
     .process{ grid-template-columns: 1fr; }
+    .constellation{ max-width: 240px; }
+    .fab-wa{ width: 52px; height: 52px; }
+    .fab-wa svg{ width: 23px; height: 23px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -463,17 +529,33 @@
       <span class="brand__line">WEB DESIGN &amp; DEVELOPMENT</span>
     </a>
     <nav class="links">
-      <a href="#servicios">Servicios</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#trabajo">Trabajo</a>
-      <a href="#fundador">Fundador</a>
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#proceso" data-i18n="nav.process">Proceso</a>
+      <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
+      <a href="#fundador" data-i18n="nav.founder">Fundador</a>
     </nav>
     <div class="nav__actions">
       <button class="theme-btn" id="themeToggle" type="button" aria-label="Cambiar a modo claro o oscuro">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
       </button>
-      <a href="#contacto" class="btn btn--primary btn--sm">Iniciar proyecto</a>
+      <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language / Cambiar idioma">EN</button>
+      <a href="#contacto" class="btn btn--primary btn--sm" data-i18n="nav.cta">Iniciar proyecto</a>
+      <button class="menu-btn" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="i-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <nav>
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#proceso" data-i18n="nav.process">Proceso</a>
+      <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
+      <a href="#fundador" data-i18n="nav.founder">Fundador</a>
+    </nav>
+    <div class="mobile-menu__cta">
+      <a href="#contacto" class="btn btn--primary" data-i18n="nav.cta">Iniciar proyecto</a>
     </div>
   </div>
 </header>
@@ -484,12 +566,12 @@
     <div class="hero__spot" id="heroSpot"></div>
     <div class="wrap hero__grid">
       <div>
-        <div class="hero__status"><i></i> Sistema en producción — Gananova, en uso por negocios reales</div>
-        <h1>Construimos los <em>sistemas</em> con los que tu negocio funciona.</h1>
-        <p class="lede">CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.</p>
+        <div class="hero__status"><i></i> <span data-i18n="hero.status">Sistema en producción — Gananova, en uso por negocios reales</span></div>
+        <h1 data-i18n-html="hero.h1">Construimos los <em>sistemas</em> con los que tu negocio funciona.</h1>
+        <p class="lede" data-i18n="hero.lede">CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.</p>
         <div class="hero__ctas">
-          <a href="#contacto" class="btn btn--primary">Iniciar un proyecto</a>
-          <a href="#prueba" class="btn btn--ghost">Ver Gananova en acción</a>
+          <a href="#contacto" class="btn btn--primary" data-i18n="hero.cta1">Iniciar un proyecto</a>
+          <a href="#prueba" class="btn btn--ghost" data-i18n="hero.cta2">Ver Gananova en acción</a>
         </div>
       </div>
       <div class="constellation" aria-hidden="true">
@@ -512,10 +594,10 @@
             <g class="cst-node core"><circle class="core" cx="200" cy="200" r="30"/><text x="200" y="204">CHV</text></g>
             <g class="cst-node"><circle cx="200" cy="70" r="26"/><text x="200" y="74">WEB</text></g>
             <g class="cst-node"><circle cx="330" cy="140" r="26"/><text x="330" y="144">CRM</text></g>
-            <g class="cst-node"><circle cx="340" cy="270" r="30"/><text x="340" y="270">FACTURA-</text><text x="340" y="280">CIÓN</text></g>
+            <g class="cst-node"><circle cx="340" cy="270" r="30"/><text x="340" y="270" data-i18n="node.billing1">FACTURA-</text><text x="340" y="280" data-i18n="node.billing2">CIÓN</text></g>
             <g class="cst-node"><circle cx="200" cy="335" r="26"/><text x="200" y="339">KPIs</text></g>
-            <g class="cst-node"><circle cx="60" cy="265" r="30"/><text x="60" y="261">AUTOMATI-</text><text x="60" y="271">ZACIÓN</text></g>
-            <g class="cst-node"><circle cx="65" cy="130" r="26"/><text x="65" y="134">DISEÑO</text></g>
+            <g class="cst-node"><circle cx="60" cy="265" r="30"/><text x="60" y="261" data-i18n="node.auto1">AUTOMATI-</text><text x="60" y="271" data-i18n="node.auto2">ZACIÓN</text></g>
+            <g class="cst-node"><circle cx="65" cy="130" r="26"/><text x="65" y="134" data-i18n="node.design">DISEÑO</text></g>
           </g>
         </svg>
       </div>
@@ -525,24 +607,24 @@
   <section id="servicios">
     <div class="wrap">
       <div class="section__head">
-        <h2>Servicios</h2>
-        <p>Tres capas del mismo trabajo: lo que el visitante ve, lo que hace funcionar el negocio por dentro, y el sistema completo que los conecta.</p>
+        <h2 data-i18n="services.h2">Servicios</h2>
+        <p data-i18n="services.desc">Tres capas del mismo trabajo: lo que el visitante ve, lo que hace funcionar el negocio por dentro, y el sistema completo que los conecta.</p>
       </div>
       <div class="svc">
         <div class="svc__row">
-          <div class="svc__tag">[ DISEÑO ]</div>
-          <div class="svc__title">Diseño Web</div>
-          <div class="svc__desc">Identidad visual, landing pages y sitios corporativos pensados para generar confianza y convertir visitas en clientes.</div>
+          <div class="svc__tag" data-i18n="svc1.tag">[ DISEÑO ]</div>
+          <div class="svc__title" data-i18n="svc1.title">Diseño Web</div>
+          <div class="svc__desc" data-i18n="svc1.desc">Identidad visual, landing pages y sitios corporativos pensados para generar confianza y convertir visitas en clientes.</div>
         </div>
         <div class="svc__row">
-          <div class="svc__tag">[ DESARROLLO ]</div>
-          <div class="svc__title">Desarrollo Web</div>
-          <div class="svc__desc">Aplicaciones y paneles a la medida: del frontend a la base de datos, integraciones y despliegue en producción.</div>
+          <div class="svc__tag" data-i18n="svc2.tag">[ DESARROLLO ]</div>
+          <div class="svc__title" data-i18n="svc2.title">Desarrollo Web</div>
+          <div class="svc__desc" data-i18n="svc2.desc">Aplicaciones y paneles a la medida: del frontend a la base de datos, integraciones y despliegue en producción.</div>
         </div>
         <div class="svc__row">
-          <div class="svc__tag">[ SISTEMAS ]</div>
-          <div class="svc__title">Sistemas Web</div>
-          <div class="svc__desc">CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.</div>
+          <div class="svc__tag" data-i18n="svc3.tag">[ SISTEMAS ]</div>
+          <div class="svc__title" data-i18n="svc3.title">Sistemas Web</div>
+          <div class="svc__desc" data-i18n="svc3.desc">CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.</div>
         </div>
       </div>
     </div>
@@ -552,15 +634,16 @@
     <div class="wrap">
       <div class="panel proof" data-reveal>
         <div class="proof__copy">
-          <h3>Gananova — estrategia, procesos y tecnología</h3>
-          <p>Un sistema de gestión empresarial construido para Gananova, una consultora costarricense de estrategia y procesos. Hoy lo usan negocios reales para ordenar su operación.</p>
+          <h3 data-i18n="proof.h3">Gananova — estrategia, procesos y tecnología</h3>
+          <p data-i18n="proof.p">Un sistema de gestión empresarial construido para Gananova, una consultora costarricense de estrategia y procesos. Hoy lo usan negocios reales para ordenar su operación.</p>
           <ul class="proof__list">
-            <li>CRM y seguimiento de clientes</li>
-            <li>Sistema de facturación</li>
-            <li>Métricas de negocio y KPIs en tiempo real</li>
-            <li>Automatización de procesos administrativos</li>
+            <li data-i18n="proof.li1">CRM y seguimiento de clientes</li>
+            <li data-i18n="proof.li2">Sistema de facturación</li>
+            <li data-i18n="proof.li3">Métricas de negocio y KPIs en tiempo real</li>
+            <li data-i18n="proof.li4">Automatización de procesos administrativos</li>
           </ul>
-          <a href="https://www.gananova.com" target="_blank" rel="noopener" class="proof__link">Visitar gananova.com
+          <a href="https://www.gananova.com" target="_blank" rel="noopener" class="proof__link">
+            <span data-i18n="proof.link">Visitar gananova.com</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
         </div>
@@ -568,9 +651,9 @@
           <div class="chrome__bar">
             <div class="chrome__dot"></div><div class="chrome__dot"></div><div class="chrome__dot"></div>
             <div class="chrome__tabs">
-              <div class="chrome__tab active">Resumen</div>
+              <div class="chrome__tab active" data-i18n="chrome.tab1">Resumen</div>
               <div class="chrome__tab">CRM</div>
-              <div class="chrome__tab">Facturación</div>
+              <div class="chrome__tab" data-i18n="chrome.tab3">Facturación</div>
             </div>
           </div>
           <div class="chrome__body">
@@ -579,7 +662,7 @@
               <i style="height:80%"></i><i style="height:55%"></i><i style="height:70%"></i>
               <i style="height:90%"></i>
             </div>
-            <div class="chrome__kpi"><span>ESTADO DEL SISTEMA</span><b style="color:var(--accent)">● En línea</b></div>
+            <div class="chrome__kpi"><span data-i18n="chrome.status">ESTADO DEL SISTEMA</span><b style="color:var(--accent)" data-i18n="chrome.online">● En línea</b></div>
           </div>
         </div>
       </div>
@@ -589,29 +672,29 @@
   <section id="proceso">
     <div class="wrap">
       <div class="section__head">
-        <h2>Cómo trabajamos</h2>
-        <p>Cuatro fases, en orden. Cada una depende de que la anterior quede bien hecha.</p>
+        <h2 data-i18n="process.h2">Cómo trabajamos</h2>
+        <p data-i18n="process.desc">Cuatro fases, en orden. Cada una depende de que la anterior quede bien hecha.</p>
       </div>
       <div class="process">
         <div class="process__step">
           <div class="process__num">01</div>
-          <h3>Diagnóstico</h3>
-          <p>Entiendo tu negocio, tus clientes y qué necesita el sistema para ser útil desde el primer día.</p>
+          <h3 data-i18n="step1.title">Diagnóstico</h3>
+          <p data-i18n="step1.desc">Entiendo tu negocio, tus clientes y qué necesita el sistema para ser útil desde el primer día.</p>
         </div>
         <div class="process__step">
           <div class="process__num">02</div>
-          <h3>Diseño</h3>
-          <p>Construyo la identidad visual y la experiencia: cómo se ve, cómo se siente, cómo se usa.</p>
+          <h3 data-i18n="step2.title">Diseño</h3>
+          <p data-i18n="step2.desc">Construyo la identidad visual y la experiencia: cómo se ve, cómo se siente, cómo se usa.</p>
         </div>
         <div class="process__step">
           <div class="process__num">03</div>
-          <h3>Desarrollo</h3>
-          <p>Programo el sistema real — interfaz, lógica, base de datos — y lo pruebo con datos reales.</p>
+          <h3 data-i18n="step3.title">Desarrollo</h3>
+          <p data-i18n="step3.desc">Programo el sistema real — interfaz, lógica, base de datos — y lo pruebo con datos reales.</p>
         </div>
         <div class="process__step">
           <div class="process__num">04</div>
-          <h3>Lanzamiento</h3>
-          <p>Publico, mido resultados y sigo dando soporte mientras el sistema crece con el negocio.</p>
+          <h3 data-i18n="step4.title">Lanzamiento</h3>
+          <p data-i18n="step4.desc">Publico, mido resultados y sigo dando soporte mientras el sistema crece con el negocio.</p>
         </div>
       </div>
     </div>
@@ -635,11 +718,11 @@
       </div>
       <div class="founder__copy" data-reveal>
         <h3>Jose Pablo Chaves Hidalgo</h3>
-        <p>Estudiante de Ingeniería en Sistemas en Costa Rica y fundador de CHV Systems. Diseño y construyo software real para negocios reales: la misma persona que define la interfaz escribe el código que la sostiene, de principio a fin.</p>
+        <p data-i18n="founder.p">Estudiante de Ingeniería en Sistemas en Costa Rica y fundador de CHV Systems. Diseño y construyo software real para negocios reales: la misma persona que define la interfaz escribe el código que la sostiene, de principio a fin.</p>
         <div class="founder__meta">
-          <div><b>Formación</b>Ingeniería en Sistemas, Costa Rica</div>
-          <div><b>Enfoque</b>Diseño + desarrollo full-stack</div>
-          <div><b>Disponibilidad</b>Proyectos locales e internacionales</div>
+          <div><b data-i18n="meta1.label">Formación</b><span data-i18n="meta1.value">Ingeniería en Sistemas, Costa Rica</span></div>
+          <div><b data-i18n="meta2.label">Enfoque</b><span data-i18n="meta2.value">Diseño + desarrollo full-stack</span></div>
+          <div><b data-i18n="meta3.label">Disponibilidad</b><span data-i18n="meta3.value">Proyectos locales e internacionales</span></div>
         </div>
       </div>
     </div>
@@ -648,8 +731,8 @@
   <section id="trabajo">
     <div class="wrap">
       <div class="section__head">
-        <h2>Trabajo</h2>
-        <p>Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.</p>
+        <h2 data-i18n="work.h2">Trabajo</h2>
+        <p data-i18n="work.desc">Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.</p>
       </div>
       <div class="work">
         <div class="panel work__card">
@@ -665,9 +748,9 @@
             </svg>
           </div>
           <div class="work__body">
-            <span class="work__status live">● En producción</span>
+            <span class="work__status live" data-i18n="w1.status">● En producción</span>
             <h3>Gananova</h3>
-            <p>Plataforma de gestión empresarial: CRM, facturación y métricas para consultoría de estrategia y procesos.</p>
+            <p data-i18n="w1.desc">Plataforma de gestión empresarial: CRM, facturación y métricas para consultoría de estrategia y procesos.</p>
             <div class="work__foot">
               <a href="https://www.gananova.com" target="_blank" rel="noopener" class="work__link">gananova.com
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -686,11 +769,11 @@
             </svg>
           </div>
           <div class="work__body">
-            <span class="work__status">● En desarrollo</span>
+            <span class="work__status" data-i18n="w2.status">● En desarrollo</span>
             <h3>ADEFIP</h3>
-            <p>Sitio web para una academia de fútbol formativo: información del programa, categorías y contacto.</p>
+            <p data-i18n="w2.desc">Sitio web para una academia de fútbol formativo: información del programa, categorías y contacto.</p>
             <div class="work__foot">
-              <span class="mono-tag">Próximamente</span>
+              <span class="mono-tag" data-i18n="w2.tag">Próximamente</span>
             </div>
           </div>
         </div>
@@ -707,11 +790,11 @@
             </svg>
           </div>
           <div class="work__body">
-            <span class="work__status">● Entregado</span>
+            <span class="work__status" data-i18n="w3.status">● Entregado</span>
             <h3>Pura Vida Painting</h3>
-            <p>Sitio para un negocio de pintura y lavado a presión en Estados Unidos, orientado a captar cotizaciones.</p>
+            <p data-i18n="w3.desc">Sitio para un negocio de pintura y lavado a presión en Estados Unidos, orientado a captar cotizaciones.</p>
             <div class="work__foot">
-              <span class="mono-tag">Cliente en EE. UU.</span>
+              <span class="mono-tag" data-i18n="w3.tag">Cliente en EE. UU.</span>
             </div>
           </div>
         </div>
@@ -722,20 +805,20 @@
   <section id="contacto">
     <div class="wrap contact">
       <div>
-        <h2>¿Listo para construir tu sistema?</h2>
-        <p>Contame qué necesita tu negocio. Si tiene sentido, empezamos por un diagnóstico corto antes de proponer nada.</p>
+        <h2 data-i18n="contact.h2">¿Listo para construir tu sistema?</h2>
+        <p data-i18n="contact.p">Contame qué necesita tu negocio. Si tiene sentido, empezamos por un diagnóstico corto antes de proponer nada.</p>
       </div>
       <div class="panel contact__box" data-reveal>
         <div class="contact__row">
           <span id="emailText">chavespablo640@gmail.com</span>
-          <button class="copy-btn" id="copyEmail" type="button">Copiar</button>
+          <button class="copy-btn" id="copyEmail" type="button" data-i18n="contact.copy">Copiar</button>
         </div>
         <div class="contact__row">
           <span id="phoneText">+506 7080 6520</span>
-          <button class="copy-btn" id="copyPhone" type="button">Copiar</button>
+          <button class="copy-btn" id="copyPhone" type="button" data-i18n="contact.copy">Copiar</button>
         </div>
-        <a href="mailto:chavespablo640@gmail.com" class="btn btn--primary" style="justify-content:center">Enviar correo</a>
-        <a href="#top" class="btn btn--ghost" style="justify-content:center">Volver arriba</a>
+        <a href="mailto:chavespablo640@gmail.com" class="btn btn--primary" style="justify-content:center" data-i18n="contact.sendEmail">Enviar correo</a>
+        <a href="#top" class="btn btn--ghost" style="justify-content:center" data-i18n="contact.backTop">Volver arriba</a>
       </div>
     </div>
   </section>
@@ -748,21 +831,27 @@
   </div>
 </footer>
 
+<a class="fab-wa" id="fabWhatsapp" href="https://wa.me/50670806520" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/>
+  </svg>
+</a>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
   (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme toggle, per-viewer convenience only
+    // ---------- Theme toggle, per-viewer convenience only ----------
     var root = document.documentElement;
-    var toggle = document.getElementById('themeToggle');
+    var themeToggle = document.getElementById('themeToggle');
     function applyTheme(t){ root.setAttribute('data-theme', t); }
     try{
-      var saved = localStorage.getItem('chv-theme');
-      if(saved){ applyTheme(saved); }
+      var savedTheme = localStorage.getItem('chv-theme');
+      if(savedTheme){ applyTheme(savedTheme); }
     }catch(e){}
-    toggle.addEventListener('click', function(){
+    themeToggle.addEventListener('click', function(){
       var current = root.getAttribute('data-theme');
       var isDark = current ? current === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
       var next = isDark ? 'light' : 'dark';
@@ -770,16 +859,157 @@
       try{ localStorage.setItem('chv-theme', next); }catch(e){}
     });
 
-    // Copy contact rows (email / phone)
+    // ---------- Language toggle (ES default, EN available) ----------
+    var DICT = {
+      es: {
+        'nav.services': 'Servicios', 'nav.process': 'Proceso', 'nav.work': 'Trabajo', 'nav.founder': 'Fundador',
+        'nav.cta': 'Iniciar proyecto',
+        'hero.status': 'Sistema en producción — Gananova, en uso por negocios reales',
+        'hero.h1': 'Construimos los <em>sistemas</em> con los que tu negocio funciona.',
+        'hero.lede': 'CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.',
+        'hero.cta1': 'Iniciar un proyecto', 'hero.cta2': 'Ver Gananova en acción',
+        'node.billing1': 'FACTURA-', 'node.billing2': 'CIÓN',
+        'node.auto1': 'AUTOMATI-', 'node.auto2': 'ZACIÓN',
+        'node.design': 'DISEÑO',
+        'services.h2': 'Servicios',
+        'services.desc': 'Tres capas del mismo trabajo: lo que el visitante ve, lo que hace funcionar el negocio por dentro, y el sistema completo que los conecta.',
+        'svc1.tag': '[ DISEÑO ]', 'svc1.title': 'Diseño Web',
+        'svc1.desc': 'Identidad visual, landing pages y sitios corporativos pensados para generar confianza y convertir visitas en clientes.',
+        'svc2.tag': '[ DESARROLLO ]', 'svc2.title': 'Desarrollo Web',
+        'svc2.desc': 'Aplicaciones y paneles a la medida: del frontend a la base de datos, integraciones y despliegue en producción.',
+        'svc3.tag': '[ SISTEMAS ]', 'svc3.title': 'Sistemas Web',
+        'svc3.desc': 'CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.',
+        'proof.h3': 'Gananova — estrategia, procesos y tecnología',
+        'proof.p': 'Un sistema de gestión empresarial construido para Gananova, una consultora costarricense de estrategia y procesos. Hoy lo usan negocios reales para ordenar su operación.',
+        'proof.li1': 'CRM y seguimiento de clientes', 'proof.li2': 'Sistema de facturación',
+        'proof.li3': 'Métricas de negocio y KPIs en tiempo real', 'proof.li4': 'Automatización de procesos administrativos',
+        'proof.link': 'Visitar gananova.com',
+        'chrome.tab1': 'Resumen', 'chrome.tab3': 'Facturación',
+        'chrome.status': 'ESTADO DEL SISTEMA', 'chrome.online': '● En línea',
+        'process.h2': 'Cómo trabajamos',
+        'process.desc': 'Cuatro fases, en orden. Cada una depende de que la anterior quede bien hecha.',
+        'step1.title': 'Diagnóstico', 'step1.desc': 'Entiendo tu negocio, tus clientes y qué necesita el sistema para ser útil desde el primer día.',
+        'step2.title': 'Diseño', 'step2.desc': 'Construyo la identidad visual y la experiencia: cómo se ve, cómo se siente, cómo se usa.',
+        'step3.title': 'Desarrollo', 'step3.desc': 'Programo el sistema real — interfaz, lógica, base de datos — y lo pruebo con datos reales.',
+        'step4.title': 'Lanzamiento', 'step4.desc': 'Publico, mido resultados y sigo dando soporte mientras el sistema crece con el negocio.',
+        'founder.p': 'Estudiante de Ingeniería en Sistemas en Costa Rica y fundador de CHV Systems. Diseño y construyo software real para negocios reales: la misma persona que define la interfaz escribe el código que la sostiene, de principio a fin.',
+        'meta1.label': 'Formación', 'meta1.value': 'Ingeniería en Sistemas, Costa Rica',
+        'meta2.label': 'Enfoque', 'meta2.value': 'Diseño + desarrollo full-stack',
+        'meta3.label': 'Disponibilidad', 'meta3.value': 'Proyectos locales e internacionales',
+        'work.h2': 'Trabajo', 'work.desc': 'Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.',
+        'w1.status': '● En producción', 'w1.desc': 'Plataforma de gestión empresarial: CRM, facturación y métricas para consultoría de estrategia y procesos.',
+        'w2.status': '● En desarrollo', 'w2.desc': 'Sitio web para una academia de fútbol formativo: información del programa, categorías y contacto.', 'w2.tag': 'Próximamente',
+        'w3.status': '● Entregado', 'w3.desc': 'Sitio para un negocio de pintura y lavado a presión en Estados Unidos, orientado a captar cotizaciones.', 'w3.tag': 'Cliente en EE. UU.',
+        'contact.h2': '¿Listo para construir tu sistema?',
+        'contact.p': 'Contame qué necesita tu negocio. Si tiene sentido, empezamos por un diagnóstico corto antes de proponer nada.',
+        'contact.copy': 'Copiar', 'contact.copied': 'Copiado', 'contact.sendEmail': 'Enviar correo', 'contact.backTop': 'Volver arriba',
+        'theme.aria': 'Cambiar a modo claro o oscuro', 'menu.aria': 'Abrir menú', 'wa.aria': 'Escríbeme por WhatsApp',
+        'lang.label': 'EN', 'lang.aria': 'Cambiar idioma a inglés'
+      },
+      en: {
+        'nav.services': 'Services', 'nav.process': 'Process', 'nav.work': 'Work', 'nav.founder': 'Founder',
+        'nav.cta': 'Start a project',
+        'hero.status': 'System in production — Gananova, used by real businesses',
+        'hero.h1': "We build the <em>systems</em> your business runs on.",
+        'hero.lede': "CHV Systems designs the interface and builds what's behind it: websites, management dashboards, invoicing and automation. No templates — real software, built around how your business actually runs.",
+        'hero.cta1': 'Start a project', 'hero.cta2': 'See Gananova in action',
+        'node.billing1': 'BILLING', 'node.billing2': '',
+        'node.auto1': 'AUTOMATION', 'node.auto2': '',
+        'node.design': 'DESIGN',
+        'services.h2': 'Services',
+        'services.desc': 'Three layers of the same work: what the visitor sees, what runs the business behind the scenes, and the full system that connects them.',
+        'svc1.tag': '[ DESIGN ]', 'svc1.title': 'Web Design',
+        'svc1.desc': 'Visual identity, landing pages and corporate sites built to earn trust and turn visits into clients.',
+        'svc2.tag': '[ DEVELOPMENT ]', 'svc2.title': 'Web Development',
+        'svc2.desc': 'Custom applications and dashboards: from the frontend to the database, integrations and production deployment.',
+        'svc3.tag': '[ SYSTEMS ]', 'svc3.title': 'Web Systems',
+        'svc3.desc': "CRM, invoicing, inventory and metrics: the software your business runs on every day to operate and grow.",
+        'proof.h3': 'Gananova — strategy, process and technology',
+        'proof.p': 'A business management system built for Gananova, a Costa Rican strategy and process consultancy. Real businesses use it today to run their operations.',
+        'proof.li1': 'CRM and client tracking', 'proof.li2': 'Invoicing system',
+        'proof.li3': 'Business metrics and real-time KPIs', 'proof.li4': 'Administrative process automation',
+        'proof.link': 'Visit gananova.com',
+        'chrome.tab1': 'Overview', 'chrome.tab3': 'Invoicing',
+        'chrome.status': 'SYSTEM STATUS', 'chrome.online': '● Online',
+        'process.h2': 'How we work',
+        'process.desc': 'Four phases, in order. Each one depends on the last being done right.',
+        'step1.title': 'Diagnosis', 'step1.desc': "I learn your business, your clients, and what the system needs to be useful from day one.",
+        'step2.title': 'Design', 'step2.desc': "I build the visual identity and the experience: how it looks, how it feels, how it's used.",
+        'step3.title': 'Development', 'step3.desc': 'I build the real system — interface, logic, database — and test it with real data.',
+        'step4.title': 'Launch', 'step4.desc': 'I ship it, measure results, and keep supporting it as the system grows with the business.',
+        'founder.p': "Systems Engineering student in Costa Rica and founder of CHV Systems. I design and build real software for real businesses — the same person who defines the interface writes the code behind it, start to finish.",
+        'meta1.label': 'Education', 'meta1.value': 'Systems Engineering, Costa Rica',
+        'meta2.label': 'Focus', 'meta2.value': 'Design + full-stack development',
+        'meta3.label': 'Availability', 'meta3.value': 'Local and international projects',
+        'work.h2': 'Work', 'work.desc': 'Real projects, at different stages. No invented clients, no filler numbers.',
+        'w1.status': '● In production', 'w1.desc': 'Business management platform: CRM, invoicing and metrics for a strategy and process consultancy.',
+        'w2.status': '● In development', 'w2.desc': 'Website for a youth football academy: program info, age categories and contact.', 'w2.tag': 'Coming soon',
+        'w3.status': '● Delivered', 'w3.desc': 'Site for a painting and pressure-washing business in the US, built to capture quote requests.', 'w3.tag': 'US-based client',
+        'contact.h2': 'Ready to build your system?',
+        'contact.p': "Tell me what your business needs. If it makes sense, we start with a short diagnosis before proposing anything.",
+        'contact.copy': 'Copy', 'contact.copied': 'Copied', 'contact.sendEmail': 'Send email', 'contact.backTop': 'Back to top',
+        'theme.aria': 'Switch between light and dark mode', 'menu.aria': 'Open menu', 'wa.aria': 'Message me on WhatsApp',
+        'lang.label': 'ES', 'lang.aria': 'Switch language to Spanish'
+      }
+    };
+
+    var currentLang = 'es';
+    function t(key){ return (DICT[currentLang] && DICT[currentLang][key] !== undefined) ? DICT[currentLang][key] : DICT.es[key]; }
+
+    var langToggle = document.getElementById('langToggle');
+    var waFab = document.getElementById('fabWhatsapp');
+    var menuToggle = document.getElementById('menuToggle');
+
+    function applyLang(lang){
+      currentLang = (lang === 'en') ? 'en' : 'es';
+      root.lang = currentLang;
+
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        el.textContent = t(el.getAttribute('data-i18n'));
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+        el.innerHTML = t(el.getAttribute('data-i18n-html'));
+      });
+
+      themeToggle.setAttribute('aria-label', t('theme.aria'));
+      menuToggle.setAttribute('aria-label', t('menu.aria'));
+      waFab.setAttribute('aria-label', t('wa.aria'));
+      langToggle.textContent = t('lang.label');
+      langToggle.setAttribute('aria-label', t('lang.aria'));
+    }
+
+    try{
+      var savedLang = localStorage.getItem('chv-lang');
+      if(savedLang){ currentLang = savedLang; }
+    }catch(e){}
+    applyLang(currentLang);
+
+    langToggle.addEventListener('click', function(){
+      var next = currentLang === 'es' ? 'en' : 'es';
+      applyLang(next);
+      try{ localStorage.setItem('chv-lang', next); }catch(e){}
+    });
+
+    // ---------- Mobile menu ----------
+    var mobileMenu = document.getElementById('mobileMenu');
+    function closeMenu(){ mobileMenu.hidden = true; menuToggle.setAttribute('aria-expanded', 'false'); }
+    function openMenu(){ mobileMenu.hidden = false; menuToggle.setAttribute('aria-expanded', 'true'); }
+    menuToggle.addEventListener('click', function(){
+      var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      if(expanded){ closeMenu(); } else { openMenu(); }
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
+    // ---------- Copy contact rows (email / phone) ----------
     function wireCopy(btnId, textId){
       var copyBtn = document.getElementById(btnId);
       var textEl = document.getElementById(textId);
       if(!copyBtn || !textEl) return;
       copyBtn.addEventListener('click', function(){
         function done(){
-          copyBtn.textContent = 'Copiado';
+          copyBtn.textContent = t('contact.copied');
           copyBtn.classList.add('copied');
-          setTimeout(function(){ copyBtn.textContent = 'Copiar'; copyBtn.classList.remove('copied'); }, 1800);
+          setTimeout(function(){ copyBtn.textContent = t('contact.copy'); copyBtn.classList.remove('copied'); }, 1800);
         }
         var value = textEl.textContent;
         if(navigator.clipboard && navigator.clipboard.writeText){
@@ -794,7 +1024,7 @@
     wireCopy('copyEmail', 'emailText');
     wireCopy('copyPhone', 'phoneText');
 
-    // Hero cursor spotlight (desktop only, cheap)
+    // ---------- Hero cursor spotlight (desktop only, cheap) ----------
     var hero = document.querySelector('.hero');
     var spot = document.getElementById('heroSpot');
     if(hero && window.matchMedia('(pointer:fine)').matches){
