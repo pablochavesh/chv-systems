@@ -1,0 +1,876 @@
+<title>CHV Systems</title>
+<style>
+  :root{
+    --bg: #060B16;
+    --bg-1: #0A1226;
+    --bg-2: #0E1A34;
+    --panel: #0C1730;
+    --ink: #EAF1FF;
+    --ink-dim: #93A8D1;
+    --ink-faint: #7C90BC;
+    --line: rgba(147, 184, 255, 0.14);
+    --line-strong: rgba(147, 184, 255, 0.28);
+    --accent: #49D6FF;
+    --accent-ink: #04141C;
+    --accent-2: #E7B65C;
+    --btn-primary-ink: #1A1002;
+    --glow-1: rgba(73, 214, 255, 0.22);
+    --glow-2: rgba(120, 130, 255, 0.16);
+    --shadow: 0 20px 60px -20px rgba(2, 8, 20, 0.65);
+    color-scheme: dark;
+
+    --font-display: "Space Grotesk", "Arial Narrow", sans-serif;
+    --font-body: "DM Sans", "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", "Consolas", monospace;
+  }
+
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg: #F3F6FC;
+      --bg-1: #EAF0FA;
+      --bg-2: #E1E9F7;
+      --panel: #FFFFFF;
+      --ink: #0B1830;
+      --ink-dim: #435577;
+      --ink-faint: #5B6C93;
+      --line: rgba(11, 24, 48, 0.10);
+      --line-strong: rgba(11, 24, 48, 0.20);
+      --accent: #075E76;
+      --accent-ink: #FFFFFF;
+      --accent-2: #8A5A12;
+      --btn-primary-ink: #FFFFFF;
+      --glow-1: rgba(12, 143, 179, 0.14);
+      --glow-2: rgba(90, 100, 220, 0.10);
+      --shadow: 0 20px 50px -24px rgba(11, 24, 48, 0.22);
+      color-scheme: light;
+    }
+  }
+
+  :root[data-theme="light"]{
+    --bg: #F3F6FC;
+    --bg-1: #EAF0FA;
+    --bg-2: #E1E9F7;
+    --panel: #FFFFFF;
+    --ink: #0B1830;
+    --ink-dim: #435577;
+    --ink-faint: #5B6C93;
+    --line: rgba(11, 24, 48, 0.10);
+    --line-strong: rgba(11, 24, 48, 0.20);
+    --accent: #075E76;
+    --accent-ink: #FFFFFF;
+    --accent-2: #8A5A12;
+    --btn-primary-ink: #FFFFFF;
+    --glow-1: rgba(12, 143, 179, 0.14);
+    --glow-2: rgba(90, 100, 220, 0.10);
+    --shadow: 0 20px 50px -24px rgba(11, 24, 48, 0.22);
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"]{
+    --bg: #060B16;
+    --bg-1: #0A1226;
+    --bg-2: #0E1A34;
+    --panel: #0C1730;
+    --ink: #EAF1FF;
+    --ink-dim: #93A8D1;
+    --ink-faint: #7C90BC;
+    --line: rgba(147, 184, 255, 0.14);
+    --line-strong: rgba(147, 184, 255, 0.28);
+    --accent: #49D6FF;
+    --accent-ink: #04141C;
+    --accent-2: #E7B65C;
+    --btn-primary-ink: #1A1002;
+    --glow-1: rgba(73, 214, 255, 0.22);
+    --glow-2: rgba(120, 130, 255, 0.16);
+    --shadow: 0 20px 60px -20px rgba(2, 8, 20, 0.65);
+    color-scheme: dark;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color .5s ease, color .5s ease;
+  }
+
+  ::selection{ background: var(--accent); color: var(--accent-ink); }
+
+  h1, h2, h3{
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p{ margin: 0; }
+
+  a{ color: inherit; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .wrap{
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: max(20px, env(safe-area-inset-left, 0px) + 20px) max(20px, env(safe-area-inset-right, 0px) + 20px);
+  }
+
+  .mono-tag{
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-block: 16px;
+  }
+
+  .brand{ display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+  .brand__mark{
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .brand__mark span{ color: var(--accent); }
+  .brand__line{
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  nav.links{
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  nav.links a{
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--ink-dim);
+    position: relative;
+    padding-bottom: 2px;
+  }
+  nav.links a::after{
+    content: "";
+    position: absolute; left: 0; right: 100%; bottom: -2px;
+    height: 1px; background: var(--accent);
+    transition: right .3s cubic-bezier(.16,1,.3,1);
+  }
+  nav.links a:hover{ color: var(--ink); }
+  nav.links a:hover::after{ right: 0; }
+
+  .nav__actions{ display: flex; align-items: center; gap: 14px; }
+
+  .theme-btn{
+    width: 38px; height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-1);
+    color: var(--ink-dim);
+    display: grid; place-items: center;
+    cursor: pointer;
+    transition: border-color .25s ease, color .25s ease, transform .2s ease;
+  }
+  .theme-btn:hover{ color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .theme-btn svg{ width: 17px; height: 17px; }
+  .theme-btn .i-sun{ display: none; }
+  :root[data-theme="light"] .theme-btn .i-moon{ display: none; }
+  :root[data-theme="light"] .theme-btn .i-sun{ display: block; }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease, background-color .25s ease;
+  }
+  .btn--primary{ background: var(--accent-2); color: var(--btn-primary-ink); }
+  .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(231,182,92,.55); }
+  .btn--ghost{
+    background: transparent; color: var(--ink);
+    border-color: var(--line-strong);
+  }
+  .btn--ghost:hover{ border-color: var(--accent); color: var(--accent); }
+  .btn--sm{ padding: 9px 16px; font-size: .8rem; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding-top: clamp(56px, 9vw, 108px);
+    padding-bottom: clamp(48px, 8vw, 90px);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero__field{
+    position: absolute; inset: -10% -10% -10% -10%;
+    z-index: -2;
+    background:
+      radial-gradient(60% 50% at 78% 18%, var(--glow-1), transparent 60%),
+      radial-gradient(45% 40% at 15% 70%, var(--glow-2), transparent 65%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-1) 55%, var(--bg) 100%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    from{ transform: translate3d(0,0,0) scale(1); }
+    to{ transform: translate3d(-1.5%, 1.5%, 0) scale(1.04); }
+  }
+
+  .hero__spot{
+    position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(420px 420px at var(--mx, 70%) var(--my, 30%), var(--glow-1), transparent 70%);
+    opacity: .8;
+    pointer-events: none;
+  }
+
+  .hero__grid{
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: clamp(28px, 5vw, 60px);
+    align-items: center;
+  }
+
+  .hero__status{
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-dim);
+    border: 1px solid var(--line-strong);
+    background: var(--bg-1);
+    padding: 7px 14px 7px 10px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .hero__status i{
+    width: 7px; height: 7px; border-radius: 999px; background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ opacity: 1; } 50%{ opacity: .45; } }
+
+  .hero h1{
+    font-size: clamp(2.3rem, 5.6vw, 4.1rem);
+    max-width: 15ch;
+  }
+  .hero h1 em{
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero p.lede{
+    margin-top: 22px;
+    max-width: 46ch;
+    color: var(--ink-dim);
+    font-size: clamp(1rem, 1.4vw, 1.14rem);
+  }
+
+  .hero__ctas{ display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+
+  .constellation{ position: relative; aspect-ratio: 1/1; width: 100%; max-width: 480px; margin-inline: auto; }
+  .constellation svg{ width: 100%; height: 100%; overflow: visible; }
+  .cst-line{ fill: none; stroke: url(#lineGrad); stroke-width: 1.4; }
+  .cst-node circle{ fill: var(--bg-2); stroke: var(--line-strong); stroke-width: 1; }
+  .cst-node circle.core{ fill: var(--accent); stroke: none; }
+  .cst-node text{
+    font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .06em;
+    fill: var(--ink-dim); text-anchor: middle;
+  }
+  .cst-node.core text{ fill: var(--accent-ink); font-weight: 700; font-size: 10px; }
+
+  /* ---------- Sections ---------- */
+  section{ padding-block: clamp(64px, 9vw, 116px); position: relative; }
+
+  .section__head{ max-width: 640px; margin-bottom: clamp(36px, 5vw, 56px); }
+  .section__head h2{ font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+  .section__head p{ margin-top: 14px; color: var(--ink-dim); font-size: 1.02rem; max-width: 56ch; }
+
+  /* Services — editorial index rows, not icon cards */
+  .svc{ border-top: 1px solid var(--line); padding-top: 6px; }
+  .svc__row{
+    display: grid;
+    grid-template-columns: 120px 1fr minmax(200px, 320px);
+    gap: 28px;
+    align-items: start;
+    padding: 30px 6px;
+    border-bottom: 1px solid var(--line);
+    transition: background-color .3s ease;
+  }
+  .svc__row:hover{ background: color-mix(in srgb, var(--accent) 4%, transparent); }
+  .svc__tag{ font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em; color: var(--accent); padding-top: 6px; }
+  .svc__title{ font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
+  .svc__desc{ color: var(--ink-dim); font-size: .96rem; padding-top: 4px; max-width: 42ch; }
+
+  /* Proof panel (Gananova) */
+  .panel{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+  .proof{ display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 0; overflow: hidden; }
+  .proof__copy{ padding: clamp(28px, 4vw, 48px); }
+  .proof__chip{
+    display: inline-block; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em;
+    color: var(--accent); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 12px; margin-bottom: 16px;
+  }
+  .proof__copy h3{ font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 14px; }
+  .proof__copy p{ color: var(--ink-dim); }
+  .proof__list{ list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+  .proof__list li{ display: flex; gap: 10px; font-size: .92rem; color: var(--ink); }
+  .proof__list li::before{ content: "—"; color: var(--accent); flex-shrink: 0; }
+  .proof__link{ margin-top: 26px; display: inline-flex; align-items:center; gap:8px; font-weight:700; text-decoration:none; color: var(--accent); font-size:.92rem; }
+  .proof__link svg{ width: 14px; height: 14px; transition: transform .25s ease; }
+  .proof__link:hover svg{ transform: translate(3px,-3px); }
+
+  .proof__chrome{
+    background: var(--bg-1);
+    border-left: 1px solid var(--line);
+    padding: clamp(20px, 3vw, 30px);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .chrome__bar{ display: flex; align-items: center; gap: 8px; }
+  .chrome__dot{ width: 9px; height: 9px; border-radius: 999px; background: var(--line-strong); }
+  .chrome__tabs{ display:flex; gap: 6px; margin-left: 10px; }
+  .chrome__tab{ font-family: var(--font-mono); font-size: .72rem; letter-spacing:.02em; color: var(--ink-faint); padding: 5px 10px; border-radius: 7px 7px 0 0; }
+  .chrome__tab.active{ background: var(--bg); color: var(--accent); }
+  .chrome__body{ background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px; flex: 1; display: grid; gap: 14px; }
+  .chrome__kpi{ display: flex; justify-content: space-between; align-items: baseline; }
+  .chrome__kpi span{ font-family: var(--font-mono); font-size: .74rem; color: var(--ink-faint); letter-spacing:.03em; }
+  .chrome__kpi b{ font-family: var(--font-display); font-size: 1rem; color: var(--ink); }
+  .chrome__bars{ display: flex; align-items: flex-end; gap: 6px; height: 60px; }
+  .chrome__bars i{ flex:1; background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent)); border-radius: 3px 3px 0 0; opacity:.85; }
+
+  /* Process */
+  .process{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .process__step{ background: var(--bg); padding: 26px 22px; }
+  .process__num{ font-family: var(--font-mono); font-size: .8rem; color: var(--accent); }
+  .process__step h3{ font-size: 1.08rem; margin-top: 14px; }
+  .process__step p{ margin-top: 8px; font-size: .88rem; color: var(--ink-dim); }
+
+  /* Founder */
+  .founder{ display: grid; grid-template-columns: 220px 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
+  .monogram{ position: relative; width: 100%; aspect-ratio: 1/1; }
+  .monogram svg{ width: 100%; height: 100%; }
+  .founder__copy h3{ font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+  .founder__copy p{ margin-top: 16px; color: var(--ink-dim); max-width: 62ch; }
+  .founder__meta{ display:flex; gap: 22px; margin-top: 22px; flex-wrap: wrap; }
+  .founder__meta div{ font-family: var(--font-mono); font-size: .74rem; color: var(--ink-faint); }
+  .founder__meta b{ display:block; color: var(--ink); font-family: var(--font-body); font-size: .92rem; margin-bottom:3px; }
+
+  /* Work */
+  .work{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .work__card{ overflow: hidden; display: flex; flex-direction: column; }
+  .work__art{ height: 168px; position: relative; overflow: hidden; }
+  .work__art svg{ width: 100%; height: 100%; }
+  .work__body{ padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .work__status{ font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px; width: fit-content; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-dim); }
+  .work__status.live{ color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+  .work__body h3{ font-size: 1.15rem; }
+  .work__body p{ color: var(--ink-dim); font-size: .9rem; flex: 1; }
+  .work__foot{ display:flex; justify-content: space-between; align-items:center; margin-top: 6px; }
+  .work__link{ font-size: .82rem; font-weight:700; text-decoration:none; color: var(--accent); display:inline-flex; align-items:center; gap:6px; }
+  .work__link svg{ width:12px; height:12px; }
+
+  /* Contact */
+  .contact{ display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px,5vw,56px); align-items: center; }
+  .contact h2{ font-size: clamp(1.9rem, 4vw, 3rem); max-width: 14ch; }
+  .contact p{ margin-top: 16px; color: var(--ink-dim); max-width: 46ch; }
+  .contact__box{ padding: 28px; display: grid; gap: 18px; }
+  .contact__row{ display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .contact__row span{ font-family: var(--font-mono); font-size: .84rem; color: var(--ink); word-break: break-all; }
+  .copy-btn{ background: var(--bg-1); border: 1px solid var(--line-strong); color: var(--ink-dim); border-radius: 8px; padding: 7px 12px; font-size: .74rem; cursor: pointer; font-family: var(--font-body); font-weight: 600; flex-shrink:0; transition: color .2s ease, border-color .2s ease; }
+  .copy-btn:hover{ color: var(--accent); border-color: var(--accent); }
+  .copy-btn.copied{ color: var(--accent); }
+
+  footer{ border-top: 1px solid var(--line); padding-block: 34px; }
+  .foot__row{ display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot__row p{ font-family: var(--font-mono); font-size: .72rem; color: var(--ink-faint); letter-spacing: .04em; }
+
+  [data-reveal]{ will-change: transform, opacity; }
+
+  @media (max-width: 880px){
+    .hero__grid{ grid-template-columns: 1fr; }
+    .constellation{ max-width: 320px; margin-top: 10px; }
+    nav.links{ display: none; }
+    .proof{ grid-template-columns: 1fr; }
+    .proof__chrome{ border-left: none; border-top: 1px solid var(--line); }
+    .process{ grid-template-columns: 1fr 1fr; }
+    .founder{ grid-template-columns: 1fr; }
+    .monogram{ max-width: 160px; }
+    .work{ grid-template-columns: 1fr; }
+    .contact{ grid-template-columns: 1fr; }
+    .svc__row{ grid-template-columns: 1fr; gap: 10px; }
+  }
+  @media (max-width: 520px){
+    .process{ grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero__field{ animation: none; }
+    .hero__status i{ animation: none; }
+    *{ scroll-behavior: auto !important; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="brand__mark">CHV <span>SYSTEMS</span></span>
+      <span class="brand__line">WEB DESIGN &amp; DEVELOPMENT</span>
+    </a>
+    <nav class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#trabajo">Trabajo</a>
+      <a href="#fundador">Fundador</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="theme-btn" id="themeToggle" type="button" aria-label="Cambiar a modo claro o oscuro">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+      </button>
+      <a href="#contacto" class="btn btn--primary btn--sm">Iniciar proyecto</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero__field"></div>
+    <div class="hero__spot" id="heroSpot"></div>
+    <div class="wrap hero__grid">
+      <div>
+        <div class="hero__status"><i></i> Sistema en producción — Gananova, en uso por negocios reales</div>
+        <h1>Construimos los <em>sistemas</em> con los que tu negocio funciona.</h1>
+        <p class="lede">CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.</p>
+        <div class="hero__ctas">
+          <a href="#contacto" class="btn btn--primary">Iniciar un proyecto</a>
+          <a href="#prueba" class="btn btn--ghost">Ver Gananova en acción</a>
+        </div>
+      </div>
+      <div class="constellation" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.05"/>
+            </linearGradient>
+          </defs>
+          <g id="cstLines">
+            <path class="cst-line" d="M200,200 L200,70"/>
+            <path class="cst-line" d="M200,200 L330,140"/>
+            <path class="cst-line" d="M200,200 L340,270"/>
+            <path class="cst-line" d="M200,200 L200,335"/>
+            <path class="cst-line" d="M200,200 L60,265"/>
+            <path class="cst-line" d="M200,200 L65,130"/>
+          </g>
+          <g id="cstNodes">
+            <g class="cst-node core"><circle class="core" cx="200" cy="200" r="30"/><text x="200" y="204">CHV</text></g>
+            <g class="cst-node"><circle cx="200" cy="70" r="26"/><text x="200" y="74">WEB</text></g>
+            <g class="cst-node"><circle cx="330" cy="140" r="26"/><text x="330" y="144">CRM</text></g>
+            <g class="cst-node"><circle cx="340" cy="270" r="30"/><text x="340" y="270">FACTURA-</text><text x="340" y="280">CIÓN</text></g>
+            <g class="cst-node"><circle cx="200" cy="335" r="26"/><text x="200" y="339">KPIs</text></g>
+            <g class="cst-node"><circle cx="60" cy="265" r="30"/><text x="60" y="261">AUTOMATI-</text><text x="60" y="271">ZACIÓN</text></g>
+            <g class="cst-node"><circle cx="65" cy="130" r="26"/><text x="65" y="134">DISEÑO</text></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Servicios</h2>
+        <p>Tres capas del mismo trabajo: lo que el visitante ve, lo que hace funcionar el negocio por dentro, y el sistema completo que los conecta.</p>
+      </div>
+      <div class="svc">
+        <div class="svc__row">
+          <div class="svc__tag">[ DISEÑO ]</div>
+          <div class="svc__title">Diseño Web</div>
+          <div class="svc__desc">Identidad visual, landing pages y sitios corporativos pensados para generar confianza y convertir visitas en clientes.</div>
+        </div>
+        <div class="svc__row">
+          <div class="svc__tag">[ DESARROLLO ]</div>
+          <div class="svc__title">Desarrollo Web</div>
+          <div class="svc__desc">Aplicaciones y paneles a la medida: del frontend a la base de datos, integraciones y despliegue en producción.</div>
+        </div>
+        <div class="svc__row">
+          <div class="svc__tag">[ SISTEMAS ]</div>
+          <div class="svc__title">Sistemas Web</div>
+          <div class="svc__desc">CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prueba">
+    <div class="wrap">
+      <div class="panel proof" data-reveal>
+        <div class="proof__copy">
+          <h3>Gananova — estrategia, procesos y tecnología</h3>
+          <p>Un sistema de gestión empresarial construido para Gananova, una consultora costarricense de estrategia y procesos. Hoy lo usan negocios reales para ordenar su operación.</p>
+          <ul class="proof__list">
+            <li>CRM y seguimiento de clientes</li>
+            <li>Sistema de facturación</li>
+            <li>Métricas de negocio y KPIs en tiempo real</li>
+            <li>Automatización de procesos administrativos</li>
+          </ul>
+          <a href="https://www.gananova.com" target="_blank" rel="noopener" class="proof__link">Visitar gananova.com
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+        <div class="proof__chrome">
+          <div class="chrome__bar">
+            <div class="chrome__dot"></div><div class="chrome__dot"></div><div class="chrome__dot"></div>
+            <div class="chrome__tabs">
+              <div class="chrome__tab active">Resumen</div>
+              <div class="chrome__tab">CRM</div>
+              <div class="chrome__tab">Facturación</div>
+            </div>
+          </div>
+          <div class="chrome__body">
+            <div class="chrome__bars">
+              <i style="height:38%"></i><i style="height:62%"></i><i style="height:48%"></i>
+              <i style="height:80%"></i><i style="height:55%"></i><i style="height:70%"></i>
+              <i style="height:90%"></i>
+            </div>
+            <div class="chrome__kpi"><span>ESTADO DEL SISTEMA</span><b style="color:var(--accent)">● En línea</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Cómo trabajamos</h2>
+        <p>Cuatro fases, en orden. Cada una depende de que la anterior quede bien hecha.</p>
+      </div>
+      <div class="process">
+        <div class="process__step">
+          <div class="process__num">01</div>
+          <h3>Diagnóstico</h3>
+          <p>Entiendo tu negocio, tus clientes y qué necesita el sistema para ser útil desde el primer día.</p>
+        </div>
+        <div class="process__step">
+          <div class="process__num">02</div>
+          <h3>Diseño</h3>
+          <p>Construyo la identidad visual y la experiencia: cómo se ve, cómo se siente, cómo se usa.</p>
+        </div>
+        <div class="process__step">
+          <div class="process__num">03</div>
+          <h3>Desarrollo</h3>
+          <p>Programo el sistema real — interfaz, lógica, base de datos — y lo pruebo con datos reales.</p>
+        </div>
+        <div class="process__step">
+          <div class="process__num">04</div>
+          <h3>Lanzamiento</h3>
+          <p>Publico, mido resultados y sigo dando soporte mientras el sistema crece con el negocio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fundador">
+    <div class="wrap founder">
+      <div class="monogram" data-reveal>
+        <svg viewBox="0 0 240 240">
+          <defs>
+            <radialGradient id="monoGrad" cx="50%" cy="35%" r="70%">
+              <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="120" cy="120" r="118" fill="url(#monoGrad)"/>
+          <circle cx="120" cy="120" r="98" fill="none" stroke="var(--line-strong)" stroke-width="1"/>
+          <circle cx="120" cy="120" r="72" fill="none" stroke="var(--line)" stroke-width="1"/>
+          <text x="120" y="132" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="46" font-weight="700" fill="var(--ink)">JPCH</text>
+        </svg>
+      </div>
+      <div class="founder__copy" data-reveal>
+        <h3>Jose Pablo Chaves Hidalgo</h3>
+        <p>Estudiante de Ingeniería en Sistemas en Costa Rica y fundador de CHV Systems. Diseño y construyo software real para negocios reales: la misma persona que define la interfaz escribe el código que la sostiene, de principio a fin.</p>
+        <div class="founder__meta">
+          <div><b>Formación</b>Ingeniería en Sistemas, Costa Rica</div>
+          <div><b>Enfoque</b>Diseño + desarrollo full-stack</div>
+          <div><b>Disponibilidad</b>Proyectos locales e internacionales</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trabajo">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Trabajo</h2>
+        <p>Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.</p>
+      </div>
+      <div class="work">
+        <div class="panel work__card">
+          <div class="work__art" style="background: linear-gradient(160deg, var(--bg-2), var(--bg-1));">
+            <svg viewBox="0 0 300 168" preserveAspectRatio="none">
+              <rect width="300" height="168" fill="none"/>
+              <g stroke="var(--line-strong)" stroke-width="1">
+                <path d="M20 130 L60 90 L100 108 L140 60 L180 84 L220 40 L260 70" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              </g>
+              <g fill="var(--ink-faint)" font-family="IBM Plex Mono" font-size="8">
+                <text x="20" y="150">Q1</text><text x="140" y="150">Q2</text><text x="250" y="150">Q3</text>
+              </g>
+            </svg>
+          </div>
+          <div class="work__body">
+            <span class="work__status live">● En producción</span>
+            <h3>Gananova</h3>
+            <p>Plataforma de gestión empresarial: CRM, facturación y métricas para consultoría de estrategia y procesos.</p>
+            <div class="work__foot">
+              <a href="https://www.gananova.com" target="_blank" rel="noopener" class="work__link">gananova.com
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel work__card">
+          <div class="work__art" style="background: linear-gradient(160deg, var(--bg-2), var(--bg-1));">
+            <svg viewBox="0 0 300 168">
+              <rect x="16" y="16" width="268" height="136" rx="6" fill="none" stroke="var(--line-strong)"/>
+              <line x1="150" y1="16" x2="150" y2="152" stroke="var(--line-strong)"/>
+              <circle cx="150" cy="84" r="24" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M16 84 H284" stroke="var(--line)" stroke-dasharray="3 5"/>
+            </svg>
+          </div>
+          <div class="work__body">
+            <span class="work__status">● En desarrollo</span>
+            <h3>ADEFIP</h3>
+            <p>Sitio web para una academia de fútbol formativo: información del programa, categorías y contacto.</p>
+            <div class="work__foot">
+              <span class="mono-tag">Próximamente</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel work__card">
+          <div class="work__art" style="background: linear-gradient(160deg, var(--bg-2), var(--bg-1));">
+            <svg viewBox="0 0 300 168">
+              <g stroke="var(--line-strong)" stroke-width="1" fill="none">
+                <path d="M40 150 L40 60 L110 30 L180 60 L180 150"/>
+                <path d="M40 90 H180"/>
+              </g>
+              <circle cx="230" cy="70" r="18" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M230 52 v-14 M230 88 v14 M212 70 h-14 M248 70 h14" stroke="var(--accent)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="work__body">
+            <span class="work__status">● Entregado</span>
+            <h3>Pura Vida Painting</h3>
+            <p>Sitio para un negocio de pintura y lavado a presión en Estados Unidos, orientado a captar cotizaciones.</p>
+            <div class="work__foot">
+              <span class="mono-tag">Cliente en EE. UU.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact">
+      <div>
+        <h2>¿Listo para construir tu sistema?</h2>
+        <p>Contame qué necesita tu negocio. Si tiene sentido, empezamos por un diagnóstico corto antes de proponer nada.</p>
+      </div>
+      <div class="panel contact__box" data-reveal>
+        <div class="contact__row">
+          <span id="emailText">chavespablo640@gmail.com</span>
+          <button class="copy-btn" id="copyEmail" type="button">Copiar</button>
+        </div>
+        <div class="contact__row">
+          <span id="phoneText">+506 7080 6520</span>
+          <button class="copy-btn" id="copyPhone" type="button">Copiar</button>
+        </div>
+        <a href="mailto:chavespablo640@gmail.com" class="btn btn--primary" style="justify-content:center">Enviar correo</a>
+        <a href="#top" class="btn btn--ghost" style="justify-content:center">Volver arriba</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot__row">
+    <p>WEB DESIGN &amp; DEVELOPMENT BY CHV SYSTEMS</p>
+    <p>© <span id="year"></span> Jose Pablo Chaves Hidalgo — Costa Rica</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle, per-viewer convenience only
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    function applyTheme(t){ root.setAttribute('data-theme', t); }
+    try{
+      var saved = localStorage.getItem('chv-theme');
+      if(saved){ applyTheme(saved); }
+    }catch(e){}
+    toggle.addEventListener('click', function(){
+      var current = root.getAttribute('data-theme');
+      var isDark = current ? current === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      try{ localStorage.setItem('chv-theme', next); }catch(e){}
+    });
+
+    // Copy contact rows (email / phone)
+    function wireCopy(btnId, textId){
+      var copyBtn = document.getElementById(btnId);
+      var textEl = document.getElementById(textId);
+      if(!copyBtn || !textEl) return;
+      copyBtn.addEventListener('click', function(){
+        function done(){
+          copyBtn.textContent = 'Copiado';
+          copyBtn.classList.add('copied');
+          setTimeout(function(){ copyBtn.textContent = 'Copiar'; copyBtn.classList.remove('copied'); }, 1800);
+        }
+        var value = textEl.textContent;
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(value).then(done).catch(function(){
+            var r = document.createRange(); r.selectNode(textEl);
+            window.getSelection().removeAllRanges(); window.getSelection().addRange(r);
+            done();
+          });
+        }
+      });
+    }
+    wireCopy('copyEmail', 'emailText');
+    wireCopy('copyPhone', 'phoneText');
+
+    // Hero cursor spotlight (desktop only, cheap)
+    var hero = document.querySelector('.hero');
+    var spot = document.getElementById('heroSpot');
+    if(hero && window.matchMedia('(pointer:fine)').matches){
+      hero.addEventListener('mousemove', function(e){
+        var r = hero.getBoundingClientRect();
+        spot.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        spot.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    }
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if(window.gsap){
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero entrance
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      tl.from('.hero h1', { y: reduce?0:26, opacity: reduce?1:0, duration: .9 })
+        .from('.hero .lede', { y: reduce?0:20, opacity: reduce?1:0, duration: .8 }, '-=.55')
+        .from('.hero__ctas', { y: reduce?0:16, opacity: reduce?1:0, duration: .7 }, '-=.5')
+        .from('.hero__status', { opacity: reduce?1:0, duration:.6 }, 0);
+
+      if(!reduce){
+        // Constellation draw-in
+        var lines = gsap.utils.toArray('#cstLines path');
+        lines.forEach(function(l){
+          var len = l.getTotalLength();
+          gsap.set(l, { strokeDasharray: len, strokeDashoffset: len });
+        });
+        gsap.to('#cstLines path', { strokeDashoffset: 0, duration: 1.1, stagger: .12, ease: 'power2.out', delay: .3 });
+        gsap.from('#cstNodes .cst-node', { scale: 0, opacity: 0, transformOrigin: '50% 50%', duration: .6, stagger: .1, ease: 'back.out(1.7)', delay: .5 });
+        gsap.to('#cstNodes .core', { y: -6, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.6 });
+      }
+
+      // Scroll reveals
+      gsap.utils.toArray('[data-reveal]').forEach(function(el){
+        gsap.from(el, {
+          y: reduce?0:24, opacity: reduce?1:0, duration: .8, ease: 'expo.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        });
+      });
+
+      gsap.utils.toArray('.svc__row').forEach(function(el, i){
+        gsap.from(el, {
+          x: reduce?0:-16, opacity: reduce?1:0, duration: .7, ease: 'expo.out',
+          scrollTrigger: { trigger: el, start: 'top 90%' }
+        });
+      });
+
+      gsap.utils.toArray('.process__step').forEach(function(el, i){
+        gsap.from(el, {
+          y: reduce?0:18, opacity: reduce?1:0, duration: .6, delay: i*0.05, ease: 'expo.out',
+          scrollTrigger: { trigger: '.process', start: 'top 85%' }
+        });
+      });
+
+      gsap.utils.toArray('.work__card').forEach(function(el, i){
+        gsap.from(el, {
+          y: reduce?0:22, opacity: reduce?1:0, duration: .7, delay: i*0.08, ease: 'expo.out',
+          scrollTrigger: { trigger: '.work', start: 'top 85%' }
+        });
+      });
+
+      // Magnetic primary buttons (desktop only)
+      if(window.matchMedia('(pointer:fine)').matches){
+        document.querySelectorAll('.btn--primary').forEach(function(btn){
+          var qx = gsap.quickTo(btn, 'x', { duration: .4, ease: 'power3' });
+          var qy = gsap.quickTo(btn, 'y', { duration: .4, ease: 'power3' });
+          btn.addEventListener('mousemove', function(e){
+            var r = btn.getBoundingClientRect();
+            qx((e.clientX - r.left - r.width/2) * 0.25);
+            qy((e.clientY - r.top - r.height/2) * 0.35);
+          });
+          btn.addEventListener('mouseleave', function(){ qx(0); qy(0); });
+        });
+      }
+    }
+  })();
+</script>

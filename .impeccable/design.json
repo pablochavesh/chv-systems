@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T00:00:00.000Z",
+  "title": "Design System: CHV Systems",
+  "extensions": {
+    "colorMeta": {
+      "signal-cyan": { "role": "primary", "displayName": "Signal Cyan", "canonical": "#49D6FF", "tonalRamp": ["#03141C", "#04283A", "#064B63", "#0A7C9E", "#22ABCE", "#49D6FF", "#8FE7FF", "#D6F7FF"] },
+      "cta-gold": { "role": "secondary", "displayName": "CTA Gold", "canonical": "#E7B65C", "tonalRamp": ["#1A1002", "#3A2607", "#5E3D0C", "#8A5A12", "#B87F2C", "#E7B65C", "#F2D296", "#FBEBCD"] },
+      "void-ground": { "role": "neutral", "displayName": "Void Ground", "canonical": "#060B16", "tonalRamp": ["#010204", "#03060C", "#060B16", "#0A1226", "#0E1A34", "#1B2C4D", "#33466E", "#5A6F94"] },
+      "panel-dark": { "role": "neutral", "displayName": "Panel (dark)", "canonical": "#0C1730", "tonalRamp": ["#03060C", "#060B16", "#0A1226", "#0C1730", "#131F3E", "#1C2C50", "#2A3D66", "#3D537F"] },
+      "ink-primary": { "role": "neutral", "displayName": "Ink Primary", "canonical": "#EAF1FF", "tonalRamp": ["#7C90BC", "#93A8D1", "#B2C2E0", "#CBD8EE", "#DEE8F7", "#EAF1FF", "#F2F7FF", "#FAFCFF"] },
+      "ink-dim": { "role": "neutral", "displayName": "Ink Dim", "canonical": "#93A8D1", "tonalRamp": ["#435577", "#556A8F", "#6A80A8", "#7C90BC", "#93A8D1", "#ACBEDE", "#C6D2EA", "#E1E8F5"] },
+      "ink-faint": { "role": "neutral", "displayName": "Ink Faint", "canonical": "#7C90BC", "tonalRamp": ["#2F3D57", "#435577", "#586C93", "#6C80A8", "#7C90BC", "#96A8CB", "#B6C3DB", "#D8DFEE"] },
+      "paper-ground": { "role": "neutral", "displayName": "Paper Ground", "canonical": "#F3F6FC", "tonalRamp": ["#0B1830", "#435577", "#8A9BC0", "#C7D3E9", "#E1E9F7", "#EAF0FA", "#F3F6FC", "#FBFCFE"] },
+      "signal-teal-light": { "role": "primary", "displayName": "Signal Teal (light mode)", "canonical": "#075E76", "tonalRamp": ["#032833", "#053F51", "#075E76", "#0C7E9C", "#189FC1", "#4CBEDA", "#8ED8EB", "#D2F1F8"] },
+      "cta-brown-light": { "role": "secondary", "displayName": "CTA Brown (light mode)", "canonical": "#8A5A12", "tonalRamp": ["#2E1E06", "#59390B", "#8A5A12", "#B87F2C", "#D69C4A", "#E7B65C", "#F2D296", "#FBEBCD"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero h1 only; the emphasized word renders in Signal Cyan, not italic or a highlight box." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles (Servicios, Cómo trabajamos, Trabajo, etc.)." },
+      "title": { "displayName": "Title", "purpose": "Service row / card / founder-name level headings." },
+      "body": { "displayName": "Body", "purpose": "Running copy; ledes capped 46ch, descriptions capped 42ch." },
+      "label": { "displayName": "Label / Mono", "purpose": "Real data and status only: status line, row tags, chrome tabs/KPIs, step numbers, footer credit." }
+    },
+    "shadows": [
+      { "name": "panel-ambient", "value": "0 20px 60px -20px rgba(2, 8, 20, 0.65)", "purpose": "The only at-rest shadow; lifts .panel surfaces off the void. Light-mode equivalent: 0 20px 50px -24px rgba(11, 24, 48, 0.22)." },
+      { "name": "cta-hover-glow", "value": "0 12px 30px -10px rgba(231,182,92,.55)", "purpose": "Primary-button hover only, paired with a 2px lift." }
+    ],
+    "motion": [
+      { "name": "ease-entrance", "value": "expo.out (GSAP)", "purpose": "Hero and scroll-reveal entrances." },
+      { "name": "ease-nav-underline", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Nav link underline sweep and button transform easing." },
+      { "name": "duration-theme-transition", "value": "0.5s ease", "purpose": "Background/color crossfade on dark/light theme toggle." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "880px" },
+      { "name": "sm", "value": "520px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Conversion action (Iniciar un proyecto / Enviar correo). Gold fill, pill shape, hover lift + glow, desktop magnetic follow.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">Iniciar un proyecto</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.88rem; text-decoration: none; padding: 12px 22px; border-radius: 999px; background: #E7B65C; color: #1A1002; transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease; } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(231,182,92,.55); } .ds-btn-primary:focus-visible { outline: 2px solid #49D6FF; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action (Ver Gananova en acción). Transparent, hairline border, hover shifts to signal cyan.",
+      "html": "<a href=\"#\" class=\"ds-btn-ghost\">Ver Gananova en acción</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.88rem; text-decoration: none; padding: 12px 22px; border-radius: 999px; background: transparent; color: #EAF1FF; border: 1px solid rgba(147,184,255,0.28); transition: border-color .25s ease, color .25s ease; } .ds-btn-ghost:hover { border-color: #49D6FF; color: #49D6FF; } .ds-btn-ghost:focus-visible { outline: 2px solid #49D6FF; outline-offset: 3px; }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "button",
+      "refersTo": "theme-toggle",
+      "description": "Circular icon button swapping dark/light theme; moon/sun glyph swap via data-theme attribute.",
+      "html": "<button class=\"ds-theme-btn\" aria-label=\"Cambiar a modo claro o oscuro\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"17\" height=\"17\"><path d=\"M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z\"/></svg></button>",
+      "css": ".ds-theme-btn { width: 38px; height: 38px; border-radius: 999px; border: 1px solid rgba(147,184,255,0.28); background: #0A1226; color: #93A8D1; display: grid; place-items: center; cursor: pointer; transition: border-color .25s ease, color .25s ease, transform .2s ease; } .ds-theme-btn:hover { color: #49D6FF; border-color: #49D6FF; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Services Index Row",
+      "kind": "custom",
+      "refersTo": "svc-row",
+      "description": "Hairline-divided row replacing a card grid: mono tag column, title, capped-measure description. Deliberately not an icon-plus-heading card.",
+      "html": "<div class=\"ds-svc-row\"><div class=\"ds-svc-tag\">[ SISTEMAS ]</div><div class=\"ds-svc-title\">Sistemas Web</div><div class=\"ds-svc-desc\">CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.</div></div>",
+      "css": ".ds-svc-row { display: grid; grid-template-columns: 120px 1fr minmax(200px, 320px); gap: 28px; align-items: start; padding: 30px 6px; border-bottom: 1px solid rgba(147,184,255,0.14); transition: background-color .3s ease; } .ds-svc-row:hover { background: rgba(73,214,255,0.04); } .ds-svc-tag { font-family: 'IBM Plex Mono', monospace; font-size: .74rem; letter-spacing: .1em; color: #49D6FF; padding-top: 6px; } .ds-svc-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: #EAF1FF; } .ds-svc-desc { color: #93A8D1; font-size: .96rem; max-width: 42ch; padding-top: 4px; }"
+    },
+    {
+      "name": "Work Card",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Portfolio card: SVG line-art thumbnail, honest status badge (live/in development/delivered), title, description, optional external link.",
+      "html": "<div class=\"ds-work-card\"><div class=\"ds-work-art\"></div><div class=\"ds-work-body\"><span class=\"ds-work-status ds-work-status--live\">● En producción</span><h3>Gananova</h3><p>Plataforma de gestión empresarial: CRM, facturación y métricas.</p></div></div>",
+      "css": ".ds-work-card { background: #0C1730; border: 1px solid rgba(147,184,255,0.14); border-radius: 18px; box-shadow: 0 20px 60px -20px rgba(2,8,20,0.65); overflow: hidden; display: flex; flex-direction: column; } .ds-work-art { height: 168px; background: linear-gradient(160deg, #0E1A34, #0A1226); } .ds-work-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; } .ds-work-status { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; width: fit-content; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(147,184,255,0.28); color: #93A8D1; } .ds-work-status--live { color: #49D6FF; border-color: rgba(73,214,255,0.5); } .ds-work-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; color: #EAF1FF; margin: 0; } .ds-work-body p { color: #93A8D1; font-size: .9rem; margin: 0; }"
+    },
+    {
+      "name": "Proof Panel Chrome",
+      "kind": "custom",
+      "refersTo": "proof-chrome",
+      "description": "Signature dashboard-mockup component: fake browser chrome dots + tabs + KPI bars, honestly scoped to Gananova's real, stated feature set only.",
+      "html": "<div class=\"ds-chrome\"><div class=\"ds-chrome-bar\"><span class=\"ds-chrome-dot\"></span><span class=\"ds-chrome-dot\"></span><span class=\"ds-chrome-dot\"></span><div class=\"ds-chrome-tabs\"><div class=\"ds-chrome-tab ds-chrome-tab--active\">Resumen</div><div class=\"ds-chrome-tab\">CRM</div><div class=\"ds-chrome-tab\">Facturación</div></div></div><div class=\"ds-chrome-body\"><div class=\"ds-chrome-bars\"><i style=\"height:38%\"></i><i style=\"height:62%\"></i><i style=\"height:80%\"></i></div><div class=\"ds-chrome-kpi\"><span>ESTADO DEL SISTEMA</span><b>● En línea</b></div></div></div>",
+      "css": ".ds-chrome { background: #0A1226; border-left: 1px solid rgba(147,184,255,0.14); padding: 24px; display: flex; flex-direction: column; gap: 16px; } .ds-chrome-bar { display: flex; align-items: center; gap: 8px; } .ds-chrome-dot { width: 9px; height: 9px; border-radius: 999px; background: rgba(147,184,255,0.28); display: inline-block; } .ds-chrome-tabs { display: flex; gap: 6px; margin-left: 10px; } .ds-chrome-tab { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: #7C90BC; padding: 5px 10px; border-radius: 7px 7px 0 0; } .ds-chrome-tab--active { background: #060B16; color: #49D6FF; } .ds-chrome-body { background: #060B16; border: 1px solid rgba(147,184,255,0.14); border-radius: 10px; padding: 18px; display: grid; gap: 14px; } .ds-chrome-bars { display: flex; align-items: flex-end; gap: 6px; height: 60px; } .ds-chrome-bars i { flex: 1; background: linear-gradient(180deg, #49D6FF, rgba(73,214,255,0.3)); border-radius: 3px 3px 0 0; } .ds-chrome-kpi { display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', monospace; font-size: .74rem; color: #7C90BC; } .ds-chrome-kpi b { color: #49D6FF; font-family: 'Space Grotesk', sans-serif; }"
+    },
+    {
+      "name": "Sticky Nav",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky, blurred-translucent header with split-color wordmark, sweep-underline links, and theme toggle + primary CTA persistent on mobile.",
+      "html": "<header class=\"ds-nav\"><a href=\"#\" class=\"ds-brand\"><span class=\"ds-brand-mark\">CHV <span>SYSTEMS</span></span></a><nav class=\"ds-nav-links\"><a href=\"#\">Servicios</a><a href=\"#\">Proceso</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 20px; background: rgba(6,11,22,0.78); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(147,184,255,0.14); } .ds-brand { text-decoration: none; } .ds-brand-mark { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; color: #EAF1FF; } .ds-brand-mark span { color: #49D6FF; } .ds-nav-links { display: flex; gap: 28px; } .ds-nav-links a { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; text-decoration: none; color: #93A8D1; position: relative; padding-bottom: 2px; } .ds-nav-links a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -2px; height: 1px; background: #49D6FF; transition: right .3s cubic-bezier(.16,1,.3,1); } .ds-nav-links a:hover { color: #EAF1FF; } .ds-nav-links a:hover::after { right: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Systems Console",
+    "overview": "CHV Systems reads like the operating console of a working business platform, not a portfolio brochure. A near-black navy void is the default ground; one glowing cyan signal carries every interactive and emphasis moment, and a warm gold is spent only where a visitor is asked to act (start a project). Depth comes from soft ambient glow and hairline 1px dividers, never from card borders, drop icons, or nested boxes. The recurring signature is a live constellation graph — labeled nodes (WEB, CRM, FACTURACIÓN, KPIs, AUTOMATIZACIÓN, DISEÑO) joined by glowing pulse lines around a core 'CHV' node — standing in for the actual connected systems the studio builds, not decorative blur.\n\nThe build confirms and carries the brief's explicit refusals: no icon-plus-heading-plus-text card grid for services (replaced with hairline-divided index rows), no kicker/eyebrow labels stacked above headings, no fabricated hero-metric stat block (replaced with a single honest status line), and no invented portfolio metrics (the Gananova proof panel shows its real, stated feature list only). Light mode is a genuine variant of the same identity: the void becomes a crisp cool-white/pale-blue field, the constellation renders in ink-navy, and the signal hue is carried into a contrast-safe darker teal rather than being inverted into a generic flat light theme.",
+    "keyCharacteristics": [
+      "Deep navy-to-near-black void ground with a single glowing cyan signal color for all interactive/emphasis states",
+      "Gold accent spent exclusively on primary conversion actions (never decorative)",
+      "Constellation/circuit linework as the one recurring graphic device, always labeled with real system names",
+      "Hairline 1px borders and index-row/panel layout in place of nested cards",
+      "Monospace reserved for real data and status labels only (KPI tags, module tags, status badges, footer credit)"
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Cyan is the only color that means \"interactive\" or \"live\" anywhere in the system — hover states, focus rings, links, the constellation core, the KPI online dot. No second interactive color is ever introduced.", "section": "colors" },
+      { "name": "The Gold-Is-Action Rule", "body": "Gold appears only on the primary CTA button. It never decorates a badge, icon, tag, or heading — its rarity signals \"the one thing to click.\"", "section": "colors" },
+      { "name": "The Mono-Means-Data Rule", "body": "IBM Plex Mono only ever labels something real — a system status, a module name, a KPI, a step number, a footer credit. It never appears as generic \"tech\" set-dressing on a headline or tagline.", "section": "typography" },
+      { "name": "The Response-Only Glow Rule", "body": "Beyond the single panel ambient shadow, every other shadow/glow in the system exists only as a hover or focus response. Nothing glows at rest except the hero's ambient background gradient and the constellation core's slow pulse.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep cyan as the only interactive/live signal color and gold as the only conversion-action color (The One Signal Rule, The Gold-Is-Action Rule).",
+      "Do cap paragraph-length text at a measure (46ch ledes, 42ch service descriptions) rather than letting body copy run full container width.",
+      "Do label every portfolio entry with its true status (live/in development/delivered) — never present ADEFIP as launched or invent metrics for any of the three real projects.",
+      "Do keep monospace scoped to real data/status content only (The Mono-Means-Data Rule).",
+      "Do carry the identical world into light mode (same ground layering, same constellation motif, same hue family darkened for contrast) rather than a flattened inverted theme."
+    ],
+    "donts": [
+      "Don't build services or any repeating content block as an icon-plus-heading-plus-text card grid; use hairline-divided index rows or panels instead.",
+      "Don't stack a kicker/eyebrow label above a heading anywhere in the system — labels only appear inline as data (row tags, status badges), never as pre-headline dressing.",
+      "Don't add a hero-metric stat block (fake counters/percentages); a single honest status line carries that role.",
+      "Don't add a resting decorative shadow to a flat element — shadows are either the single panel-ambient value or a hover/focus response (The Response-Only Glow Rule).",
+      "Don't fabricate portfolio numbers, client counts, or testimonials for Gananova, ADEFIP, or Pura Vida Painting."
+    ]
+  }
+}
