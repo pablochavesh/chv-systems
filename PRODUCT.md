@@ -25,9 +25,9 @@ Not a template shop or a generic freelance portfolio: CHV Systems ships full wor
 ## Operating Context
 
 Real evidence available:
-- **Gananova** (www.gananova.com, live) — a business strategy/process/technology platform for Costa Rican SMEs (1-150 employees), tagline "Estrategia · Procesos · Tecnología." Ships CRM, inventory, reporting/KPI tracking, and an invoicing/facturación system; currently used by multiple paying clients.
-- **ADEFIP** — a youth football academy site, currently in build ("en obras" / work in progress). Do not present as live/launched.
-- **Pura Vida Painting** — a painting & pressure-washing business for a client in the United States; project delivered, payment pending. Present as a completed client project.
+- **Gananova** (www.gananova.com, live) — the Costa Rican strategy/process consultancy for SMEs where Jose Pablo currently works, tagline "Estrategia · Procesos · Tecnología." He built **Gananova OS**, an advanced business management system with AI and automation (CRM, invoicing, real-time KPIs/metrics) used there. Present this as his workplace + a system he built there, not as a client project he was contracted for.
+- **ADEFIP** (www.adefip.com) — a youth football academy site; a Gananova collaboration project led by Jose Pablo.
+- **Pura Vida Painting** (www.puravidapaintingllc.com) — a painting & pressure-washing business; a real client based in the United States. Project delivered.
 
 No other case studies, testimonials, pricing, or client logos exist yet; do not fabricate quotes, client counts, or metrics beyond what's stated above.
 

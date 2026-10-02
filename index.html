@@ -299,26 +299,6 @@
     align-items: center;
   }
 
-  .hero__status{
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    letter-spacing: 0.02em;
-    color: var(--ink-dim);
-    border: 1px solid var(--line-strong);
-    background: var(--bg-1);
-    padding: 7px 14px 7px 10px;
-    border-radius: 999px;
-    margin-bottom: 22px;
-  }
-  .hero__status i{
-    width: 7px; height: 7px; border-radius: 999px; background: var(--accent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
-    animation: pulse 2s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-  @keyframes pulse{ 0%,100%{ opacity: 1; } 50%{ opacity: .45; } }
-
   .hero h1{
     font-size: clamp(2.3rem, 5.6vw, 4.1rem);
     max-width: 15ch;
@@ -516,7 +496,6 @@
 
   @media (prefers-reduced-motion: reduce){
     .hero__field{ animation: none; }
-    .hero__status i{ animation: none; }
     *{ scroll-behavior: auto !important; }
   }
 </style>
@@ -569,12 +548,10 @@
     <div class="hero__spot" id="heroSpot"></div>
     <div class="wrap hero__grid">
       <div>
-        <div class="hero__status"><i></i> <span data-i18n="hero.status">Sistema en producción — Gananova, en uso por negocios reales</span></div>
         <h1 data-i18n-html="hero.h1">Construimos los <em>sistemas</em> con los que tu negocio funciona.</h1>
         <p class="lede" data-i18n="hero.lede">CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.</p>
         <div class="hero__ctas">
           <a href="#contacto" class="btn btn--primary" data-i18n="hero.cta1">Iniciar un proyecto</a>
-          <a href="#prueba" class="btn btn--ghost" data-i18n="hero.cta2">Ver Gananova en acción</a>
         </div>
       </div>
       <div class="constellation" aria-hidden="true">
@@ -638,12 +615,12 @@
       <div class="panel proof" data-reveal>
         <div class="proof__copy">
           <h3 data-i18n="proof.h3">Gananova — estrategia, procesos y tecnología</h3>
-          <p data-i18n="proof.p">Un sistema de gestión empresarial construido para Gananova, una consultora costarricense de estrategia y procesos. Hoy lo usan negocios reales para ordenar su operación.</p>
+          <p data-i18n="proof.p">La empresa donde trabajo: una consultora costarricense de estrategia y procesos para pymes. Ahí desarrollé Gananova OS, un sistema de gestión empresarial avanzado con inteligencia artificial y automatizaciones.</p>
           <ul class="proof__list">
             <li data-i18n="proof.li1">CRM y seguimiento de clientes</li>
-            <li data-i18n="proof.li2">Sistema de facturación</li>
-            <li data-i18n="proof.li3">Métricas de negocio y KPIs en tiempo real</li>
-            <li data-i18n="proof.li4">Automatización de procesos administrativos</li>
+            <li data-i18n="proof.li2">Facturación</li>
+            <li data-i18n="proof.li3">Métricas y KPIs en tiempo real</li>
+            <li data-i18n="proof.li4">Automatización y asistencia con IA</li>
           </ul>
           <a href="https://www.gananova.com" target="_blank" rel="noopener" class="proof__link">
             <span data-i18n="proof.link">Visitar gananova.com</span>
@@ -657,6 +634,7 @@
               <div class="chrome__tab active" data-i18n="chrome.tab1">Resumen</div>
               <div class="chrome__tab">CRM</div>
               <div class="chrome__tab" data-i18n="chrome.tab3">Facturación</div>
+              <div class="chrome__tab" data-i18n="chrome.tab4">IA</div>
             </div>
           </div>
           <div class="chrome__body">
@@ -734,7 +712,7 @@
   <section id="trabajo">
     <div class="wrap">
       <div class="section__head">
-        <h2 data-i18n="work.h2">Trabajo</h2>
+        <h2 data-i18n="work.h2">Algunos de mis proyectos</h2>
         <p data-i18n="work.desc">Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.</p>
       </div>
       <div class="work">
@@ -753,7 +731,7 @@
           <div class="work__body">
             <span class="work__status live" data-i18n="w1.status">● En producción</span>
             <h3>Gananova</h3>
-            <p data-i18n="w1.desc">Plataforma de gestión empresarial: CRM, facturación y métricas para consultoría de estrategia y procesos.</p>
+            <p data-i18n="w1.desc">La empresa donde trabajo. Ahí desarrollé Gananova OS, un sistema de gestión empresarial con IA y automatizaciones para pymes.</p>
             <div class="work__foot">
               <a href="https://www.gananova.com" target="_blank" rel="noopener" class="work__link">gananova.com
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -774,9 +752,11 @@
           <div class="work__body">
             <span class="work__status" data-i18n="w2.status">● En desarrollo</span>
             <h3>ADEFIP</h3>
-            <p data-i18n="w2.desc">Sitio web para una academia de fútbol formativo: información del programa, categorías y contacto.</p>
+            <p data-i18n="w2.desc">Proyecto de colaboración de Gananova, liderado por mí.</p>
             <div class="work__foot">
-              <span class="mono-tag" data-i18n="w2.tag">Próximamente</span>
+              <a href="https://www.adefip.com" target="_blank" rel="noopener" class="work__link">adefip.com
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -795,9 +775,11 @@
           <div class="work__body">
             <span class="work__status" data-i18n="w3.status">● Entregado</span>
             <h3>Pura Vida Painting</h3>
-            <p data-i18n="w3.desc">Sitio para un negocio de pintura y lavado a presión en Estados Unidos, orientado a captar cotizaciones.</p>
+            <p data-i18n="w3.desc">Cliente real desde Estados Unidos: pintura y lavado a presión.</p>
             <div class="work__foot">
-              <span class="mono-tag" data-i18n="w3.tag">Cliente en EE. UU.</span>
+              <a href="https://www.puravidapaintingllc.com" target="_blank" rel="noopener" class="work__link">puravidapaintingllc.com
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -867,10 +849,9 @@
       es: {
         'nav.services': 'Servicios', 'nav.process': 'Proceso', 'nav.work': 'Trabajo', 'nav.founder': 'Fundador',
         'nav.cta': 'Iniciar proyecto',
-        'hero.status': 'Sistema en producción — Gananova, en uso por negocios reales',
         'hero.h1': 'Construimos los <em>sistemas</em> con los que tu negocio funciona.',
         'hero.lede': 'CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.',
-        'hero.cta1': 'Iniciar un proyecto', 'hero.cta2': 'Ver Gananova en acción',
+        'hero.cta1': 'Iniciar un proyecto',
         'node.billing1': 'FACTURA-', 'node.billing2': 'CIÓN',
         'node.auto1': 'AUTOMATI-', 'node.auto2': 'ZACIÓN',
         'node.design': 'DISEÑO',
@@ -883,11 +864,11 @@
         'svc3.tag': '[ SISTEMAS ]', 'svc3.title': 'Sistemas Web',
         'svc3.desc': 'CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.',
         'proof.h3': 'Gananova — estrategia, procesos y tecnología',
-        'proof.p': 'Un sistema de gestión empresarial construido para Gananova, una consultora costarricense de estrategia y procesos. Hoy lo usan negocios reales para ordenar su operación.',
-        'proof.li1': 'CRM y seguimiento de clientes', 'proof.li2': 'Sistema de facturación',
-        'proof.li3': 'Métricas de negocio y KPIs en tiempo real', 'proof.li4': 'Automatización de procesos administrativos',
+        'proof.p': 'La empresa donde trabajo: una consultora costarricense de estrategia y procesos para pymes. Ahí desarrollé Gananova OS, un sistema de gestión empresarial avanzado con inteligencia artificial y automatizaciones.',
+        'proof.li1': 'CRM y seguimiento de clientes', 'proof.li2': 'Facturación',
+        'proof.li3': 'Métricas y KPIs en tiempo real', 'proof.li4': 'Automatización y asistencia con IA',
         'proof.link': 'Visitar gananova.com',
-        'chrome.tab1': 'Resumen', 'chrome.tab3': 'Facturación',
+        'chrome.tab1': 'Resumen', 'chrome.tab3': 'Facturación', 'chrome.tab4': 'IA',
         'chrome.status': 'ESTADO DEL SISTEMA', 'chrome.online': '● En línea',
         'process.h2': 'Cómo trabajamos',
         'process.desc': 'Cuatro fases, en orden. Cada una depende de que la anterior quede bien hecha.',
@@ -899,10 +880,10 @@
         'meta1.label': 'Formación', 'meta1.value': 'Ingeniería en Sistemas, Costa Rica',
         'meta2.label': 'Enfoque', 'meta2.value': 'Diseño + desarrollo full-stack',
         'meta3.label': 'Disponibilidad', 'meta3.value': 'Proyectos locales e internacionales',
-        'work.h2': 'Trabajo', 'work.desc': 'Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.',
-        'w1.status': '● En producción', 'w1.desc': 'Plataforma de gestión empresarial: CRM, facturación y métricas para consultoría de estrategia y procesos.',
-        'w2.status': '● En desarrollo', 'w2.desc': 'Sitio web para una academia de fútbol formativo: información del programa, categorías y contacto.', 'w2.tag': 'Próximamente',
-        'w3.status': '● Entregado', 'w3.desc': 'Sitio para un negocio de pintura y lavado a presión en Estados Unidos, orientado a captar cotizaciones.', 'w3.tag': 'Cliente en EE. UU.',
+        'work.h2': 'Algunos de mis proyectos', 'work.desc': 'Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.',
+        'w1.status': '● En producción', 'w1.desc': 'La empresa donde trabajo. Ahí desarrollé Gananova OS, un sistema de gestión empresarial con IA y automatizaciones para pymes.',
+        'w2.status': '● En desarrollo', 'w2.desc': 'Proyecto de colaboración de Gananova, liderado por mí.',
+        'w3.status': '● Entregado', 'w3.desc': 'Cliente real desde Estados Unidos: pintura y lavado a presión.',
         'contact.h2': '¿Listo para construir tu sistema?',
         'contact.p': 'Contame qué necesita tu negocio. Si tiene sentido, empezamos por un diagnóstico corto antes de proponer nada.',
         'contact.copy': 'Copiar', 'contact.copied': 'Copiado', 'contact.sendEmail': 'Enviar correo', 'contact.backTop': 'Volver arriba',
@@ -912,10 +893,9 @@
       en: {
         'nav.services': 'Services', 'nav.process': 'Process', 'nav.work': 'Work', 'nav.founder': 'Founder',
         'nav.cta': 'Start a project',
-        'hero.status': 'System in production — Gananova, used by real businesses',
         'hero.h1': "We build the <em>systems</em> your business runs on.",
         'hero.lede': "CHV Systems designs the interface and builds what's behind it: websites, management dashboards, invoicing and automation. No templates — real software, built around how your business actually runs.",
-        'hero.cta1': 'Start a project', 'hero.cta2': 'See Gananova in action',
+        'hero.cta1': 'Start a project',
         'node.billing1': 'BILLING', 'node.billing2': '',
         'node.auto1': 'AUTOMATION', 'node.auto2': '',
         'node.design': 'DESIGN',
@@ -928,11 +908,11 @@
         'svc3.tag': '[ SYSTEMS ]', 'svc3.title': 'Web Systems',
         'svc3.desc': "CRM, invoicing, inventory and metrics: the software your business runs on every day to operate and grow.",
         'proof.h3': 'Gananova — strategy, process and technology',
-        'proof.p': 'A business management system built for Gananova, a Costa Rican strategy and process consultancy. Real businesses use it today to run their operations.',
-        'proof.li1': 'CRM and client tracking', 'proof.li2': 'Invoicing system',
-        'proof.li3': 'Business metrics and real-time KPIs', 'proof.li4': 'Administrative process automation',
+        'proof.p': 'The company where I work: a Costa Rican strategy and process consultancy for SMEs. I built Gananova OS there: an advanced business management system with AI and automation.',
+        'proof.li1': 'CRM and client tracking', 'proof.li2': 'Invoicing',
+        'proof.li3': 'Real-time metrics and KPIs', 'proof.li4': 'AI-assisted automation',
         'proof.link': 'Visit gananova.com',
-        'chrome.tab1': 'Overview', 'chrome.tab3': 'Invoicing',
+        'chrome.tab1': 'Overview', 'chrome.tab3': 'Invoicing', 'chrome.tab4': 'AI',
         'chrome.status': 'SYSTEM STATUS', 'chrome.online': '● Online',
         'process.h2': 'How we work',
         'process.desc': 'Four phases, in order. Each one depends on the last being done right.',
@@ -944,10 +924,10 @@
         'meta1.label': 'Education', 'meta1.value': 'Systems Engineering, Costa Rica',
         'meta2.label': 'Focus', 'meta2.value': 'Design + full-stack development',
         'meta3.label': 'Availability', 'meta3.value': 'Local and international projects',
-        'work.h2': 'Work', 'work.desc': 'Real projects, at different stages. No invented clients, no filler numbers.',
-        'w1.status': '● In production', 'w1.desc': 'Business management platform: CRM, invoicing and metrics for a strategy and process consultancy.',
-        'w2.status': '● In development', 'w2.desc': 'Website for a youth football academy: program info, age categories and contact.', 'w2.tag': 'Coming soon',
-        'w3.status': '● Delivered', 'w3.desc': 'Site for a painting and pressure-washing business in the US, built to capture quote requests.', 'w3.tag': 'US-based client',
+        'work.h2': 'Some of my projects', 'work.desc': 'Real projects, at different stages. No invented clients, no filler numbers.',
+        'w1.status': '● In production', 'w1.desc': "The company where I work. I built Gananova OS there: a business management system with AI and automation for SMEs.",
+        'w2.status': '● In development', 'w2.desc': 'A Gananova collaboration project, led by me.',
+        'w3.status': '● Delivered', 'w3.desc': 'Real client from the United States: painting and pressure washing.',
         'contact.h2': 'Ready to build your system?',
         'contact.p': "Tell me what your business needs. If it makes sense, we start with a short diagnosis before proposing anything.",
         'contact.copy': 'Copy', 'contact.copied': 'Copied', 'contact.sendEmail': 'Send email', 'contact.backTop': 'Back to top',
@@ -1047,8 +1027,7 @@
       var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
       tl.from('.hero h1', { y: reduce?0:26, opacity: reduce?1:0, duration: .9 })
         .from('.hero .lede', { y: reduce?0:20, opacity: reduce?1:0, duration: .8 }, '-=.55')
-        .from('.hero__ctas', { y: reduce?0:16, opacity: reduce?1:0, duration: .7 }, '-=.5')
-        .from('.hero__status', { opacity: reduce?1:0, duration:.6 }, 0);
+        .from('.hero__ctas', { y: reduce?0:16, opacity: reduce?1:0, duration: .7 }, '-=.5');
 
       if(!reduce){
         // Constellation draw-in
