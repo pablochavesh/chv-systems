@@ -2,9 +2,9 @@
 <html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>CHV SYSTEMS — Web Design & Modern Software Engineering</title>
-  <meta name="description" content="Estudio de diseño web moderno, desarrollo full-stack y sistemas empresariales a la medida por Jose Pablo Chaves Hidalgo. Costa Rica.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CHV SYSTEMS — Diseño Web Profesional &amp; Sistemas a la Medida</title>
+  <meta name="description" content="Diseño y desarrollo de páginas web modernas que venden, transmiten confianza y hacen crecer tu negocio. Por Jose Pablo Chaves Hidalgo. Costa Rica.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
   <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
@@ -99,6 +99,11 @@
     }
 
     html {
+      overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+      position: relative;
+      touch-action: pan-y;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -111,8 +116,11 @@
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
       min-height: 100vh;
       position: relative;
+      touch-action: pan-y;
       transition: background-color 0.4s ease, color 0.4s ease;
     }
 
@@ -121,7 +129,7 @@
       color: #FFFFFF;
     }
 
-    /* Ambient Cursor Glow Follower */
+    /* Ambient Cursor Glow Follower (Only on fine pointers / desktop) */
     .cursor-glow {
       position: fixed;
       width: 500px;
@@ -134,9 +142,13 @@
       filter: blur(40px);
       transition: opacity 0.5s ease;
       opacity: 0;
+      display: none;
     }
-    @media (pointer: fine) {
-      .cursor-glow { opacity: 1; }
+    @media (pointer: fine) and (hover: hover) {
+      .cursor-glow {
+        display: block;
+        opacity: 1;
+      }
     }
 
     /* Subtle Star Dust Background Canvas */
@@ -144,11 +156,22 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 0;
       opacity: 0.85;
+    }
+
+    /* Fixed ambient decorations container (Zero mobile scroll overflow) */
+    .ambient-decorations-wrapper {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
     }
 
     /* Ambient Light Flare Elements (Destellos) */
@@ -693,7 +716,7 @@
 
     .console-body {
       position: relative;
-      min-height: 420px;
+      min-height: 440px;
       background: var(--void-1);
       display: flex;
       align-items: center;
@@ -718,48 +741,170 @@
       transform: scale(1);
     }
 
-    /* Panel 1: Live SaaS UI Preview Image */
-    .preview-image-wrap {
+    /* ==========================================================================
+       NATIVE CUSTOM DASHBOARD (REPLACING OLD NEXUS / ALEX CHEN IMAGE)
+       ========================================================================== */
+    .native-dashboard {
       width: 100%;
       height: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    .preview-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: contrast(105%) brightness(98%);
-      transition: transform 0.6s ease;
-    }
-    .console-frame:hover .preview-image-wrap img {
-      transform: scale(1.02);
-    }
-    .preview-overlay-hud {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 55%, rgba(4, 6, 11, 0.9) 100%);
-      pointer-events: none;
+      padding: clamp(16px, 2.8vw, 26px);
       display: flex;
-      align-items: flex-end;
-      padding: 20px;
+      flex-direction: column;
+      gap: 16px;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 112, 41, 0.12) 0%, rgba(139, 92, 246, 0.08) 40%, #060913 75%);
+      text-align: left;
+    }
+    .dash-head {
+      display: flex;
+      align-items: center;
       justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
       flex-wrap: wrap;
+      gap: 10px;
+    }
+    .dash-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dash-brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-violet));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 14px rgba(255, 112, 41, 0.4);
+    }
+    .dash-brand-icon svg { width: 16px; height: 16px; fill: #FFF; }
+    .dash-brand-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .dash-brand-title span { color: var(--accent-orange); }
+    .dash-brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .dash-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-emerald);
+      font-weight: 600;
+    }
+
+    .dash-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
-    .hud-stat {
-      background: rgba(12, 18, 36, 0.85);
-      backdrop-filter: blur(16px);
-      padding: 8px 16px;
-      border-radius: 12px;
-      border: 1px solid var(--border-subtle);
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
+    @media (max-width: 768px) {
+      .dash-kpis { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     }
-    .hud-stat b {
-      color: var(--accent-orange);
-      font-size: 0.92rem;
+    .dash-kpi-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dash-kpi-lbl {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ink-secondary);
+      text-transform: uppercase;
+    }
+    .dash-kpi-val {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.1;
+    }
+    .dash-kpi-val.highlight-orange { color: var(--accent-orange); }
+    .dash-kpi-val.highlight-violet { color: var(--accent-violet); }
+    .dash-kpi-tag {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--accent-emerald);
+    }
+
+    .dash-main-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 14px;
+      flex-grow: 1;
+    }
+    @media (max-width: 768px) {
+      .dash-main-grid { grid-template-columns: 1fr; }
+    }
+    .dash-chart-box {
+      background: var(--surface-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .dash-chart-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--ink-secondary);
+    }
+    .dash-chart-svg {
+      width: 100%;
+      height: 140px;
+      overflow: visible;
+    }
+    .dash-sidebar-box {
+      background: var(--surface-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+    }
+    .channel-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+    .channel-bar {
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .channel-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-orange), var(--accent-amber));
     }
 
     /* Panel 2: Interactive Modules Matrix */
@@ -809,23 +954,36 @@
       line-height: 1.5;
     }
 
-    /* Panel 3: Code Console */
-    .code-panel {
+    /* Panel 3: Why It Works (Reemplazando código de programador por valor comercial) */
+    .value-panel {
       width: 100%;
       height: 100%;
-      padding: 24px 28px;
+      padding: clamp(24px, 4vw, 40px);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      align-content: center;
       text-align: left;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      line-height: 1.65;
-      overflow-y: auto;
-      background: #060913;
-      color: #E2E8F0;
     }
-    .code-panel .kw { color: #F43F5E; }
-    .code-panel .fn { color: #38BDF8; }
-    .code-panel .str { color: #34D399; }
-    .code-panel .cmt { color: #64748B; font-style: italic; }
+    .value-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .value-card h4 {
+      color: var(--accent-orange);
+      font-size: 1rem;
+    }
+    .value-card p {
+      font-size: 0.85rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+    }
 
     /* Panel 4: Telemetry & Lighthouse */
     .telemetry-panel {
@@ -906,10 +1064,10 @@
     }
 
     /* ==========================================================================
-       TRUSTED TECH MARQUEE
+       TRUSTED RESULTS MARQUEE (RESULTADOS REALES, NO JERGA)
        ========================================================================== */
     .marquee-section {
-      padding-block: 32px;
+      padding-block: 28px;
       border-block: 1px solid var(--border-subtle);
       background: color-mix(in srgb, var(--void-1) 50%, transparent);
       overflow: hidden;
@@ -949,9 +1107,9 @@
       gap: 10px;
       font-family: var(--font-mono);
       font-size: 0.84rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.05em;
-      color: var(--ink-muted);
+      color: var(--ink-secondary);
       white-space: nowrap;
       transition: color 0.2s ease;
     }
@@ -987,7 +1145,7 @@
     }
 
     /* ==========================================================================
-       INTERACTIVE PROJECTS CAROUSEL (AS REQUESTED)
+       INTERACTIVE PROJECTS CAROUSEL
        ========================================================================== */
     .carousel-section {
       padding-block: clamp(80px, 10vw, 120px);
@@ -1170,7 +1328,7 @@
     }
 
     /* ==========================================================================
-       SKILLS & STACK MATRIX
+       RESULTADOS & BENEFICIOS (ENFOQUE 100% COMERCIAL Y PRÁCTICO)
        ========================================================================== */
     section {
       padding-block: clamp(70px, 9vw, 120px);
@@ -1614,34 +1772,89 @@
       .nav-links {
         display: none;
       }
+      .nav-actions .btn {
+        display: none;
+      }
       .menu-toggle {
         display: grid;
+      }
+      .celestial-arc-wrap {
+        width: 100%;
+        max-width: 100vw;
+        height: 320px;
+        top: 160px;
+        overflow: hidden;
       }
       .process-timeline {
         grid-template-columns: 1fr;
       }
       .floating-pill {
-        display: none;
+        display: none !important;
       }
       .lighthouse-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .console-frame {
+        border-radius: 18px;
+      }
       .console-body {
-        min-height: 380px;
+        min-height: 500px;
+        height: auto;
+      }
+      .console-panel {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .native-dashboard {
+        height: auto;
+        min-height: 100%;
+      }
+      .dash-chart-svg {
+        height: 110px;
       }
       .slide-content {
-        padding: 24px 20px;
+        padding: 24px 18px;
       }
       .hero__desc {
         font-size: 0.98rem;
-      }
-      .btn {
-        width: 100%;
       }
       .hero__ctas {
         flex-direction: column;
         width: 100%;
         max-width: 320px;
+        margin-inline: auto;
+      }
+      .hero__ctas .btn,
+      .cta-group .btn {
+        width: 100%;
+      }
+      .marquee-section {
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+        contain: paint;
+      }
+      .carousel-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .carousel-viewport {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        touch-action: pan-y;
+      }
+      .carousel-track {
+        touch-action: pan-y;
+      }
+      .carousel-controls {
+        justify-content: center;
+        gap: 16px;
+      }
+      .contact-card {
+        padding: 24px 18px;
+        border-radius: 20px;
       }
     }
 
@@ -1650,11 +1863,24 @@
         display: none;
       }
       .console-topbar {
-        padding: 10px 14px;
+        padding: 10px 12px;
       }
       .console-tab {
-        padding: 5px 10px;
+        padding: 5px 9px;
         font-size: 0.68rem;
+      }
+      .console-body {
+        min-height: 530px;
+      }
+      .dash-kpis {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+      .dash-kpi-card {
+        padding: 8px 10px;
+      }
+      .dash-kpi-val {
+        font-size: 1.1rem;
       }
       .direct-box {
         flex-direction: column;
@@ -1683,10 +1909,12 @@
   <!-- Background Canvas for Ambient Micro-particles -->
   <canvas id="ambientCanvas"></canvas>
 
-  <!-- Ambient Light Flares (Destellos en esquinas estratégicas) -->
-  <div class="light-flare light-flare--orange" style="top: 15%; left: -100px;"></div>
-  <div class="light-flare light-flare--violet" style="top: 45%; right: -100px;"></div>
-  <div class="light-flare light-flare--orange" style="top: 75%; left: -50px;"></div>
+  <!-- Ambient Light Flares (Destellos contenidos sin causar desborde horizontal) -->
+  <div class="ambient-decorations-wrapper">
+    <div class="light-flare light-flare--orange" style="top: 15%; left: -60px;"></div>
+    <div class="light-flare light-flare--violet" style="top: 45%; right: -60px;"></div>
+    <div class="light-flare light-flare--orange" style="top: 75%; left: -40px;"></div>
+  </div>
 
   <!-- Navigation Bar -->
   <header>
@@ -1703,7 +1931,7 @@
 
       <ul class="nav-links">
         <li><a href="#proyectos" data-i18n="nav.work">Proyectos</a></li>
-        <li><a href="#skills" data-i18n="nav.skills">Skills &amp; Stack</a></li>
+        <li><a href="#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
         <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
         <li><a href="#fundador" data-i18n="nav.founder">Fundador</a></li>
       </ul>
@@ -1730,7 +1958,7 @@
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobileDrawer">
       <a href="#proyectos" class="drawer-link" data-i18n="nav.work">Proyectos</a>
-      <a href="#skills" class="drawer-link" data-i18n="nav.skills">Skills &amp; Stack</a>
+      <a href="#beneficios" class="drawer-link" data-i18n="nav.benefits">Beneficios</a>
       <a href="#proceso" class="drawer-link" data-i18n="nav.process">Proceso</a>
       <a href="#fundador" class="drawer-link" data-i18n="nav.founder">Fundador</a>
       <a href="#contacto" class="btn btn--primary" style="margin-top:10px" data-i18n="nav.cta">Iniciar Proyecto</a>
@@ -1749,10 +1977,10 @@
       </div>
 
       <div class="container hero__content">
-        <!-- Top Pill Badge -->
+        <!-- Top Pill Badge (Directo y sin números de versión o etiquetas técnicas) -->
         <div class="pill-badge hero__badge anim-hero">
           <span class="dot"></span>
-          <span data-i18n="hero.badge">CHV Systems 2.5 · Estudio de Diseño Web &amp; Software</span>
+          <span data-i18n="hero.badge">Disponible para nuevos proyectos web</span>
           <span class="sparkle-icon">✨</span>
         </div>
 
@@ -1760,14 +1988,14 @@
         <h1 class="hero__title anim-hero">
           <span data-i18n="hero.title1">Diseño web que impresiona.</span><br>
           <span class="hero__typewriter">
-            <span class="glow-orange" id="typewriterText">Sistemas Web</span><span class="typewriter-cursor"></span>
+            <span class="glow-orange" id="typewriterText">Páginas que Venden</span><span class="typewriter-cursor"></span>
           </span><br>
           <span class="gradient-text" data-i18n="hero.title3">que hacen crecer tu negocio.</span>
         </h1>
 
         <!-- Subtitle Lede -->
         <p class="hero__desc anim-hero" data-i18n="hero.desc">
-          Creamos experiencias digitales limpias, no tradicionales y de alto impacto. Desde interfaces de última generación hasta plataformas completas de gestión empresarial, CRM y automatización con IA.
+          Creamos páginas web y sistemas a la medida con diseño limpio, moderno y de alto impacto. Hechas para que tu empresa transmita confianza inmediata y convierta visitas en clientes.
         </p>
 
         <!-- CTAs -->
@@ -1787,11 +2015,11 @@
           <!-- Floating Accent Pills -->
           <div class="floating-pill floating-pill--1">
             <span style="color:var(--accent-orange)">✦</span>
-            <span data-i18n="pill.uptime">99.9% Rendimiento &amp; Arquitectura Full-Stack</span>
+            <span data-i18n="pill.uptime">0.4s Carga Instantánea en Celulares</span>
           </div>
           <div class="floating-pill floating-pill--2">
             <span style="color:var(--accent-violet)">⚡</span>
-            <span data-i18n="pill.ai">Gananova OS · Sistema en Producción con IA</span>
+            <span data-i18n="pill.ai">Gananova OS · Sistema de Gestión en Producción</span>
           </div>
 
           <div class="console-frame tilt-card">
@@ -1802,10 +2030,10 @@
                 <span class="console-dot dot-green"></span>
               </div>
               <div class="console-tabs" id="consoleTabs">
-                <button class="console-tab active" data-tab="preview" data-i18n="tab.dashboard">Dashboard Preview</button>
-                <button class="console-tab" data-tab="matrix" data-i18n="tab.modules">Módulos del Sistema</button>
-                <button class="console-tab" data-tab="code" data-i18n="tab.code">Código Limpio</button>
-                <button class="console-tab" data-tab="telemetry" data-i18n="tab.telemetry">Métricas 100%</button>
+                <button class="console-tab active" data-tab="preview" data-i18n="tab.dashboard">Panel de Control</button>
+                <button class="console-tab" data-tab="matrix" data-i18n="tab.modules">Módulos de Negocio</button>
+                <button class="console-tab" data-tab="value" data-i18n="tab.value">Por Qué Funciona</button>
+                <button class="console-tab" data-tab="telemetry" data-i18n="tab.telemetry">Velocidad 100%</button>
               </div>
               <div class="console-status">
                 <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent-emerald);"></span>
@@ -1814,16 +2042,101 @@
             </div>
 
             <div class="console-body">
-              <!-- Panel 1: Live SaaS UI Preview Image -->
+              <!-- Panel 1: NATIVE CUSTOM DASHBOARD FOR CHV SYSTEMS (NO NEXUS, NO ALEX CHEN) -->
               <div class="console-panel active" id="panel-preview">
-                <div class="preview-image-wrap">
-                  <img src="assets/dashboard-preview.jpg" alt="CHV Systems Business Operations Dashboard Preview">
-                  <div class="preview-overlay-hud">
-                    <div class="hud-stat">
-                      <span data-i18n="hud.kpi">Métricas en Tiempo Real:</span> <b>+495k Telemetría</b>
+                <div class="native-dashboard">
+                  <div class="dash-head">
+                    <div class="dash-brand">
+                      <div class="dash-brand-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                      </div>
+                      <div>
+                        <div class="dash-brand-title">CHV <span>SYSTEMS</span></div>
+                        <div class="dash-brand-sub" data-i18n="dash.sub">Panel de Rendimiento Web</div>
+                      </div>
                     </div>
-                    <div class="hud-stat">
-                      <span data-i18n="hud.arch">Arquitectura:</span> <b>Full-Stack Modular</b>
+                    <div class="dash-status-pill">
+                      <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent-emerald);"></span>
+                      <span data-i18n="dash.online">EN LÍNEA</span>
+                    </div>
+                  </div>
+
+                  <!-- 4 Real Business Metric Cards -->
+                  <div class="dash-kpis">
+                    <div class="dash-kpi-card">
+                      <span class="dash-kpi-lbl" data-i18n="dash.kpi1lbl">Nuevos Contactos</span>
+                      <span class="dash-kpi-val highlight-orange">+142</span>
+                      <span class="dash-kpi-tag" data-i18n="dash.kpi1tag">↑ 28% este mes</span>
+                    </div>
+                    <div class="dash-kpi-card">
+                      <span class="dash-kpi-lbl" data-i18n="dash.kpi2lbl">Ventas &amp; Cotizaciones</span>
+                      <span class="dash-kpi-val highlight-violet">$18,450</span>
+                      <span class="dash-kpi-tag" data-i18n="dash.kpi2tag">En tiempo real</span>
+                    </div>
+                    <div class="dash-kpi-card">
+                      <span class="dash-kpi-lbl" data-i18n="dash.kpi3lbl">Tiempo de Carga</span>
+                      <span class="dash-kpi-val">0.4s</span>
+                      <span class="dash-kpi-tag" data-i18n="dash.kpi3tag">Instantáneo</span>
+                    </div>
+                    <div class="dash-kpi-card">
+                      <span class="dash-kpi-lbl" data-i18n="dash.kpi4lbl">Clics a WhatsApp</span>
+                      <span class="dash-kpi-val highlight-orange">94%</span>
+                      <span class="dash-kpi-tag" data-i18n="dash.kpi4tag">Alta conversión</span>
+                    </div>
+                  </div>
+
+                  <!-- Main Chart & Conversion Breakdown -->
+                  <div class="dash-main-grid">
+                    <div class="dash-chart-box">
+                      <div class="dash-chart-title">
+                        <span data-i18n="dash.chartlbl">FLUJO DE VISITAS &amp; CLIENTES</span>
+                        <span style="color:var(--accent-orange)">● Tráfico Móvil 84%</span>
+                      </div>
+                      <svg class="dash-chart-svg" viewBox="0 0 500 140">
+                        <defs>
+                          <linearGradient id="chartViolet" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="var(--accent-violet)" stop-opacity="0.45"/>
+                            <stop offset="100%" stop-color="var(--accent-violet)" stop-opacity="0.0"/>
+                          </linearGradient>
+                          <linearGradient id="chartOrange" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="var(--accent-orange)" stop-opacity="0.45"/>
+                            <stop offset="100%" stop-color="var(--accent-orange)" stop-opacity="0.0"/>
+                          </linearGradient>
+                        </defs>
+                        <!-- Background Glow Areas -->
+                        <path d="M 0 110 Q 70 80, 140 95 T 280 40 T 420 50 T 500 20 L 500 140 L 0 140 Z" fill="url(#chartViolet)"/>
+                        <path d="M 0 130 Q 70 100, 140 105 T 280 65 T 420 70 T 500 35 L 500 140 L 0 140 Z" fill="url(#chartOrange)"/>
+                        <!-- Smooth Glowing Lines -->
+                        <path d="M 0 110 Q 70 80, 140 95 T 280 40 T 420 50 T 500 20" fill="none" stroke="var(--accent-violet)" stroke-width="2.5"/>
+                        <path d="M 0 130 Q 70 100, 140 105 T 280 65 T 420 70 T 500 35" fill="none" stroke="var(--accent-orange)" stroke-width="2.5"/>
+                        <!-- Target pulse circles -->
+                        <circle cx="280" cy="40" r="4.5" fill="#FFF" stroke="var(--accent-violet)" stroke-width="2"/>
+                        <circle cx="420" cy="70" r="4.5" fill="#FFF" stroke="var(--accent-orange)" stroke-width="2"/>
+                      </svg>
+                    </div>
+
+                    <div class="dash-sidebar-box">
+                      <div>
+                        <div class="channel-row">
+                          <span data-i18n="dash.c1">WhatsApp Directo</span>
+                          <b>62%</b>
+                        </div>
+                        <div class="channel-bar"><div class="channel-fill" style="width:62%;"></div></div>
+                      </div>
+                      <div>
+                        <div class="channel-row">
+                          <span data-i18n="dash.c2">Búsqueda en Google</span>
+                          <b>28%</b>
+                        </div>
+                        <div class="channel-bar"><div class="channel-fill" style="width:28%;background:var(--accent-violet);"></div></div>
+                      </div>
+                      <div>
+                        <div class="channel-row">
+                          <span data-i18n="dash.c3">Redes Sociales</span>
+                          <b>10%</b>
+                        </div>
+                        <div class="channel-bar"><div class="channel-fill" style="width:10%;background:var(--accent-cyan);"></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1833,44 +2146,47 @@
               <div class="console-panel" id="panel-matrix">
                 <div class="matrix-panel">
                   <div class="matrix-card">
-                    <div class="matrix-icon">⚡</div>
-                    <h4 data-i18n="mod1.title">CRM &amp; Seguimiento</h4>
-                    <p data-i18n="mod1.desc">Control integral de clientes, cotizaciones y estados de conversión en tiempo real.</p>
+                    <div class="matrix-icon">📱</div>
+                    <h4 data-i18n="mod1.title">Contacto en 1 Clic</h4>
+                    <p data-i18n="mod1.desc">Botones directos a WhatsApp y formularios claros para no perder ningún cliente.</p>
                   </div>
                   <div class="matrix-card">
                     <div class="matrix-icon">🧾</div>
                     <h4 data-i18n="mod2.title">Facturación Digital</h4>
-                    <p data-i18n="mod2.desc">Emisión automática, cálculo tributario y sincronización directa con Hacienda.</p>
+                    <p data-i18n="mod2.desc">Emisión automática y sincronización para negocios que necesitan facturar.</p>
                   </div>
                   <div class="matrix-card">
-                    <div class="matrix-icon">🤖</div>
-                    <h4 data-i18n="mod3.title">Automatización con IA</h4>
-                    <p data-i18n="mod3.desc">Asistentes inteligentes para clasificación de tickets y análisis de operaciones.</p>
+                    <div class="matrix-icon">⚡</div>
+                    <h4 data-i18n="mod3.title">Automatización Simple</h4>
+                    <p data-i18n="mod3.desc">Ahorra tiempo automatizando cotizaciones, avisos y seguimiento de pedidos.</p>
                   </div>
                   <div class="matrix-card">
                     <div class="matrix-icon">📊</div>
-                    <h4 data-i18n="mod4.title">KPIs &amp; Telemetría</h4>
-                    <p data-i18n="mod4.desc">Gráficos de rendimiento en vivo y reportes consolidados para toma de decisiones.</p>
+                    <h4 data-i18n="mod4.title">Métricas Claras</h4>
+                    <p data-i18n="mod4.desc">Conoce cuánta gente visita tu página y de dónde llegan tus mejores clientes.</p>
                   </div>
                 </div>
               </div>
 
-              <!-- Panel 3: Clean Code View -->
-              <div class="console-panel" id="panel-code">
-                <div class="code-panel">
-                  <p><span class="cmt">// Arquitectura de CHV Systems: Frontend moderno + Backend seguro</span></p>
-                  <p><span class="kw">import</span> { <span class="fn">createSystemEngine</span> } <span class="kw">from</span> <span class="str">'@chv-systems/core'</span>;</p>
-                  <p><span class="kw">import</span> { <span class="fn">aiWorkflow</span> } <span class="kw">from</span> <span class="str">'@chv/automation'</span>;</p>
-                  <br>
-                  <p><span class="kw">export const</span> <span class="fn">GananovaOS</span> = <span class="fn">createSystemEngine</span>({</p>
-                  <p>&nbsp;&nbsp;client: <span class="str">'Gananova Consultoría'</span>,</p>
-                  <p>&nbsp;&nbsp;region: <span class="str">'Costa Rica &amp; LatAm'</span>,</p>
-                  <p>&nbsp;&nbsp;modules: [<span class="str">'crm'</span>, <span class="str">'invoicing_cr'</span>, <span class="str">'realtime_kpis'</span>],</p>
-                  <p>&nbsp;&nbsp;automation: <span class="fn">aiWorkflow</span>({ mode: <span class="str">'continuous'</span> }),</p>
-                  <p>&nbsp;&nbsp;performance: { lighthouse: <span class="str">'100/100'</span>, loadTime: <span class="str">'0.4s'</span> }</p>
-                  <p>});</p>
-                  <br>
-                  <p><span class="cmt">// Diseñado y programado por Jose Pablo Chaves Hidalgo</span></p>
+              <!-- Panel 3: Why It Works (Enfoque comercial y de valor para el cliente) -->
+              <div class="console-panel" id="panel-value">
+                <div class="value-panel">
+                  <div class="value-card">
+                    <h4 data-i18n="val1.title">01 / Sin Plantillas Lentas</h4>
+                    <p data-i18n="val1.desc">Las plantillas genéricas vienen cargadas de errores y tardan segundos en abrir. Nuestras webs cargan en 0.4s.</p>
+                  </div>
+                  <div class="value-card">
+                    <h4 data-i18n="val2.title">02 / Pensada para Celulares</h4>
+                    <p data-i18n="val2.desc">El 80%+ del tráfico entra por teléfono. El diseño está optimizado para que navegar y comprar sea facilísimo.</p>
+                  </div>
+                  <div class="value-card">
+                    <h4 data-i18n="val3.title">03 / Trato Directo</h4>
+                    <p data-i18n="val3.desc">Sin intermediarios ni meses de espera. Tratas directamente conmigo para ajustar tu página cuando lo necesites.</p>
+                  </div>
+                  <div class="value-card">
+                    <h4 data-i18n="val4.title">04 / Enfoque en Ventas</h4>
+                    <p data-i18n="val4.desc">Cada elemento tiene un propósito: dar confianza, explicar lo que ofreces y guiar a tu cliente a escribirte.</p>
+                  </div>
                 </div>
               </div>
 
@@ -1880,23 +2196,23 @@
                   <div class="lighthouse-grid">
                     <div class="gauge">
                       <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
-                      <span class="gauge-label" data-i18n="gauge.perf">Performance</span>
+                      <span class="gauge-label" data-i18n="gauge.perf">Velocidad</span>
                     </div>
                     <div class="gauge">
                       <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
-                      <span class="gauge-label" data-i18n="gauge.a11y">Accessibility</span>
+                      <span class="gauge-label" data-i18n="gauge.a11y">Accesibilidad</span>
                     </div>
                     <div class="gauge">
                       <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
-                      <span class="gauge-label" data-i18n="gauge.bp">Best Practices</span>
+                      <span class="gauge-label" data-i18n="gauge.bp">Calidad</span>
                     </div>
                     <div class="gauge">
                       <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
-                      <span class="gauge-label" data-i18n="gauge.seo">SEO Audit</span>
+                      <span class="gauge-label" data-i18n="gauge.seo">SEO Google</span>
                     </div>
                   </div>
                   <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--ink-secondary);text-align:center;" data-i18n="gauge.desc">
-                    Arquitectura optimizada: 0 dependencias pesadas innecesarias · Carga instantánea · Código limpio
+                    Arquitectura optimizada: 0 dependencias innecesarias · Carga instantánea · Código limpio
                   </p>
                 </div>
               </div>
@@ -1907,43 +2223,37 @@
     </section>
 
     <!-- ==========================================================================
-       TRUSTED TECH MARQUEE
+       TRUSTED RESULTS MARQUEE (RESULTADOS REALES, NO JERGA)
        ========================================================================== -->
     <div class="marquee-section">
       <div class="marquee-track">
-        <div class="marquee-item"><span>✦</span> REACT &amp; NEXT.JS</div>
-        <div class="marquee-item"><span>✦</span> TYPESCRIPT</div>
-        <div class="marquee-item"><span>✦</span> GSAP MOTION DESIGN</div>
-        <div class="marquee-item"><span>✦</span> TAILWIND &amp; MODERN CSS</div>
-        <div class="marquee-item"><span>✦</span> UI/UX FIGMA SYSTEMS</div>
-        <div class="marquee-item"><span>✦</span> NODE.JS &amp; PYTHON</div>
-        <div class="marquee-item"><span>✦</span> POSTGRESQL &amp; SUPABASE</div>
-        <div class="marquee-item"><span>✦</span> AI AGENTS (OPENAI &amp; CLAUDE)</div>
-        <div class="marquee-item"><span>✦</span> REST &amp; GRAPHQL APIS</div>
-        <div class="marquee-item"><span>✦</span> CLOUD ARCHITECTURE</div>
+        <div class="marquee-item"><span>✦</span> DISEÑO WEB QUE VENDE</div>
+        <div class="marquee-item"><span>✦</span> CARGA INSTANTÁNEA EN 0.4s</div>
+        <div class="marquee-item"><span>✦</span> 100% ADAPTADA A CELULARES</div>
+        <div class="marquee-item"><span>✦</span> CONVERSIÓN DIRECTA A WHATSAPP</div>
+        <div class="marquee-item"><span>✦</span> IMAGEN PROFESIONAL Y MODERNA</div>
+        <div class="marquee-item"><span>✦</span> SISTEMAS A LA MEDIDA</div>
+        <div class="marquee-item"><span>✦</span> TRATO DIRECTO SIN AGENCIAS</div>
         <!-- Infinite Marquee duplicate -->
-        <div class="marquee-item"><span>✦</span> REACT &amp; NEXT.JS</div>
-        <div class="marquee-item"><span>✦</span> TYPESCRIPT</div>
-        <div class="marquee-item"><span>✦</span> GSAP MOTION DESIGN</div>
-        <div class="marquee-item"><span>✦</span> TAILWIND &amp; MODERN CSS</div>
-        <div class="marquee-item"><span>✦</span> UI/UX FIGMA SYSTEMS</div>
-        <div class="marquee-item"><span>✦</span> NODE.JS &amp; PYTHON</div>
-        <div class="marquee-item"><span>✦</span> POSTGRESQL &amp; SUPABASE</div>
-        <div class="marquee-item"><span>✦</span> AI AGENTS (OPENAI &amp; CLAUDE)</div>
-        <div class="marquee-item"><span>✦</span> REST &amp; GRAPHQL APIS</div>
-        <div class="marquee-item"><span>✦</span> CLOUD ARCHITECTURE</div>
+        <div class="marquee-item"><span>✦</span> DISEÑO WEB QUE VENDE</div>
+        <div class="marquee-item"><span>✦</span> CARGA INSTANTÁNEA EN 0.4s</div>
+        <div class="marquee-item"><span>✦</span> 100% ADAPTADA A CELULARES</div>
+        <div class="marquee-item"><span>✦</span> CONVERSIÓN DIRECTA A WHATSAPP</div>
+        <div class="marquee-item"><span>✦</span> IMAGEN PROFESIONAL Y MODERNA</div>
+        <div class="marquee-item"><span>✦</span> SISTEMAS A LA MEDIDA</div>
+        <div class="marquee-item"><span>✦</span> TRATO DIRECTO SIN AGENCIAS</div>
       </div>
     </div>
 
     <!-- ==========================================================================
-       INTERACTIVE PROJECTS CAROUSEL (AS EXPLICITLY REQUESTED BY USER)
+       INTERACTIVE PROJECTS CAROUSEL (PROYECTOS ACTIVOS)
        ========================================================================== -->
     <section id="proyectos" class="carousel-section">
       <div class="container">
         <div class="section-header reveal-title">
-          <div class="pill-badge" data-i18n="work.badge">[ CARRUSEL DE PROYECTOS ]</div>
-          <h2 data-i18n="work.h2">Sistemas &amp; Diseños en Producción</h2>
-          <p data-i18n="work.desc">Explora el portafolio interactivo: desde plataformas empresariales avanzadas con IA hasta portales corporativos de alto impacto.</p>
+          <div class="pill-badge" data-i18n="work.badge">[ PROYECTOS REALES ]</div>
+          <h2 data-i18n="work.h2">Páginas &amp; Sistemas en Producción</h2>
+          <p data-i18n="work.desc">Explora proyectos reales construidos para negocios activos: desde plataformas empresariales de gestión hasta sitios corporativos de alta captación.</p>
         </div>
 
         <div class="carousel-container">
@@ -1958,22 +2268,21 @@
                 <div class="slide-content">
                   <div class="slide-brand-header">
                     <div class="slide-logo-badge">
-                      <!-- Custom Vector Logo: Gananova OS -->
                       <svg viewBox="0 0 32 32" fill="none"><path d="M16 2L4 9v14l12 7 12-7V9L16 2z" stroke="var(--accent-orange)" stroke-width="2.2"/><circle cx="16" cy="16" r="5" fill="var(--accent-violet)"/><path d="M16 7v4M16 21v4M8 12l3.5 2M20.5 18l3.5 2M8 20l3.5-2M20.5 14l3.5-2" stroke="var(--accent-orange)" stroke-width="1.6"/></svg>
                     </div>
                     <div class="slide-title-wrap">
-                      <span class="slide-sub">Enterprise SaaS · Live</span>
+                      <span class="slide-sub">Sistema Empresarial · En Producción</span>
                       <h3>Gananova OS 2.0</h3>
                     </div>
                   </div>
                   <p class="slide-desc" data-i18n="c1.desc">
-                    Plataforma integral de gestión empresarial con inteligencia artificial y automatización desarrollada para la consultora costarricense Gananova. Centraliza CRM, facturación electrónica y métricas en tiempo real.
+                    Plataforma integral de gestión empresarial y automatización desarrollada para la consultora costarricense Gananova. Centraliza CRM, facturación electrónica y métricas en tiempo real.
                   </p>
                   <ul class="slide-bullets">
-                    <li data-i18n="w1.b1">CRM y pipeline de clientes centralizado</li>
-                    <li data-i18n="w1.b2">Facturación electrónica y seguimiento fiscal</li>
-                    <li data-i18n="w1.b3">Telemetría y KPIs financieros en tiempo real</li>
-                    <li data-i18n="w1.b4">Automatización de flujos y asistencia con IA</li>
+                    <li data-i18n="w1.b1">Seguimiento centralizado de clientes y presupuestos</li>
+                    <li data-i18n="w1.b2">Facturación electrónica y control administrativo</li>
+                    <li data-i18n="w1.b3">Métricas y reportes financieros en tiempo real</li>
+                    <li data-i18n="w1.b4">Automatización de flujos y operaciones diarias</li>
                   </ul>
                   <div style="margin-top:12px;">
                     <a href="https://www.gananova.com" target="_blank" rel="noopener" class="btn btn--primary btn--sm" data-i18n="w1.link">
@@ -1991,21 +2300,20 @@
                 <div class="slide-content">
                   <div class="slide-brand-header">
                     <div class="slide-logo-badge">
-                      <!-- Custom Vector Logo: Gananova Corporate -->
                       <svg viewBox="0 0 32 32" fill="none"><path d="M6 24V14l10-8 10 8v10H6z" stroke="var(--accent-violet)" stroke-width="2.2"/><path d="M12 24v-6h8v6" fill="var(--accent-orange)"/><circle cx="16" cy="11" r="2.5" fill="#FFFFFF"/></svg>
                     </div>
                     <div class="slide-title-wrap">
-                      <span class="slide-sub">Workplace &amp; Consulting</span>
+                      <span class="slide-sub">Consultoría &amp; Empresa</span>
                       <h3>Gananova Consultoría</h3>
                     </div>
                   </div>
                   <p class="slide-desc" data-i18n="c2.desc">
-                    Firma costarricense de estrategia, procesos y tecnología para pymes. Donde trabajo actualmente como desarrollador y líder de arquitectura técnica para soluciones empresariales.
+                    Firma costarricense de estrategia, procesos y tecnología para pymes. Donde trabajo actualmente desarrollando plataformas y soluciones de gestión digital.
                   </p>
                   <ul class="slide-bullets">
                     <li>Estrategia de negocios &amp; optimización de flujos</li>
                     <li>Digitalización integral de operaciones para pymes</li>
-                    <li>Innovación aplicada e integración de software</li>
+                    <li>Soluciones prácticas de software para empresas</li>
                   </ul>
                   <div style="margin-top:12px;">
                     <a href="https://www.gananova.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w1.link">
@@ -2023,16 +2331,15 @@
                 <div class="slide-content">
                   <div class="slide-brand-header">
                     <div class="slide-logo-badge">
-                      <!-- Custom Vector Logo: ADEFIP Shield -->
                       <svg viewBox="0 0 32 32" fill="none"><path d="M16 3L6 7v9c0 6.5 4.3 12.6 10 14 5.7-1.4 10-7.5 10-14V7L16 3z" stroke="var(--accent-orange)" stroke-width="2.2"/><path d="M16 8l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7L16 8z" fill="var(--accent-amber)"/></svg>
                     </div>
                     <div class="slide-title-wrap">
-                      <span class="slide-sub">Sports Academy · En Desarrollo</span>
+                      <span class="slide-sub">Academia Deportiva · En Desarrollo</span>
                       <h3>ADEFIP</h3>
                     </div>
                   </div>
                   <p class="slide-desc" data-i18n="w2.desc">
-                    Academia deportiva y formativa de fútbol juvenil. Proyecto en colaboración con Gananova liderado por mí: desarrollo de plataforma web, registro de atletas y portal de comunidad.
+                    Academia deportiva y formativa de fútbol juvenil. Proyecto en colaboración con Gananova liderado por mí: plataforma web institucional, registro de atletas y portal de comunidad.
                   </p>
                   <ul class="slide-bullets">
                     <li>Identidad visual moderna para atletas y padres</li>
@@ -2055,11 +2362,10 @@
                 <div class="slide-content">
                   <div class="slide-brand-header">
                     <div class="slide-logo-badge">
-                      <!-- Custom Vector Logo: Pura Vida Painting -->
                       <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="var(--accent-cyan)" stroke-width="2.2"/><path d="M10 20c3-5 9-5 12 0" stroke="var(--accent-orange)" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="11" r="3.5" fill="var(--accent-amber)"/></svg>
                     </div>
                     <div class="slide-title-wrap">
-                      <span class="slide-sub">USA Client · Entregado</span>
+                      <span class="slide-sub">Cliente en Estados Unidos · Entregado</span>
                       <h3>Pura Vida Painting LLC</h3>
                     </div>
                   </div>
@@ -2067,9 +2373,9 @@
                     Cliente real en Estados Unidos: empresa de pintura residencial y lavado a presión. Diseño web enfocado en credibilidad, conversión directa y captación de clientes de alto valor.
                   </p>
                   <ul class="slide-bullets">
-                    <li>Optimización para captación de leads en mercado estadounidense</li>
+                    <li>Optimización para captación de clientes en mercado de EE. UU.</li>
                     <li>Cotizador interactivo rápido con feedback instantáneo</li>
-                    <li>100% Mobile-first para clientes residenciales en ruta</li>
+                    <li>100% Adaptada a celulares para clientes en ruta</li>
                   </ul>
                   <div style="margin-top:12px;">
                     <a href="https://www.puravidapaintingllc.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w3.link">
@@ -2109,78 +2415,78 @@
     </section>
 
     <!-- ==========================================================================
-       SKILLS & CAPABILITIES
+       RESULTADOS & BENEFICIOS PARA EL CLIENTE (REEMPLAZANDO JERGA TÉCNICA)
        ========================================================================== -->
-    <section id="skills" style="background: color-mix(in srgb, var(--void-1) 35%, transparent);">
+    <section id="beneficios" style="background: color-mix(in srgb, var(--void-1) 35%, transparent);">
       <div class="container">
         <div class="section-header reveal-title">
-          <div class="pill-badge" data-i18n="skills.badge">[ CAPACIDADES &amp; STACK ]</div>
-          <h2 data-i18n="skills.h2">Lo que hago: Diseño &amp; Código de Alto Nivel</h2>
-          <p data-i18n="skills.desc">Sin plantillas genéricas. Integramos estética minimalista con ingeniería de software rigurosa para crear productos que destacan en el mercado.</p>
+          <div class="pill-badge" data-i18n="skills.badge">[ RESULTADOS CONCRETOS ]</div>
+          <h2 data-i18n="skills.h2">Lo que una buena web hace por tu negocio</h2>
+          <p data-i18n="skills.desc">No se trata de la tecnología que uso, sino de lo que consigues: más clientes, mejor imagen y un proceso sin complicaciones.</p>
         </div>
 
         <div class="skills-grid">
-          <!-- Pillar 1: UI/UX & Web Design -->
+          <!-- Pillar 1: Ventas & Clientes -->
           <div class="skill-card tilt-card skill-from-left">
             <div class="skill-card__num">
               <span>01</span>
-              <span class="tag-mini">AESTHETICS</span>
+              <span class="tag-mini">VENTAS</span>
             </div>
-            <h3 data-i18n="skill1.title">Diseño Web &amp; UI/UX</h3>
-            <p data-i18n="skill1.desc">Dirección de arte, sistemas de diseño coherentes, tipografía cuidada, micro-animaciones y layouts limpios que transmiten autoridad y aumentan conversiones.</p>
+            <h3 data-i18n="skill1.title">Más Clientes y Ventas</h3>
+            <p data-i18n="skill1.desc">Tu web diseñada para convencer: botones directos a WhatsApp, llamadas claras a la acción y estructura pensada para que las visitas se conviertan en clientes reales.</p>
             <div class="skill-tags">
-              <span class="skill-tag">Figma Design Systems</span>
-              <span class="skill-tag">Glassmorphism &amp; Dark UI</span>
-              <span class="skill-tag">Wireframing &amp; Prototipado</span>
-              <span class="skill-tag">Responsive 4K / Mobile</span>
+              <span class="skill-tag">Conversión a WhatsApp</span>
+              <span class="skill-tag">Formularios Rápidos</span>
+              <span class="skill-tag">Estructura Comercial</span>
+              <span class="skill-tag">Retorno de Inversión</span>
             </div>
           </div>
 
-          <!-- Pillar 2: Frontend Engineering -->
+          <!-- Pillar 2: Imagen y Confianza -->
           <div class="skill-card tilt-card skill-from-bottom">
             <div class="skill-card__num">
               <span>02</span>
-              <span class="tag-mini">FRONTEND</span>
+              <span class="tag-mini">AUTORIDAD</span>
             </div>
-            <h3 data-i18n="skill2.title">Desarrollo Frontend Moderno</h3>
-            <p data-i18n="skill2.desc">Interfaces fluidas y reactivas con tecnologías punteras. Animaciones GSAP de 60fps, interactividad de siguiente generación y rendimiento ultra-rápido.</p>
+            <h3 data-i18n="skill2.title">Imagen que Inspira Confianza</h3>
+            <p data-i18n="skill2.desc">En los primeros 3 segundos, tus clientes sabrán que eres un negocio serio, moderno y superior a tu competencia. Una web limpia que genera credibilidad inmediata.</p>
             <div class="skill-tags">
-              <span class="skill-tag">Next.js &amp; React 19</span>
-              <span class="skill-tag">TypeScript Estricto</span>
-              <span class="skill-tag">GSAP &amp; ScrollTrigger</span>
-              <span class="skill-tag">Web Vitals 100/100</span>
+              <span class="skill-tag">Diseño Limpio &amp; Moderno</span>
+              <span class="skill-tag">Credibilidad Inmediata</span>
+              <span class="skill-tag">Identidad de Marca</span>
+              <span class="skill-tag">Cero Plantillas Baratas</span>
             </div>
           </div>
 
-          <!-- Pillar 3: Web Systems & Backend -->
+          <!-- Pillar 3: Móvil y Velocidad -->
           <div class="skill-card tilt-card skill-from-bottom">
             <div class="skill-card__num">
               <span>03</span>
-              <span class="tag-mini">SYSTEMS</span>
+              <span class="tag-mini">MÓVIL</span>
             </div>
-            <h3 data-i18n="skill3.title">Sistemas Empresariales &amp; Backend</h3>
-            <p data-i18n="skill3.desc">Plataformas donde tu negocio opera a diario: CRM a medida, facturación electrónica, dashboards ejecutivos y control de inventarios seguros y escalables.</p>
+            <h3 data-i18n="skill3.title">Carga Rápida en Celulares</h3>
+            <p data-i18n="skill3.desc">Más del 80% de tus clientes entran desde su teléfono. Tu página cargará al instante (menos de 1 segundo), sin trabas, botones cortados ni esperas que pierdan ventas.</p>
             <div class="skill-tags">
-              <span class="skill-tag">Node.js &amp; Python</span>
-              <span class="skill-tag">PostgreSQL / Supabase</span>
-              <span class="skill-tag">Facturación Electrónica</span>
-              <span class="skill-tag">APIs REST &amp; Auth</span>
+              <span class="skill-tag">100% Adaptada a Celulares</span>
+              <span class="skill-tag">Carga en 0.4s</span>
+              <span class="skill-tag">Experiencia Fluida</span>
+              <span class="skill-tag">Sin Errores Técnicos</span>
             </div>
           </div>
 
-          <!-- Pillar 4: AI & Automation -->
+          <!-- Pillar 4: Trato Directo & Sistemas -->
           <div class="skill-card tilt-card skill-from-right">
             <div class="skill-card__num">
               <span>04</span>
-              <span class="tag-mini">AUTOMATION</span>
+              <span class="tag-mini">SISTEMAS</span>
             </div>
-            <h3 data-i18n="skill4.title">Inteligencia Artificial &amp; Automatización</h3>
-            <p data-i18n="skill4.desc">Integración de modelos de lenguaje (OpenAI, Claude API) y flujos automáticos que eliminan tareas repetitivas y potencian la productividad de tu equipo.</p>
+            <h3 data-i18n="skill4.title">Trato Directo y Sistemas a Medida</h3>
+            <p data-i18n="skill4.desc">Hablas directamente conmigo de principio a fin, sin agencias costosas ni intermediarios. Además, puedo crear sistemas para pedidos o facturación si tu negocio lo necesita.</p>
             <div class="skill-tags">
-              <span class="skill-tag">Agentes con LLMs</span>
-              <span class="skill-tag">Workflows Autónomos</span>
-              <span class="skill-tag">Análisis de Datos</span>
-              <span class="skill-tag">Integraciones Webhook</span>
+              <span class="skill-tag">Atención 1 a 1</span>
+              <span class="skill-tag">Sistemas de Gestión</span>
+              <span class="skill-tag">Sin Costos Ocultos</span>
+              <span class="skill-tag">Soporte Continuo</span>
             </div>
           </div>
         </div>
@@ -2188,36 +2494,36 @@
     </section>
 
     <!-- ==========================================================================
-       PROCESS (PROFICO 01 - 04 MINIMALIST GLASS CARDS)
+       4-PHASE PROCESS (PROCESO CLARO Y SIMPLE)
        ========================================================================== -->
     <section id="proceso">
       <div class="container">
         <div class="section-header reveal-title">
-          <div class="pill-badge" data-i18n="process.badge">[ METODOLOGÍA ]</div>
-          <h2 data-i18n="process.h2">Cómo Trabajamos: De la Idea al Sistema</h2>
-          <p data-i18n="process.desc">Un proceso ordenado y transparente donde cada fase construye sobre bases firmes.</p>
+          <div class="pill-badge" data-i18n="process.badge">[ PASO A PASO ]</div>
+          <h2 data-i18n="process.h2">Cómo Trabajamos: Fácil y Transparente</h2>
+          <p data-i18n="process.desc">Un proceso ordenado donde sabes exactamente qué esperar en cada etapa, sin complicaciones técnicas.</p>
         </div>
 
         <div class="process-timeline">
           <div class="process-card tilt-card process-anim-step">
             <span class="process-card__step">01</span>
-            <h3 data-i18n="step1.title">Diagnóstico &amp; Estrategia</h3>
-            <p data-i18n="step1.desc">Analizo los cuellos de botella de tu negocio, tu audiencia y los requisitos técnicos exactos para garantizar retorno desde el primer día.</p>
+            <h3 data-i18n="step1.title">Conversación Inicial</h3>
+            <p data-i18n="step1.desc">Entiendo tu negocio, qué vendes y qué necesitas que haga tu página web para atraer más clientes.</p>
           </div>
           <div class="process-card tilt-card process-anim-step">
             <span class="process-card__step">02</span>
-            <h3 data-i18n="step2.title">Dirección de Arte &amp; UX</h3>
-            <p data-i18n="step2.desc">Defino la identidad visual, el sistema de componentes y los prototipos interactivos en Figma para validar la experiencia antes de programar.</p>
+            <h3 data-i18n="step2.title">Propuesta &amp; Diseño</h3>
+            <p data-i18n="step2.desc">Definimos cómo se verá la web con un diseño limpio, moderno y profesional alineado a tu marca.</p>
           </div>
           <div class="process-card tilt-card process-anim-step">
             <span class="process-card__step">03</span>
-            <h3 data-i18n="step3.title">Ingeniería &amp; Código</h3>
-            <p data-i18n="step3.desc">Desarrollo full-stack con código limpio: frontend responsivo, backend robusto, base de datos optimizada y automatizaciones con IA.</p>
+            <h3 data-i18n="step3.title">Construcción</h3>
+            <p data-i18n="step3.desc">Creo tu página asegurando que cargue súper rápido, funcione perfecto en celulares y tenga enlaces directos a WhatsApp.</p>
           </div>
           <div class="process-card tilt-card process-anim-step">
             <span class="process-card__step">04</span>
-            <h3 data-i18n="step4.title">Despliegue &amp; Escalamiento</h3>
-            <p data-i18n="step4.desc">Puesta en producción con alta disponibilidad, auditoría de velocidad 100% y soporte continuo para que el sistema evolucione con tu empresa.</p>
+            <h3 data-i18n="step4.title">Lanzamiento</h3>
+            <p data-i18n="step4.desc">Publicamos la web en tu dominio propio, probamos todo y te doy soporte para que empieces a compartirla con tus clientes.</p>
           </div>
         </div>
       </div>
@@ -2233,24 +2539,24 @@
             <img src="assets/sculpture-loop.jpg" alt="CHV Systems Studio Philosophy">
           </div>
           <div class="founder-info">
-            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="founder.badge">[ INGENIERÍA &amp; DISEÑO ]</div>
+            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="founder.badge">[ QUIÉN SOY ]</div>
             <h3>Jose Pablo Chaves Hidalgo</h3>
             <div class="founder-role" data-i18n="founder.role">Fundador de CHV Systems · Desarrollador en Gananova</div>
             <p class="founder-bio" data-i18n="founder.bio">
-              Estudiante de Ingeniería en Sistemas en Costa Rica. Combino el rigor técnico de la ingeniería de software con la sensibilidad visual del diseño web contemporáneo. A diferencia de agencias tradicionales donde el diseñador y el programador están desconectados, yo diseño la interfaz y programo la arquitectura que hay detrás, garantizando una ejecución impecable de punta a punta.
+              Estudiante de Ingeniería en Sistemas en Costa Rica. Me dedico a crear páginas web y sistemas a la medida para negocios que quieren verse profesionales y vender más. Al trabajar conmigo tienes comunicación directa: sin intermediarios, sin presupuestos inflados de agencias y con la seguridad de que tu web quedará rápida, moderna y lista para dar resultados.
             </p>
             <div class="founder-stats">
               <div class="stat-item">
                 <b data-i18n="stat1.val">Ingeniería en Sistemas</b>
-                <span data-i18n="stat1.lbl">Formación Académica (CR)</span>
+                <span data-i18n="stat1.lbl">Costa Rica</span>
               </div>
               <div class="stat-item">
                 <b data-i18n="stat2.val">Gananova OS</b>
                 <span data-i18n="stat2.lbl">Creador del Sistema</span>
               </div>
               <div class="stat-item">
-                <b data-i18n="stat3.val">Full-Stack + AI</b>
-                <span data-i18n="stat3.lbl">Especialización Técnica</span>
+                <b data-i18n="stat3.val">Diseño Web + Sistemas</b>
+                <span data-i18n="stat3.lbl">Especialización</span>
               </div>
             </div>
           </div>
@@ -2265,17 +2571,17 @@
       <div class="container">
         <div class="contact-card tilt-card contact-anim">
           <div class="contact-left">
-            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="contact.badge">[ CONVERSEMOS ]</div>
-            <h2 data-i18n="contact.h2">¿Listo para construir algo extraordinario?</h2>
+            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="contact.badge">[ HABLEMOS ]</div>
+            <h2 data-i18n="contact.h2">¿Listo para tener una web que realmente venda?</h2>
             <p data-i18n="contact.p">
-              Cuéntame sobre tu proyecto. Ya sea que necesites una web que destaque entre tu competencia o un sistema que automatice las operaciones de tu negocio, hablemos directamente.
+              Cuéntame sobre tu negocio. Ya sea que necesites una página para captar clientes o un sistema para ordenar tus pedidos, hablemos directamente por WhatsApp o correo.
             </p>
 
             <div class="tag-selector" id="projectTags">
-              <span class="tag-option selected" data-type="Sitio Web de Alto Impacto" data-i18n="tag.web">Diseño Web Moderno</span>
-              <span class="tag-option" data-type="Sistema Web &amp; CRM" data-i18n="tag.system">Sistema Empresarial / CRM</span>
-              <span class="tag-option" data-type="Facturación &amp; Automatización" data-i18n="tag.auto">Automatización con IA</span>
-              <span class="tag-option" data-type="Rediseño Completo" data-i18n="tag.redesign">Rediseño UI/UX</span>
+              <span class="tag-option selected" data-type="Sitio Web Profesional" data-i18n="tag.web">Página Web Profesional</span>
+              <span class="tag-option" data-type="Sistema de Gestión / Pedidos" data-i18n="tag.system">Sistema para Negocio</span>
+              <span class="tag-option" data-type="Automatización de Procesos" data-i18n="tag.auto">Automatización de Procesos</span>
+              <span class="tag-option" data-type="Rediseño de Web Actual" data-i18n="tag.redesign">Rediseño de Web Actual</span>
             </div>
           </div>
 
@@ -2289,21 +2595,30 @@
             </div>
 
             <div class="direct-box">
-              <div class="direct-info">
-                <span class="direct-label" data-i18n="contact.phoneLbl">WhatsApp / Teléfono</span>
-                <span class="direct-val" id="phoneVal">+506 7080 6520</span>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:36px; height:36px; border-radius:10px; background:rgba(37,211,102,0.14); display:flex; align-items:center; justify-content:center; color:#25D366; flex-shrink:0;">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.975.571 3.816 1.558 5.378L2 22.062l4.802-1.523A9.99 9.99 0 0 0 12.031 22.062C17.566 22.062 22.062 17.566 22.062 12.031 22.062 6.496 17.566 2 12.031 2zm0 18.25c-1.636 0-3.167-.478-4.46-1.303l-.32-.204-2.852.905.922-2.775-.209-.333A8.176 8.176 0 0 1 3.844 12.031c0-4.514 3.673-8.187 8.187-8.187s8.188 3.673 8.188 8.187-3.674 8.219-8.188 8.219zm4.492-6.141c-.246-.123-1.459-.72-1.685-.802-.227-.083-.392-.123-.557.123-.165.247-.638.802-.782.966-.144.165-.288.185-.534.062-.247-.123-1.042-.385-1.986-1.226-.734-.654-1.23-1.463-1.374-1.71-.144-.247-.015-.38.108-.503.111-.11.247-.288.37-.432.124-.144.165-.247.247-.411.082-.165.041-.309-.021-.432-.061-.124-.557-1.341-.763-1.838-.2-.485-.403-.418-.557-.426-.144-.008-.309-.01-.473-.01-.165 0-.432.062-.658.309-.227.247-.864.844-.864 2.059 0 1.215.885 2.389 1.008 2.553.124.165 1.741 2.66 4.22 3.731.59.255 1.05.408 1.41.523.593.189 1.132.162 1.558.099.475-.071 1.459-.596 1.665-1.173.206-.576.206-1.07.144-1.173-.062-.103-.227-.165-.473-.288z"/>
+                  </svg>
+                </div>
+                <div class="direct-info">
+                  <span class="direct-label" data-i18n="contact.phoneLbl">WhatsApp / Teléfono</span>
+                  <span class="direct-val" id="phoneVal">+506 7080 6520</span>
+                </div>
               </div>
               <button class="copy-btn" id="copyPhoneBtn" type="button" data-i18n="contact.copy">Copiar</button>
             </div>
 
             <div class="cta-group">
-              <a id="mailToBtn" href="mailto:chavespablo640@gmail.com?subject=Consulta%20de%20Proyecto%20-%20CHV%20Systems" class="btn btn--primary magnetic-el" style="width:100%;" data-i18n="contact.sendMail">
+              <a href="https://wa.me/50670806520?text=Hola%20Jose%20Pablo,%20quisiera%20conversar%20sobre%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--primary magnetic-el" style="width:100%;" data-i18n="contact.chatWa">
+                <span data-i18n="contact.chatWaText">Chatear por WhatsApp Directo</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.975.571 3.816 1.558 5.378L2 22.062l4.802-1.523A9.99 9.99 0 0 0 12.031 22.062C17.566 22.062 22.062 17.566 22.062 12.031 22.062 6.496 17.566 2 12.031 2zm0 18.25c-1.636 0-3.167-.478-4.46-1.303l-.32-.204-2.852.905.922-2.775-.209-.333A8.176 8.176 0 0 1 3.844 12.031c0-4.514 3.673-8.187 8.187-8.187s8.188 3.673 8.188 8.187-3.674 8.219-8.188 8.219zm4.492-6.141c-.246-.123-1.459-.72-1.685-.802-.227-.083-.392-.123-.557.123-.165.247-.638.802-.782.966-.144.165-.288.185-.534.062-.247-.123-1.042-.385-1.986-1.226-.734-.654-1.23-1.463-1.374-1.71-.144-.247-.015-.38.108-.503.111-.11.247-.288.37-.432.124-.144.165-.247.247-.411.082-.165.041-.309-.021-.432-.061-.124-.557-1.341-.763-1.838-.2-.485-.403-.418-.557-.426-.144-.008-.309-.01-.473-.01-.165 0-.432.062-.658.309-.227.247-.864.844-.864 2.059 0 1.215.885 2.389 1.008 2.553.124.165 1.741 2.66 4.22 3.731.59.255 1.05.408 1.41.523.593.189 1.132.162 1.558.099.475-.071 1.459-.596 1.665-1.173.206-.576.206-1.07.144-1.173-.062-.103-.227-.165-.473-.288z"/>
+                </svg>
+              </a>
+              <a id="mailToBtn" href="mailto:chavespablo640@gmail.com?subject=Consulta%20de%20P%C3%A1gina%20Web%20-%20CHV%20Systems" class="btn btn--glass magnetic-el" style="width:100%;" data-i18n="contact.sendMail">
                 <span data-i18n="contact.sendMailText">Enviar Correo Electrónico</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </a>
-              <a href="https://wa.me/50670806520?text=Hola%20Jose%20Pablo,%20quisiera%20conversar%20sobre%20un%20proyecto%20web" target="_blank" rel="noopener" class="btn btn--glass magnetic-el" style="width:100%;" data-i18n="contact.chatWa">
-                <span data-i18n="contact.chatWaText">Chatear por WhatsApp Directo</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/></svg>
               </a>
             </div>
           </div>
@@ -2316,7 +2631,7 @@
   <footer>
     <div class="container footer-row">
       <div class="footer-text">
-        WEB DESIGN &amp; DEVELOPMENT BY CHV SYSTEMS
+        DISEÑO &amp; DESARROLLO WEB — CHV SYSTEMS
       </div>
       <div class="footer-text">
         © <span id="year">2026</span> Jose Pablo Chaves Hidalgo — Costa Rica
@@ -2325,8 +2640,10 @@
   </footer>
 
   <!-- Floating WhatsApp Action -->
-  <a class="fab-whatsapp" href="https://wa.me/50670806520" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/></svg>
+  <a class="fab-whatsapp" href="https://wa.me/50670806520?text=Hola%20Jose%20Pablo,%20quisiera%20conversar%20sobre%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+      <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.975.571 3.816 1.558 5.378L2 22.062l4.802-1.523A9.99 9.99 0 0 0 12.031 22.062C17.566 22.062 22.062 17.566 22.062 12.031 22.062 6.496 17.566 2 12.031 2zm0 18.25c-1.636 0-3.167-.478-4.46-1.303l-.32-.204-2.852.905.922-2.775-.209-.333A8.176 8.176 0 0 1 3.844 12.031c0-4.514 3.673-8.187 8.187-8.187s8.188 3.673 8.188 8.187-3.674 8.219-8.188 8.219zm4.492-6.141c-.246-.123-1.459-.72-1.685-.802-.227-.083-.392-.123-.557.123-.165.247-.638.802-.782.966-.144.165-.288.185-.534.062-.247-.123-1.042-.385-1.986-1.226-.734-.654-1.23-1.463-1.374-1.71-.144-.247-.015-.38.108-.503.111-.11.247-.288.37-.432.124-.144.165-.247.247-.411.082-.165.041-.309-.021-.432-.061-.124-.557-1.341-.763-1.838-.2-.485-.403-.418-.557-.426-.144-.008-.309-.01-.473-.01-.165 0-.432.062-.658.309-.227.247-.864.844-.864 2.059 0 1.215.885 2.389 1.008 2.553.124.165 1.741 2.66 4.22 3.731.59.255 1.05.408 1.41.523.593.189 1.132.162 1.558.099.475-.071 1.459-.596 1.665-1.173.206-.576.206-1.07.144-1.173-.062-.103-.227-.165-.473-.288z"/>
+    </svg>
   </a>
 
   <!-- GSAP for Smooth Fluid Motion -->
@@ -2358,113 +2675,133 @@
         applyTheme(next);
       });
 
-
       // ======================================================================
-      // BILINGUAL LOCALIZATION (ES / EN)
+      // BILINGUAL LOCALIZATION (ES / EN) — ENFOCADO EN RESULTADOS
       // ======================================================================
       const DICT = {
         es: {
           'nav.work': 'Proyectos',
-          'nav.skills': 'Skills & Stack',
+          'nav.benefits': 'Beneficios',
           'nav.process': 'Proceso',
-          'nav.founder': 'Fundador',
+          'nav.founder': 'Quién Soy',
           'nav.cta': 'Iniciar Proyecto',
 
-          'hero.badge': 'CHV Systems 2.5 · Estudio de Diseño Web & Software',
+          'hero.badge': 'Disponible para nuevos proyectos web',
           'hero.title1': 'Diseño web que impresiona.',
           'hero.title3': 'que hacen crecer tu negocio.',
-          'hero.desc': 'Creamos experiencias digitales limpias, no tradicionales y de alto impacto. Desde interfaces de última generación hasta plataformas completas de gestión empresarial, CRM y automatización con IA.',
+          'hero.desc': 'Creamos páginas web y sistemas a la medida con diseño limpio, moderno y de alto impacto. Hechas para que tu empresa transmita confianza inmediata y convierta visitas en clientes.',
           'hero.ctaPrimaryText': 'Iniciar un Proyecto',
           'hero.ctaSecondaryText': 'Explorar Proyectos',
 
-          'pill.uptime': '99.9% Rendimiento & Arquitectura Full-Stack',
-          'pill.ai': 'Gananova OS · Sistema en Producción con IA',
+          'pill.uptime': '0.4s Carga Instantánea en Celulares',
+          'pill.ai': 'Gananova OS · Sistema de Gestión en Producción',
 
-          'tab.dashboard': 'Dashboard Preview',
-          'tab.modules': 'Módulos del Sistema',
-          'tab.code': 'Código Limpio',
-          'tab.telemetry': 'Métricas 100%',
+          'tab.dashboard': 'Panel de Control',
+          'tab.modules': 'Módulos de Negocio',
+          'tab.value': 'Por Qué Funciona',
+          'tab.telemetry': 'Velocidad 100%',
           'status.online': 'SISTEMA ACTIVO',
 
-          'hud.kpi': 'Métricas en Tiempo Real:',
-          'hud.arch': 'Arquitectura:',
+          'dash.sub': 'Panel de Rendimiento Web',
+          'dash.online': 'EN LÍNEA',
+          'dash.kpi1lbl': 'Nuevos Contactos',
+          'dash.kpi1tag': '↑ 28% este mes',
+          'dash.kpi2lbl': 'Ventas & Cotizaciones',
+          'dash.kpi2tag': 'En tiempo real',
+          'dash.kpi3lbl': 'Tiempo de Carga',
+          'dash.kpi3tag': 'Instantáneo',
+          'dash.kpi4lbl': 'Clics a WhatsApp',
+          'dash.kpi4tag': 'Alta conversión',
+          'dash.chartlbl': 'FLUJO DE VISITAS & CLIENTES',
+          'dash.c1': 'WhatsApp Directo',
+          'dash.c2': 'Búsqueda en Google',
+          'dash.c3': 'Redes Sociales',
 
-          'mod1.title': 'CRM & Seguimiento',
-          'mod1.desc': 'Control integral de clientes, cotizaciones y estados de conversión en tiempo real.',
+          'mod1.title': 'Contacto en 1 Clic',
+          'mod1.desc': 'Botones directos a WhatsApp y formularios claros para no perder ningún cliente.',
           'mod2.title': 'Facturación Digital',
-          'mod2.desc': 'Emisión automática, cálculo tributario y sincronización directa con Hacienda.',
-          'mod3.title': 'Automatización con IA',
-          'mod3.desc': 'Asistentes inteligentes para clasificación de tickets y análisis de operaciones.',
-          'mod4.title': 'KPIs & Telemetría',
-          'mod4.desc': 'Gráficos de rendimiento en vivo y reportes consolidados para toma de decisiones.',
+          'mod2.desc': 'Emisión automática y sincronización para negocios que necesitan facturar.',
+          'mod3.title': 'Automatización Simple',
+          'mod3.desc': 'Ahorra tiempo automatizando cotizaciones, avisos y seguimiento de pedidos.',
+          'mod4.title': 'Métricas Claras',
+          'mod4.desc': 'Conoce cuánta gente visita tu página y de dónde llegan tus mejores clientes.',
 
-          'gauge.perf': 'Performance',
-          'gauge.a11y': 'Accessibility',
-          'gauge.bp': 'Best Practices',
-          'gauge.seo': 'SEO Audit',
-          'gauge.desc': 'Arquitectura optimizada: 0 dependencias pesadas innecesarias · Carga instantánea · Código limpio',
+          'val1.title': '01 / Sin Plantillas Lentas',
+          'val1.desc': 'Las plantillas genéricas vienen cargadas de errores y tardan segundos en abrir. Nuestras webs cargan en 0.4s.',
+          'val2.title': '02 / Pensada para Celulares',
+          'val2.desc': 'El 80%+ del tráfico entra por teléfono. El diseño está optimizado para que navegar y comprar sea facilísimo.',
+          'val3.title': '03 / Trato Directo',
+          'val3.desc': 'Sin intermediarios ni meses de espera. Tratas directamente conmigo para ajustar tu página cuando lo necesites.',
+          'val4.title': '04 / Enfoque en Ventas',
+          'val4.desc': 'Cada elemento tiene un propósito: dar confianza, explicar lo que ofreces y guiar a tu cliente a escribirte.',
 
-          'work.badge': '[ CARRUSEL DE PROYECTOS ]',
-          'work.h2': 'Sistemas & Diseños en Producción',
-          'work.desc': 'Explora el portafolio interactivo: desde plataformas empresariales avanzadas con IA hasta portales corporativos de alto impacto.',
+          'gauge.perf': 'Velocidad',
+          'gauge.a11y': 'Accesibilidad',
+          'gauge.bp': 'Calidad',
+          'gauge.seo': 'SEO Google',
+          'gauge.desc': 'Arquitectura optimizada: 0 dependencias innecesarias · Carga instantánea · Código limpio',
 
-          'c1.desc': 'Plataforma integral de gestión empresarial con inteligencia artificial y automatización desarrollada para la consultora costarricense Gananova. Centraliza CRM, facturación electrónica y métricas en tiempo real.',
-          'c2.desc': 'Firma costarricense de estrategia, procesos y tecnología para pymes. Donde trabajo actualmente como desarrollador y líder de arquitectura técnica para soluciones empresariales.',
-          'w1.b1': 'CRM y pipeline de clientes centralizado',
-          'w1.b2': 'Facturación electrónica y seguimiento fiscal',
-          'w1.b3': 'Telemetría y KPIs financieros en tiempo real',
-          'w1.b4': 'Automatización de flujos y asistencia con IA',
+          'work.badge': '[ PROYECTOS REALES ]',
+          'work.h2': 'Páginas & Sistemas en Producción',
+          'work.desc': 'Explora proyectos reales construidos para negocios activos: desde plataformas empresariales de gestión hasta sitios corporativos de alta captación.',
+
+          'c1.desc': 'Plataforma integral de gestión empresarial y automatización desarrollada para la consultora costarricense Gananova. Centraliza CRM, facturación electrónica y métricas en tiempo real.',
+          'c2.desc': 'Firma costarricense de estrategia, procesos y tecnología para pymes. Donde trabajo actualmente desarrollando plataformas y soluciones de gestión digital.',
+          'w1.b1': 'Seguimiento centralizado de clientes y presupuestos',
+          'w1.b2': 'Facturación electrónica y control administrativo',
+          'w1.b3': 'Métricas y reportes financieros en tiempo real',
+          'w1.b4': 'Automatización de flujos y operaciones diarias',
           'w1.link': 'Visitar gananova.com →',
 
-          'w2.desc': 'Academia deportiva y formativa de fútbol juvenil. Proyecto en colaboración con Gananova liderado por mí: desarrollo de plataforma web, registro de atletas y portal de comunidad.',
+          'w2.desc': 'Academia deportiva y formativa de fútbol juvenil. Proyecto en colaboración con Gananova liderado por mí: plataforma web institucional, registro de atletas y portal de comunidad.',
           'w2.link': 'Explorar adefip.com →',
 
           'w3.desc': 'Cliente real en Estados Unidos: empresa de pintura residencial y lavado a presión. Diseño web enfocado en credibilidad, conversión directa y captación de clientes de alto valor.',
           'w3.link': 'Ver puravidapaintingllc.com →',
 
-          'skills.badge': '[ CAPACIDADES & STACK ]',
-          'skills.h2': 'Lo que hago: Diseño & Código de Alto Nivel',
-          'skills.desc': 'Sin plantillas genéricas. Integramos estética minimalista con ingeniería de software rigurosa para crear productos que destacan en el mercado.',
+          'skills.badge': '[ RESULTADOS CONCRETOS ]',
+          'skills.h2': 'Lo que una buena web hace por tu negocio',
+          'skills.desc': 'No se trata de la tecnología que uso, sino de lo que consigues: más clientes, mejor imagen y un proceso sin complicaciones.',
 
-          'skill1.title': 'Diseño Web & UI/UX',
-          'skill1.desc': 'Dirección de arte, sistemas de diseño coherentes, tipografía cuidada, micro-animaciones y layouts limpios que transmiten autoridad y aumentan conversiones.',
-          'skill2.title': 'Desarrollo Frontend Moderno',
-          'skill2.desc': 'Interfaces fluidas y reactivas con tecnologías punteras. Animaciones GSAP de 60fps, interactividad de siguiente generación y rendimiento ultra-rápido.',
-          'skill3.title': 'Sistemas Empresariales & Backend',
-          'skill3.desc': 'Plataformas donde tu negocio opera a diario: CRM a medida, facturación electrónica, dashboards ejecutivos y control de inventarios seguros y escalables.',
-          'skill4.title': 'Inteligencia Artificial & Automatización',
-          'skill4.desc': 'Integración de modelos de lenguaje (OpenAI, Claude API) y flujos automáticos que eliminan tareas repetitivas y potencian la productividad de tu equipo.',
+          'skill1.title': 'Más Clientes y Ventas',
+          'skill1.desc': 'Tu web diseñada para convencer: botones directos a WhatsApp, llamadas claras a la acción y estructura pensada para que las visitas se conviertan en clientes reales.',
+          'skill2.title': 'Imagen que Inspira Confianza',
+          'skill2.desc': 'En los primeros 3 segundos, tus clientes sabrán que eres un negocio serio, moderno y superior a tu competencia. Una web limpia que genera credibilidad inmediata.',
+          'skill3.title': 'Carga Rápida en Celulares',
+          'skill3.desc': 'Más del 80% de tus clientes entran desde su teléfono. Tu página cargará al instante (menos de 1 segundo), sin trabas, botones cortados ni esperas que pierdan ventas.',
+          'skill4.title': 'Trato Directo y Sistemas a Medida',
+          'skill4.desc': 'Hablas directamente conmigo de principio a fin, sin agencias costosas ni intermediarios. Además, puedo crear sistemas para pedidos o facturación si tu negocio lo necesita.',
 
-          'process.badge': '[ METODOLOGÍA ]',
-          'process.h2': 'Cómo Trabajamos: De la Idea al Sistema',
-          'process.desc': 'Un proceso ordenado y transparente donde cada fase construye sobre bases firmes.',
+          'process.badge': '[ PASO A PASO ]',
+          'process.h2': 'Cómo Trabajamos: Fácil y Transparente',
+          'process.desc': 'Un proceso ordenado donde sabes exactamente qué esperar en cada etapa, sin complicaciones técnicas.',
 
-          'step1.title': 'Diagnóstico & Estrategia',
-          'step1.desc': 'Analizo los cuellos de botella de tu negocio, tu audiencia y los requisitos técnicos exactos para garantizar retorno desde el primer día.',
-          'step2.title': 'Dirección de Arte & UX',
-          'step2.desc': 'Defino la identidad visual, el sistema de componentes y los prototipos interactivos en Figma para validar la experiencia antes de programar.',
-          'step3.title': 'Ingeniería & Código',
-          'step3.desc': 'Desarrollo full-stack con código limpio: frontend responsivo, backend robusto, base de datos optimizada y automatizaciones con IA.',
-          'step4.title': 'Despliegue & Escalamiento',
-          'step4.desc': 'Puesta en producción con alta disponibilidad, auditoría de velocidad 100% y soporte continuo para que el sistema evolucione con tu empresa.',
+          'step1.title': 'Conversación Inicial',
+          'step1.desc': 'Entiendo tu negocio, qué vendes y qué necesitas que haga tu página web para atraer más clientes.',
+          'step2.title': 'Propuesta & Diseño',
+          'step2.desc': 'Definimos cómo se verá la web con un diseño limpio, moderno y profesional alineado a tu marca.',
+          'step3.title': 'Construcción',
+          'step3.desc': 'Creo tu página asegurando que cargue súper rápido, funcione perfecto en celulares y tenga enlaces directos a WhatsApp.',
+          'step4.title': 'Lanzamiento',
+          'step4.desc': 'Publicamos la web en tu dominio propio, probamos todo y te doy soporte para que empieces a compartirla con tus clientes.',
 
-          'founder.badge': '[ INGENIERÍA & DISEÑO ]',
+          'founder.badge': '[ QUIÉN SOY ]',
           'founder.role': 'Fundador de CHV Systems · Desarrollador en Gananova',
-          'founder.bio': 'Estudiante de Ingeniería en Sistemas en Costa Rica. Combino el rigor técnico de la ingeniería de software con la sensibilidad visual del diseño web contemporáneo. A diferencia de agencias tradicionales donde el diseñador y el programador están desconectados, yo diseño la interfaz y programo la arquitectura que hay detrás, garantizando una ejecución impecable de punta a punta.',
+          'founder.bio': 'Estudiante de Ingeniería en Sistemas en Costa Rica. Me dedico a crear páginas web y sistemas a la medida para negocios que quieren verse profesionales y vender más. Al trabajar conmigo tienes comunicación directa: sin intermediarios, sin presupuestos inflados de agencias y con la seguridad de que tu web quedará rápida, moderna y lista para dar resultados.',
           'stat1.val': 'Ingeniería en Sistemas',
-          'stat1.lbl': 'Formación Académica (CR)',
+          'stat1.lbl': 'Costa Rica',
           'stat2.val': 'Gananova OS',
           'stat2.lbl': 'Creador del Sistema',
-          'stat3.val': 'Full-Stack + AI',
-          'stat3.lbl': 'Especialización Técnica',
+          'stat3.val': 'Diseño Web + Sistemas',
+          'stat3.lbl': 'Especialización',
 
-          'contact.badge': '[ CONVERSEMOS ]',
-          'contact.h2': '¿Listo para construir algo extraordinario?',
-          'contact.p': 'Cuéntame sobre tu proyecto. Ya sea que necesites una web que destaque entre tu competencia o un sistema que automatice las operaciones de tu negocio, hablemos directamente.',
-          'tag.web': 'Diseño Web Moderno',
-          'tag.system': 'Sistema Empresarial / CRM',
-          'tag.auto': 'Automatización con IA',
-          'tag.redesign': 'Rediseño UI/UX',
+          'contact.badge': '[ HABLEMOS ]',
+          'contact.h2': '¿Listo para tener una web que realmente venda?',
+          'contact.p': 'Cuéntame sobre tu negocio. Ya sea que necesites una página para captar clientes o un sistema para ordenar tus pedidos, hablemos directamente por WhatsApp o correo.',
+          'tag.web': 'Página Web Profesional',
+          'tag.system': 'Sistema para Negocio',
+          'tag.auto': 'Automatización de Procesos',
+          'tag.redesign': 'Rediseño de Web Actual',
           'contact.emailLbl': 'Correo Electrónico Directo',
           'contact.phoneLbl': 'WhatsApp / Teléfono',
           'contact.copy': 'Copiar',
@@ -2474,55 +2811,76 @@
         },
         en: {
           'nav.work': 'Projects',
-          'nav.skills': 'Skills & Stack',
+          'nav.benefits': 'Benefits',
           'nav.process': 'Process',
-          'nav.founder': 'Founder',
+          'nav.founder': 'About Me',
           'nav.cta': 'Start a Project',
 
-          'hero.badge': 'CHV Systems 2.5 · Web Design & Software Studio',
+          'hero.badge': 'Available for new web projects',
           'hero.title1': 'Web design that stands out.',
           'hero.title3': 'that power your business growth.',
-          'hero.desc': 'We build clean, non-traditional, high-impact digital experiences. From award-worthy modern interfaces to bespoke business platforms, custom CRMs, and AI automation.',
+          'hero.desc': 'We build custom, modern, high-impact websites and digital systems. Designed to earn trust in seconds and turn visitors into paying customers.',
           'hero.ctaPrimaryText': 'Start a Project',
           'hero.ctaSecondaryText': 'Explore Projects',
 
-          'pill.uptime': '99.9% Uptime & Full-Stack Architecture',
-          'pill.ai': 'Gananova OS · Live Production AI System',
+          'pill.uptime': '0.4s Instant Mobile Load Speed',
+          'pill.ai': 'Gananova OS · Live Business Management Platform',
 
-          'tab.dashboard': 'Dashboard Preview',
-          'tab.modules': 'System Modules',
-          'tab.code': 'Clean Code',
-          'tab.telemetry': '100% Metrics',
+          'tab.dashboard': 'Control Panel',
+          'tab.modules': 'Business Modules',
+          'tab.value': 'Why It Works',
+          'tab.telemetry': '100% Speed',
           'status.online': 'SYSTEM ONLINE',
 
-          'hud.kpi': 'Real-Time Telemetry:',
-          'hud.arch': 'Architecture:',
+          'dash.sub': 'Web Performance Overview',
+          'dash.online': 'ONLINE',
+          'dash.kpi1lbl': 'New Inquiries',
+          'dash.kpi1tag': '↑ 28% this month',
+          'dash.kpi2lbl': 'Sales & Quotes',
+          'dash.kpi2tag': 'Real-time sync',
+          'dash.kpi3lbl': 'Page Load Time',
+          'dash.kpi3tag': 'Instantaneous',
+          'dash.kpi4lbl': 'WhatsApp Clicks',
+          'dash.kpi4tag': 'High conversion',
+          'dash.chartlbl': 'TRAFFIC & CLIENT ACQUISITION',
+          'dash.c1': 'Direct WhatsApp',
+          'dash.c2': 'Google Search',
+          'dash.c3': 'Social Media',
 
-          'mod1.title': 'CRM & Tracking',
-          'mod1.desc': 'Comprehensive client pipeline, quote generator, and real-time conversion telemetry.',
-          'mod2.title': 'Digital Invoicing',
-          'mod2.desc': 'Automated billing, tax calculation, and seamless integration with authorities.',
-          'mod3.title': 'AI Automation',
-          'mod3.desc': 'Intelligent assistants for customer inquiry triage and operational workflow routing.',
-          'mod4.title': 'KPIs & Telemetry',
-          'mod4.desc': 'Live performance analytics and consolidated executive dashboards for decision-making.',
+          'mod1.title': '1-Click Contact',
+          'mod1.desc': 'Direct WhatsApp buttons and frictionless forms so you never lose an interested customer.',
+          'mod2.title': 'Digital Billing',
+          'mod2.desc': 'Automated invoicing and administrative tracking for businesses that need structure.',
+          'mod3.title': 'Simple Automation',
+          'mod3.desc': 'Save hours every week by automating quotes, notifications, and order updates.',
+          'mod4.title': 'Clear Analytics',
+          'mod4.desc': 'Understand where your visitors come from and which marketing channels bring revenue.',
 
-          'gauge.perf': 'Performance',
+          'val1.title': '01 / No Slow Templates',
+          'val1.desc': 'Generic templates are bloated and take seconds to open. Our sites open in 0.4s flat.',
+          'val2.title': '02 / Built for Mobile',
+          'val2.desc': 'Over 80% of your customers browse on phones. Our UX makes messaging or buying effortless.',
+          'val3.title': '03 / Direct Communication',
+          'val3.desc': 'No agency bureaucracy or lost-in-translation delays. You work directly with the creator.',
+          'val4.title': '04 / Focused on Sales',
+          'val4.desc': 'Every element serves a single goal: build trust, clarify your value, and guide action.',
+
+          'gauge.perf': 'Speed',
           'gauge.a11y': 'Accessibility',
           'gauge.bp': 'Best Practices',
-          'gauge.seo': 'SEO Audit',
+          'gauge.seo': 'Google SEO',
           'gauge.desc': 'Optimized architecture: zero bloat · Instantaneous loading · Pure craftsmanship',
 
-          'work.badge': '[ PROJECT CAROUSEL ]',
-          'work.h2': 'Systems & Websites in Production',
-          'work.desc': 'Explore our interactive showcase: from advanced AI business platforms to high-impact corporate web portals.',
+          'work.badge': '[ REAL EVIDENCE ]',
+          'work.h2': 'Websites & Systems in Production',
+          'work.desc': 'Explore active client platforms: from full business management engines to high-converting corporate portals.',
 
-          'c1.desc': 'Comprehensive enterprise business operating system with AI and automation built for Costa Rican consultancy Gananova. Centralizes CRM, electronic invoicing, and live telemetry.',
-          'c2.desc': 'Costa Rican strategy, process, and technology consulting firm for SMEs. Where I currently develop and lead technical architecture for enterprise software.',
-          'w1.b1': 'Centralized client pipeline & CRM',
-          'w1.b2': 'Electronic invoicing & tax compliance',
-          'w1.b3': 'Real-time financial telemetry & KPIs',
-          'w1.b4': 'Intelligent workflow automation with AI',
+          'c1.desc': 'Comprehensive business management and automation platform built for Costa Rican consultancy Gananova. Centralizes CRM, electronic invoicing, and live telemetry.',
+          'c2.desc': 'Costa Rican strategy, process, and technology consulting firm for SMEs. Where I currently develop digital solutions and web systems.',
+          'w1.b1': 'Centralized client pipeline and quote management',
+          'w1.b2': 'Electronic invoicing and administrative compliance',
+          'w1.b3': 'Real-time financial telemetry and KPIs',
+          'w1.b4': 'Streamlined operational workflow automation',
           'w1.link': 'Visit gananova.com →',
 
           'w2.desc': 'Youth athletic football academy. Collaboration project with Gananova led by me: modern web portal, athlete registration, and community experience.',
@@ -2531,49 +2889,49 @@
           'w3.desc': 'Real client in the United States: residential painting and pressure-washing company. Built for credibility, direct conversion, and high-ticket customer acquisition.',
           'w3.link': 'View puravidapaintingllc.com →',
 
-          'skills.badge': '[ CAPABILITIES & STACK ]',
-          'skills.h2': 'What I Do: High-Craft Design & Engineering',
-          'skills.desc': 'No generic templates. We combine minimalist aesthetics with rigorous software engineering to build products that dominate their category.',
+          'skills.badge': '[ CONCRETE RESULTS ]',
+          'skills.h2': 'What a Great Website Does for Your Business',
+          'skills.desc': 'It is not about the tooling I use, but what you achieve: more customers, stronger reputation, and a frictionless process.',
 
-          'skill1.title': 'Web Design & UI/UX',
-          'skill1.desc': 'Art direction, coherent design systems, curated typography, micro-interactions, and immaculate layouts that build trust and drive conversions.',
-          'skill2.title': 'Modern Frontend Engineering',
-          'skill2.desc': 'Silky-smooth, highly reactive frontends built with modern tech. 60fps GSAP motion, next-gen component architecture, and instant load times.',
-          'skill3.title': 'Web Systems & Backend',
-          'skill3.desc': 'The software your company runs on every day: tailored CRMs, digital invoicing, executive portals, and secure scalable databases.',
-          'skill4.title': 'AI & Workflow Automation',
-          'skill4.desc': 'Integration with state-of-the-art LLMs (OpenAI, Claude API) and event-driven automations that eliminate repetitive tasks.',
+          'skill1.title': 'More Clients & Revenue',
+          'skill1.desc': 'Your site structured to persuade: instant WhatsApp buttons, clear calls to action, and seamless conversion paths.',
+          'skill2.title': 'Credibility That Inspires Trust',
+          'skill2.desc': 'In the first 3 seconds, prospects understand you run an established, modern, high-quality business.',
+          'skill3.title': 'Instant Mobile Speed',
+          'skill3.desc': 'Over 80% of your audience browses on smartphones. Your site loads in under a second with zero broken layouts.',
+          'skill4.title': 'Direct Partnership & Custom Systems',
+          'skill4.desc': 'You communicate directly with me start to finish. Plus, custom workflows for orders or billing when your business needs them.',
 
-          'process.badge': '[ METHODOLOGY ]',
-          'process.h2': 'How We Work: From Concept to System',
-          'process.desc': 'An orderly, transparent progression where every phase is built on solid ground.',
+          'process.badge': '[ STEP BY STEP ]',
+          'process.h2': 'How We Work: Simple & Transparent',
+          'process.desc': 'A clear, predictable progression where you know exactly what is happening at every milestone.',
 
-          'step1.title': 'Diagnosis & Strategy',
-          'step1.desc': 'We identify business bottlenecks, target audience expectations, and exact technical scopes to guarantee ROI from launch.',
-          'step2.title': 'Art Direction & UX',
-          'step2.desc': 'I craft the visual language, design system, and interactive Figma prototypes to stress-test the experience prior to coding.',
-          'step3.title': 'Engineering & Code',
-          'step3.desc': 'Full-stack development with clean code: responsive frontend, secure backend services, optimized database schemas, and AI integrations.',
-          'step4.title': 'Launch & Evolution',
-          'step4.desc': 'Deployment on high-availability cloud infrastructure, 100% speed audit, and ongoing support as your business scales.',
+          'step1.title': 'Initial Chat',
+          'step1.desc': 'I learn about your business, what you offer, and what your website must achieve to attract clients.',
+          'step2.title': 'Concept & Design',
+          'step2.desc': 'We define the look and feel with a clean, modern aesthetic aligned with your brand identity.',
+          'step3.title': 'Building',
+          'step3.desc': 'I build your site ensuring instant load speeds, flawless mobile ergonomics, and direct contact buttons.',
+          'step4.title': 'Launch',
+          'step4.desc': 'We connect your custom domain, test everything thoroughly, and provide support so you can start selling.',
 
-          'founder.badge': '[ ENGINEERING & DESIGN ]',
+          'founder.badge': '[ ABOUT ME ]',
           'founder.role': 'Founder of CHV Systems · Developer at Gananova',
-          'founder.bio': 'Systems Engineering student in Costa Rica. I combine the architectural precision of computer engineering with the visual finesse of contemporary web design. Unlike traditional agencies where designers and programmers work in silos, I design the interface and write the code behind it, ensuring uncompromising quality.',
+          'founder.bio': 'Systems Engineering student in Costa Rica. I design and build modern websites and custom systems for businesses looking to elevate their reputation and acquire more clients. Working with me means direct collaboration: no agency overhead, no delays, and a website that actually delivers business results.',
           'stat1.val': 'Systems Engineering',
-          'stat1.lbl': 'Academic Background (CR)',
+          'stat1.lbl': 'Costa Rica',
           'stat2.val': 'Gananova OS',
           'stat2.lbl': 'Lead System Architect',
-          'stat3.val': 'Full-Stack + AI',
-          'stat3.lbl': 'Technical Specialization',
+          'stat3.val': 'Web Design + Systems',
+          'stat3.lbl': 'Specialization',
 
           'contact.badge': '[ LET\'S TALK ]',
-          'contact.h2': 'Ready to build something extraordinary?',
-          'contact.p': 'Tell me about your project. Whether you need a web experience that outclasses competitors or an internal system to automate operations, let\'s speak directly.',
-          'tag.web': 'Modern Web Design',
-          'tag.system': 'Business System / CRM',
-          'tag.auto': 'AI Automation',
-          'tag.redesign': 'UI/UX Redesign',
+          'contact.h2': 'Ready for a website that actually sells?',
+          'contact.p': 'Tell me about your business. Whether you need a customer acquisition site or a management portal, let us talk directly.',
+          'tag.web': 'Professional Website',
+          'tag.system': 'Business System',
+          'tag.auto': 'Workflow Automation',
+          'tag.redesign': 'Current Website Redesign',
           'contact.emailLbl': 'Direct Email',
           'contact.phoneLbl': 'WhatsApp / Phone',
           'contact.copy': 'Copy',
@@ -2614,21 +2972,19 @@
       });
 
       // ======================================================================
-      // DYNAMIC ROTATING TYPEWRITER EFFECT IN HERO
+      // DYNAMIC ROTATING TYPEWRITER EFFECT IN HERO (RESULTADOS COMERCIALES)
       // ======================================================================
       const phrasesEs = [
-        "Sistemas Web a Medida",
-        "Interfaces que Convierten",
-        "Gananova OS & CRM",
-        "Automatización con IA",
-        "Arquitectura Full-Stack"
+        "Páginas que Venden",
+        "Sitios Web Modernos",
+        "Diseño que Atrae Clientes",
+        "Sistemas para tu Negocio"
       ];
       const phrasesEn = [
-        "Tailored Web Systems",
-        "Interfaces That Convert",
-        "Gananova OS & CRM",
-        "AI-Powered Automation",
-        "Full-Stack Architecture"
+        "Websites that Sell",
+        "Modern Web Experiences",
+        "Design that Attracts Clients",
+        "Systems for your Business"
       ];
 
       const typewriterEl = document.getElementById('typewriterText');
@@ -2653,11 +3009,11 @@
 
         if (!isDeleting && charIdx === currentPhrase.length) {
           isDeleting = true;
-          typingSpeed = 2200; // Pause at word completion
+          typingSpeed = 2200;
         } else if (isDeleting && charIdx === 0) {
           isDeleting = false;
           phraseIdx++;
-          typingSpeed = 400; // Pause before new word
+          typingSpeed = 400;
         }
 
         setTimeout(typeLoop, typingSpeed);
@@ -2741,6 +3097,7 @@
 
       carouselViewport.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
+        currentX = startX;
         isSwiping = true;
         clearInterval(autoPlayTimer);
       }, { passive: true });
@@ -2771,7 +3128,7 @@
       const panels = {
         preview: document.getElementById('panel-preview'),
         matrix: document.getElementById('panel-matrix'),
-        code: document.getElementById('panel-code'),
+        value: document.getElementById('panel-value'),
         telemetry: document.getElementById('panel-telemetry')
       };
 
@@ -2788,7 +3145,6 @@
             }
           });
 
-          // Trigger counter if telemetry is clicked
           if (target === 'telemetry') {
             runCounters();
           }
@@ -2812,7 +3168,7 @@
       // ======================================================================
       const tagOptions = document.querySelectorAll('.tag-option');
       const mailToBtn = document.getElementById('mailToBtn');
-      let selectedType = 'Diseño Web Moderno';
+      let selectedType = 'Página Web Profesional';
 
       tagOptions.forEach(tag => {
         tag.addEventListener('click', () => {
