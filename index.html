@@ -1,1088 +1,3065 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CHV Systems</title>
-<style>
-  :root{
-    --bg: #060B16;
-    --bg-1: #0A1226;
-    --bg-2: #0E1A34;
-    --panel: #0C1730;
-    --ink: #EAF1FF;
-    --ink-dim: #93A8D1;
-    --ink-faint: #7C90BC;
-    --line: rgba(147, 184, 255, 0.14);
-    --line-strong: rgba(147, 184, 255, 0.28);
-    --accent: #49D6FF;
-    --accent-ink: #04141C;
-    --accent-2: #E7B65C;
-    --btn-primary-ink: #1A1002;
-    --glow-1: rgba(73, 214, 255, 0.22);
-    --glow-2: rgba(120, 130, 255, 0.16);
-    --shadow: 0 20px 60px -20px rgba(2, 8, 20, 0.65);
-    color-scheme: dark;
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CHV SYSTEMS — Web Design & Modern Software Engineering</title>
+  <meta name="description" content="Estudio de diseño web moderno, desarrollo full-stack y sistemas empresariales a la medida por Jose Pablo Chaves Hidalgo. Costa Rica.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
-    --font-display: "Space Grotesk", "Arial Narrow", sans-serif;
-    --font-body: "DM Sans", "Segoe UI", sans-serif;
-    --font-mono: "IBM Plex Mono", "Consolas", monospace;
-  }
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 
-  @media (prefers-color-scheme: light){
-    :root:not([data-theme="dark"]){
-      --bg: #F3F6FC;
-      --bg-1: #EAF0FA;
-      --bg-2: #E1E9F7;
-      --panel: #FFFFFF;
-      --ink: #0B1830;
-      --ink-dim: #435577;
-      --ink-faint: #5B6C93;
-      --line: rgba(11, 24, 48, 0.10);
-      --line-strong: rgba(11, 24, 48, 0.20);
-      --accent: #075E76;
-      --accent-ink: #FFFFFF;
-      --accent-2: #8A5A12;
-      --btn-primary-ink: #FFFFFF;
-      --glow-1: rgba(12, 143, 179, 0.14);
-      --glow-2: rgba(90, 100, 220, 0.10);
-      --shadow: 0 20px 50px -24px rgba(11, 24, 48, 0.22);
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM TOKENS & RESET
+       ========================================================================== */
+    :root {
+      /* Dark Theme (Default) */
+      --void-0: #04060B;
+      --void-1: #070B16;
+      --void-2: #0C1224;
+      --void-3: #121A33;
+      --surface-glass: rgba(12, 18, 36, 0.72);
+      --surface-glass-hover: rgba(18, 27, 54, 0.88);
+      --surface-raised: #151F3D;
+
+      /* Inks */
+      --ink-primary: #F8FAFC;
+      --ink-secondary: #94A3B8;
+      --ink-muted: #64748B;
+      --ink-faint: #475569;
+
+      /* Glowing Accents inspired by Vetra & Quantix references */
+      --accent-orange: #FF7029;
+      --accent-amber: #FF9E2C;
+      --accent-violet: #8B5CF6;
+      --accent-indigo: #6366F1;
+      --accent-cyan: #38BDF8;
+      --accent-emerald: #10B981;
+
+      /* Horizon & Lighting */
+      --horizon-glow: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255, 112, 41, 0.44) 0%, rgba(139, 92, 246, 0.3) 40%, transparent 75%);
+      --horizon-border: linear-gradient(90deg, transparent 5%, rgba(255, 112, 41, 0.35) 30%, #FFA043 50%, rgba(139, 92, 246, 0.38) 70%, transparent 95%);
+      
+      /* Glass Borders & Shadows */
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.25);
+      --border-glow: rgba(255, 112, 41, 0.45);
+      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      --shadow-ambient: 0 24px 64px -16px rgba(0, 0, 0, 0.85);
+      --shadow-glow: 0 0 50px -10px rgba(255, 112, 41, 0.45);
+
+      /* Typography */
+      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+
+      color-scheme: dark;
+    }
+
+    [data-theme="light"] {
+      --void-0: #F8FAFC;
+      --void-1: #F1F5F9;
+      --void-2: #E2E8F0;
+      --void-3: #CBD5E1;
+      --surface-glass: rgba(255, 255, 255, 0.88);
+      --surface-glass-hover: rgba(255, 255, 255, 0.98);
+      --surface-raised: #FFFFFF;
+
+      --ink-primary: #0F172A;
+      --ink-secondary: #334155;
+      --ink-muted: #64748B;
+      --ink-faint: #94A3B8;
+
+      --accent-orange: #EA580C;
+      --accent-amber: #D97706;
+      --accent-violet: #7C3AED;
+      --accent-indigo: #4F46E5;
+      --accent-cyan: #0284C7;
+
+      --horizon-glow: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(234, 88, 12, 0.18) 0%, rgba(124, 58, 237, 0.12) 40%, transparent 72%);
+      --horizon-border: linear-gradient(90deg, transparent 5%, rgba(234, 88, 12, 0.35) 30%, #EA580C 50%, rgba(124, 58, 237, 0.35) 70%, transparent 95%);
+
+      --border-subtle: rgba(15, 23, 42, 0.08);
+      --border-hover: rgba(15, 23, 42, 0.24);
+      --border-glow: rgba(234, 88, 12, 0.35);
+      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      --shadow-ambient: 0 20px 48px -12px rgba(15, 23, 42, 0.12);
+      --shadow-glow: 0 0 32px -8px rgba(234, 88, 12, 0.25);
+
       color-scheme: light;
     }
-  }
 
-  :root[data-theme="light"]{
-    --bg: #F3F6FC;
-    --bg-1: #EAF0FA;
-    --bg-2: #E1E9F7;
-    --panel: #FFFFFF;
-    --ink: #0B1830;
-    --ink-dim: #435577;
-    --ink-faint: #5B6C93;
-    --line: rgba(11, 24, 48, 0.10);
-    --line-strong: rgba(11, 24, 48, 0.20);
-    --accent: #075E76;
-    --accent-ink: #FFFFFF;
-    --accent-2: #8A5A12;
-    --btn-primary-ink: #FFFFFF;
-    --glow-1: rgba(12, 143, 179, 0.14);
-    --glow-2: rgba(90, 100, 220, 0.10);
-    --shadow: 0 20px 50px -24px rgba(11, 24, 48, 0.22);
-    color-scheme: light;
-  }
-
-  :root[data-theme="dark"]{
-    --bg: #060B16;
-    --bg-1: #0A1226;
-    --bg-2: #0E1A34;
-    --panel: #0C1730;
-    --ink: #EAF1FF;
-    --ink-dim: #93A8D1;
-    --ink-faint: #7C90BC;
-    --line: rgba(147, 184, 255, 0.14);
-    --line-strong: rgba(147, 184, 255, 0.28);
-    --accent: #49D6FF;
-    --accent-ink: #04141C;
-    --accent-2: #E7B65C;
-    --btn-primary-ink: #1A1002;
-    --glow-1: rgba(73, 214, 255, 0.22);
-    --glow-2: rgba(120, 130, 255, 0.16);
-    --shadow: 0 20px 60px -20px rgba(2, 8, 20, 0.65);
-    color-scheme: dark;
-  }
-
-  *{ box-sizing: border-box; }
-
-  body{
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    transition: background-color .5s ease, color .5s ease;
-  }
-
-  ::selection{ background: var(--accent); color: var(--accent-ink); }
-
-  h1, h2, h3{
-    font-family: var(--font-display);
-    font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-    margin: 0;
-  }
-
-  p{ margin: 0; }
-
-  a{ color: inherit; }
-
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  .wrap{
-    max-width: 1180px;
-    margin-inline: auto;
-    padding-inline: max(20px, env(safe-area-inset-left, 0px) + 20px) max(20px, env(safe-area-inset-right, 0px) + 20px);
-  }
-
-  .mono-tag{
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-
-  /* ---------- Nav ---------- */
-  header{
-    position: sticky;
-    top: env(safe-area-inset-top, 0px);
-    z-index: 50;
-    background: color-mix(in srgb, var(--bg) 78%, transparent);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding-block: 16px;
-  }
-
-  .brand{ display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
-  .brand__mark{
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.15rem;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .brand__mark span{ color: var(--accent); }
-  .brand__line{
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: var(--ink-faint);
-    white-space: nowrap;
-  }
-
-  nav.links{
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-  nav.links a{
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: var(--ink-dim);
-    position: relative;
-    padding-bottom: 2px;
-  }
-  nav.links a::after{
-    content: "";
-    position: absolute; left: 0; right: 100%; bottom: -2px;
-    height: 1px; background: var(--accent);
-    transition: right .3s cubic-bezier(.16,1,.3,1);
-  }
-  nav.links a:hover{ color: var(--ink); }
-  nav.links a:hover::after{ right: 0; }
-
-  .nav__actions{ display: flex; align-items: center; gap: 10px; }
-
-  .theme-btn, .menu-btn{
-    width: 38px; height: 38px;
-    border-radius: 999px;
-    border: 1px solid var(--line-strong);
-    background: var(--bg-1);
-    color: var(--ink-dim);
-    display: grid; place-items: center;
-    cursor: pointer;
-    transition: border-color .25s ease, color .25s ease, transform .2s ease;
-    flex-shrink: 0;
-  }
-  .theme-btn:hover, .menu-btn:hover{ color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-  .theme-btn svg, .menu-btn svg{ width: 17px; height: 17px; }
-  .theme-btn .i-sun{ display: none; }
-  :root[data-theme="light"] .theme-btn .i-moon{ display: none; }
-  :root[data-theme="light"] .theme-btn .i-sun{ display: block; }
-
-  .menu-btn{ display: none; }
-  .menu-btn .i-close{ display: none; }
-  .menu-btn[aria-expanded="true"] .i-burger{ display: none; }
-  .menu-btn[aria-expanded="true"] .i-close{ display: block; }
-
-  .lang-btn{
-    min-width: 38px; height: 38px;
-    padding: 0 12px;
-    border-radius: 999px;
-    border: 1px solid var(--line-strong);
-    background: var(--bg-1);
-    color: var(--ink-dim);
-    font-family: var(--font-mono);
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .04em;
-    cursor: pointer;
-    display: inline-flex; align-items: center; justify-content: center;
-    transition: border-color .25s ease, color .25s ease, transform .2s ease;
-    flex-shrink: 0;
-  }
-  .lang-btn:hover{ color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-
-  .btn{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 0.88rem;
-    text-decoration: none;
-    padding: 12px 22px;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease, background-color .25s ease;
-  }
-  .btn--primary{ background: var(--accent-2); color: var(--btn-primary-ink); }
-  .btn--primary:hover{ transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(231,182,92,.55); }
-  .btn--ghost{
-    background: transparent; color: var(--ink);
-    border-color: var(--line-strong);
-  }
-  .btn--ghost:hover{ border-color: var(--accent); color: var(--accent); }
-  .btn--sm{ padding: 9px 16px; font-size: .8rem; }
-
-  /* Mobile nav menu */
-  .mobile-menu{ display: none; }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    position: relative;
-    padding-top: clamp(56px, 9vw, 108px);
-    padding-bottom: clamp(48px, 8vw, 90px);
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  .hero__field{
-    position: absolute; inset: -10% -10% -10% -10%;
-    z-index: -2;
-    background:
-      radial-gradient(60% 50% at 78% 18%, var(--glow-1), transparent 60%),
-      radial-gradient(45% 40% at 15% 70%, var(--glow-2), transparent 65%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg-1) 55%, var(--bg) 100%);
-    animation: drift 22s ease-in-out infinite alternate;
-  }
-  @keyframes drift{
-    from{ transform: translate3d(0,0,0) scale(1); }
-    to{ transform: translate3d(-1.5%, 1.5%, 0) scale(1.04); }
-  }
-
-  .hero__spot{
-    position: absolute; inset: 0; z-index: -1;
-    background: radial-gradient(420px 420px at var(--mx, 70%) var(--my, 30%), var(--glow-1), transparent 70%);
-    opacity: .8;
-    pointer-events: none;
-  }
-
-  .hero__grid{
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-    gap: clamp(28px, 5vw, 60px);
-    align-items: center;
-  }
-
-  .hero h1{
-    font-size: clamp(2.3rem, 5.6vw, 4.1rem);
-    max-width: 15ch;
-  }
-  .hero h1 em{
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  .hero p.lede{
-    margin-top: 22px;
-    max-width: 46ch;
-    color: var(--ink-dim);
-    font-size: clamp(1rem, 1.4vw, 1.14rem);
-  }
-
-  .hero__ctas{ display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
-
-  .constellation{ position: relative; aspect-ratio: 1/1; width: 100%; max-width: 480px; margin-inline: auto; }
-  .constellation svg{ width: 100%; height: 100%; overflow: visible; }
-  .cst-line{ fill: none; stroke: url(#lineGrad); stroke-width: 1.4; }
-  .cst-node circle{ fill: var(--bg-2); stroke: var(--line-strong); stroke-width: 1; }
-  .cst-node circle.core{ fill: var(--accent); stroke: none; }
-  .cst-node text{
-    font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .06em;
-    fill: var(--ink-dim); text-anchor: middle;
-  }
-  .cst-node.core text{ fill: var(--accent-ink); font-weight: 700; font-size: 10px; }
-
-  /* ---------- Sections ---------- */
-  section{ padding-block: clamp(64px, 9vw, 116px); position: relative; }
-
-  .section__head{ max-width: 640px; margin-bottom: clamp(36px, 5vw, 56px); }
-  .section__head h2{ font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
-  .section__head p{ margin-top: 14px; color: var(--ink-dim); font-size: 1.02rem; max-width: 56ch; }
-
-  /* Services — editorial index rows, not icon cards */
-  .svc{ border-top: 1px solid var(--line); padding-top: 6px; }
-  .svc__row{
-    display: grid;
-    grid-template-columns: 120px 1fr minmax(200px, 320px);
-    gap: 28px;
-    align-items: start;
-    padding: 30px 6px;
-    border-bottom: 1px solid var(--line);
-    transition: background-color .3s ease;
-  }
-  .svc__row:hover{ background: color-mix(in srgb, var(--accent) 4%, transparent); }
-  .svc__tag{ font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em; color: var(--accent); padding-top: 6px; }
-  .svc__title{ font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
-  .svc__desc{ color: var(--ink-dim); font-size: .96rem; padding-top: 4px; max-width: 42ch; }
-
-  /* Proof panel (Gananova) */
-  .panel{
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-  }
-  .proof{ display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 0; overflow: hidden; }
-  .proof__copy{ padding: clamp(28px, 4vw, 48px); }
-  .proof__copy h3{ font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 14px; }
-  .proof__copy p{ color: var(--ink-dim); }
-  .proof__list{ list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
-  .proof__list li{ display: flex; gap: 10px; font-size: .92rem; color: var(--ink); }
-  .proof__list li::before{ content: "—"; color: var(--accent); flex-shrink: 0; }
-  .proof__link{ margin-top: 26px; display: inline-flex; align-items:center; gap:8px; font-weight:700; text-decoration:none; color: var(--accent); font-size:.92rem; }
-  .proof__link svg{ width: 14px; height: 14px; transition: transform .25s ease; }
-  .proof__link:hover svg{ transform: translate(3px,-3px); }
-
-  .proof__chrome{
-    background: var(--bg-1);
-    border-left: 1px solid var(--line);
-    padding: clamp(20px, 3vw, 30px);
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  .chrome__bar{ display: flex; align-items: center; gap: 8px; }
-  .chrome__dot{ width: 9px; height: 9px; border-radius: 999px; background: var(--line-strong); }
-  .chrome__tabs{ display:flex; gap: 6px; margin-left: 10px; }
-  .chrome__tab{ font-family: var(--font-mono); font-size: .72rem; letter-spacing:.02em; color: var(--ink-faint); padding: 5px 10px; border-radius: 7px 7px 0 0; }
-  .chrome__tab.active{ background: var(--bg); color: var(--accent); }
-  .chrome__body{ background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px; flex: 1; display: grid; gap: 14px; }
-  .chrome__kpi{ display: flex; justify-content: space-between; align-items: baseline; }
-  .chrome__kpi span{ font-family: var(--font-mono); font-size: .74rem; color: var(--ink-faint); letter-spacing:.03em; }
-  .chrome__kpi b{ font-family: var(--font-display); font-size: 1rem; color: var(--ink); }
-  .chrome__bars{ display: flex; align-items: flex-end; gap: 6px; height: 60px; }
-  .chrome__bars i{ flex:1; background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent)); border-radius: 3px 3px 0 0; opacity:.85; }
-
-  /* Process */
-  .process{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-  .process__step{ background: var(--bg); padding: 26px 22px; }
-  .process__num{ font-family: var(--font-mono); font-size: .8rem; color: var(--accent); }
-  .process__step h3{ font-size: 1.08rem; margin-top: 14px; }
-  .process__step p{ margin-top: 8px; font-size: .88rem; color: var(--ink-dim); }
-
-  /* Founder */
-  .founder{ display: grid; grid-template-columns: 220px 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
-  .monogram{ position: relative; width: 100%; aspect-ratio: 1/1; margin-inline: auto; }
-  .monogram svg{ width: 100%; height: 100%; }
-  .founder__copy h3{ font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
-  .founder__copy p{ margin-top: 16px; color: var(--ink-dim); max-width: 62ch; }
-  .founder__meta{ display:flex; gap: 22px; margin-top: 22px; flex-wrap: wrap; }
-  .founder__meta div{ font-family: var(--font-mono); font-size: .74rem; color: var(--ink-faint); }
-  .founder__meta b{ display:block; color: var(--ink); font-family: var(--font-body); font-size: .92rem; margin-bottom:3px; }
-
-  /* Work */
-  .work{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  .work__card{ overflow: hidden; display: flex; flex-direction: column; }
-  .work__art{ height: 168px; position: relative; overflow: hidden; }
-  .work__art svg{ width: 100%; height: 100%; }
-  .work__body{ padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .work__status{ font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px; width: fit-content; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-dim); }
-  .work__status.live{ color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
-  .work__body h3{ font-size: 1.15rem; }
-  .work__body p{ color: var(--ink-dim); font-size: .9rem; flex: 1; }
-  .work__foot{ display:flex; justify-content: space-between; align-items:center; margin-top: 6px; }
-  .work__link{ font-size: .82rem; font-weight:700; text-decoration:none; color: var(--accent); display:inline-flex; align-items:center; gap:6px; }
-  .work__link svg{ width:12px; height:12px; }
-
-  /* Contact */
-  .contact{ display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px,5vw,56px); align-items: center; }
-  .contact h2{ font-size: clamp(1.9rem, 4vw, 3rem); max-width: 14ch; }
-  .contact p{ margin-top: 16px; color: var(--ink-dim); max-width: 46ch; }
-  .contact__box{ padding: 28px; display: grid; gap: 18px; }
-  .contact__row{ display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-  .contact__row span{ font-family: var(--font-mono); font-size: .84rem; color: var(--ink); word-break: break-all; }
-  .copy-btn{ background: var(--bg-1); border: 1px solid var(--line-strong); color: var(--ink-dim); border-radius: 8px; padding: 7px 12px; font-size: .74rem; cursor: pointer; font-family: var(--font-body); font-weight: 600; flex-shrink:0; transition: color .2s ease, border-color .2s ease; }
-  .copy-btn:hover{ color: var(--accent); border-color: var(--accent); }
-  .copy-btn.copied{ color: var(--accent); }
-
-  footer{ border-top: 1px solid var(--line); padding-block: 34px; }
-  .foot__row{ display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .foot__row p{ font-family: var(--font-mono); font-size: .72rem; color: var(--ink-faint); letter-spacing: .04em; }
-
-  /* WhatsApp floating action button */
-  .fab-wa{
-    position: fixed;
-    right: max(20px, env(safe-area-inset-right, 0px) + 16px);
-    bottom: max(20px, env(safe-area-inset-bottom, 0px) + 16px);
-    z-index: 60;
-    width: 56px; height: 56px;
-    border-radius: 999px;
-    background: var(--accent-2);
-    color: var(--btn-primary-ink);
-    display: grid; place-items: center;
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
-  }
-  .fab-wa:hover{ transform: translateY(-3px) scale(1.05); box-shadow: 0 16px 34px -12px rgba(231,182,92,.55); }
-  .fab-wa svg{ width: 26px; height: 26px; }
-
-  [data-reveal]{ will-change: transform, opacity; }
-
-  @media (max-width: 880px){
-    .hero__grid{ grid-template-columns: 1fr; }
-    .constellation{ max-width: 320px; margin-top: 10px; }
-    nav.links{ display: none; }
-    .menu-btn{ display: grid; }
-    .mobile-menu:not([hidden]){
-      display: block;
-      border-top: 1px solid var(--line);
-      background: var(--panel);
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .mobile-menu nav{ display: flex; flex-direction: column; }
-    .mobile-menu nav a{
-      padding: 16px max(20px, env(safe-area-inset-left, 0px) + 20px);
-      font-size: 1rem;
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--void-0);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    ::selection {
+      background: var(--accent-orange);
+      color: #FFFFFF;
+    }
+
+    /* Ambient Cursor Glow Follower */
+    .cursor-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(circle, rgba(255, 112, 41, 0.09) 0%, rgba(139, 92, 246, 0.06) 45%, transparent 70%);
+      transform: translate(-50%, -50%);
+      filter: blur(40px);
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+    @media (pointer: fine) {
+      .cursor-glow { opacity: 1; }
+    }
+
+    /* Subtle Star Dust Background Canvas */
+    #ambientCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    /* Ambient Light Flare Elements (Destellos) */
+    .light-flare {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+      opacity: 0.35;
+      animation: flarePulse 7s infinite ease-in-out alternate;
+    }
+    .light-flare--orange {
+      background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
+    }
+    .light-flare--violet {
+      background: radial-gradient(circle, var(--accent-violet) 0%, transparent 70%);
+    }
+    @keyframes flarePulse {
+      0% { transform: scale(0.9) translate3d(0,0,0); opacity: 0.25; }
+      100% { transform: scale(1.15) translate3d(15px, -15px, 0); opacity: 0.45; }
+    }
+
+    /* Shimmering Star Sparkle */
+    .sparkle-icon {
+      display: inline-block;
+      animation: sparkleAnim 3s infinite ease-in-out;
+    }
+    @keyframes sparkleAnim {
+      0%, 100% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
+      50% { transform: scale(1.2) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 8px var(--accent-orange)); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin-inline: auto;
+      padding-inline: clamp(16px, 4vw, 36px);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHY & UTILITIES
+       ========================================================================== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-sans);
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 20%, #CBD5E1 65%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    [data-theme="light"] .gradient-text {
+      background: linear-gradient(135deg, #0F172A 20%, #334155 70%, #475569 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glow-orange {
+      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-amber) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .glow-violet {
+      background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-indigo) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Typewriter Cursor */
+    .typewriter-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: var(--accent-orange);
+      margin-left: 4px;
+      vertical-align: -0.1em;
+      animation: blinkCursor 0.9s infinite;
+      box-shadow: 0 0 12px var(--accent-orange);
+    }
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-secondary);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pill-badge:hover {
+      border-color: var(--border-hover);
+      color: var(--ink-primary);
+      transform: translateY(-2px);
+    }
+    .pill-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      box-shadow: 0 0 12px var(--accent-orange);
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 14px 28px;
+      border-radius: 999px;
       text-decoration: none;
-      color: var(--ink);
-      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      touch-action: manipulation;
     }
-    .mobile-menu__cta{ padding: 16px max(20px, env(safe-area-inset-left, 0px) + 20px) 20px; }
-    .mobile-menu__cta .btn{ width: 100%; justify-content: center; }
-    .proof{ grid-template-columns: 1fr; }
-    .proof__chrome{ border-left: none; border-top: 1px solid var(--line); }
-    .process{ grid-template-columns: 1fr 1fr; }
-    .founder{ grid-template-columns: 1fr; text-align: center; }
-    .founder__copy p{ margin-inline: auto; }
-    .founder__meta{ justify-content: center; text-align: left; }
-    .monogram{ max-width: 160px; }
-    .work{ grid-template-columns: 1fr; }
-    .contact{ grid-template-columns: 1fr; }
-    .svc__row{ grid-template-columns: 1fr; gap: 10px; }
-  }
-  @media (max-width: 560px){
-    .nav__actions .btn--sm{ display: none; }
-  }
-  @media (max-width: 520px){
-    .process{ grid-template-columns: 1fr; }
-    .constellation{ max-width: 240px; }
-    .fab-wa{ width: 52px; height: 52px; }
-    .fab-wa svg{ width: 23px; height: 23px; }
-  }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--accent-orange) 0%, #EA580C 100%);
+      color: #FFFFFF;
+      box-shadow: 0 8px 24px -6px rgba(255, 112, 41, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .btn--primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 36px -6px rgba(255, 112, 41, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    .btn--glass {
+      background: var(--surface-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-color: var(--border-subtle);
+      color: var(--ink-primary);
+      box-shadow: var(--glass-highlight);
+    }
+    .btn--glass:hover {
+      background: var(--surface-glass-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-3px) scale(1.02);
+    }
+    .btn--sm {
+      padding: 9px 20px;
+      font-size: 0.84rem;
+    }
 
-  @media (prefers-reduced-motion: reduce){
-    .hero__field{ animation: none; }
-    *{ scroll-behavior: auto !important; }
-  }
-</style>
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      background: color-mix(in srgb, var(--void-0) 75%, transparent);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 20px;
+    }
 
-<header>
-  <div class="wrap nav">
-    <a href="#top" class="brand">
-      <span class="brand__mark">CHV <span>SYSTEMS</span></span>
-      <span class="brand__line">WEB DESIGN &amp; DEVELOPMENT</span>
-    </a>
-    <nav class="links">
-      <a href="#servicios" data-i18n="nav.services">Servicios</a>
-      <a href="#proceso" data-i18n="nav.process">Proceso</a>
-      <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
-      <a href="#fundador" data-i18n="nav.founder">Fundador</a>
-    </nav>
-    <div class="nav__actions">
-      <button class="theme-btn" id="themeToggle" type="button" aria-label="Cambiar a modo claro o oscuro">
-        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
-        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
-      </button>
-      <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language / Cambiar idioma">EN</button>
-      <a href="#contacto" class="btn btn--primary btn--sm" data-i18n="nav.cta">Iniciar proyecto</a>
-      <button class="menu-btn" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
-        <svg class="i-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
-    </div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu" hidden>
-    <nav>
-      <a href="#servicios" data-i18n="nav.services">Servicios</a>
-      <a href="#proceso" data-i18n="nav.process">Proceso</a>
-      <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
-      <a href="#fundador" data-i18n="nav.founder">Fundador</a>
-    </nav>
-    <div class="mobile-menu__cta">
-      <a href="#contacto" class="btn btn--primary" data-i18n="nav.cta">Iniciar proyecto</a>
-    </div>
-  </div>
-</header>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink-primary);
+    }
+    .brand__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-violet));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 20px rgba(255, 112, 41, 0.4);
+      position: relative;
+    }
+    .brand__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: #FFFFFF;
+    }
+    .brand__text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand__name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .brand__name span {
+      color: var(--accent-orange);
+    }
+    .brand__sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
 
-<main id="top">
-  <section class="hero">
-    <div class="hero__field"></div>
-    <div class="hero__spot" id="heroSpot"></div>
-    <div class="wrap hero__grid">
-      <div>
-        <h1 data-i18n-html="hero.h1">Construimos los <em>sistemas</em> con los que tu negocio funciona.</h1>
-        <p class="lede" data-i18n="hero.lede">CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.</p>
-        <div class="hero__ctas">
-          <a href="#contacto" class="btn btn--primary" data-i18n="hero.cta1">Iniciar un proyecto</a>
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-secondary);
+      font-size: 0.88rem;
+      font-weight: 500;
+      position: relative;
+      padding-block: 4px;
+      transition: color 0.25s ease;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent-orange);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateX(-50%);
+      border-radius: 999px;
+    }
+    .nav-links a:hover {
+      color: var(--ink-primary);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-glass);
+      color: var(--ink-secondary);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+      touch-action: manipulation;
+    }
+    .icon-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--ink-primary);
+      transform: translateY(-2px);
+    }
+    .icon-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .i-sun { display: none; }
+    [data-theme="light"] .i-sun { display: block; }
+    [data-theme="light"] .i-moon { display: none; }
+
+    .lang-btn {
+      height: 38px;
+      padding-inline: 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-glass);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      touch-action: manipulation;
+    }
+    .lang-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--ink-primary);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    /* Mobile Nav Drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      width: 100%;
+      background: var(--void-1);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 24px;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99;
+      box-shadow: var(--shadow-ambient);
+    }
+    .mobile-drawer.open {
+      display: flex;
+    }
+    .mobile-drawer a {
+      color: var(--ink-primary);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding-block: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* ==========================================================================
+       HERO SECTION WITH CELESTIAL HORIZON ARC & LIGHT FLARES
+       ========================================================================== */
+    .hero {
+      position: relative;
+      padding-top: clamp(56px, 9vw, 110px);
+      padding-bottom: clamp(60px, 8vw, 100px);
+      overflow: hidden;
+      text-align: center;
+      isolation: isolate;
+    }
+
+    /* Cosmic Glow Arc */
+    .celestial-arc-wrap {
+      position: absolute;
+      top: 240px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1500px, 160vw);
+      height: 600px;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .celestial-arc {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      background: var(--horizon-glow);
+      filter: blur(14px);
+      animation: arcBreathe 8s ease-in-out infinite alternate;
+    }
+    @keyframes arcBreathe {
+      0% { transform: scale(1); opacity: 0.85; }
+      100% { transform: scale(1.03); opacity: 1; }
+    }
+    .celestial-rim {
+      position: absolute;
+      top: 0;
+      left: 5%;
+      width: 90%;
+      height: 3px;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      background: var(--horizon-border);
+      box-shadow: 0 -4px 30px rgba(255, 112, 41, 0.75), 0 -12px 60px rgba(139, 92, 246, 0.45);
+    }
+
+    .hero__content {
+      max-width: 960px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__badge {
+      margin-bottom: 22px;
+    }
+
+    .hero__title {
+      font-size: clamp(2.3rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      font-weight: 800;
+      margin-bottom: 22px;
+      letter-spacing: -0.035em;
+    }
+
+    .hero__typewriter {
+      min-height: 1.2em;
+      display: inline-block;
+    }
+
+    .hero__desc {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: var(--ink-secondary);
+      max-width: 680px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .hero__ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: clamp(44px, 6vw, 70px);
+    }
+
+    /* Floating Hero Interactive Console / Dashboard Preview */
+    .hero__showcase {
+      width: 100%;
+      max-width: 1060px;
+      margin-inline: auto;
+      position: relative;
+      perspective: 1200px;
+    }
+
+    .console-frame {
+      background: var(--surface-glass);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      box-shadow: var(--shadow-ambient), var(--glass-highlight), 0 0 50px -10px rgba(139, 92, 246, 0.25);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: box-shadow 0.5s ease;
+    }
+    .console-frame:hover {
+      box-shadow: var(--shadow-ambient), var(--glass-highlight), 0 0 70px -5px rgba(255, 112, 41, 0.4);
+    }
+
+    .console-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.28);
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .console-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .console-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #EF4444; }
+    .dot-yellow { background: #F59E0B; }
+    .dot-green { background: #10B981; }
+
+    .console-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    .console-tab {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+    .console-tab.active {
+      background: var(--surface-raised);
+      color: var(--ink-primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .console-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-emerald);
+    }
+
+    .console-body {
+      position: relative;
+      min-height: 420px;
+      background: var(--void-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .console-panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: scale(0.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .console-panel.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    /* Panel 1: Live SaaS UI Preview Image */
+    .preview-image-wrap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(105%) brightness(98%);
+      transition: transform 0.6s ease;
+    }
+    .console-frame:hover .preview-image-wrap img {
+      transform: scale(1.02);
+    }
+    .preview-overlay-hud {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(4, 6, 11, 0.9) 100%);
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hud-stat {
+      background: rgba(12, 18, 36, 0.85);
+      backdrop-filter: blur(16px);
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+    }
+    .hud-stat b {
+      color: var(--accent-orange);
+      font-size: 0.92rem;
+    }
+
+    /* Panel 2: Interactive Modules Matrix */
+    .matrix-panel {
+      width: 100%;
+      height: 100%;
+      padding: clamp(20px, 3.5vw, 36px);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      align-content: center;
+      background: radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15), transparent 60%), var(--void-1);
+    }
+    .matrix-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .matrix-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-4px);
+    }
+    .matrix-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255, 112, 41, 0.15);
+      color: var(--accent-orange);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+    }
+    .matrix-card h4 {
+      font-size: 0.96rem;
+      font-weight: 700;
+    }
+    .matrix-card p {
+      font-size: 0.8rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+    }
+
+    /* Panel 3: Code Console */
+    .code-panel {
+      width: 100%;
+      height: 100%;
+      padding: 24px 28px;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.65;
+      overflow-y: auto;
+      background: #060913;
+      color: #E2E8F0;
+    }
+    .code-panel .kw { color: #F43F5E; }
+    .code-panel .fn { color: #38BDF8; }
+    .code-panel .str { color: #34D399; }
+    .code-panel .cmt { color: #64748B; font-style: italic; }
+
+    /* Panel 4: Telemetry & Lighthouse */
+    .telemetry-panel {
+      width: 100%;
+      height: 100%;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+    .lighthouse-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 680px;
+    }
+    .gauge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .gauge-circle {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 4px solid var(--accent-emerald);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-mono);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.3);
+    }
+    .gauge-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-secondary);
+    }
+
+    /* Floating badges surrounding the hero showcase */
+    .floating-pill {
+      position: absolute;
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 10;
+      pointer-events: none;
+      animation: floatPill 6s infinite ease-in-out;
+    }
+    .floating-pill--1 {
+      top: -20px;
+      left: -15px;
+      animation-delay: 0s;
+    }
+    .floating-pill--2 {
+      bottom: -18px;
+      right: -15px;
+      animation-delay: 3s;
+    }
+    @keyframes floatPill {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ==========================================================================
+       TRUSTED TECH MARQUEE
+       ========================================================================== */
+    .marquee-section {
+      padding-block: 32px;
+      border-block: 1px solid var(--border-subtle);
+      background: color-mix(in srgb, var(--void-1) 50%, transparent);
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-section::before,
+    .marquee-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .marquee-section::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--void-0), transparent);
+    }
+    .marquee-section::after {
+      right: 0;
+      background: linear-gradient(-90deg, var(--void-0), transparent);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: scrollMarquee 32s linear infinite;
+    }
+    @keyframes scrollMarquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+    .marquee-item span {
+      color: var(--accent-orange);
+    }
+    .marquee-item:hover {
+      color: var(--ink-primary);
+    }
+
+    /* ==========================================================================
+       3D TILT CARDS & SPOTLIGHT EFFECT
+       ========================================================================== */
+    .tilt-card {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .tilt-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(400px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255, 112, 41, 0.16), transparent 70%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+    .tilt-card:hover::after {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE PROJECTS CAROUSEL (AS REQUESTED)
+       ========================================================================== */
+    .carousel-section {
+      padding-block: clamp(80px, 10vw, 120px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      margin-top: 36px;
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-glass);
+      backdrop-filter: blur(24px);
+      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      position: relative;
+    }
+
+    .slide-media {
+      position: relative;
+      height: 100%;
+      min-height: 400px;
+      background: var(--void-2);
+      overflow: hidden;
+    }
+    .slide-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .carousel-slide:hover .slide-media img {
+      transform: scale(1.03);
+    }
+
+    .slide-content {
+      padding: clamp(28px, 4.5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .slide-brand-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .slide-logo-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--void-1);
+      border: 1px solid var(--border-subtle);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+    .slide-logo-badge svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .slide-title-wrap h3 {
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      line-height: 1.15;
+    }
+    .slide-title-wrap .slide-sub {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-desc {
+      color: var(--ink-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .slide-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .slide-bullets li {
+      font-size: 0.88rem;
+      color: var(--ink-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .slide-bullets li::before {
+      content: "✦";
+      color: var(--accent-orange);
+      font-size: 0.8rem;
+    }
+
+    /* Carousel Controls Bar */
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      padding-inline: 8px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .carousel-nav-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-primary);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      touch-action: manipulation;
+    }
+    .carousel-nav-btn:hover {
+      border-color: var(--accent-orange);
+      background: var(--surface-glass-hover);
+      transform: translateY(-2px);
+    }
+    .carousel-nav-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--border-hover);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .carousel-dot.active {
+      width: 28px;
+      background: var(--accent-orange);
+      box-shadow: 0 0 12px var(--accent-orange);
+    }
+
+    .carousel-counter {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--ink-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       SKILLS & STACK MATRIX
+       ========================================================================== */
+    section {
+      padding-block: clamp(70px, 9vw, 120px);
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: clamp(40px, 5.5vw, 68px);
+      text-align: center;
+      max-width: 760px;
+      margin-inline: auto;
+    }
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-top: 14px;
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      color: var(--ink-secondary);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: clamp(24px, 3.5vw, 34px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+    }
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .skill-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-ambient), 0 0 32px -6px rgba(255, 112, 41, 0.3);
+    }
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-card__num {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-orange);
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .skill-card__num .tag-mini {
+      color: var(--ink-muted);
+      font-size: 0.72rem;
+      border: 1px solid var(--border-subtle);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+    .skill-card p {
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 5px 11px;
+      border-radius: 999px;
+      color: var(--ink-secondary);
+      transition: all 0.2s ease;
+    }
+    .skill-card:hover .skill-tag {
+      border-color: rgba(255, 255, 255, 0.18);
+      color: var(--ink-primary);
+    }
+
+    /* ==========================================================================
+       4-PHASE PROCESS (PROFICO AESTHETIC)
+       ========================================================================== */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      position: relative;
+    }
+    .process-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+    }
+    .process-card:hover {
+      border-color: var(--accent-orange);
+    }
+    .process-card__step {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .process-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+    .process-card p {
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       FOUNDER & STUDIO CREDENTIALS
+       ========================================================================== */
+    .founder-box {
+      background: var(--surface-glass);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 28px;
+      padding: clamp(30px, 5vw, 60px);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(30px, 5vw, 56px);
+      align-items: center;
+      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+      position: relative;
+      overflow: hidden;
+    }
+    .founder-box::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 112, 41, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .founder-avatar {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 1/1;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      margin-inline: auto;
+    }
+    .founder-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .founder-info h3 {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      margin-bottom: 6px;
+    }
+    .founder-role {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--accent-orange);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .founder-bio {
+      color: var(--ink-secondary);
+      font-size: 0.98rem;
+      line-height: 1.65;
+      margin-bottom: 26px;
+      max-width: 680px;
+    }
+
+    .founder-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 18px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stat-item b {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+    .stat-item span {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       CONTACT & INQUIRY SECTION
+       ========================================================================== */
+    .contact-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 28px;
+      padding: clamp(32px, 6vw, 64px);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(32px, 6vw, 64px);
+      align-items: center;
+      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+    }
+
+    .contact-left h2 {
+      font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+      margin-bottom: 18px;
+    }
+    .contact-left p {
+      color: var(--ink-secondary);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .tag-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .tag-option {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      touch-action: manipulation;
+    }
+    .tag-option.selected, .tag-option:hover {
+      background: rgba(255, 112, 41, 0.15);
+      border-color: var(--accent-orange);
+      color: var(--ink-primary);
+      transform: translateY(-2px);
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .direct-box {
+      background: var(--void-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: border-color 0.25s ease;
+    }
+    .direct-box:hover {
+      border-color: var(--border-hover);
+    }
+    .direct-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .direct-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+    .direct-val {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .copy-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-glass);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+    .copy-btn:hover {
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+    }
+    .copy-btn.copied {
+      background: var(--accent-orange);
+      color: #FFFFFF;
+      border-color: var(--accent-orange);
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       FOOTER & FAB
+       ========================================================================== */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-block: 36px;
+      background: var(--void-0);
+      position: relative;
+      z-index: 2;
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* Floating WhatsApp Button */
+    .fab-whatsapp {
+      position: fixed;
+      right: max(20px, env(safe-area-inset-right, 0px) + 16px);
+      bottom: max(20px, env(safe-area-inset-bottom, 0px) + 16px);
+      z-index: 90;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      touch-action: manipulation;
+    }
+    .fab-whatsapp:hover {
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 18px 40px rgba(37, 211, 102, 0.65);
+    }
+    .fab-whatsapp svg {
+      width: 27px;
+      height: 27px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       MOBILE RESPONSIVENESS & TOUCH OPTIMIZATION
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .carousel-slide {
+        grid-template-columns: 1fr;
+      }
+      .slide-media {
+        min-height: 260px;
+        max-height: 320px;
+      }
+      .process-timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .founder-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .founder-avatar {
+        max-width: 200px;
+      }
+      .founder-stats {
+        justify-content: center;
+      }
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-toggle {
+        display: grid;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+      }
+      .floating-pill {
+        display: none;
+      }
+      .lighthouse-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .console-body {
+        min-height: 380px;
+      }
+      .slide-content {
+        padding: 24px 20px;
+      }
+      .hero__desc {
+        font-size: 0.98rem;
+      }
+      .btn {
+        width: 100%;
+      }
+      .hero__ctas {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand__sub {
+        display: none;
+      }
+      .console-topbar {
+        padding: 10px 14px;
+      }
+      .console-tab {
+        padding: 5px 10px;
+        font-size: 0.68rem;
+      }
+      .direct-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .copy-btn {
+        align-self: flex-end;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Cursor Glow Effect -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Background Canvas for Ambient Micro-particles -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Ambient Light Flares (Destellos en esquinas estratégicas) -->
+  <div class="light-flare light-flare--orange" style="top: 15%; left: -100px;"></div>
+  <div class="light-flare light-flare--violet" style="top: 45%; right: -100px;"></div>
+  <div class="light-flare light-flare--orange" style="top: 75%; left: -50px;"></div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="container nav-bar">
+      <a href="#top" class="brand magnetic-el">
+        <div class="brand__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
-      </div>
-      <div class="constellation" aria-hidden="true">
-        <svg viewBox="0 0 400 400">
-          <defs>
-            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.85"/>
-              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.05"/>
-            </linearGradient>
-          </defs>
-          <g id="cstLines">
-            <path class="cst-line" d="M200,200 L200,70"/>
-            <path class="cst-line" d="M200,200 L330,140"/>
-            <path class="cst-line" d="M200,200 L340,270"/>
-            <path class="cst-line" d="M200,200 L200,335"/>
-            <path class="cst-line" d="M200,200 L60,265"/>
-            <path class="cst-line" d="M200,200 L65,130"/>
-          </g>
-          <g id="cstNodes">
-            <g class="cst-node core"><circle class="core" cx="200" cy="200" r="30"/><text x="200" y="204">CHV</text></g>
-            <g class="cst-node"><circle cx="200" cy="70" r="26"/><text x="200" y="74">WEB</text></g>
-            <g class="cst-node"><circle cx="330" cy="140" r="26"/><text x="330" y="144">CRM</text></g>
-            <g class="cst-node"><circle cx="340" cy="270" r="30"/><text x="340" y="270" data-i18n="node.billing1">FACTURA-</text><text x="340" y="280" data-i18n="node.billing2">CIÓN</text></g>
-            <g class="cst-node"><circle cx="200" cy="335" r="26"/><text x="200" y="339">KPIs</text></g>
-            <g class="cst-node"><circle cx="60" cy="265" r="30"/><text x="60" y="261" data-i18n="node.auto1">AUTOMATI-</text><text x="60" y="271" data-i18n="node.auto2">ZACIÓN</text></g>
-            <g class="cst-node"><circle cx="65" cy="130" r="26"/><text x="65" y="134" data-i18n="node.design">DISEÑO</text></g>
-          </g>
-        </svg>
+        <div class="brand__text">
+          <span class="brand__name">CHV <span>SYSTEMS</span></span>
+          <span class="brand__sub">Web Design &amp; Development</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#proyectos" data-i18n="nav.work">Proyectos</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Skills &amp; Stack</a></li>
+        <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
+        <li><a href="#fundador" data-i18n="nav.founder">Fundador</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn magnetic-el" id="themeToggle" type="button" aria-label="Cambiar tema">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+
+        <!-- Language Toggle -->
+        <button class="lang-btn magnetic-el" id="langToggle" type="button" aria-label="Switch Language">EN</button>
+
+        <a href="#contacto" class="btn btn--primary btn--sm magnetic-el" data-i18n="nav.cta">Iniciar Proyecto</a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
     </div>
-  </section>
 
-  <section id="servicios">
-    <div class="wrap">
-      <div class="section__head">
-        <h2 data-i18n="services.h2">Servicios</h2>
-        <p data-i18n="services.desc">Tres capas del mismo trabajo: lo que el visitante ve, lo que hace funcionar el negocio por dentro, y el sistema completo que los conecta.</p>
-      </div>
-      <div class="svc">
-        <div class="svc__row">
-          <div class="svc__tag" data-i18n="svc1.tag">[ DISEÑO ]</div>
-          <div class="svc__title" data-i18n="svc1.title">Diseño Web</div>
-          <div class="svc__desc" data-i18n="svc1.desc">Identidad visual, landing pages y sitios corporativos pensados para generar confianza y convertir visitas en clientes.</div>
-        </div>
-        <div class="svc__row">
-          <div class="svc__tag" data-i18n="svc2.tag">[ DESARROLLO ]</div>
-          <div class="svc__title" data-i18n="svc2.title">Desarrollo Web</div>
-          <div class="svc__desc" data-i18n="svc2.desc">Aplicaciones y paneles a la medida: del frontend a la base de datos, integraciones y despliegue en producción.</div>
-        </div>
-        <div class="svc__row">
-          <div class="svc__tag" data-i18n="svc3.tag">[ SISTEMAS ]</div>
-          <div class="svc__title" data-i18n="svc3.title">Sistemas Web</div>
-          <div class="svc__desc" data-i18n="svc3.desc">CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.</div>
-        </div>
-      </div>
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#proyectos" class="drawer-link" data-i18n="nav.work">Proyectos</a>
+      <a href="#skills" class="drawer-link" data-i18n="nav.skills">Skills &amp; Stack</a>
+      <a href="#proceso" class="drawer-link" data-i18n="nav.process">Proceso</a>
+      <a href="#fundador" class="drawer-link" data-i18n="nav.founder">Fundador</a>
+      <a href="#contacto" class="btn btn--primary" style="margin-top:10px" data-i18n="nav.cta">Iniciar Proyecto</a>
     </div>
-  </section>
+  </header>
 
-  <section id="prueba">
-    <div class="wrap">
-      <div class="panel proof" data-reveal>
-        <div class="proof__copy">
-          <h3 data-i18n="proof.h3">Gananova — estrategia, procesos y tecnología</h3>
-          <p data-i18n="proof.p">La empresa donde trabajo: una consultora costarricense de estrategia y procesos para pymes. Ahí desarrollé Gananova OS, un sistema de gestión empresarial avanzado con inteligencia artificial y automatizaciones.</p>
-          <ul class="proof__list">
-            <li data-i18n="proof.li1">CRM y seguimiento de clientes</li>
-            <li data-i18n="proof.li2">Facturación</li>
-            <li data-i18n="proof.li3">Métricas y KPIs en tiempo real</li>
-            <li data-i18n="proof.li4">Automatización y asistencia con IA</li>
-          </ul>
-          <a href="https://www.gananova.com" target="_blank" rel="noopener" class="proof__link">
-            <span data-i18n="proof.link">Visitar gananova.com</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+  <main id="top">
+    <!-- ==========================================================================
+         HERO SECTION WITH CELESTIAL HORIZON ARC & DYNAMIC TYPEWRITER
+         ========================================================================== -->
+    <section class="hero">
+      <!-- Celestial glowing horizon arc -->
+      <div class="celestial-arc-wrap" aria-hidden="true">
+        <div class="celestial-arc"></div>
+        <div class="celestial-rim"></div>
+      </div>
+
+      <div class="container hero__content">
+        <!-- Top Pill Badge -->
+        <div class="pill-badge hero__badge anim-hero">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">CHV Systems 2.5 · Estudio de Diseño Web &amp; Software</span>
+          <span class="sparkle-icon">✨</span>
+        </div>
+
+        <!-- Main Title with Dynamic Typewriter effect -->
+        <h1 class="hero__title anim-hero">
+          <span data-i18n="hero.title1">Diseño web que impresiona.</span><br>
+          <span class="hero__typewriter">
+            <span class="glow-orange" id="typewriterText">Sistemas Web</span><span class="typewriter-cursor"></span>
+          </span><br>
+          <span class="gradient-text" data-i18n="hero.title3">que hacen crecer tu negocio.</span>
+        </h1>
+
+        <!-- Subtitle Lede -->
+        <p class="hero__desc anim-hero" data-i18n="hero.desc">
+          Creamos experiencias digitales limpias, no tradicionales y de alto impacto. Desde interfaces de última generación hasta plataformas completas de gestión empresarial, CRM y automatización con IA.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero__ctas anim-hero">
+          <a href="#contacto" class="btn btn--primary magnetic-el" data-i18n="hero.ctaPrimary">
+            <span data-i18n="hero.ctaPrimaryText">Iniciar un Proyecto</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#proyectos" class="btn btn--glass magnetic-el" data-i18n="hero.ctaSecondary">
+            <span data-i18n="hero.ctaSecondaryText">Explorar Proyectos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
         </div>
-        <div class="proof__chrome">
-          <div class="chrome__bar">
-            <div class="chrome__dot"></div><div class="chrome__dot"></div><div class="chrome__dot"></div>
-            <div class="chrome__tabs">
-              <div class="chrome__tab active" data-i18n="chrome.tab1">Resumen</div>
-              <div class="chrome__tab">CRM</div>
-              <div class="chrome__tab" data-i18n="chrome.tab3">Facturación</div>
-              <div class="chrome__tab" data-i18n="chrome.tab4">IA</div>
+
+        <!-- Interactive Floating Console / Dashboard Showcase -->
+        <div class="hero__showcase anim-hero">
+          <!-- Floating Accent Pills -->
+          <div class="floating-pill floating-pill--1">
+            <span style="color:var(--accent-orange)">✦</span>
+            <span data-i18n="pill.uptime">99.9% Rendimiento &amp; Arquitectura Full-Stack</span>
+          </div>
+          <div class="floating-pill floating-pill--2">
+            <span style="color:var(--accent-violet)">⚡</span>
+            <span data-i18n="pill.ai">Gananova OS · Sistema en Producción con IA</span>
+          </div>
+
+          <div class="console-frame tilt-card">
+            <div class="console-topbar">
+              <div class="console-dots">
+                <span class="console-dot dot-red"></span>
+                <span class="console-dot dot-yellow"></span>
+                <span class="console-dot dot-green"></span>
+              </div>
+              <div class="console-tabs" id="consoleTabs">
+                <button class="console-tab active" data-tab="preview" data-i18n="tab.dashboard">Dashboard Preview</button>
+                <button class="console-tab" data-tab="matrix" data-i18n="tab.modules">Módulos del Sistema</button>
+                <button class="console-tab" data-tab="code" data-i18n="tab.code">Código Limpio</button>
+                <button class="console-tab" data-tab="telemetry" data-i18n="tab.telemetry">Métricas 100%</button>
+              </div>
+              <div class="console-status">
+                <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent-emerald);"></span>
+                <span data-i18n="status.online">SISTEMA ACTIVO</span>
+              </div>
+            </div>
+
+            <div class="console-body">
+              <!-- Panel 1: Live SaaS UI Preview Image -->
+              <div class="console-panel active" id="panel-preview">
+                <div class="preview-image-wrap">
+                  <img src="assets/dashboard-preview.jpg" alt="CHV Systems Business Operations Dashboard Preview">
+                  <div class="preview-overlay-hud">
+                    <div class="hud-stat">
+                      <span data-i18n="hud.kpi">Métricas en Tiempo Real:</span> <b>+495k Telemetría</b>
+                    </div>
+                    <div class="hud-stat">
+                      <span data-i18n="hud.arch">Arquitectura:</span> <b>Full-Stack Modular</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Panel 2: Interactive Modules Matrix -->
+              <div class="console-panel" id="panel-matrix">
+                <div class="matrix-panel">
+                  <div class="matrix-card">
+                    <div class="matrix-icon">⚡</div>
+                    <h4 data-i18n="mod1.title">CRM &amp; Seguimiento</h4>
+                    <p data-i18n="mod1.desc">Control integral de clientes, cotizaciones y estados de conversión en tiempo real.</p>
+                  </div>
+                  <div class="matrix-card">
+                    <div class="matrix-icon">🧾</div>
+                    <h4 data-i18n="mod2.title">Facturación Digital</h4>
+                    <p data-i18n="mod2.desc">Emisión automática, cálculo tributario y sincronización directa con Hacienda.</p>
+                  </div>
+                  <div class="matrix-card">
+                    <div class="matrix-icon">🤖</div>
+                    <h4 data-i18n="mod3.title">Automatización con IA</h4>
+                    <p data-i18n="mod3.desc">Asistentes inteligentes para clasificación de tickets y análisis de operaciones.</p>
+                  </div>
+                  <div class="matrix-card">
+                    <div class="matrix-icon">📊</div>
+                    <h4 data-i18n="mod4.title">KPIs &amp; Telemetría</h4>
+                    <p data-i18n="mod4.desc">Gráficos de rendimiento en vivo y reportes consolidados para toma de decisiones.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Panel 3: Clean Code View -->
+              <div class="console-panel" id="panel-code">
+                <div class="code-panel">
+                  <p><span class="cmt">// Arquitectura de CHV Systems: Frontend moderno + Backend seguro</span></p>
+                  <p><span class="kw">import</span> { <span class="fn">createSystemEngine</span> } <span class="kw">from</span> <span class="str">'@chv-systems/core'</span>;</p>
+                  <p><span class="kw">import</span> { <span class="fn">aiWorkflow</span> } <span class="kw">from</span> <span class="str">'@chv/automation'</span>;</p>
+                  <br>
+                  <p><span class="kw">export const</span> <span class="fn">GananovaOS</span> = <span class="fn">createSystemEngine</span>({</p>
+                  <p>&nbsp;&nbsp;client: <span class="str">'Gananova Consultoría'</span>,</p>
+                  <p>&nbsp;&nbsp;region: <span class="str">'Costa Rica &amp; LatAm'</span>,</p>
+                  <p>&nbsp;&nbsp;modules: [<span class="str">'crm'</span>, <span class="str">'invoicing_cr'</span>, <span class="str">'realtime_kpis'</span>],</p>
+                  <p>&nbsp;&nbsp;automation: <span class="fn">aiWorkflow</span>({ mode: <span class="str">'continuous'</span> }),</p>
+                  <p>&nbsp;&nbsp;performance: { lighthouse: <span class="str">'100/100'</span>, loadTime: <span class="str">'0.4s'</span> }</p>
+                  <p>});</p>
+                  <br>
+                  <p><span class="cmt">// Diseñado y programado por Jose Pablo Chaves Hidalgo</span></p>
+                </div>
+              </div>
+
+              <!-- Panel 4: Telemetry & Lighthouse -->
+              <div class="console-panel" id="panel-telemetry">
+                <div class="telemetry-panel">
+                  <div class="lighthouse-grid">
+                    <div class="gauge">
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <span class="gauge-label" data-i18n="gauge.perf">Performance</span>
+                    </div>
+                    <div class="gauge">
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <span class="gauge-label" data-i18n="gauge.a11y">Accessibility</span>
+                    </div>
+                    <div class="gauge">
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <span class="gauge-label" data-i18n="gauge.bp">Best Practices</span>
+                    </div>
+                    <div class="gauge">
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <span class="gauge-label" data-i18n="gauge.seo">SEO Audit</span>
+                    </div>
+                  </div>
+                  <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--ink-secondary);text-align:center;" data-i18n="gauge.desc">
+                    Arquitectura optimizada: 0 dependencias pesadas innecesarias · Carga instantánea · Código limpio
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="chrome__body">
-            <div class="chrome__bars">
-              <i style="height:38%"></i><i style="height:62%"></i><i style="height:48%"></i>
-              <i style="height:80%"></i><i style="height:55%"></i><i style="height:70%"></i>
-              <i style="height:90%"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       TRUSTED TECH MARQUEE
+       ========================================================================== -->
+    <div class="marquee-section">
+      <div class="marquee-track">
+        <div class="marquee-item"><span>✦</span> REACT &amp; NEXT.JS</div>
+        <div class="marquee-item"><span>✦</span> TYPESCRIPT</div>
+        <div class="marquee-item"><span>✦</span> GSAP MOTION DESIGN</div>
+        <div class="marquee-item"><span>✦</span> TAILWIND &amp; MODERN CSS</div>
+        <div class="marquee-item"><span>✦</span> UI/UX FIGMA SYSTEMS</div>
+        <div class="marquee-item"><span>✦</span> NODE.JS &amp; PYTHON</div>
+        <div class="marquee-item"><span>✦</span> POSTGRESQL &amp; SUPABASE</div>
+        <div class="marquee-item"><span>✦</span> AI AGENTS (OPENAI &amp; CLAUDE)</div>
+        <div class="marquee-item"><span>✦</span> REST &amp; GRAPHQL APIS</div>
+        <div class="marquee-item"><span>✦</span> CLOUD ARCHITECTURE</div>
+        <!-- Infinite Marquee duplicate -->
+        <div class="marquee-item"><span>✦</span> REACT &amp; NEXT.JS</div>
+        <div class="marquee-item"><span>✦</span> TYPESCRIPT</div>
+        <div class="marquee-item"><span>✦</span> GSAP MOTION DESIGN</div>
+        <div class="marquee-item"><span>✦</span> TAILWIND &amp; MODERN CSS</div>
+        <div class="marquee-item"><span>✦</span> UI/UX FIGMA SYSTEMS</div>
+        <div class="marquee-item"><span>✦</span> NODE.JS &amp; PYTHON</div>
+        <div class="marquee-item"><span>✦</span> POSTGRESQL &amp; SUPABASE</div>
+        <div class="marquee-item"><span>✦</span> AI AGENTS (OPENAI &amp; CLAUDE)</div>
+        <div class="marquee-item"><span>✦</span> REST &amp; GRAPHQL APIS</div>
+        <div class="marquee-item"><span>✦</span> CLOUD ARCHITECTURE</div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+       INTERACTIVE PROJECTS CAROUSEL (AS EXPLICITLY REQUESTED BY USER)
+       ========================================================================== -->
+    <section id="proyectos" class="carousel-section">
+      <div class="container">
+        <div class="section-header reveal-title">
+          <div class="pill-badge" data-i18n="work.badge">[ CARRUSEL DE PROYECTOS ]</div>
+          <h2 data-i18n="work.h2">Sistemas &amp; Diseños en Producción</h2>
+          <p data-i18n="work.desc">Explora el portafolio interactivo: desde plataformas empresariales avanzadas con IA hasta portales corporativos de alto impacto.</p>
+        </div>
+
+        <div class="carousel-container">
+          <div class="carousel-viewport" id="carouselViewport">
+            <div class="carousel-track" id="carouselTrack">
+
+              <!-- SLIDE 1: GANANOVA OS -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <img src="assets/dashboard-preview.jpg" alt="Gananova OS Business Platform">
+                </div>
+                <div class="slide-content">
+                  <div class="slide-brand-header">
+                    <div class="slide-logo-badge">
+                      <!-- Custom Vector Logo: Gananova OS -->
+                      <svg viewBox="0 0 32 32" fill="none"><path d="M16 2L4 9v14l12 7 12-7V9L16 2z" stroke="var(--accent-orange)" stroke-width="2.2"/><circle cx="16" cy="16" r="5" fill="var(--accent-violet)"/><path d="M16 7v4M16 21v4M8 12l3.5 2M20.5 18l3.5 2M8 20l3.5-2M20.5 14l3.5-2" stroke="var(--accent-orange)" stroke-width="1.6"/></svg>
+                    </div>
+                    <div class="slide-title-wrap">
+                      <span class="slide-sub">Enterprise SaaS · Live</span>
+                      <h3>Gananova OS 2.0</h3>
+                    </div>
+                  </div>
+                  <p class="slide-desc" data-i18n="c1.desc">
+                    Plataforma integral de gestión empresarial con inteligencia artificial y automatización desarrollada para la consultora costarricense Gananova. Centraliza CRM, facturación electrónica y métricas en tiempo real.
+                  </p>
+                  <ul class="slide-bullets">
+                    <li data-i18n="w1.b1">CRM y pipeline de clientes centralizado</li>
+                    <li data-i18n="w1.b2">Facturación electrónica y seguimiento fiscal</li>
+                    <li data-i18n="w1.b3">Telemetría y KPIs financieros en tiempo real</li>
+                    <li data-i18n="w1.b4">Automatización de flujos y asistencia con IA</li>
+                  </ul>
+                  <div style="margin-top:12px;">
+                    <a href="https://www.gananova.com" target="_blank" rel="noopener" class="btn btn--primary btn--sm" data-i18n="w1.link">
+                      Visitar gananova.com →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SLIDE 2: GANANOVA CONSULTORÍA -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <img src="assets/sculpture-loop.jpg" alt="Gananova Strategy Consultancy">
+                </div>
+                <div class="slide-content">
+                  <div class="slide-brand-header">
+                    <div class="slide-logo-badge">
+                      <!-- Custom Vector Logo: Gananova Corporate -->
+                      <svg viewBox="0 0 32 32" fill="none"><path d="M6 24V14l10-8 10 8v10H6z" stroke="var(--accent-violet)" stroke-width="2.2"/><path d="M12 24v-6h8v6" fill="var(--accent-orange)"/><circle cx="16" cy="11" r="2.5" fill="#FFFFFF"/></svg>
+                    </div>
+                    <div class="slide-title-wrap">
+                      <span class="slide-sub">Workplace &amp; Consulting</span>
+                      <h3>Gananova Consultoría</h3>
+                    </div>
+                  </div>
+                  <p class="slide-desc" data-i18n="c2.desc">
+                    Firma costarricense de estrategia, procesos y tecnología para pymes. Donde trabajo actualmente como desarrollador y líder de arquitectura técnica para soluciones empresariales.
+                  </p>
+                  <ul class="slide-bullets">
+                    <li>Estrategia de negocios &amp; optimización de flujos</li>
+                    <li>Digitalización integral de operaciones para pymes</li>
+                    <li>Innovación aplicada e integración de software</li>
+                  </ul>
+                  <div style="margin-top:12px;">
+                    <a href="https://www.gananova.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w1.link">
+                      Conocer Gananova →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SLIDE 3: ADEFIP -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <img src="assets/glass-prism.jpg" alt="ADEFIP Youth Academy Experience">
+                </div>
+                <div class="slide-content">
+                  <div class="slide-brand-header">
+                    <div class="slide-logo-badge">
+                      <!-- Custom Vector Logo: ADEFIP Shield -->
+                      <svg viewBox="0 0 32 32" fill="none"><path d="M16 3L6 7v9c0 6.5 4.3 12.6 10 14 5.7-1.4 10-7.5 10-14V7L16 3z" stroke="var(--accent-orange)" stroke-width="2.2"/><path d="M16 8l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7L16 8z" fill="var(--accent-amber)"/></svg>
+                    </div>
+                    <div class="slide-title-wrap">
+                      <span class="slide-sub">Sports Academy · En Desarrollo</span>
+                      <h3>ADEFIP</h3>
+                    </div>
+                  </div>
+                  <p class="slide-desc" data-i18n="w2.desc">
+                    Academia deportiva y formativa de fútbol juvenil. Proyecto en colaboración con Gananova liderado por mí: desarrollo de plataforma web, registro de atletas y portal de comunidad.
+                  </p>
+                  <ul class="slide-bullets">
+                    <li>Identidad visual moderna para atletas y padres</li>
+                    <li>Registro dinámico y panel de seguimiento deportivo</li>
+                    <li>Portal interactivo con carga instantánea y diseño limpio</li>
+                  </ul>
+                  <div style="margin-top:12px;">
+                    <a href="https://www.adefip.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w2.link">
+                      Explorar adefip.com →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SLIDE 4: PURA VIDA PAINTING LLC -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <img src="assets/sculpture-loop.jpg" alt="Pura Vida Painting LLC USA">
+                </div>
+                <div class="slide-content">
+                  <div class="slide-brand-header">
+                    <div class="slide-logo-badge">
+                      <!-- Custom Vector Logo: Pura Vida Painting -->
+                      <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="var(--accent-cyan)" stroke-width="2.2"/><path d="M10 20c3-5 9-5 12 0" stroke="var(--accent-orange)" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="11" r="3.5" fill="var(--accent-amber)"/></svg>
+                    </div>
+                    <div class="slide-title-wrap">
+                      <span class="slide-sub">USA Client · Entregado</span>
+                      <h3>Pura Vida Painting LLC</h3>
+                    </div>
+                  </div>
+                  <p class="slide-desc" data-i18n="w3.desc">
+                    Cliente real en Estados Unidos: empresa de pintura residencial y lavado a presión. Diseño web enfocado en credibilidad, conversión directa y captación de clientes de alto valor.
+                  </p>
+                  <ul class="slide-bullets">
+                    <li>Optimización para captación de leads en mercado estadounidense</li>
+                    <li>Cotizador interactivo rápido con feedback instantáneo</li>
+                    <li>100% Mobile-first para clientes residenciales en ruta</li>
+                  </ul>
+                  <div style="margin-top:12px;">
+                    <a href="https://www.puravidapaintingllc.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w3.link">
+                      Ver puravidapaintingllc.com →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div class="chrome__kpi"><span data-i18n="chrome.status">ESTADO DEL SISTEMA</span><b style="color:var(--accent)" data-i18n="chrome.online">● En línea</b></div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-controls">
+            <div style="display:flex;gap:10px;">
+              <button class="carousel-nav-btn" id="prevSlide" aria-label="Slide anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <button class="carousel-nav-btn" id="nextSlide" aria-label="Siguiente slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+
+            <div class="carousel-indicators" id="carouselIndicators">
+              <span class="carousel-dot active" data-index="0"></span>
+              <span class="carousel-dot" data-index="1"></span>
+              <span class="carousel-dot" data-index="2"></span>
+              <span class="carousel-dot" data-index="3"></span>
+            </div>
+
+            <div class="carousel-counter" id="carouselCounter">
+              01 / 04
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="proceso">
-    <div class="wrap">
-      <div class="section__head">
-        <h2 data-i18n="process.h2">Cómo trabajamos</h2>
-        <p data-i18n="process.desc">Cuatro fases, en orden. Cada una depende de que la anterior quede bien hecha.</p>
-      </div>
-      <div class="process">
-        <div class="process__step">
-          <div class="process__num">01</div>
-          <h3 data-i18n="step1.title">Diagnóstico</h3>
-          <p data-i18n="step1.desc">Entiendo tu negocio, tus clientes y qué necesita el sistema para ser útil desde el primer día.</p>
+    <!-- ==========================================================================
+       SKILLS & CAPABILITIES
+       ========================================================================== -->
+    <section id="skills" style="background: color-mix(in srgb, var(--void-1) 35%, transparent);">
+      <div class="container">
+        <div class="section-header reveal-title">
+          <div class="pill-badge" data-i18n="skills.badge">[ CAPACIDADES &amp; STACK ]</div>
+          <h2 data-i18n="skills.h2">Lo que hago: Diseño &amp; Código de Alto Nivel</h2>
+          <p data-i18n="skills.desc">Sin plantillas genéricas. Integramos estética minimalista con ingeniería de software rigurosa para crear productos que destacan en el mercado.</p>
         </div>
-        <div class="process__step">
-          <div class="process__num">02</div>
-          <h3 data-i18n="step2.title">Diseño</h3>
-          <p data-i18n="step2.desc">Construyo la identidad visual y la experiencia: cómo se ve, cómo se siente, cómo se usa.</p>
-        </div>
-        <div class="process__step">
-          <div class="process__num">03</div>
-          <h3 data-i18n="step3.title">Desarrollo</h3>
-          <p data-i18n="step3.desc">Programo el sistema real — interfaz, lógica, base de datos — y lo pruebo con datos reales.</p>
-        </div>
-        <div class="process__step">
-          <div class="process__num">04</div>
-          <h3 data-i18n="step4.title">Lanzamiento</h3>
-          <p data-i18n="step4.desc">Publico, mido resultados y sigo dando soporte mientras el sistema crece con el negocio.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="fundador">
-    <div class="wrap founder">
-      <div class="monogram" data-reveal>
-        <svg viewBox="0 0 240 240">
-          <defs>
-            <radialGradient id="monoGrad" cx="50%" cy="35%" r="70%">
-              <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.35"/>
-              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <circle cx="120" cy="120" r="118" fill="url(#monoGrad)"/>
-          <circle cx="120" cy="120" r="98" fill="none" stroke="var(--line-strong)" stroke-width="1"/>
-          <circle cx="120" cy="120" r="72" fill="none" stroke="var(--line)" stroke-width="1"/>
-          <text x="120" y="132" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="46" font-weight="700" fill="var(--ink)">JPCH</text>
-        </svg>
-      </div>
-      <div class="founder__copy" data-reveal>
-        <h3>Jose Pablo Chaves Hidalgo</h3>
-        <p data-i18n="founder.p">Estudiante de Ingeniería en Sistemas en Costa Rica y fundador de CHV Systems. Diseño y construyo software real para negocios reales: la misma persona que define la interfaz escribe el código que la sostiene, de principio a fin.</p>
-        <div class="founder__meta">
-          <div><b data-i18n="meta1.label">Formación</b><span data-i18n="meta1.value">Ingeniería en Sistemas, Costa Rica</span></div>
-          <div><b data-i18n="meta2.label">Enfoque</b><span data-i18n="meta2.value">Diseño + desarrollo full-stack</span></div>
-          <div><b data-i18n="meta3.label">Disponibilidad</b><span data-i18n="meta3.value">Proyectos locales e internacionales</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="trabajo">
-    <div class="wrap">
-      <div class="section__head">
-        <h2 data-i18n="work.h2">Algunos de mis proyectos</h2>
-        <p data-i18n="work.desc">Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.</p>
-      </div>
-      <div class="work">
-        <div class="panel work__card">
-          <div class="work__art" style="background: linear-gradient(160deg, var(--bg-2), var(--bg-1));">
-            <svg viewBox="0 0 300 168" preserveAspectRatio="none">
-              <rect width="300" height="168" fill="none"/>
-              <g stroke="var(--line-strong)" stroke-width="1">
-                <path d="M20 130 L60 90 L100 108 L140 60 L180 84 L220 40 L260 70" fill="none" stroke="var(--accent)" stroke-width="2"/>
-              </g>
-              <g fill="var(--ink-faint)" font-family="IBM Plex Mono" font-size="8">
-                <text x="20" y="150">Q1</text><text x="140" y="150">Q2</text><text x="250" y="150">Q3</text>
-              </g>
-            </svg>
+        <div class="skills-grid">
+          <!-- Pillar 1: UI/UX & Web Design -->
+          <div class="skill-card tilt-card skill-from-left">
+            <div class="skill-card__num">
+              <span>01</span>
+              <span class="tag-mini">AESTHETICS</span>
+            </div>
+            <h3 data-i18n="skill1.title">Diseño Web &amp; UI/UX</h3>
+            <p data-i18n="skill1.desc">Dirección de arte, sistemas de diseño coherentes, tipografía cuidada, micro-animaciones y layouts limpios que transmiten autoridad y aumentan conversiones.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Figma Design Systems</span>
+              <span class="skill-tag">Glassmorphism &amp; Dark UI</span>
+              <span class="skill-tag">Wireframing &amp; Prototipado</span>
+              <span class="skill-tag">Responsive 4K / Mobile</span>
+            </div>
           </div>
-          <div class="work__body">
-            <span class="work__status live" data-i18n="w1.status">● En producción</span>
-            <h3>Gananova</h3>
-            <p data-i18n="w1.desc">La empresa donde trabajo. Ahí desarrollé Gananova OS, un sistema de gestión empresarial con IA y automatizaciones para pymes.</p>
-            <div class="work__foot">
-              <a href="https://www.gananova.com" target="_blank" rel="noopener" class="work__link">gananova.com
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+
+          <!-- Pillar 2: Frontend Engineering -->
+          <div class="skill-card tilt-card skill-from-bottom">
+            <div class="skill-card__num">
+              <span>02</span>
+              <span class="tag-mini">FRONTEND</span>
+            </div>
+            <h3 data-i18n="skill2.title">Desarrollo Frontend Moderno</h3>
+            <p data-i18n="skill2.desc">Interfaces fluidas y reactivas con tecnologías punteras. Animaciones GSAP de 60fps, interactividad de siguiente generación y rendimiento ultra-rápido.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Next.js &amp; React 19</span>
+              <span class="skill-tag">TypeScript Estricto</span>
+              <span class="skill-tag">GSAP &amp; ScrollTrigger</span>
+              <span class="skill-tag">Web Vitals 100/100</span>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Web Systems & Backend -->
+          <div class="skill-card tilt-card skill-from-bottom">
+            <div class="skill-card__num">
+              <span>03</span>
+              <span class="tag-mini">SYSTEMS</span>
+            </div>
+            <h3 data-i18n="skill3.title">Sistemas Empresariales &amp; Backend</h3>
+            <p data-i18n="skill3.desc">Plataformas donde tu negocio opera a diario: CRM a medida, facturación electrónica, dashboards ejecutivos y control de inventarios seguros y escalables.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Node.js &amp; Python</span>
+              <span class="skill-tag">PostgreSQL / Supabase</span>
+              <span class="skill-tag">Facturación Electrónica</span>
+              <span class="skill-tag">APIs REST &amp; Auth</span>
+            </div>
+          </div>
+
+          <!-- Pillar 4: AI & Automation -->
+          <div class="skill-card tilt-card skill-from-right">
+            <div class="skill-card__num">
+              <span>04</span>
+              <span class="tag-mini">AUTOMATION</span>
+            </div>
+            <h3 data-i18n="skill4.title">Inteligencia Artificial &amp; Automatización</h3>
+            <p data-i18n="skill4.desc">Integración de modelos de lenguaje (OpenAI, Claude API) y flujos automáticos que eliminan tareas repetitivas y potencian la productividad de tu equipo.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Agentes con LLMs</span>
+              <span class="skill-tag">Workflows Autónomos</span>
+              <span class="skill-tag">Análisis de Datos</span>
+              <span class="skill-tag">Integraciones Webhook</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       PROCESS (PROFICO 01 - 04 MINIMALIST GLASS CARDS)
+       ========================================================================== -->
+    <section id="proceso">
+      <div class="container">
+        <div class="section-header reveal-title">
+          <div class="pill-badge" data-i18n="process.badge">[ METODOLOGÍA ]</div>
+          <h2 data-i18n="process.h2">Cómo Trabajamos: De la Idea al Sistema</h2>
+          <p data-i18n="process.desc">Un proceso ordenado y transparente donde cada fase construye sobre bases firmes.</p>
+        </div>
+
+        <div class="process-timeline">
+          <div class="process-card tilt-card process-anim-step">
+            <span class="process-card__step">01</span>
+            <h3 data-i18n="step1.title">Diagnóstico &amp; Estrategia</h3>
+            <p data-i18n="step1.desc">Analizo los cuellos de botella de tu negocio, tu audiencia y los requisitos técnicos exactos para garantizar retorno desde el primer día.</p>
+          </div>
+          <div class="process-card tilt-card process-anim-step">
+            <span class="process-card__step">02</span>
+            <h3 data-i18n="step2.title">Dirección de Arte &amp; UX</h3>
+            <p data-i18n="step2.desc">Defino la identidad visual, el sistema de componentes y los prototipos interactivos en Figma para validar la experiencia antes de programar.</p>
+          </div>
+          <div class="process-card tilt-card process-anim-step">
+            <span class="process-card__step">03</span>
+            <h3 data-i18n="step3.title">Ingeniería &amp; Código</h3>
+            <p data-i18n="step3.desc">Desarrollo full-stack con código limpio: frontend responsivo, backend robusto, base de datos optimizada y automatizaciones con IA.</p>
+          </div>
+          <div class="process-card tilt-card process-anim-step">
+            <span class="process-card__step">04</span>
+            <h3 data-i18n="step4.title">Despliegue &amp; Escalamiento</h3>
+            <p data-i18n="step4.desc">Puesta en producción con alta disponibilidad, auditoría de velocidad 100% y soporte continuo para que el sistema evolucione con tu empresa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       FOUNDER & STUDIO CREDENTIALS
+       ========================================================================== -->
+    <section id="fundador" style="background: color-mix(in srgb, var(--void-1) 25%, transparent);">
+      <div class="container">
+        <div class="founder-box tilt-card founder-anim">
+          <div class="founder-avatar">
+            <img src="assets/sculpture-loop.jpg" alt="CHV Systems Studio Philosophy">
+          </div>
+          <div class="founder-info">
+            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="founder.badge">[ INGENIERÍA &amp; DISEÑO ]</div>
+            <h3>Jose Pablo Chaves Hidalgo</h3>
+            <div class="founder-role" data-i18n="founder.role">Fundador de CHV Systems · Desarrollador en Gananova</div>
+            <p class="founder-bio" data-i18n="founder.bio">
+              Estudiante de Ingeniería en Sistemas en Costa Rica. Combino el rigor técnico de la ingeniería de software con la sensibilidad visual del diseño web contemporáneo. A diferencia de agencias tradicionales donde el diseñador y el programador están desconectados, yo diseño la interfaz y programo la arquitectura que hay detrás, garantizando una ejecución impecable de punta a punta.
+            </p>
+            <div class="founder-stats">
+              <div class="stat-item">
+                <b data-i18n="stat1.val">Ingeniería en Sistemas</b>
+                <span data-i18n="stat1.lbl">Formación Académica (CR)</span>
+              </div>
+              <div class="stat-item">
+                <b data-i18n="stat2.val">Gananova OS</b>
+                <span data-i18n="stat2.lbl">Creador del Sistema</span>
+              </div>
+              <div class="stat-item">
+                <b data-i18n="stat3.val">Full-Stack + AI</b>
+                <span data-i18n="stat3.lbl">Especialización Técnica</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       CONTACT & PROJECT INQUIRY
+       ========================================================================== -->
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-card tilt-card contact-anim">
+          <div class="contact-left">
+            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="contact.badge">[ CONVERSEMOS ]</div>
+            <h2 data-i18n="contact.h2">¿Listo para construir algo extraordinario?</h2>
+            <p data-i18n="contact.p">
+              Cuéntame sobre tu proyecto. Ya sea que necesites una web que destaque entre tu competencia o un sistema que automatice las operaciones de tu negocio, hablemos directamente.
+            </p>
+
+            <div class="tag-selector" id="projectTags">
+              <span class="tag-option selected" data-type="Sitio Web de Alto Impacto" data-i18n="tag.web">Diseño Web Moderno</span>
+              <span class="tag-option" data-type="Sistema Web &amp; CRM" data-i18n="tag.system">Sistema Empresarial / CRM</span>
+              <span class="tag-option" data-type="Facturación &amp; Automatización" data-i18n="tag.auto">Automatización con IA</span>
+              <span class="tag-option" data-type="Rediseño Completo" data-i18n="tag.redesign">Rediseño UI/UX</span>
+            </div>
+          </div>
+
+          <div class="contact-right">
+            <div class="direct-box">
+              <div class="direct-info">
+                <span class="direct-label" data-i18n="contact.emailLbl">Correo Electrónico Directo</span>
+                <span class="direct-val" id="emailVal">chavespablo640@gmail.com</span>
+              </div>
+              <button class="copy-btn" id="copyEmailBtn" type="button" data-i18n="contact.copy">Copiar</button>
+            </div>
+
+            <div class="direct-box">
+              <div class="direct-info">
+                <span class="direct-label" data-i18n="contact.phoneLbl">WhatsApp / Teléfono</span>
+                <span class="direct-val" id="phoneVal">+506 7080 6520</span>
+              </div>
+              <button class="copy-btn" id="copyPhoneBtn" type="button" data-i18n="contact.copy">Copiar</button>
+            </div>
+
+            <div class="cta-group">
+              <a id="mailToBtn" href="mailto:chavespablo640@gmail.com?subject=Consulta%20de%20Proyecto%20-%20CHV%20Systems" class="btn btn--primary magnetic-el" style="width:100%;" data-i18n="contact.sendMail">
+                <span data-i18n="contact.sendMailText">Enviar Correo Electrónico</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+              <a href="https://wa.me/50670806520?text=Hola%20Jose%20Pablo,%20quisiera%20conversar%20sobre%20un%20proyecto%20web" target="_blank" rel="noopener" class="btn btn--glass magnetic-el" style="width:100%;" data-i18n="contact.chatWa">
+                <span data-i18n="contact.chatWaText">Chatear por WhatsApp Directo</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/></svg>
               </a>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="panel work__card">
-          <div class="work__art" style="background: linear-gradient(160deg, var(--bg-2), var(--bg-1));">
-            <svg viewBox="0 0 300 168">
-              <rect x="16" y="16" width="268" height="136" rx="6" fill="none" stroke="var(--line-strong)"/>
-              <line x1="150" y1="16" x2="150" y2="152" stroke="var(--line-strong)"/>
-              <circle cx="150" cy="84" r="24" fill="none" stroke="var(--accent)" stroke-width="2"/>
-              <path d="M16 84 H284" stroke="var(--line)" stroke-dasharray="3 5"/>
-            </svg>
-          </div>
-          <div class="work__body">
-            <span class="work__status" data-i18n="w2.status">● En desarrollo</span>
-            <h3>ADEFIP</h3>
-            <p data-i18n="w2.desc">Proyecto de colaboración de Gananova, liderado por mí.</p>
-            <div class="work__foot">
-              <a href="https://www.adefip.com" target="_blank" rel="noopener" class="work__link">adefip.com
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel work__card">
-          <div class="work__art" style="background: linear-gradient(160deg, var(--bg-2), var(--bg-1));">
-            <svg viewBox="0 0 300 168">
-              <g stroke="var(--line-strong)" stroke-width="1" fill="none">
-                <path d="M40 150 L40 60 L110 30 L180 60 L180 150"/>
-                <path d="M40 90 H180"/>
-              </g>
-              <circle cx="230" cy="70" r="18" fill="none" stroke="var(--accent)" stroke-width="2"/>
-              <path d="M230 52 v-14 M230 88 v14 M212 70 h-14 M248 70 h14" stroke="var(--accent)" stroke-width="2"/>
-            </svg>
-          </div>
-          <div class="work__body">
-            <span class="work__status" data-i18n="w3.status">● Entregado</span>
-            <h3>Pura Vida Painting</h3>
-            <p data-i18n="w3.desc">Cliente real desde Estados Unidos: pintura y lavado a presión.</p>
-            <div class="work__foot">
-              <a href="https://www.puravidapaintingllc.com" target="_blank" rel="noopener" class="work__link">puravidapaintingllc.com
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-row">
+      <div class="footer-text">
+        WEB DESIGN &amp; DEVELOPMENT BY CHV SYSTEMS
+      </div>
+      <div class="footer-text">
+        © <span id="year">2026</span> Jose Pablo Chaves Hidalgo — Costa Rica
       </div>
     </div>
-  </section>
+  </footer>
 
-  <section id="contacto">
-    <div class="wrap contact">
-      <div>
-        <h2 data-i18n="contact.h2">¿Listo para construir tu sistema?</h2>
-        <p data-i18n="contact.p">Contame qué necesita tu negocio. Si tiene sentido, empezamos por un diagnóstico corto antes de proponer nada.</p>
-      </div>
-      <div class="panel contact__box" data-reveal>
-        <div class="contact__row">
-          <span id="emailText">chavespablo640@gmail.com</span>
-          <button class="copy-btn" id="copyEmail" type="button" data-i18n="contact.copy">Copiar</button>
-        </div>
-        <div class="contact__row">
-          <span id="phoneText">+506 7080 6520</span>
-          <button class="copy-btn" id="copyPhone" type="button" data-i18n="contact.copy">Copiar</button>
-        </div>
-        <a href="mailto:chavespablo640@gmail.com" class="btn btn--primary" style="justify-content:center" data-i18n="contact.sendEmail">Enviar correo</a>
-        <a href="#top" class="btn btn--ghost" style="justify-content:center" data-i18n="contact.backTop">Volver arriba</a>
-      </div>
-    </div>
-  </section>
-</main>
+  <!-- Floating WhatsApp Action -->
+  <a class="fab-whatsapp" href="https://wa.me/50670806520" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/></svg>
+  </a>
 
-<footer>
-  <div class="wrap foot__row">
-    <p>WEB DESIGN &amp; DEVELOPMENT BY CHV SYSTEMS</p>
-    <p>© <span id="year"></span> Jose Pablo Chaves Hidalgo — Costa Rica</p>
-  </div>
-</footer>
+  <!-- GSAP for Smooth Fluid Motion -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-<a class="fab-wa" id="fabWhatsapp" href="https://wa.me/50670806520" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/>
-  </svg>
-</a>
+  <script>
+    (function () {
+      // Set current copyright year
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-  (function(){
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ---------- Theme toggle, per-viewer convenience only ----------
-    var root = document.documentElement;
-    var themeToggle = document.getElementById('themeToggle');
-    function applyTheme(t){ root.setAttribute('data-theme', t); }
-    try{
-      var savedTheme = localStorage.getItem('chv-theme');
-      if(savedTheme){ applyTheme(savedTheme); }
-    }catch(e){}
-    themeToggle.addEventListener('click', function(){
-      var current = root.getAttribute('data-theme');
-      var isDark = current ? current === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var next = isDark ? 'light' : 'dark';
-      applyTheme(next);
-      try{ localStorage.setItem('chv-theme', next); }catch(e){}
-    });
-
-    // ---------- Language toggle (ES default, EN available) ----------
-    var DICT = {
-      es: {
-        'nav.services': 'Servicios', 'nav.process': 'Proceso', 'nav.work': 'Trabajo', 'nav.founder': 'Fundador',
-        'nav.cta': 'Iniciar proyecto',
-        'hero.h1': 'Construimos los <em>sistemas</em> con los que tu negocio funciona.',
-        'hero.lede': 'CHV Systems diseña la interfaz y programa lo que hay detrás: sitios web, paneles de gestión, facturación y automatización. No plantillas — software real, hecho a la medida de tu operación.',
-        'hero.cta1': 'Iniciar un proyecto',
-        'node.billing1': 'FACTURA-', 'node.billing2': 'CIÓN',
-        'node.auto1': 'AUTOMATI-', 'node.auto2': 'ZACIÓN',
-        'node.design': 'DISEÑO',
-        'services.h2': 'Servicios',
-        'services.desc': 'Tres capas del mismo trabajo: lo que el visitante ve, lo que hace funcionar el negocio por dentro, y el sistema completo que los conecta.',
-        'svc1.tag': '[ DISEÑO ]', 'svc1.title': 'Diseño Web',
-        'svc1.desc': 'Identidad visual, landing pages y sitios corporativos pensados para generar confianza y convertir visitas en clientes.',
-        'svc2.tag': '[ DESARROLLO ]', 'svc2.title': 'Desarrollo Web',
-        'svc2.desc': 'Aplicaciones y paneles a la medida: del frontend a la base de datos, integraciones y despliegue en producción.',
-        'svc3.tag': '[ SISTEMAS ]', 'svc3.title': 'Sistemas Web',
-        'svc3.desc': 'CRM, facturación, inventario y métricas: el software que tu negocio usa todos los días para operar y crecer.',
-        'proof.h3': 'Gananova — estrategia, procesos y tecnología',
-        'proof.p': 'La empresa donde trabajo: una consultora costarricense de estrategia y procesos para pymes. Ahí desarrollé Gananova OS, un sistema de gestión empresarial avanzado con inteligencia artificial y automatizaciones.',
-        'proof.li1': 'CRM y seguimiento de clientes', 'proof.li2': 'Facturación',
-        'proof.li3': 'Métricas y KPIs en tiempo real', 'proof.li4': 'Automatización y asistencia con IA',
-        'proof.link': 'Visitar gananova.com',
-        'chrome.tab1': 'Resumen', 'chrome.tab3': 'Facturación', 'chrome.tab4': 'IA',
-        'chrome.status': 'ESTADO DEL SISTEMA', 'chrome.online': '● En línea',
-        'process.h2': 'Cómo trabajamos',
-        'process.desc': 'Cuatro fases, en orden. Cada una depende de que la anterior quede bien hecha.',
-        'step1.title': 'Diagnóstico', 'step1.desc': 'Entiendo tu negocio, tus clientes y qué necesita el sistema para ser útil desde el primer día.',
-        'step2.title': 'Diseño', 'step2.desc': 'Construyo la identidad visual y la experiencia: cómo se ve, cómo se siente, cómo se usa.',
-        'step3.title': 'Desarrollo', 'step3.desc': 'Programo el sistema real — interfaz, lógica, base de datos — y lo pruebo con datos reales.',
-        'step4.title': 'Lanzamiento', 'step4.desc': 'Publico, mido resultados y sigo dando soporte mientras el sistema crece con el negocio.',
-        'founder.p': 'Estudiante de Ingeniería en Sistemas en Costa Rica y fundador de CHV Systems. Diseño y construyo software real para negocios reales: la misma persona que define la interfaz escribe el código que la sostiene, de principio a fin.',
-        'meta1.label': 'Formación', 'meta1.value': 'Ingeniería en Sistemas, Costa Rica',
-        'meta2.label': 'Enfoque', 'meta2.value': 'Diseño + desarrollo full-stack',
-        'meta3.label': 'Disponibilidad', 'meta3.value': 'Proyectos locales e internacionales',
-        'work.h2': 'Algunos de mis proyectos', 'work.desc': 'Proyectos reales, en distintas etapas. Sin clientes inventados ni cifras de relleno.',
-        'w1.status': '● En producción', 'w1.desc': 'La empresa donde trabajo. Ahí desarrollé Gananova OS, un sistema de gestión empresarial con IA y automatizaciones para pymes.',
-        'w2.status': '● En desarrollo', 'w2.desc': 'Proyecto de colaboración de Gananova, liderado por mí.',
-        'w3.status': '● Entregado', 'w3.desc': 'Cliente real desde Estados Unidos: pintura y lavado a presión.',
-        'contact.h2': '¿Listo para construir tu sistema?',
-        'contact.p': 'Contame qué necesita tu negocio. Si tiene sentido, empezamos por un diagnóstico corto antes de proponer nada.',
-        'contact.copy': 'Copiar', 'contact.copied': 'Copiado', 'contact.sendEmail': 'Enviar correo', 'contact.backTop': 'Volver arriba',
-        'theme.aria': 'Cambiar a modo claro o oscuro', 'menu.aria': 'Abrir menú', 'wa.aria': 'Escríbeme por WhatsApp',
-        'lang.label': 'EN', 'lang.aria': 'Cambiar idioma a inglés'
-      },
-      en: {
-        'nav.services': 'Services', 'nav.process': 'Process', 'nav.work': 'Work', 'nav.founder': 'Founder',
-        'nav.cta': 'Start a project',
-        'hero.h1': "We build the <em>systems</em> your business runs on.",
-        'hero.lede': "CHV Systems designs the interface and builds what's behind it: websites, management dashboards, invoicing and automation. No templates — real software, built around how your business actually runs.",
-        'hero.cta1': 'Start a project',
-        'node.billing1': 'BILLING', 'node.billing2': '',
-        'node.auto1': 'AUTOMATION', 'node.auto2': '',
-        'node.design': 'DESIGN',
-        'services.h2': 'Services',
-        'services.desc': 'Three layers of the same work: what the visitor sees, what runs the business behind the scenes, and the full system that connects them.',
-        'svc1.tag': '[ DESIGN ]', 'svc1.title': 'Web Design',
-        'svc1.desc': 'Visual identity, landing pages and corporate sites built to earn trust and turn visits into clients.',
-        'svc2.tag': '[ DEVELOPMENT ]', 'svc2.title': 'Web Development',
-        'svc2.desc': 'Custom applications and dashboards: from the frontend to the database, integrations and production deployment.',
-        'svc3.tag': '[ SYSTEMS ]', 'svc3.title': 'Web Systems',
-        'svc3.desc': "CRM, invoicing, inventory and metrics: the software your business runs on every day to operate and grow.",
-        'proof.h3': 'Gananova — strategy, process and technology',
-        'proof.p': 'The company where I work: a Costa Rican strategy and process consultancy for SMEs. I built Gananova OS there: an advanced business management system with AI and automation.',
-        'proof.li1': 'CRM and client tracking', 'proof.li2': 'Invoicing',
-        'proof.li3': 'Real-time metrics and KPIs', 'proof.li4': 'AI-assisted automation',
-        'proof.link': 'Visit gananova.com',
-        'chrome.tab1': 'Overview', 'chrome.tab3': 'Invoicing', 'chrome.tab4': 'AI',
-        'chrome.status': 'SYSTEM STATUS', 'chrome.online': '● Online',
-        'process.h2': 'How we work',
-        'process.desc': 'Four phases, in order. Each one depends on the last being done right.',
-        'step1.title': 'Diagnosis', 'step1.desc': "I learn your business, your clients, and what the system needs to be useful from day one.",
-        'step2.title': 'Design', 'step2.desc': "I build the visual identity and the experience: how it looks, how it feels, how it's used.",
-        'step3.title': 'Development', 'step3.desc': 'I build the real system — interface, logic, database — and test it with real data.',
-        'step4.title': 'Launch', 'step4.desc': 'I ship it, measure results, and keep supporting it as the system grows with the business.',
-        'founder.p': "Systems Engineering student in Costa Rica and founder of CHV Systems. I design and build real software for real businesses — the same person who defines the interface writes the code behind it, start to finish.",
-        'meta1.label': 'Education', 'meta1.value': 'Systems Engineering, Costa Rica',
-        'meta2.label': 'Focus', 'meta2.value': 'Design + full-stack development',
-        'meta3.label': 'Availability', 'meta3.value': 'Local and international projects',
-        'work.h2': 'Some of my projects', 'work.desc': 'Real projects, at different stages. No invented clients, no filler numbers.',
-        'w1.status': '● In production', 'w1.desc': "The company where I work. I built Gananova OS there: a business management system with AI and automation for SMEs.",
-        'w2.status': '● In development', 'w2.desc': 'A Gananova collaboration project, led by me.',
-        'w3.status': '● Delivered', 'w3.desc': 'Real client from the United States: painting and pressure washing.',
-        'contact.h2': 'Ready to build your system?',
-        'contact.p': "Tell me what your business needs. If it makes sense, we start with a short diagnosis before proposing anything.",
-        'contact.copy': 'Copy', 'contact.copied': 'Copied', 'contact.sendEmail': 'Send email', 'contact.backTop': 'Back to top',
-        'theme.aria': 'Switch between light and dark mode', 'menu.aria': 'Open menu', 'wa.aria': 'Message me on WhatsApp',
-        'lang.label': 'ES', 'lang.aria': 'Switch language to Spanish'
+      // ======================================================================
+      // THEME TOGGLE (DARK / LIGHT)
+      // ======================================================================
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        try { localStorage.setItem('chv-theme', t); } catch (e) {}
       }
-    };
+      try {
+        const savedTheme = localStorage.getItem('chv-theme');
+        if (savedTheme) applyTheme(savedTheme);
+      } catch (e) {}
 
-    var currentLang = 'es';
-    function t(key){ return (DICT[currentLang] && DICT[currentLang][key] !== undefined) ? DICT[currentLang][key] : DICT.es[key]; }
-
-    var langToggle = document.getElementById('langToggle');
-    var waFab = document.getElementById('fabWhatsapp');
-    var menuToggle = document.getElementById('menuToggle');
-
-    function applyLang(lang){
-      currentLang = (lang === 'en') ? 'en' : 'es';
-      root.lang = currentLang;
-
-      document.querySelectorAll('[data-i18n]').forEach(function(el){
-        el.textContent = t(el.getAttribute('data-i18n'));
-      });
-      document.querySelectorAll('[data-i18n-html]').forEach(function(el){
-        el.innerHTML = t(el.getAttribute('data-i18n-html'));
+      themeToggle.addEventListener('click', function () {
+        const current = root.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
       });
 
-      themeToggle.setAttribute('aria-label', t('theme.aria'));
-      menuToggle.setAttribute('aria-label', t('menu.aria'));
-      waFab.setAttribute('aria-label', t('wa.aria'));
-      langToggle.textContent = t('lang.label');
-      langToggle.setAttribute('aria-label', t('lang.aria'));
-    }
 
-    try{
-      var savedLang = localStorage.getItem('chv-lang');
-      if(savedLang){ currentLang = savedLang; }
-    }catch(e){}
-    applyLang(currentLang);
+      // ======================================================================
+      // BILINGUAL LOCALIZATION (ES / EN)
+      // ======================================================================
+      const DICT = {
+        es: {
+          'nav.work': 'Proyectos',
+          'nav.skills': 'Skills & Stack',
+          'nav.process': 'Proceso',
+          'nav.founder': 'Fundador',
+          'nav.cta': 'Iniciar Proyecto',
 
-    langToggle.addEventListener('click', function(){
-      var next = currentLang === 'es' ? 'en' : 'es';
-      applyLang(next);
-      try{ localStorage.setItem('chv-lang', next); }catch(e){}
-    });
+          'hero.badge': 'CHV Systems 2.5 · Estudio de Diseño Web & Software',
+          'hero.title1': 'Diseño web que impresiona.',
+          'hero.title3': 'que hacen crecer tu negocio.',
+          'hero.desc': 'Creamos experiencias digitales limpias, no tradicionales y de alto impacto. Desde interfaces de última generación hasta plataformas completas de gestión empresarial, CRM y automatización con IA.',
+          'hero.ctaPrimaryText': 'Iniciar un Proyecto',
+          'hero.ctaSecondaryText': 'Explorar Proyectos',
 
-    // ---------- Mobile menu ----------
-    var mobileMenu = document.getElementById('mobileMenu');
-    function closeMenu(){ mobileMenu.hidden = true; menuToggle.setAttribute('aria-expanded', 'false'); }
-    function openMenu(){ mobileMenu.hidden = false; menuToggle.setAttribute('aria-expanded', 'true'); }
-    menuToggle.addEventListener('click', function(){
-      var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      if(expanded){ closeMenu(); } else { openMenu(); }
-    });
-    mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+          'pill.uptime': '99.9% Rendimiento & Arquitectura Full-Stack',
+          'pill.ai': 'Gananova OS · Sistema en Producción con IA',
 
-    // ---------- Copy contact rows (email / phone) ----------
-    function wireCopy(btnId, textId){
-      var copyBtn = document.getElementById(btnId);
-      var textEl = document.getElementById(textId);
-      if(!copyBtn || !textEl) return;
-      copyBtn.addEventListener('click', function(){
-        function done(){
-          copyBtn.textContent = t('contact.copied');
-          copyBtn.classList.add('copied');
-          setTimeout(function(){ copyBtn.textContent = t('contact.copy'); copyBtn.classList.remove('copied'); }, 1800);
+          'tab.dashboard': 'Dashboard Preview',
+          'tab.modules': 'Módulos del Sistema',
+          'tab.code': 'Código Limpio',
+          'tab.telemetry': 'Métricas 100%',
+          'status.online': 'SISTEMA ACTIVO',
+
+          'hud.kpi': 'Métricas en Tiempo Real:',
+          'hud.arch': 'Arquitectura:',
+
+          'mod1.title': 'CRM & Seguimiento',
+          'mod1.desc': 'Control integral de clientes, cotizaciones y estados de conversión en tiempo real.',
+          'mod2.title': 'Facturación Digital',
+          'mod2.desc': 'Emisión automática, cálculo tributario y sincronización directa con Hacienda.',
+          'mod3.title': 'Automatización con IA',
+          'mod3.desc': 'Asistentes inteligentes para clasificación de tickets y análisis de operaciones.',
+          'mod4.title': 'KPIs & Telemetría',
+          'mod4.desc': 'Gráficos de rendimiento en vivo y reportes consolidados para toma de decisiones.',
+
+          'gauge.perf': 'Performance',
+          'gauge.a11y': 'Accessibility',
+          'gauge.bp': 'Best Practices',
+          'gauge.seo': 'SEO Audit',
+          'gauge.desc': 'Arquitectura optimizada: 0 dependencias pesadas innecesarias · Carga instantánea · Código limpio',
+
+          'work.badge': '[ CARRUSEL DE PROYECTOS ]',
+          'work.h2': 'Sistemas & Diseños en Producción',
+          'work.desc': 'Explora el portafolio interactivo: desde plataformas empresariales avanzadas con IA hasta portales corporativos de alto impacto.',
+
+          'c1.desc': 'Plataforma integral de gestión empresarial con inteligencia artificial y automatización desarrollada para la consultora costarricense Gananova. Centraliza CRM, facturación electrónica y métricas en tiempo real.',
+          'c2.desc': 'Firma costarricense de estrategia, procesos y tecnología para pymes. Donde trabajo actualmente como desarrollador y líder de arquitectura técnica para soluciones empresariales.',
+          'w1.b1': 'CRM y pipeline de clientes centralizado',
+          'w1.b2': 'Facturación electrónica y seguimiento fiscal',
+          'w1.b3': 'Telemetría y KPIs financieros en tiempo real',
+          'w1.b4': 'Automatización de flujos y asistencia con IA',
+          'w1.link': 'Visitar gananova.com →',
+
+          'w2.desc': 'Academia deportiva y formativa de fútbol juvenil. Proyecto en colaboración con Gananova liderado por mí: desarrollo de plataforma web, registro de atletas y portal de comunidad.',
+          'w2.link': 'Explorar adefip.com →',
+
+          'w3.desc': 'Cliente real en Estados Unidos: empresa de pintura residencial y lavado a presión. Diseño web enfocado en credibilidad, conversión directa y captación de clientes de alto valor.',
+          'w3.link': 'Ver puravidapaintingllc.com →',
+
+          'skills.badge': '[ CAPACIDADES & STACK ]',
+          'skills.h2': 'Lo que hago: Diseño & Código de Alto Nivel',
+          'skills.desc': 'Sin plantillas genéricas. Integramos estética minimalista con ingeniería de software rigurosa para crear productos que destacan en el mercado.',
+
+          'skill1.title': 'Diseño Web & UI/UX',
+          'skill1.desc': 'Dirección de arte, sistemas de diseño coherentes, tipografía cuidada, micro-animaciones y layouts limpios que transmiten autoridad y aumentan conversiones.',
+          'skill2.title': 'Desarrollo Frontend Moderno',
+          'skill2.desc': 'Interfaces fluidas y reactivas con tecnologías punteras. Animaciones GSAP de 60fps, interactividad de siguiente generación y rendimiento ultra-rápido.',
+          'skill3.title': 'Sistemas Empresariales & Backend',
+          'skill3.desc': 'Plataformas donde tu negocio opera a diario: CRM a medida, facturación electrónica, dashboards ejecutivos y control de inventarios seguros y escalables.',
+          'skill4.title': 'Inteligencia Artificial & Automatización',
+          'skill4.desc': 'Integración de modelos de lenguaje (OpenAI, Claude API) y flujos automáticos que eliminan tareas repetitivas y potencian la productividad de tu equipo.',
+
+          'process.badge': '[ METODOLOGÍA ]',
+          'process.h2': 'Cómo Trabajamos: De la Idea al Sistema',
+          'process.desc': 'Un proceso ordenado y transparente donde cada fase construye sobre bases firmes.',
+
+          'step1.title': 'Diagnóstico & Estrategia',
+          'step1.desc': 'Analizo los cuellos de botella de tu negocio, tu audiencia y los requisitos técnicos exactos para garantizar retorno desde el primer día.',
+          'step2.title': 'Dirección de Arte & UX',
+          'step2.desc': 'Defino la identidad visual, el sistema de componentes y los prototipos interactivos en Figma para validar la experiencia antes de programar.',
+          'step3.title': 'Ingeniería & Código',
+          'step3.desc': 'Desarrollo full-stack con código limpio: frontend responsivo, backend robusto, base de datos optimizada y automatizaciones con IA.',
+          'step4.title': 'Despliegue & Escalamiento',
+          'step4.desc': 'Puesta en producción con alta disponibilidad, auditoría de velocidad 100% y soporte continuo para que el sistema evolucione con tu empresa.',
+
+          'founder.badge': '[ INGENIERÍA & DISEÑO ]',
+          'founder.role': 'Fundador de CHV Systems · Desarrollador en Gananova',
+          'founder.bio': 'Estudiante de Ingeniería en Sistemas en Costa Rica. Combino el rigor técnico de la ingeniería de software con la sensibilidad visual del diseño web contemporáneo. A diferencia de agencias tradicionales donde el diseñador y el programador están desconectados, yo diseño la interfaz y programo la arquitectura que hay detrás, garantizando una ejecución impecable de punta a punta.',
+          'stat1.val': 'Ingeniería en Sistemas',
+          'stat1.lbl': 'Formación Académica (CR)',
+          'stat2.val': 'Gananova OS',
+          'stat2.lbl': 'Creador del Sistema',
+          'stat3.val': 'Full-Stack + AI',
+          'stat3.lbl': 'Especialización Técnica',
+
+          'contact.badge': '[ CONVERSEMOS ]',
+          'contact.h2': '¿Listo para construir algo extraordinario?',
+          'contact.p': 'Cuéntame sobre tu proyecto. Ya sea que necesites una web que destaque entre tu competencia o un sistema que automatice las operaciones de tu negocio, hablemos directamente.',
+          'tag.web': 'Diseño Web Moderno',
+          'tag.system': 'Sistema Empresarial / CRM',
+          'tag.auto': 'Automatización con IA',
+          'tag.redesign': 'Rediseño UI/UX',
+          'contact.emailLbl': 'Correo Electrónico Directo',
+          'contact.phoneLbl': 'WhatsApp / Teléfono',
+          'contact.copy': 'Copiar',
+          'contact.copied': '¡Copiado!',
+          'contact.sendMailText': 'Enviar Correo Electrónico',
+          'contact.chatWaText': 'Chatear por WhatsApp Directo'
+        },
+        en: {
+          'nav.work': 'Projects',
+          'nav.skills': 'Skills & Stack',
+          'nav.process': 'Process',
+          'nav.founder': 'Founder',
+          'nav.cta': 'Start a Project',
+
+          'hero.badge': 'CHV Systems 2.5 · Web Design & Software Studio',
+          'hero.title1': 'Web design that stands out.',
+          'hero.title3': 'that power your business growth.',
+          'hero.desc': 'We build clean, non-traditional, high-impact digital experiences. From award-worthy modern interfaces to bespoke business platforms, custom CRMs, and AI automation.',
+          'hero.ctaPrimaryText': 'Start a Project',
+          'hero.ctaSecondaryText': 'Explore Projects',
+
+          'pill.uptime': '99.9% Uptime & Full-Stack Architecture',
+          'pill.ai': 'Gananova OS · Live Production AI System',
+
+          'tab.dashboard': 'Dashboard Preview',
+          'tab.modules': 'System Modules',
+          'tab.code': 'Clean Code',
+          'tab.telemetry': '100% Metrics',
+          'status.online': 'SYSTEM ONLINE',
+
+          'hud.kpi': 'Real-Time Telemetry:',
+          'hud.arch': 'Architecture:',
+
+          'mod1.title': 'CRM & Tracking',
+          'mod1.desc': 'Comprehensive client pipeline, quote generator, and real-time conversion telemetry.',
+          'mod2.title': 'Digital Invoicing',
+          'mod2.desc': 'Automated billing, tax calculation, and seamless integration with authorities.',
+          'mod3.title': 'AI Automation',
+          'mod3.desc': 'Intelligent assistants for customer inquiry triage and operational workflow routing.',
+          'mod4.title': 'KPIs & Telemetry',
+          'mod4.desc': 'Live performance analytics and consolidated executive dashboards for decision-making.',
+
+          'gauge.perf': 'Performance',
+          'gauge.a11y': 'Accessibility',
+          'gauge.bp': 'Best Practices',
+          'gauge.seo': 'SEO Audit',
+          'gauge.desc': 'Optimized architecture: zero bloat · Instantaneous loading · Pure craftsmanship',
+
+          'work.badge': '[ PROJECT CAROUSEL ]',
+          'work.h2': 'Systems & Websites in Production',
+          'work.desc': 'Explore our interactive showcase: from advanced AI business platforms to high-impact corporate web portals.',
+
+          'c1.desc': 'Comprehensive enterprise business operating system with AI and automation built for Costa Rican consultancy Gananova. Centralizes CRM, electronic invoicing, and live telemetry.',
+          'c2.desc': 'Costa Rican strategy, process, and technology consulting firm for SMEs. Where I currently develop and lead technical architecture for enterprise software.',
+          'w1.b1': 'Centralized client pipeline & CRM',
+          'w1.b2': 'Electronic invoicing & tax compliance',
+          'w1.b3': 'Real-time financial telemetry & KPIs',
+          'w1.b4': 'Intelligent workflow automation with AI',
+          'w1.link': 'Visit gananova.com →',
+
+          'w2.desc': 'Youth athletic football academy. Collaboration project with Gananova led by me: modern web portal, athlete registration, and community experience.',
+          'w2.link': 'Explore adefip.com →',
+
+          'w3.desc': 'Real client in the United States: residential painting and pressure-washing company. Built for credibility, direct conversion, and high-ticket customer acquisition.',
+          'w3.link': 'View puravidapaintingllc.com →',
+
+          'skills.badge': '[ CAPABILITIES & STACK ]',
+          'skills.h2': 'What I Do: High-Craft Design & Engineering',
+          'skills.desc': 'No generic templates. We combine minimalist aesthetics with rigorous software engineering to build products that dominate their category.',
+
+          'skill1.title': 'Web Design & UI/UX',
+          'skill1.desc': 'Art direction, coherent design systems, curated typography, micro-interactions, and immaculate layouts that build trust and drive conversions.',
+          'skill2.title': 'Modern Frontend Engineering',
+          'skill2.desc': 'Silky-smooth, highly reactive frontends built with modern tech. 60fps GSAP motion, next-gen component architecture, and instant load times.',
+          'skill3.title': 'Web Systems & Backend',
+          'skill3.desc': 'The software your company runs on every day: tailored CRMs, digital invoicing, executive portals, and secure scalable databases.',
+          'skill4.title': 'AI & Workflow Automation',
+          'skill4.desc': 'Integration with state-of-the-art LLMs (OpenAI, Claude API) and event-driven automations that eliminate repetitive tasks.',
+
+          'process.badge': '[ METHODOLOGY ]',
+          'process.h2': 'How We Work: From Concept to System',
+          'process.desc': 'An orderly, transparent progression where every phase is built on solid ground.',
+
+          'step1.title': 'Diagnosis & Strategy',
+          'step1.desc': 'We identify business bottlenecks, target audience expectations, and exact technical scopes to guarantee ROI from launch.',
+          'step2.title': 'Art Direction & UX',
+          'step2.desc': 'I craft the visual language, design system, and interactive Figma prototypes to stress-test the experience prior to coding.',
+          'step3.title': 'Engineering & Code',
+          'step3.desc': 'Full-stack development with clean code: responsive frontend, secure backend services, optimized database schemas, and AI integrations.',
+          'step4.title': 'Launch & Evolution',
+          'step4.desc': 'Deployment on high-availability cloud infrastructure, 100% speed audit, and ongoing support as your business scales.',
+
+          'founder.badge': '[ ENGINEERING & DESIGN ]',
+          'founder.role': 'Founder of CHV Systems · Developer at Gananova',
+          'founder.bio': 'Systems Engineering student in Costa Rica. I combine the architectural precision of computer engineering with the visual finesse of contemporary web design. Unlike traditional agencies where designers and programmers work in silos, I design the interface and write the code behind it, ensuring uncompromising quality.',
+          'stat1.val': 'Systems Engineering',
+          'stat1.lbl': 'Academic Background (CR)',
+          'stat2.val': 'Gananova OS',
+          'stat2.lbl': 'Lead System Architect',
+          'stat3.val': 'Full-Stack + AI',
+          'stat3.lbl': 'Technical Specialization',
+
+          'contact.badge': '[ LET\'S TALK ]',
+          'contact.h2': 'Ready to build something extraordinary?',
+          'contact.p': 'Tell me about your project. Whether you need a web experience that outclasses competitors or an internal system to automate operations, let\'s speak directly.',
+          'tag.web': 'Modern Web Design',
+          'tag.system': 'Business System / CRM',
+          'tag.auto': 'AI Automation',
+          'tag.redesign': 'UI/UX Redesign',
+          'contact.emailLbl': 'Direct Email',
+          'contact.phoneLbl': 'WhatsApp / Phone',
+          'contact.copy': 'Copy',
+          'contact.copied': 'Copied!',
+          'contact.sendMailText': 'Send Direct Email',
+          'contact.chatWaText': 'Chat on WhatsApp Directly'
         }
-        var value = textEl.textContent;
-        if(navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(value).then(done).catch(function(){
-            var r = document.createRange(); r.selectNode(textEl);
-            window.getSelection().removeAllRanges(); window.getSelection().addRange(r);
-            done();
-          });
+      };
+
+      let currentLang = 'es';
+      const langToggle = document.getElementById('langToggle');
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        root.setAttribute('lang', lang);
+        langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (DICT[currentLang] && DICT[currentLang][key]) {
+            el.textContent = DICT[currentLang][key];
+          }
+        });
+
+        charIdx = 0;
+        isDeleting = false;
+
+        try { localStorage.setItem('chv-lang', lang); } catch (e) {}
+      }
+
+      try {
+        const savedLang = localStorage.getItem('chv-lang');
+        if (savedLang) setLanguage(savedLang);
+      } catch (e) {}
+
+      langToggle.addEventListener('click', function () {
+        setLanguage(currentLang === 'es' ? 'en' : 'es');
+      });
+
+      // ======================================================================
+      // DYNAMIC ROTATING TYPEWRITER EFFECT IN HERO
+      // ======================================================================
+      const phrasesEs = [
+        "Sistemas Web a Medida",
+        "Interfaces que Convierten",
+        "Gananova OS & CRM",
+        "Automatización con IA",
+        "Arquitectura Full-Stack"
+      ];
+      const phrasesEn = [
+        "Tailored Web Systems",
+        "Interfaces That Convert",
+        "Gananova OS & CRM",
+        "AI-Powered Automation",
+        "Full-Stack Architecture"
+      ];
+
+      const typewriterEl = document.getElementById('typewriterText');
+      let phraseIdx = 0;
+      let charIdx = 0;
+      let isDeleting = false;
+      let typingSpeed = 90;
+
+      function typeLoop() {
+        const currentPhrases = (currentLang === 'en') ? phrasesEn : phrasesEs;
+        const currentPhrase = currentPhrases[phraseIdx % currentPhrases.length];
+
+        if (isDeleting) {
+          typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1);
+          charIdx--;
+          typingSpeed = 45;
+        } else {
+          typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1);
+          charIdx++;
+          typingSpeed = 90;
         }
+
+        if (!isDeleting && charIdx === currentPhrase.length) {
+          isDeleting = true;
+          typingSpeed = 2200; // Pause at word completion
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          phraseIdx++;
+          typingSpeed = 400; // Pause before new word
+        }
+
+        setTimeout(typeLoop, typingSpeed);
+      }
+      typeLoop();
+
+      // ======================================================================
+      // MOBILE DRAWER
+      // ======================================================================
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      menuToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
       });
-    }
-    wireCopy('copyEmail', 'emailText');
-    wireCopy('copyPhone', 'phoneText');
-
-    // ---------- Hero cursor spotlight (desktop only, cheap) ----------
-    var hero = document.querySelector('.hero');
-    var spot = document.getElementById('heroSpot');
-    if(hero && window.matchMedia('(pointer:fine)').matches){
-      hero.addEventListener('mousemove', function(e){
-        var r = hero.getBoundingClientRect();
-        spot.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-        spot.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      document.querySelectorAll('.drawer-link').forEach(link => {
+        link.addEventListener('click', () => mobileDrawer.classList.remove('open'));
       });
-    }
 
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // ======================================================================
+      // INTERACTIVE PROJECTS CAROUSEL (TOUCH, SWIPE & AUTOPLAY)
+      // ======================================================================
+      const carouselTrack = document.getElementById('carouselTrack');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const counterEl = document.getElementById('carouselCounter');
 
-    if(window.gsap){
-      gsap.registerPlugin(ScrollTrigger);
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+      let autoPlayTimer = null;
 
-      // Hero entrance
-      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-      tl.from('.hero h1', { y: reduce?0:26, opacity: reduce?1:0, duration: .9 })
-        .from('.hero .lede', { y: reduce?0:20, opacity: reduce?1:0, duration: .8 }, '-=.55')
-        .from('.hero__ctas', { y: reduce?0:16, opacity: reduce?1:0, duration: .7 }, '-=.5');
+      function updateCarousel(idx) {
+        currentSlide = (idx + totalSlides) % totalSlides;
+        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-      if(!reduce){
-        // Constellation draw-in
-        var lines = gsap.utils.toArray('#cstLines path');
-        lines.forEach(function(l){
-          var len = l.getTotalLength();
-          gsap.set(l, { strokeDasharray: len, strokeDashoffset: len });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentSlide);
         });
-        gsap.to('#cstLines path', { strokeDashoffset: 0, duration: 1.1, stagger: .12, ease: 'power2.out', delay: .3 });
-        gsap.from('#cstNodes .cst-node', { scale: 0, opacity: 0, transformOrigin: '50% 50%', duration: .6, stagger: .1, ease: 'back.out(1.7)', delay: .5 });
-        gsap.to('#cstNodes .core', { y: -6, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.6 });
+
+        counterEl.textContent = `0${currentSlide + 1} / 0${totalSlides}`;
       }
 
-      // Scroll reveals
-      gsap.utils.toArray('[data-reveal]').forEach(function(el){
-        gsap.from(el, {
-          y: reduce?0:24, opacity: reduce?1:0, duration: .8, ease: 'expo.out',
-          scrollTrigger: { trigger: el, start: 'top 88%' }
+      function nextSlide() {
+        updateCarousel(currentSlide + 1);
+      }
+      function prevSlide() {
+        updateCarousel(currentSlide - 1);
+      }
+
+      prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+      nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.getAttribute('data-index'), 10);
+          updateCarousel(idx);
+          resetAutoPlay();
         });
       });
 
-      gsap.utils.toArray('.svc__row').forEach(function(el, i){
-        gsap.from(el, {
-          x: reduce?0:-16, opacity: reduce?1:0, duration: .7, ease: 'expo.out',
-          scrollTrigger: { trigger: el, start: 'top 90%' }
-        });
+      // Autoplay
+      function startAutoPlay() {
+        autoPlayTimer = setInterval(nextSlide, 6000);
+      }
+      function resetAutoPlay() {
+        clearInterval(autoPlayTimer);
+        startAutoPlay();
+      }
+      startAutoPlay();
+
+      // Pause on hover
+      const carouselViewport = document.getElementById('carouselViewport');
+      carouselViewport.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
+      carouselViewport.addEventListener('mouseleave', () => startAutoPlay());
+
+      // Touch & Swipe Support for Mobile
+      let startX = 0;
+      let currentX = 0;
+      let isSwiping = false;
+
+      carouselViewport.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isSwiping = true;
+        clearInterval(autoPlayTimer);
+      }, { passive: true });
+
+      carouselViewport.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+
+      carouselViewport.addEventListener('touchend', () => {
+        if (!isSwiping) return;
+        isSwiping = false;
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 45) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        startAutoPlay();
       });
 
-      gsap.utils.toArray('.process__step').forEach(function(el, i){
-        gsap.from(el, {
-          y: reduce?0:18, opacity: reduce?1:0, duration: .6, delay: i*0.05, ease: 'expo.out',
-          scrollTrigger: { trigger: '.process', start: 'top 85%' }
-        });
-      });
+      // ======================================================================
+      // INTERACTIVE CONSOLE TABS
+      // ======================================================================
+      const tabs = document.querySelectorAll('.console-tab');
+      const panels = {
+        preview: document.getElementById('panel-preview'),
+        matrix: document.getElementById('panel-matrix'),
+        code: document.getElementById('panel-code'),
+        telemetry: document.getElementById('panel-telemetry')
+      };
 
-      gsap.utils.toArray('.work__card').forEach(function(el, i){
-        gsap.from(el, {
-          y: reduce?0:22, opacity: reduce?1:0, duration: .7, delay: i*0.08, ease: 'expo.out',
-          scrollTrigger: { trigger: '.work', start: 'top 85%' }
-        });
-      });
-
-      // Magnetic primary buttons (desktop only)
-      if(window.matchMedia('(pointer:fine)').matches){
-        document.querySelectorAll('.btn--primary').forEach(function(btn){
-          var qx = gsap.quickTo(btn, 'x', { duration: .4, ease: 'power3' });
-          var qy = gsap.quickTo(btn, 'y', { duration: .4, ease: 'power3' });
-          btn.addEventListener('mousemove', function(e){
-            var r = btn.getBoundingClientRect();
-            qx((e.clientX - r.left - r.width/2) * 0.25);
-            qy((e.clientY - r.top - r.height/2) * 0.35);
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const target = tab.getAttribute('data-tab');
+          Object.keys(panels).forEach(key => {
+            if (key === target) {
+              panels[key].classList.add('active');
+            } else {
+              panels[key].classList.remove('active');
+            }
           });
-          btn.addEventListener('mouseleave', function(){ qx(0); qy(0); });
+
+          // Trigger counter if telemetry is clicked
+          if (target === 'telemetry') {
+            runCounters();
+          }
+        });
+      });
+
+      function runCounters() {
+        document.querySelectorAll('.counter-num').forEach(counter => {
+          const target = +counter.getAttribute('data-target') || 100;
+          gsap.fromTo(counter, { innerText: 0 }, {
+            innerText: target,
+            duration: 1.5,
+            ease: 'power2.out',
+            snap: { innerText: 1 }
+          });
         });
       }
-    }
-  })();
-</script>
+
+      // ======================================================================
+      // CONTACT TAG SELECTOR & DYNAMIC MAILTO
+      // ======================================================================
+      const tagOptions = document.querySelectorAll('.tag-option');
+      const mailToBtn = document.getElementById('mailToBtn');
+      let selectedType = 'Diseño Web Moderno';
+
+      tagOptions.forEach(tag => {
+        tag.addEventListener('click', () => {
+          tagOptions.forEach(t => t.classList.remove('selected'));
+          tag.classList.add('selected');
+          selectedType = tag.getAttribute('data-type');
+          mailToBtn.href = `mailto:chavespablo640@gmail.com?subject=Consulta%20Proyecto:%20${encodeURIComponent(selectedType)}%20-%20CHV%20Systems`;
+        });
+      });
+
+      // Wire Copy Buttons
+      function setupCopy(btnId, valId) {
+        const btn = document.getElementById(btnId);
+        const val = document.getElementById(valId);
+        if (!btn || !val) return;
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(val.textContent).then(() => {
+            const original = btn.textContent;
+            btn.textContent = DICT[currentLang]['contact.copied'] || '¡Copiado!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+              btn.textContent = original;
+              btn.classList.remove('copied');
+            }, 2000);
+          });
+        });
+      }
+      setupCopy('copyEmailBtn', 'emailVal');
+      setupCopy('copyPhoneBtn', 'phoneVal');
+
+      // ======================================================================
+      // AMBIENT PARTICLES CANVAS
+      // ======================================================================
+      const canvas = document.getElementById('ambientCanvas');
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      let particles = [];
+
+      function resizeCanvas() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.size = Math.random() * 1.5 + 0.3;
+          this.vx = (Math.random() - 0.5) * 0.25;
+          this.vy = (Math.random() - 0.5) * 0.25;
+          this.alpha = Math.random() * 0.6 + 0.1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) {
+            this.reset();
+          }
+        }
+        draw() {
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      const count = Math.min(65, Math.floor(window.innerWidth / 24));
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.update();
+          p.draw();
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+
+      // ======================================================================
+      // CURSOR GLOW & 3D TILT WITH SPOTLIGHT EFFECT
+      // ======================================================================
+      const cursorGlow = document.getElementById('cursorGlow');
+      const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+      if (isFinePointer) {
+        window.addEventListener('mousemove', (e) => {
+          gsap.to(cursorGlow, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.35,
+            ease: 'power2.out'
+          });
+        });
+
+        // 3D Tilt on all cards with .tilt-card
+        document.querySelectorAll('.tilt-card').forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -6.5;
+            const rotateY = ((x - centerX) / centerX) * 6.5;
+
+            card.style.setProperty('--spot-x', `${x}px`);
+            card.style.setProperty('--spot-y', `${y}px`);
+
+            gsap.to(card, {
+              transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`,
+              duration: 0.35,
+              ease: 'power2.out'
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+              transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)',
+              duration: 0.6,
+              ease: 'power3.out'
+            });
+          });
+        });
+
+        // Magnetic Attraction on primary interactive elements
+        document.querySelectorAll('.magnetic-el').forEach(el => {
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const relX = e.clientX - rect.left - rect.width / 2;
+            const relY = e.clientY - rect.top - rect.height / 2;
+            gsap.to(el, {
+              x: relX * 0.28,
+              y: relY * 0.28,
+              duration: 0.35,
+              ease: 'power2.out'
+            });
+          });
+          el.addEventListener('mouseleave', () => {
+            gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+          });
+        });
+      }
+
+      // ======================================================================
+      // RICH GSAP SCROLLTRIGGER ANIMATIONS
+      // ======================================================================
+      if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Entrance Timeline
+        const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        heroTl
+          .from('.hero__badge', { y: 25, opacity: 0, duration: 0.8, delay: 0.15 })
+          .from('.hero__title', { y: 35, opacity: 0, duration: 0.9 }, '-=0.6')
+          .from('.hero__desc', { y: 25, opacity: 0, duration: 0.8 }, '-=0.6')
+          .from('.hero__ctas', { y: 20, opacity: 0, duration: 0.7 }, '-=0.5')
+          .from('.hero__showcase', { y: 55, scale: 0.95, opacity: 0, duration: 1.1, ease: 'expo.out' }, '-=0.6')
+          .from('.floating-pill--1', { x: -30, opacity: 0, duration: 0.8 }, '-=0.4')
+          .from('.floating-pill--2', { x: 30, opacity: 0, duration: 0.8 }, '-=0.6');
+
+        // Section Headers Reveal
+        gsap.utils.toArray('.reveal-title').forEach(el => {
+          gsap.from(el, {
+            scrollTrigger: { trigger: el, start: 'top 85%' },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+          });
+        });
+
+        // Carousel Container Reveal
+        gsap.from('.carousel-viewport', {
+          scrollTrigger: { trigger: '.carousel-viewport', start: 'top 82%' },
+          scale: 0.95,
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out'
+        });
+
+        // Skills Cards: Varied Multi-Directional Entrances
+        gsap.from('.skill-from-left', {
+          scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' },
+          x: -60,
+          opacity: 0,
+          duration: 0.85,
+          ease: 'power3.out'
+        });
+        gsap.from('.skill-from-bottom', {
+          scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' },
+          y: 60,
+          opacity: 0,
+          stagger: 0.12,
+          duration: 0.85,
+          ease: 'power3.out'
+        });
+        gsap.from('.skill-from-right', {
+          scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' },
+          x: 60,
+          opacity: 0,
+          duration: 0.85,
+          ease: 'power3.out'
+        });
+
+        // Process Steps Staggered Cascade
+        gsap.utils.toArray('.process-anim-step').forEach((step, idx) => {
+          gsap.from(step, {
+            scrollTrigger: { trigger: '.process-timeline', start: 'top 85%' },
+            y: 45,
+            opacity: 0,
+            duration: 0.7,
+            delay: idx * 0.14,
+            ease: 'power3.out'
+          });
+        });
+
+        // Founder Box Reveal
+        gsap.from('.founder-anim', {
+          scrollTrigger: { trigger: '.founder-anim', start: 'top 85%' },
+          y: 50,
+          scale: 0.96,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out'
+        });
+
+        // Contact Box Reveal
+        gsap.from('.contact-anim', {
+          scrollTrigger: { trigger: '.contact-anim', start: 'top 85%' },
+          y: 50,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out'
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
