@@ -2065,6 +2065,8 @@
   </style>
 </head>
 <body>
+  <!-- CHV Premium Loader (debe ir justo después de <body>) -->
+  <script src="assets/chv-loader/chv-loader.js"></script>
 
   <!-- Ambient Cursor Glow Effect -->
   <div class="cursor-glow" id="cursorGlow"></div>
@@ -3673,7 +3675,9 @@
         gsap.registerPlugin(ScrollTrigger);
 
         // Hero Entrance Timeline
-        const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        const heroTl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+        // Arranca cuando la cortina del loader empieza a subir
+        if (window.CHVLoader) CHVLoader.onReveal(() => heroTl.play()); else heroTl.play();
         heroTl
           .from('.hero__title', { y: 35, opacity: 0, duration: 0.9, delay: 0.15 })
           .from('.hero__desc', { y: 25, opacity: 0, duration: 0.8 }, '-=0.6')
