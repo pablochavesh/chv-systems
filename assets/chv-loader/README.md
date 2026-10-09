@@ -21,6 +21,13 @@ Si `chv-loader.js` está publicado en el dominio de CHV SYSTEMS, cualquier demo 
 <script src="https://TU-DOMINIO/assets/chv-loader/chv-loader.js"></script>
 ```
 
+## Activar / desactivar
+
+- **En el código:** cambiá `data-enabled="true"` por `data-enabled="false"`.
+- **Desde la URL, sin tocar código:** agregá `?loader=off` para apagarlo o `?loader=on` para forzarlo (por ejemplo `https://mi-cliente.com/?loader=off`). La URL manda sobre el atributo.
+
+Con el loader apagado, `CHVLoader.onReveal` y `CHVLoader.onDone` se ejecutan de inmediato, así que las animaciones de la página funcionan igual.
+
 ## Opciones
 
 ```html
@@ -34,6 +41,7 @@ Si `chv-loader.js` está publicado en el dominio de CHV SYSTEMS, cualquier demo 
 
 | Atributo | Por defecto | Qué hace |
 |---|---|---|
+| `data-enabled` | `true` | `false` apaga el loader. |
 | `data-brand` | `CHV SYSTEMS` | Texto principal. La última palabra lleva el degradado. |
 | `data-tagline` | `Web Design & Development` | Texto secundario. |
 | `data-min` | `2400` | Duración mínima en ms. |

@@ -6,6 +6,7 @@
  *   <script src="chv-loader.js"></script>
  *
  * Opciones (atributos data-* en la etiqueta <script>):
+ *   data-enabled="false"                     Desactiva el loader (también ?loader=off / ?loader=on en la URL)
  *   data-brand="CHV SYSTEMS"                 Texto principal
  *   data-tagline="Web Design & Development"  Texto secundario
  *   data-min="2400"                          Duración mínima en ms
@@ -54,7 +55,13 @@
     }, 0);
   }
 
-  if (ONCE) {
+  // Interruptor: ?loader=off / ?loader=on en la URL manda sobre data-enabled
+  var param = null;
+  try { param = new URLSearchParams(location.search).get('loader'); } catch (e) {}
+  var enabled = param ? param !== 'off' : ds.enabled !== 'false';
+  if (!enabled) { skip(); return; }
+
+  if (ONCE && param !== 'on') {
     try {
       if (sessionStorage.getItem('chv-loader-seen')) { skip(); return; }
       sessionStorage.setItem('chv-loader-seen', '1');
