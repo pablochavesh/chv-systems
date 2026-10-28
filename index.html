@@ -2,10 +2,10 @@
 <html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>CHV SYSTEMS — Diseño Web Profesional &amp; Sistemas a la Medida</title>
-  <meta name="description" content="Diseño y desarrollo de páginas web modernas que venden, transmiten confianza y hacen crecer tu negocio. Por Jose Pablo Chaves Hidalgo. Costa Rica.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>CHV SYSTEMS — Ingeniería Web, Experiencias 3D &amp; Sistemas Empresariales</title>
+  <meta name="description" content="Estudio de diseño web de alto impacto y arquitectura de sistemas empresariales a la medida. Creado por Jose Pablo Chaves Hidalgo en Costa Rica.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2304060B%22/><path d=%22M16 4L4 10l12 6 12-6-12-6zM4 22l12 6 12-6M4 16l12 6 12-6%22 fill=%22none%22 stroke=%22%23FF7029%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
 
   <!-- Google Fonts: Plus Jakarta Sans, Instrument Serif & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,83 +14,77 @@
 
   <style>
     /* ==========================================================================
-       DESIGN SYSTEM TOKENS & RESET
+       1. DESIGN SYSTEM TOKENS, THEME & CUSTOM BROWSER SURFACES
        ========================================================================== */
     :root {
-      /* Dark Theme (Default) */
-      --void-0: #04060B;
-      --void-1: #070B16;
-      --void-2: #0C1224;
-      --void-3: #121A33;
-      --surface-glass: rgba(12, 18, 36, 0.72);
-      --surface-glass-hover: rgba(18, 27, 54, 0.88);
-      --surface-raised: #151F3D;
+      --void-0: #03050A;
+      --void-1: #070B14;
+      --void-2: #0C1324;
+      --void-3: #131D36;
+      --surface-glass: rgba(10, 16, 32, 0.74);
+      --surface-glass-hover: rgba(16, 25, 48, 0.88);
+      --surface-raised: #162240;
+      --surface-card: rgba(12, 19, 36, 0.68);
 
-      /* Inks */
       --ink-primary: #F8FAFC;
       --ink-secondary: #94A3B8;
       --ink-muted: #64748B;
       --ink-faint: #475569;
 
-      /* Glowing Accents inspired by Vetra & Quantix references */
       --accent-orange: #FF7029;
       --accent-amber: #FF9E2C;
+      --accent-cyan: #38BDF8;
       --accent-violet: #8B5CF6;
       --accent-indigo: #6366F1;
-      --accent-cyan: #38BDF8;
       --accent-emerald: #10B981;
 
-      /* Horizon & Lighting */
-      --horizon-glow: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255, 112, 41, 0.44) 0%, rgba(139, 92, 246, 0.3) 40%, transparent 75%);
-      --horizon-border: linear-gradient(90deg, transparent 5%, rgba(255, 112, 41, 0.35) 30%, #FFA043 50%, rgba(139, 92, 246, 0.38) 70%, transparent 95%);
-      
-      /* Glass Borders & Shadows */
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.25);
+      --border-hover: rgba(255, 255, 255, 0.22);
       --border-glow: rgba(255, 112, 41, 0.45);
-      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      --shadow-ambient: 0 24px 64px -16px rgba(0, 0, 0, 0.85);
-      --shadow-glow: 0 0 50px -10px rgba(255, 112, 41, 0.45);
+      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      --shadow-ambient: 0 28px 68px -16px rgba(0, 0, 0, 0.85);
+      --shadow-glow: 0 14px 44px -10px rgba(255, 112, 41, 0.4);
 
-      /* Typography */
       --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-      --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
-      --font-mono: "JetBrains Mono", monospace;
+      --font-serif: "Instrument Serif", Georgia, serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
       color-scheme: dark;
+      scrollbar-width: thin;
+      scrollbar-color: #1E293B #03050A;
     }
 
     [data-theme="light"] {
-      --void-0: #F8FAFC;
-      --void-1: #F1F5F9;
-      --void-2: #E2E8F0;
+      --void-0: #F4F7FB;
+      --void-1: #E9EFF8;
+      --void-2: #DCE5F2;
       --void-3: #CBD5E1;
-      --surface-glass: rgba(255, 255, 255, 0.88);
-      --surface-glass-hover: rgba(255, 255, 255, 0.98);
+      --surface-glass: rgba(255, 255, 255, 0.86);
+      --surface-glass-hover: rgba(255, 255, 255, 0.97);
       --surface-raised: #FFFFFF;
+      --surface-card: rgba(255, 255, 255, 0.9);
 
-      --ink-primary: #0F172A;
+      --ink-primary: #0B1120;
       --ink-secondary: #334155;
-      --ink-muted: #64748B;
-      --ink-faint: #94A3B8;
+      --ink-muted: #475569;
+      --ink-faint: #64748B;
 
       --accent-orange: #EA580C;
       --accent-amber: #D97706;
+      --accent-cyan: #0284C7;
       --accent-violet: #7C3AED;
       --accent-indigo: #4F46E5;
-      --accent-cyan: #0284C7;
+      --accent-emerald: #059669;
 
-      --horizon-glow: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(234, 88, 12, 0.18) 0%, rgba(124, 58, 237, 0.12) 40%, transparent 72%);
-      --horizon-border: linear-gradient(90deg, transparent 5%, rgba(234, 88, 12, 0.35) 30%, #EA580C 50%, rgba(124, 58, 237, 0.35) 70%, transparent 95%);
-
-      --border-subtle: rgba(15, 23, 42, 0.08);
+      --border-subtle: rgba(15, 23, 42, 0.09);
       --border-hover: rgba(15, 23, 42, 0.24);
-      --border-glow: rgba(234, 88, 12, 0.35);
+      --border-glow: rgba(234, 88, 12, 0.38);
       --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.95);
-      --shadow-ambient: 0 20px 48px -12px rgba(15, 23, 42, 0.12);
-      --shadow-glow: 0 0 32px -8px rgba(234, 88, 12, 0.25);
+      --shadow-ambient: 0 24px 52px -14px rgba(15, 23, 42, 0.12);
+      --shadow-glow: 0 14px 36px -8px rgba(234, 88, 12, 0.25);
 
       color-scheme: light;
+      scrollbar-color: #94A3B8 #F4F7FB;
     }
 
     *, *::before, *::after {
@@ -99,12 +93,29 @@
       padding: 0;
     }
 
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--void-0); }
+    ::-webkit-scrollbar-thumb {
+      background: var(--void-3);
+      border-radius: 999px;
+      border: 2px solid var(--void-0);
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-orange); }
+
+    ::selection {
+      background: var(--accent-orange);
+      color: #FFFFFF;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 3px;
+    }
+
     html {
       overflow-x: hidden;
       max-width: 100vw;
       width: 100%;
-      position: relative;
-      touch-action: pan-y;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -115,220 +126,150 @@
       color: var(--ink-primary);
       font-family: var(--font-sans);
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       max-width: 100vw;
       width: 100%;
       min-height: 100vh;
       position: relative;
-      touch-action: pan-y;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      caret-color: var(--accent-orange);
+      transition: background-color 0.45s ease, color 0.45s ease;
     }
 
-    ::selection {
-      background: var(--accent-orange);
-      color: #FFFFFF;
-    }
-
-    /* Ambient Cursor Glow Follower (Only on fine pointers / desktop) */
-    .cursor-glow {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 1;
-      background: radial-gradient(circle, rgba(255, 112, 41, 0.09) 0%, rgba(139, 92, 246, 0.06) 45%, transparent 70%);
-      transform: translate(-50%, -50%);
-      filter: blur(40px);
-      transition: opacity 0.5s ease;
-      opacity: 0;
-      display: none;
-    }
-    @media (pointer: fine) and (hover: hover) {
-      .cursor-glow {
-        display: block;
-        opacity: 1;
-      }
-    }
-
-    /* Subtle Star Dust Background Canvas */
-    #ambientCanvas {
+    /* Top Scroll Progress Laser Line */
+    .scroll-progress-track {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 2px;
+      z-index: 200;
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.85;
+      background: transparent;
+    }
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-orange), var(--accent-amber), var(--accent-cyan));
+      box-shadow: 0 0 14px var(--accent-orange);
+      transition: width 0.06s linear;
     }
 
-    /* Fixed ambient decorations container (Zero mobile scroll overflow) */
-    .ambient-decorations-wrapper {
+    /* Ambient Background & Cursor Follower */
+    #ambientCanvas {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
+      z-index: 0;
+      opacity: 0.82;
+    }
+
+    .ambient-stage {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
       overflow: hidden;
       z-index: 0;
     }
-
-    /* Ambient Light Flare Elements (Destellos) */
-    .light-flare {
+    .ambient-orb {
       position: absolute;
-      width: 300px;
-      height: 300px;
       border-radius: 50%;
-      pointer-events: none;
-      filter: blur(60px);
-      opacity: 0.35;
-      animation: flarePulse 7s infinite ease-in-out alternate;
+      filter: blur(85px);
+      opacity: 0.28;
+      animation: orbFloat 12s ease-in-out infinite alternate;
     }
-    .light-flare--orange {
+    .ambient-orb--1 {
+      width: 480px;
+      height: 480px;
+      top: -120px;
+      left: -100px;
       background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
     }
-    .light-flare--violet {
-      background: radial-gradient(circle, var(--accent-violet) 0%, transparent 70%);
+    .ambient-orb--2 {
+      width: 520px;
+      height: 520px;
+      top: 38%;
+      right: -140px;
+      background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+      animation-delay: -4s;
     }
-    @keyframes flarePulse {
-      0% { transform: scale(0.9) translate3d(0,0,0); opacity: 0.25; }
-      100% { transform: scale(1.15) translate3d(15px, -15px, 0); opacity: 0.45; }
+    .ambient-orb--3 {
+      width: 440px;
+      height: 440px;
+      bottom: 5%;
+      left: 10%;
+      background: radial-gradient(circle, var(--accent-violet) 0%, transparent 70%);
+      animation-delay: -8s;
+    }
+    @keyframes orbFloat {
+      0% { transform: translate3d(0, 0, 0) scale(0.95); }
+      100% { transform: translate3d(25px, -25px, 0) scale(1.08); }
     }
 
-    /* Shimmering Star Sparkle */
-    .sparkle-icon {
-      display: inline-block;
-      animation: sparkleAnim 3s infinite ease-in-out;
+    .cursor-glow {
+      position: fixed;
+      width: 540px;
+      height: 540px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(circle, rgba(255, 112, 41, 0.08) 0%, rgba(56, 189, 248, 0.05) 42%, transparent 70%);
+      transform: translate(-50%, -50%);
+      filter: blur(45px);
+      display: none;
     }
-    @keyframes sparkleAnim {
-      0%, 100% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
-      50% { transform: scale(1.2) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 8px var(--accent-orange)); }
+    @media (pointer: fine) and (hover: hover) {
+      .cursor-glow { display: block; }
     }
 
     .container {
       width: 100%;
-      max-width: 1240px;
+      max-width: 1280px;
       margin-inline: auto;
-      padding-inline: clamp(16px, 4vw, 36px);
+      padding-inline: clamp(18px, 4vw, 40px);
       position: relative;
       z-index: 2;
     }
 
     /* ==========================================================================
-       TYPOGRAPHY & UTILITIES
+       2. TYPOGRAPHY & ARCHITECTURAL UI COMPONENTS
        ========================================================================== */
     h1, h2, h3, h4 {
       font-family: var(--font-sans);
-      letter-spacing: -0.03em;
-      font-weight: 700;
-      line-height: 1.1;
+      letter-spacing: -0.032em;
+      font-weight: 800;
+      line-height: 1.08;
       text-wrap: balance;
+      color: var(--ink-primary);
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #FFFFFF 20%, #CBD5E1 65%, #94A3B8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .serif-accent {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--accent-orange);
       display: inline-block;
     }
-    [data-theme="light"] .gradient-text {
-      background: linear-gradient(135deg, #0F172A 20%, #334155 70%, #475569 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .ink-cyan { color: var(--accent-cyan); }
+    .ink-orange { color: var(--accent-orange); }
+    .ink-emerald { color: var(--accent-emerald); }
 
-    .glow-orange {
-      background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-amber) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-
-    .glow-violet {
-      background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-indigo) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-
-    /* Typewriter Cursor */
     .typewriter-cursor {
       display: inline-block;
       width: 3px;
-      height: 1em;
+      height: 0.95em;
       background: var(--accent-orange);
-      margin-left: 4px;
-      vertical-align: -0.1em;
-      animation: blinkCursor 0.9s infinite;
+      margin-left: 5px;
+      vertical-align: -0.08em;
+      animation: blinkCursor 0.85s infinite;
       box-shadow: 0 0 12px var(--accent-orange);
     }
     @keyframes blinkCursor {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
-    }
-
-    /* Editorial Serif Accent for bespoke character (like Pura Vida & Gananova references) */
-    .serif-accent {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--accent-orange);
-      display: inline-block;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .serif-accent:hover {
-      transform: translateY(-2px) scale(1.04);
-      color: #FFA54F;
-      text-shadow: 0 0 24px rgba(255, 112, 41, 0.5);
-    }
-    .serif-accent.glow-orange {
-      background: linear-gradient(135deg, var(--accent-orange) 0%, #FFB259 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 14px rgba(255, 112, 41, 0.45));
-    }
-    .serif-accent.serif-white {
-      color: #FFFFFF;
-    }
-    [data-theme="light"] .serif-accent.serif-white {
-      color: #0F172A;
-    }
-
-    .pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-subtle);
-      color: var(--ink-secondary);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .pill-badge:hover {
-      border-color: var(--border-hover);
-      color: var(--ink-primary);
-      transform: translateY(-2px);
-    }
-    .pill-badge .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-orange);
-      box-shadow: 0 0 12px var(--accent-orange);
-      animation: pulseDot 2s infinite ease-in-out;
-    }
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.8); }
     }
 
     /* Buttons */
@@ -338,14 +279,14 @@
       justify-content: center;
       gap: 10px;
       font-family: var(--font-sans);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.92rem;
       padding: 14px 28px;
       border-radius: 999px;
       text-decoration: none;
       cursor: pointer;
       border: 1px solid transparent;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
       position: relative;
       overflow: hidden;
       touch-action: manipulation;
@@ -353,16 +294,16 @@
     .btn--primary {
       background: linear-gradient(135deg, var(--accent-orange) 0%, #EA580C 100%);
       color: #FFFFFF;
-      box-shadow: 0 8px 24px -6px rgba(255, 112, 41, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 28px -6px rgba(255, 112, 41, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
     .btn--primary:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 16px 36px -6px rgba(255, 112, 41, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px -6px rgba(255, 112, 41, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
     .btn--glass {
       background: var(--surface-glass);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-color: var(--border-subtle);
       color: var(--ink-primary);
       box-shadow: var(--glass-highlight);
@@ -370,15 +311,35 @@
     .btn--glass:hover {
       background: var(--surface-glass-hover);
       border-color: var(--border-hover);
-      transform: translateY(-3px) scale(1.02);
+      transform: translateY(-3px);
     }
     .btn--sm {
-      padding: 9px 20px;
+      padding: 10px 20px;
       font-size: 0.84rem;
     }
 
+    /* 3D Tilt & Specular Spotlight Surface */
+    .tilt-card {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .tilt-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(460px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255, 112, 41, 0.14), rgba(56, 189, 248, 0.06) 45%, transparent 72%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 1;
+    }
+    .tilt-card:hover::after { opacity: 1; }
+
     /* ==========================================================================
-       HEADER & NAVIGATION (FIXED BAR)
+       3. FLOATING ARCHITECTURAL HEADER
        ========================================================================== */
     header {
       position: fixed;
@@ -387,26 +348,25 @@
       right: 0;
       width: 100%;
       z-index: 100;
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: rgba(4, 6, 11, 0.85);
-      border-bottom: 1px solid var(--border-subtle);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      padding-top: 12px;
+      transition: padding 0.3s ease;
     }
-    [data-theme="light"] header {
-      background: rgba(248, 250, 252, 0.9);
-    }
-
-    main {
-      padding-top: 72px;
-    }
-
-    .nav-bar {
+    .header-glass {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
-      gap: 20px;
+      height: 64px;
+      padding-inline: 20px;
+      border-radius: 999px;
+      background: rgba(5, 9, 18, 0.82);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6), var(--glass-highlight);
+    }
+    [data-theme="light"] .header-glass {
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 12px 32px -10px rgba(15, 23, 42, 0.1);
     }
 
     .brand {
@@ -417,84 +377,73 @@
       color: var(--ink-primary);
     }
     .brand__icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
       background: linear-gradient(135deg, var(--accent-orange), var(--accent-violet));
       display: grid;
       place-items: center;
-      box-shadow: 0 0 20px rgba(255, 112, 41, 0.4);
-      position: relative;
+      box-shadow: 0 4px 18px rgba(255, 112, 41, 0.45);
     }
     .brand__icon svg {
-      width: 18px;
-      height: 18px;
-      fill: #FFFFFF;
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
-    .brand__text {
-      display: flex;
-      flex-direction: column;
-    }
+    .brand__text { display: flex; flex-direction: column; }
     .brand__name {
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 1.1;
+      line-height: 1.05;
     }
-    .brand__name span {
-      color: var(--accent-orange);
-    }
+    .brand__name span { color: var(--accent-orange); }
     .brand__sub {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
       color: var(--ink-muted);
       text-transform: uppercase;
+      margin-top: 2px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 6px;
       list-style: none;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
     }
     .nav-links a {
       text-decoration: none;
       color: var(--ink-secondary);
-      font-size: 0.88rem;
-      font-weight: 500;
-      position: relative;
-      padding-block: 4px;
-      transition: color 0.25s ease;
-    }
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: var(--accent-orange);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      transform: translateX(-50%);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 7px 15px;
       border-radius: 999px;
+      transition: color 0.25s ease, background-color 0.25s ease;
     }
     .nav-links a:hover {
       color: var(--ink-primary);
-    }
-    .nav-links a:hover::after {
-      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .icon-btn {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
       background: var(--surface-glass);
@@ -502,41 +451,31 @@
       display: grid;
       place-items: center;
       cursor: pointer;
-      backdrop-filter: blur(8px);
       transition: all 0.25s ease;
-      touch-action: manipulation;
     }
     .icon-btn:hover {
       border-color: var(--border-hover);
       color: var(--ink-primary);
       transform: translateY(-2px);
     }
-    .icon-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
+    .icon-btn svg { width: 17px; height: 17px; }
     .i-sun { display: none; }
     [data-theme="light"] .i-sun { display: block; }
     [data-theme="light"] .i-moon { display: none; }
 
     .lang-btn {
       height: 38px;
-      padding-inline: 14px;
+      padding-inline: 13px;
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
       background: var(--surface-glass);
       color: var(--ink-secondary);
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       transition: all 0.25s ease;
-      touch-action: manipulation;
     }
     .lang-btn:hover {
       border-color: var(--border-hover);
@@ -544,118 +483,244 @@
       transform: translateY(-2px);
     }
 
-    .menu-toggle {
-      display: none;
-    }
+    .menu-toggle { display: none; }
 
-    /* Mobile Nav Drawer */
     .mobile-drawer {
       display: none;
       position: fixed;
-      top: 72px;
-      left: 0;
-      width: 100%;
+      top: 84px;
+      left: 16px;
+      right: 16px;
       background: var(--void-1);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 24px;
+      border: 1px solid var(--border-hover);
+      border-radius: 24px;
+      padding: 22px;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       z-index: 99;
       box-shadow: var(--shadow-ambient);
     }
-    .mobile-drawer.open {
-      display: flex;
-    }
+    .mobile-drawer.open { display: flex; }
     .mobile-drawer a {
       color: var(--ink-primary);
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       padding-block: 10px;
       border-bottom: 1px solid var(--border-subtle);
     }
 
     /* ==========================================================================
-       HERO SECTION WITH CELESTIAL HORIZON ARC & LIGHT FLARES
+       4. HERO SECTION: ASYMMETRIC SPLIT + INTERACTIVE 3D TESSERACT STAGE
        ========================================================================== */
+    main { padding-top: 88px; }
+
     .hero {
       position: relative;
-      padding-top: clamp(56px, 9vw, 110px);
-      padding-bottom: clamp(60px, 8vw, 100px);
+      padding-top: clamp(32px, 5vw, 68px);
+      padding-bottom: clamp(56px, 8vw, 96px);
       overflow: hidden;
-      text-align: center;
       isolation: isolate;
     }
 
-    /* Ambient Studio Spotlight behind Hero & Showcase (Zero hard strikethrough lines) */
-    .hero-ambient-spot {
-      position: absolute;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -30%);
-      width: min(1100px, 94vw);
-      height: 600px;
-      background: radial-gradient(ellipse 65% 50% at 50% 50%, rgba(255, 112, 41, 0.18) 0%, rgba(139, 92, 246, 0.13) 45%, transparent 74%);
-      filter: blur(55px);
-      pointer-events: none;
-      z-index: -1;
-      opacity: 0.9;
-      animation: heroSpotPulse 8s ease-in-out infinite alternate;
-    }
-    @keyframes heroSpotPulse {
-      0% { opacity: 0.75; transform: translate(-50%, -30%) scale(0.97); }
-      100% { opacity: 1; transform: translate(-50%, -30%) scale(1.03); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: clamp(28px, 4vw, 52px);
+      align-items: center;
+      margin-bottom: clamp(48px, 6vw, 76px);
     }
 
-    .hero__content {
-      max-width: 960px;
-      margin-inline: auto;
+    .hero__copy {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      text-align: left;
     }
 
-    .hero__badge {
+    .status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      color: var(--ink-primary);
       margin-bottom: 22px;
+    }
+    .status-line__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 12px var(--accent-emerald);
+      animation: statusPulse 2s infinite;
+    }
+    @keyframes statusPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.8); opacity: 0.45; }
     }
 
     .hero__title {
-      font-size: clamp(2.3rem, 6vw, 4.8rem);
-      line-height: 1.05;
+      font-size: clamp(2.35rem, 5.2vw, 4.45rem);
+      line-height: 1.04;
       font-weight: 800;
+      letter-spacing: -0.036em;
       margin-bottom: 22px;
-      letter-spacing: -0.035em;
     }
 
     .hero__typewriter {
-      min-height: 1.2em;
       display: inline-block;
+      min-height: 1.15em;
     }
 
     .hero__desc {
-      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-size: clamp(1rem, 1.35vw, 1.18rem);
       color: var(--ink-secondary);
-      max-width: 680px;
-      line-height: 1.65;
-      margin-bottom: 36px;
+      max-width: 62ch;
+      line-height: 1.68;
+      margin-bottom: 32px;
     }
 
     .hero__ctas {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: clamp(44px, 6vw, 70px);
+      margin-bottom: 28px;
     }
 
-    /* Floating Hero Interactive Console / Dashboard Preview */
+    .hero__proof-strip {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+      width: 100%;
+    }
+    .proof-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .proof-metric b {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    .proof-metric span {
+      font-size: 0.78rem;
+      color: var(--ink-secondary);
+    }
+
+    /* Interactive 3D WebGL / Canvas Stage */
+    .hero__3d-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 0.92;
+      min-height: 390px;
+      border-radius: 28px;
+      background: radial-gradient(circle at 50% 45%, rgba(255, 112, 41, 0.14) 0%, rgba(56, 189, 248, 0.1) 42%, rgba(7, 11, 20, 0.92) 78%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px;
+      user-select: none;
+    }
+    [data-theme="light"] .hero__3d-stage {
+      background: radial-gradient(circle at 50% 45%, rgba(234, 88, 12, 0.12) 0%, rgba(2, 132, 199, 0.1) 42%, rgba(233, 239, 248, 0.95) 80%);
+    }
+
+    #hero3dCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+      z-index: 1;
+    }
+    #hero3dCanvas:active { cursor: grabbing; }
+
+    .stage-3d-top, .stage-3d-bottom {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      pointer-events: none;
+      flex-wrap: wrap;
+    }
+    .stage-3d-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stage-3d-modes {
+      display: inline-flex;
+      gap: 6px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      pointer-events: auto;
+    }
+    .mode-3d-btn {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mode-3d-btn.active {
+      background: var(--accent-orange);
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+    .node-inspector-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-primary);
+    }
+
+    /* ==========================================================================
+       5. HERO COMMAND CONSOLE (3D PERSPECTIVE DASHBOARD SHOWCASE)
+       ========================================================================== */
     .hero__showcase {
       width: 100%;
-      max-width: 1060px;
+      max-width: 1160px;
       margin-inline: auto;
       position: relative;
-      perspective: 1200px;
+      perspective: 1400px;
     }
 
     .console-frame {
@@ -663,22 +728,23 @@
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
       border: 1px solid var(--border-subtle);
-      border-radius: 24px;
-      box-shadow: var(--shadow-ambient), var(--glass-highlight), 0 0 50px -10px rgba(139, 92, 246, 0.25);
+      border-radius: 26px;
+      box-shadow: var(--shadow-ambient), var(--glass-highlight), 0 0 60px -12px rgba(56, 189, 248, 0.22);
       overflow: hidden;
       transform-style: preserve-3d;
-      transition: box-shadow 0.5s ease;
+      transition: box-shadow 0.45s ease, border-color 0.45s ease;
     }
     .console-frame:hover {
-      box-shadow: var(--shadow-ambient), var(--glass-highlight), 0 0 70px -5px rgba(255, 112, 41, 0.4);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-ambient), var(--glass-highlight), 0 0 75px -8px rgba(255, 112, 41, 0.35);
     }
 
     .console-topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 20px;
-      background: rgba(0, 0, 0, 0.28);
+      padding: 12px 22px;
+      background: rgba(0, 0, 0, 0.25);
       border-bottom: 1px solid var(--border-subtle);
       flex-wrap: wrap;
       gap: 12px;
@@ -688,11 +754,7 @@
       gap: 8px;
       align-items: center;
     }
-    .console-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
+    .console-dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot-red { background: #EF4444; }
     .dot-yellow { background: #F59E0B; }
     .dot-green { background: #10B981; }
@@ -708,11 +770,11 @@
       max-width: 100%;
     }
     .console-tab {
-      padding: 6px 14px;
+      padding: 6px 15px;
       border-radius: 999px;
       border: none;
       background: transparent;
-      color: var(--ink-muted);
+      color: var(--ink-secondary);
       font-family: var(--font-mono);
       font-size: 0.74rem;
       font-weight: 500;
@@ -723,7 +785,7 @@
     .console-tab.active {
       background: var(--surface-raised);
       color: var(--ink-primary);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     }
 
     .console-status {
@@ -740,39 +802,33 @@
       background: var(--void-1);
       width: 100%;
     }
-
     .console-panel {
       display: none;
       width: 100%;
-      opacity: 0;
     }
     .console-panel.active {
       display: block;
-      opacity: 1;
-      animation: consolePanelFade 0.35s ease forwards;
+      animation: consolePanelFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     @keyframes consolePanelFade {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ==========================================================================
-       NATIVE CUSTOM DASHBOARD (REPLACING OLD NEXUS / ALEX CHEN IMAGE)
-       ========================================================================== */
     .native-dashboard {
       width: 100%;
-      padding: clamp(16px, 2.8vw, 26px);
+      padding: clamp(18px, 3vw, 28px);
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      background: radial-gradient(circle at 50% 0%, rgba(255, 112, 41, 0.12) 0%, rgba(139, 92, 246, 0.08) 40%, #060913 75%);
+      gap: 18px;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 112, 41, 0.1) 0%, rgba(56, 189, 248, 0.06) 45%, transparent 75%);
       text-align: left;
     }
     .dash-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 12px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--border-subtle);
       flex-wrap: wrap;
       gap: 10px;
@@ -783,15 +839,20 @@
       gap: 10px;
     }
     .dash-brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
       background: linear-gradient(135deg, var(--accent-orange), var(--accent-violet));
       display: grid;
       place-items: center;
-      box-shadow: 0 0 14px rgba(255, 112, 41, 0.4);
     }
-    .dash-brand-icon svg { width: 16px; height: 16px; fill: #FFF; }
+    .dash-brand-icon svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2.2;
+    }
     .dash-brand-title {
       font-size: 1rem;
       font-weight: 800;
@@ -802,7 +863,7 @@
     .dash-brand-sub {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--ink-muted);
+      color: var(--ink-secondary);
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
@@ -825,18 +886,19 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
-    @media (max-width: 768px) {
-      .dash-kpis { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    }
     .dash-kpi-card {
       background: var(--surface-glass);
-      backdrop-filter: blur(14px);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 12px 14px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
       gap: 4px;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .dash-kpi-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
     }
     .dash-kpi-lbl {
       font-family: var(--font-mono);
@@ -845,13 +907,14 @@
       text-transform: uppercase;
     }
     .dash-kpi-val {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--ink-primary);
       line-height: 1.1;
+      font-variant-numeric: tabular-nums;
     }
     .dash-kpi-val.highlight-orange { color: var(--accent-orange); }
-    .dash-kpi-val.highlight-violet { color: var(--accent-violet); }
+    .dash-kpi-val.highlight-cyan { color: var(--accent-cyan); }
     .dash-kpi-tag {
       font-family: var(--font-mono);
       font-size: 0.66rem;
@@ -860,22 +923,18 @@
 
     .dash-main-grid {
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
+      grid-template-columns: 1.38fr 0.62fr;
       gap: 14px;
-      flex-grow: 1;
     }
-    @media (max-width: 768px) {
-      .dash-main-grid { grid-template-columns: 1fr; }
-    }
-    .dash-chart-box {
+    .dash-chart-box, .dash-sidebar-box {
       background: var(--surface-glass);
-      backdrop-filter: blur(14px);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 14px 16px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 12px;
     }
     .dash-chart-title {
       display: flex;
@@ -884,22 +943,13 @@
       font-family: var(--font-mono);
       font-size: 0.74rem;
       color: var(--ink-secondary);
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .dash-chart-svg {
       width: 100%;
-      height: 140px;
+      height: 145px;
       overflow: visible;
-    }
-    .dash-sidebar-box {
-      background: var(--surface-glass);
-      backdrop-filter: blur(14px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      justify-content: space-between;
     }
     .channel-row {
       display: flex;
@@ -907,13 +957,14 @@
       align-items: center;
       font-family: var(--font-mono);
       font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
     }
     .channel-bar {
       height: 6px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.08);
       overflow: hidden;
-      margin-top: 4px;
+      margin-top: 5px;
     }
     .channel-fill {
       height: 100%;
@@ -921,94 +972,62 @@
       background: linear-gradient(90deg, var(--accent-orange), var(--accent-amber));
     }
 
-    /* Panel 2: Interactive Modules Matrix */
-    .matrix-panel {
+    .matrix-panel, .value-panel {
       width: 100%;
-      height: 100%;
-      padding: clamp(20px, 3.5vw, 36px);
+      padding: clamp(22px, 3.5vw, 36px);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
       gap: 16px;
-      align-content: center;
-      background: radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15), transparent 60%), var(--void-1);
-    }
-    .matrix-card {
-      background: var(--surface-glass);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: left;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .matrix-card:hover {
-      border-color: var(--accent-orange);
-      transform: translateY(-4px);
-    }
-    .matrix-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: rgba(255, 112, 41, 0.15);
-      color: var(--accent-orange);
-      display: grid;
-      place-items: center;
-      font-size: 1.1rem;
-    }
-    .matrix-card h4 {
-      font-size: 0.96rem;
-      font-weight: 700;
-    }
-    .matrix-card p {
-      font-size: 0.8rem;
-      color: var(--ink-secondary);
-      line-height: 1.5;
-    }
-
-    /* Panel 3: Why It Works (Reemplazando código de programador por valor comercial) */
-    .value-panel {
-      width: 100%;
-      height: 100%;
-      padding: clamp(24px, 4vw, 40px);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      align-content: center;
       text-align: left;
     }
-    .value-card {
+    .matrix-card, .value-card {
       background: var(--surface-glass);
-      backdrop-filter: blur(16px);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
+      transition: all 0.3s ease;
     }
-    .value-card h4 {
+    .matrix-card:hover, .value-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-4px);
+    }
+    .matrix-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 112, 41, 0.14);
       color: var(--accent-orange);
-      font-size: 1rem;
+      display: grid;
+      place-items: center;
     }
-    .value-card p {
+    .matrix-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .matrix-card h4, .value-card h4 { font-size: 1rem; font-weight: 700; }
+    .value-card h4 { color: var(--accent-orange); }
+    .matrix-card p, .value-card p {
       font-size: 0.85rem;
       color: var(--ink-secondary);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    /* Panel 4: Telemetry & Lighthouse */
     .telemetry-panel {
       width: 100%;
-      height: 100%;
-      padding: 28px;
+      padding: 32px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 28px;
+      gap: 26px;
     }
     .lighthouse-grid {
       display: grid;
@@ -1024,8 +1043,8 @@
       gap: 8px;
     }
     .gauge-circle {
-      width: 76px;
-      height: 76px;
+      width: 78px;
+      height: 78px;
       border-radius: 50%;
       border: 4px solid var(--accent-emerald);
       display: grid;
@@ -1034,7 +1053,8 @@
       font-size: 1.3rem;
       font-weight: 700;
       color: var(--accent-emerald);
-      box-shadow: 0 0 24px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.28);
+      font-variant-numeric: tabular-nums;
     }
     .gauge-label {
       font-family: var(--font-mono);
@@ -1044,72 +1064,21 @@
       color: var(--ink-secondary);
     }
 
-    /* Floating badges surrounding the hero showcase */
-    .floating-pill {
-      position: absolute;
-      background: var(--surface-glass);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      padding: 10px 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: var(--shadow-ambient), var(--glass-highlight);
-      font-size: 0.8rem;
-      font-weight: 600;
-      z-index: 10;
-      pointer-events: none;
-      animation: floatPill 6s infinite ease-in-out;
-    }
-    .floating-pill--1 {
-      top: -20px;
-      left: -15px;
-      animation-delay: 0s;
-    }
-    .floating-pill--2 {
-      bottom: -18px;
-      right: -15px;
-      animation-delay: 3s;
-    }
-    @keyframes floatPill {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
     /* ==========================================================================
-       TRUSTED RESULTS MARQUEE (RESULTADOS REALES, NO JERGA)
+       6. MARQUEE STRIP
        ========================================================================== */
     .marquee-section {
-      padding-block: 28px;
+      padding-block: 24px;
       border-block: 1px solid var(--border-subtle);
-      background: color-mix(in srgb, var(--void-1) 50%, transparent);
+      background: color-mix(in srgb, var(--void-1) 60%, transparent);
       overflow: hidden;
       position: relative;
     }
-    .marquee-section::before,
-    .marquee-section::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 120px;
-      z-index: 3;
-      pointer-events: none;
-    }
-    .marquee-section::before {
-      left: 0;
-      background: linear-gradient(90deg, var(--void-0), transparent);
-    }
-    .marquee-section::after {
-      right: 0;
-      background: linear-gradient(-90deg, var(--void-0), transparent);
-    }
     .marquee-track {
       display: flex;
-      gap: 40px;
+      gap: 44px;
       width: max-content;
-      animation: scrollMarquee 32s linear infinite;
+      animation: scrollMarquee 34s linear infinite;
     }
     @keyframes scrollMarquee {
       from { transform: translateX(0); }
@@ -1120,57 +1089,74 @@
       align-items: center;
       gap: 10px;
       font-family: var(--font-mono);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       color: var(--ink-secondary);
       white-space: nowrap;
-      transition: color 0.2s ease;
     }
-    .marquee-item span {
-      color: var(--accent-orange);
+    .marquee-item svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--accent-orange);
+      fill: none;
+      stroke-width: 2.4;
     }
-    .marquee-item:hover {
+
+    /* ==========================================================================
+       7. EDITORIAL SECTION HEADERS (NO KICKER/EYEBROW ANTI-PATTERN)
+       ========================================================================== */
+    section {
+      padding-block: clamp(72px, 9.5vw, 128px);
+      position: relative;
+    }
+
+    .editorial-header {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(20px, 4vw, 48px);
+      align-items: end;
+      margin-bottom: clamp(40px, 5.5vw, 64px);
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .editorial-header h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.034em;
+    }
+    .editorial-header p {
+      color: var(--ink-secondary);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      max-width: 58ch;
+    }
+
+    /* ==========================================================================
+       8. INTERACTIVE PROJECTS CAROUSEL & QUICK-SWITCH TABS
+       ========================================================================== */
+    .project-quick-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .project-quick-tab {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-glass);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .project-quick-tab.active, .project-quick-tab:hover {
+      border-color: var(--accent-orange);
       color: var(--ink-primary);
-    }
-
-    /* ==========================================================================
-       3D TILT CARDS & SPOTLIGHT EFFECT
-       ========================================================================== */
-    .tilt-card {
-      position: relative;
-      transform-style: preserve-3d;
-      will-change: transform;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-    .tilt-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(400px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255, 112, 41, 0.16), transparent 70%);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-      z-index: 1;
-    }
-    .tilt-card:hover::after {
-      opacity: 1;
-    }
-
-    /* ==========================================================================
-       INTERACTIVE PROJECTS CAROUSEL
-       ========================================================================== */
-    .carousel-section {
-      padding-block: clamp(80px, 10vw, 120px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      margin-top: 36px;
+      background: rgba(255, 112, 41, 0.14);
     }
 
     .carousel-viewport {
@@ -1182,52 +1168,49 @@
       box-shadow: var(--shadow-ambient), var(--glass-highlight);
       touch-action: pan-y pinch-zoom;
     }
-
     .carousel-track {
       display: flex;
-      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
     }
-
     .carousel-slide {
       min-width: 100%;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      position: relative;
+      align-items: stretch;
     }
-
     .slide-media {
       position: relative;
-      height: 100%;
-      min-height: 400px;
+      min-height: 420px;
       background: var(--void-2);
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .slide-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.6s ease;
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .slide-media img.contain-fit {
       object-fit: contain;
-      background: #05080E;
-      padding: clamp(8px, 1.5vw, 16px);
+      background: #050811;
+      padding: clamp(12px, 2vw, 22px);
     }
     .carousel-slide:hover .slide-media img {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
-
     .slide-content {
-      padding: clamp(28px, 4.5vw, 56px);
+      padding: clamp(28px, 4.5vw, 54px);
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      justify-content: center;
+      gap: 18px;
       text-align: left;
     }
-
     .slide-brand-header {
       display: flex;
       align-items: center;
@@ -1236,42 +1219,32 @@
     .slide-logo-badge {
       width: 48px;
       height: 48px;
-      border-radius: 12px;
+      border-radius: 13px;
       background: var(--void-1);
       border: 1px solid var(--border-subtle);
       display: grid;
       place-items: center;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
       flex-shrink: 0;
     }
-    .slide-logo-badge svg {
-      width: 26px;
-      height: 26px;
-    }
-
-    .slide-title-wrap h3 {
-      font-size: clamp(1.4rem, 2.4vw, 2rem);
-      line-height: 1.15;
-    }
+    .slide-logo-badge svg { width: 26px; height: 26px; }
+    .slide-title-wrap h3 { font-size: clamp(1.45rem, 2.4vw, 2.05rem); }
     .slide-title-wrap .slide-sub {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--accent-orange);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-
     .slide-desc {
       color: var(--ink-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.96rem;
+      line-height: 1.65;
     }
-
     .slide-bullets {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
     }
     .slide-bullets li {
       font-size: 0.88rem;
@@ -1281,22 +1254,23 @@
       gap: 10px;
     }
     .slide-bullets li::before {
-      content: "✦";
-      color: var(--accent-orange);
-      font-size: 0.8rem;
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+      box-shadow: 0 0 8px var(--accent-orange);
+      flex-shrink: 0;
     }
 
-    /* Carousel Controls Bar */
     .carousel-controls {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 24px;
-      padding-inline: 8px;
-      flex-wrap: wrap;
+      margin-top: 22px;
       gap: 16px;
+      flex-wrap: wrap;
     }
-
     .carousel-nav-btn {
       width: 46px;
       height: 46px;
@@ -1308,23 +1282,13 @@
       place-items: center;
       cursor: pointer;
       transition: all 0.25s ease;
-      touch-action: manipulation;
     }
     .carousel-nav-btn:hover {
       border-color: var(--accent-orange);
-      background: var(--surface-glass-hover);
       transform: translateY(-2px);
     }
-    .carousel-nav-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .carousel-indicators {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
+    .carousel-nav-btn svg { width: 18px; height: 18px; }
+    .carousel-indicators { display: flex; gap: 8px; align-items: center; }
     .carousel-dot {
       width: 8px;
       height: 8px;
@@ -1334,96 +1298,67 @@
       transition: all 0.3s ease;
     }
     .carousel-dot.active {
-      width: 28px;
+      width: 30px;
       background: var(--accent-orange);
-      box-shadow: 0 0 12px var(--accent-orange);
     }
-
     .carousel-counter {
       font-family: var(--font-mono);
       font-size: 0.82rem;
       color: var(--ink-secondary);
-      letter-spacing: 0.05em;
+      font-variant-numeric: tabular-nums;
     }
 
     /* ==========================================================================
-       SPECTRUM / VERTICALS SECTION (DE LO SENCILLO A LO EXTRAORDINARIO)
+       9. ASYMMETRIC BENTO SOLUTIONS GRID WITH LIVE MICRO-PREVIEWS
        ========================================================================== */
-    .spectrum-section {
-      padding-block: clamp(80px, 10vw, 130px);
-      position: relative;
-      background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255, 112, 41, 0.05) 0%, transparent 70%);
-    }
-
-    .spectrum-grid {
+    .bento-solutions {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       gap: 22px;
-      margin-top: 40px;
     }
-    @media (max-width: 1024px) {
-      .spectrum-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 640px) {
-      .spectrum-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .spectrum-card {
+    .bento-card {
       background: var(--surface-glass);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(22px);
       border: 1px solid var(--border-subtle);
-      border-radius: 24px;
-      padding: clamp(24px, 3vw, 32px);
+      border-radius: 26px;
+      padding: clamp(24px, 3.2vw, 36px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      overflow: hidden;
+      gap: 20px;
       box-shadow: var(--shadow-ambient), var(--glass-highlight);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
     }
-    .spectrum-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--border-glow);
-      box-shadow: var(--shadow-ambient), 0 0 36px -8px rgba(255, 112, 41, 0.35);
-    }
-    .spectrum-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .spectrum-card:hover::before {
-      opacity: 1;
-    }
+    .bento-card--span-7 { grid-column: span 7; }
+    .bento-card--span-5 { grid-column: span 5; }
 
-    .spectrum-top {
+    .bento-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 22px;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    .spectrum-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(255, 112, 41, 0.1);
-      border: 1px solid rgba(255, 112, 41, 0.22);
+    .bento-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: rgba(255, 112, 41, 0.12);
+      border: 1px solid rgba(255, 112, 41, 0.25);
+      color: var(--accent-orange);
       display: grid;
       place-items: center;
-      font-size: 1.4rem;
     }
-    .spectrum-tag {
+    .bento-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .bento-tag {
       font-family: var(--font-mono);
       font-size: 0.68rem;
       font-weight: 600;
@@ -1435,26 +1370,50 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
-
-    .spectrum-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-      line-height: 1.25;
-      font-weight: 700;
+    .bento-card h3 {
+      font-size: clamp(1.3rem, 2vw, 1.65rem);
+      margin-bottom: 10px;
     }
-    .spectrum-card p {
+    .bento-card p {
       color: var(--ink-secondary);
-      font-size: 0.92rem;
-      line-height: 1.6;
-      margin-bottom: 22px;
+      font-size: 0.94rem;
+      line-height: 1.62;
+    }
+
+    /* Interactive Micro-UI Widget inside Bento Cards */
+    .bento-micro-ui {
+      background: var(--void-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+    }
+    .micro-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-primary);
+    }
+    .micro-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      font-size: 0.68rem;
     }
 
     .spectrum-features {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding-top: 18px;
+      gap: 9px;
+      padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
     }
     .spectrum-features li {
@@ -1463,205 +1422,166 @@
       color: var(--ink-primary);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
-    .spectrum-features li span {
-      color: var(--accent-orange);
-      font-size: 0.9rem;
+    .spectrum-features li svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--accent-orange);
+      fill: none;
+      stroke-width: 2.4;
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
-       RESULTADOS & BENEFICIOS (ENFOQUE 100% COMERCIAL Y PRÁCTICO)
+       10. ARCHITECTURAL IMPACT LEDGER (BENEFICIOS SIN REPETIR GRILLA DE TARJETAS)
        ========================================================================== */
-    section {
-      padding-block: clamp(70px, 9vw, 120px);
-      position: relative;
-    }
-
-    .section-header {
-      margin-bottom: clamp(40px, 5.5vw, 68px);
-      text-align: center;
-      max-width: 820px;
-      margin-inline: auto;
-    }
-    .section-header h2 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      margin-top: 14px;
-      margin-bottom: 16px;
-      line-height: 1.15;
-    }
-    .section-header p {
-      color: var(--ink-secondary);
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: var(--surface-glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 22px;
-      padding: clamp(24px, 3.5vw, 34px);
+    .impact-ledger {
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-ambient), var(--glass-highlight);
+      border-top: 1px solid var(--border-subtle);
     }
-    .skill-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
+    .ledger-row {
+      display: grid;
+      grid-template-columns: 0.35fr 0.95fr 0.7fr;
+      gap: clamp(18px, 3.5vw, 40px);
+      align-items: center;
+      padding-block: clamp(26px, 3.8vw, 42px);
+      padding-inline: clamp(16px, 2.5vw, 28px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      border-radius: 18px;
     }
-    .skill-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: var(--shadow-ambient), 0 0 32px -6px rgba(255, 112, 41, 0.3);
+    .ledger-row:hover {
+      background: var(--surface-glass);
+      transform: translateX(6px);
     }
-    .skill-card:hover::before {
-      opacity: 1;
+    .ledger-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
-
-    .skill-card__num {
+    .ledger-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 112, 41, 0.12);
+      border: 1px solid rgba(255, 112, 41, 0.25);
+      color: var(--accent-orange);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .ledger-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .ledger-domain {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: var(--accent-orange);
-      margin-bottom: 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
-    .skill-card__num .tag-mini {
-      color: var(--ink-muted);
-      font-size: 0.72rem;
-      border: 1px solid var(--border-subtle);
-      padding: 3px 8px;
-      border-radius: 999px;
+    .ledger-body h3 {
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      margin-bottom: 8px;
     }
-
-    .skill-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-    }
-    .skill-card p {
-      font-size: 0.92rem;
+    .ledger-body p {
       color: var(--ink-secondary);
-      line-height: 1.6;
-      margin-bottom: 22px;
-      flex-grow: 1;
+      font-size: 0.94rem;
+      line-height: 1.62;
     }
-
-    .skill-tags {
+    .ledger-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      justify-content: flex-end;
     }
     .skill-tag {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-subtle);
-      padding: 5px 11px;
+      padding: 6px 12px;
       border-radius: 999px;
       color: var(--ink-secondary);
-      transition: all 0.2s ease;
-    }
-    .skill-card:hover .skill-tag {
-      border-color: rgba(255, 255, 255, 0.18);
-      color: var(--ink-primary);
     }
 
     /* ==========================================================================
-       4-PHASE PROCESS (PROFICO AESTHETIC)
+       11. CONNECTED PROCESS PIPELINE
        ========================================================================== */
     .process-timeline {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 20px;
       position: relative;
     }
     .process-card {
       background: var(--surface-glass);
       backdrop-filter: blur(18px);
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 28px 22px;
+      border-radius: 22px;
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
       box-shadow: var(--shadow-ambient), var(--glass-highlight);
     }
-    .process-card:hover {
-      border-color: var(--accent-orange);
+    .process-card:hover { border-color: var(--accent-orange); }
+    .process-card__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .process-card__step {
       font-family: var(--font-mono);
-      font-size: 1.5rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 112, 41, 0.14);
       color: var(--accent-orange);
-      margin-bottom: 14px;
-      line-height: 1;
+      border: 1px solid rgba(255, 112, 41, 0.3);
     }
-    .process-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-    }
+    .process-card h3 { font-size: 1.2rem; }
     .process-card p {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--ink-secondary);
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     /* ==========================================================================
-       FOUNDER & STUDIO CREDENTIALS
+       12. FOUNDER & STUDIO CREDENTIALS DOSSIER
        ========================================================================== */
     .founder-box {
       background: var(--surface-glass);
-      backdrop-filter: blur(24px);
+      backdrop-filter: blur(26px);
       border: 1px solid var(--border-subtle);
       border-radius: 28px;
-      padding: clamp(30px, 5vw, 60px);
+      padding: clamp(28px, 5vw, 56px);
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: clamp(30px, 5vw, 56px);
+      grid-template-columns: 300px 1fr;
+      gap: clamp(28px, 5vw, 56px);
       align-items: center;
       box-shadow: var(--shadow-ambient), var(--glass-highlight);
       position: relative;
       overflow: hidden;
     }
-    .founder-box::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -20%;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 112, 41, 0.15), transparent 70%);
-      pointer-events: none;
-    }
-
     .founder-avatar {
       position: relative;
       width: 100%;
-      max-width: 280px;
-      aspect-ratio: 1/1;
+      max-width: 300px;
+      aspect-ratio: 1 / 1.05;
       border-radius: 22px;
       overflow: hidden;
       border: 1px solid var(--border-subtle);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
       margin-inline: auto;
     }
     .founder-avatar img {
@@ -1669,30 +1589,28 @@
       height: 100%;
       object-fit: cover;
     }
-
-    .founder-info h3 {
-      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-      margin-bottom: 6px;
+    .founder-info h2 {
+      font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+      margin-bottom: 8px;
     }
     .founder-role {
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--accent-orange);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
     .founder-bio {
       color: var(--ink-secondary);
       font-size: 0.98rem;
-      line-height: 1.65;
+      line-height: 1.68;
       margin-bottom: 26px;
-      max-width: 680px;
+      max-width: 68ch;
     }
-
     .founder-stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 18px;
       padding-top: 22px;
       border-top: 1px solid var(--border-subtle);
@@ -1703,52 +1621,50 @@
       gap: 4px;
     }
     .stat-item b {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 700;
       color: var(--ink-primary);
     }
     .stat-item span {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--ink-muted);
+      color: var(--ink-secondary);
       text-transform: uppercase;
     }
 
     /* ==========================================================================
-       CONTACT & INQUIRY SECTION
+       13. INTERACTIVE CONTACT & PROJECT CONFIGURATOR
        ========================================================================== */
     .contact-card {
       background: var(--surface-glass);
       backdrop-filter: blur(28px);
       border: 1px solid var(--border-subtle);
       border-radius: 28px;
-      padding: clamp(32px, 6vw, 64px);
+      padding: clamp(28px, 5.5vw, 60px);
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: clamp(32px, 6vw, 64px);
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: clamp(28px, 5vw, 56px);
       align-items: center;
       box-shadow: var(--shadow-ambient), var(--glass-highlight);
     }
-
     .contact-left h2 {
-      font-size: clamp(2.2rem, 4.4vw, 3.4rem);
-      margin-bottom: 18px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 16px;
     }
     .contact-left p {
       color: var(--ink-secondary);
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-bottom: 26px;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin-bottom: 24px;
     }
-
     .tag-selector {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
     .tag-option {
-      padding: 8px 16px;
+      padding: 9px 16px;
       border-radius: 999px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -1757,19 +1673,29 @@
       color: var(--ink-secondary);
       cursor: pointer;
       transition: all 0.25s ease;
-      touch-action: manipulation;
     }
     .tag-option.selected, .tag-option:hover {
-      background: rgba(255, 112, 41, 0.15);
+      background: rgba(255, 112, 41, 0.16);
       border-color: var(--accent-orange);
       color: var(--ink-primary);
       transform: translateY(-2px);
     }
 
+    .contact-preview-box {
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: var(--void-1);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--ink-secondary);
+    }
+    .contact-preview-box b { color: var(--accent-cyan); }
+
     .contact-right {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
     .direct-box {
       background: var(--void-1);
@@ -1779,12 +1705,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
       transition: border-color 0.25s ease;
     }
-    .direct-box:hover {
-      border-color: var(--border-hover);
-    }
+    .direct-box:hover { border-color: var(--border-hover); }
     .direct-info {
       display: flex;
       flex-direction: column;
@@ -1793,12 +1717,12 @@
     .direct-label {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--ink-muted);
+      color: var(--ink-secondary);
       text-transform: uppercase;
     }
     .direct-val {
       font-family: var(--font-mono);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       font-weight: 600;
       color: var(--ink-primary);
     }
@@ -1812,7 +1736,6 @@
       font-size: 0.74rem;
       cursor: pointer;
       transition: all 0.2s ease;
-      touch-action: manipulation;
     }
     .copy-btn:hover {
       border-color: var(--accent-orange);
@@ -1823,7 +1746,6 @@
       color: #FFFFFF;
       border-color: var(--accent-orange);
     }
-
     .cta-group {
       display: flex;
       flex-direction: column;
@@ -1831,9 +1753,7 @@
       margin-top: 6px;
     }
 
-    /* ==========================================================================
-       FOOTER & FAB
-       ========================================================================== */
+    /* Footer & Floating WhatsApp */
     footer {
       border-top: 1px solid var(--border-subtle);
       padding-block: 36px;
@@ -1851,11 +1771,10 @@
     .footer-text {
       font-family: var(--font-mono);
       font-size: 0.74rem;
-      color: var(--ink-muted);
+      color: var(--ink-secondary);
       letter-spacing: 0.04em;
     }
 
-    /* Floating WhatsApp Button */
     .fab-whatsapp {
       position: fixed;
       right: max(20px, env(safe-area-inset-right, 0px) + 16px);
@@ -1871,187 +1790,47 @@
       box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
       text-decoration: none;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      touch-action: manipulation;
     }
     .fab-whatsapp:hover {
-      transform: translateY(-4px) scale(1.08);
+      transform: translateY(-4px) scale(1.07);
       box-shadow: 0 18px 40px rgba(37, 211, 102, 0.65);
-    }
-    .fab-whatsapp svg {
-      width: 27px;
-      height: 27px;
-      fill: currentColor;
     }
 
     /* ==========================================================================
-       MOBILE RESPONSIVENESS & TOUCH OPTIMIZATION
+       14. RESPONSIVE BREAKPOINTS (MOBILE & TABLET)
        ========================================================================== */
-    @media (max-width: 992px) {
-      .carousel-slide {
-        grid-template-columns: 1fr;
-      }
-      .slide-media {
-        min-height: 260px;
-        max-height: 320px;
-      }
-      .process-timeline {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .founder-box {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .founder-avatar {
-        max-width: 200px;
-      }
-      .founder-stats {
-        justify-content: center;
-      }
-      .contact-card {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero__3d-stage { aspect-ratio: 16 / 10; min-height: 340px; }
+      .editorial-header { grid-template-columns: 1fr; align-items: start; gap: 12px; }
+      .bento-card--span-7, .bento-card--span-5 { grid-column: span 12; }
+      .ledger-row { grid-template-columns: 1fr; gap: 14px; }
+      .ledger-tags { justify-content: flex-start; }
+      .carousel-slide { grid-template-columns: 1fr; }
+      .slide-media { min-height: 270px; max-height: 340px; }
+      .process-timeline { grid-template-columns: repeat(2, 1fr); }
+      .founder-box { grid-template-columns: 1fr; text-align: center; }
+      .founder-avatar { max-width: 220px; }
+      .contact-card { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .nav-actions .btn {
-        display: none;
-      }
-      .menu-toggle {
-        display: grid;
-      }
-      .hero-ambient-spot {
-        width: 95vw;
-        height: 400px;
-        top: 40%;
-      }
-      .process-timeline {
-        grid-template-columns: 1fr;
-      }
-      .floating-pill {
-        display: none !important;
-      }
-      .lighthouse-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .console-frame {
-        border-radius: 18px;
-      }
-      .console-topbar {
-        padding: 10px 12px;
-        gap: 8px;
-        flex-wrap: nowrap;
-      }
-      .console-dots {
-        display: none;
-      }
-      .console-status {
-        display: none;
-      }
-      .console-tabs {
-        width: 100%;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-      }
-      .console-tabs::-webkit-scrollbar {
-        display: none;
-      }
-      .console-body {
-        height: auto;
-        min-height: auto;
-      }
-      .console-panel {
-        width: 100%;
-      }
-      .native-dashboard {
-        height: auto;
-        padding: 16px 14px;
-        gap: 14px;
-      }
-      .dash-chart-svg {
-        height: 110px;
-      }
-      .slide-content {
-        padding: 24px 18px;
-      }
-      .hero__desc {
-        font-size: 0.98rem;
-      }
-      .hero__ctas {
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-        margin-inline: auto;
-      }
-      .hero__ctas .btn,
-      .cta-group .btn {
-        width: 100%;
-      }
-      .marquee-section {
-        width: 100%;
-        max-width: 100vw;
-        overflow: hidden;
-        contain: paint;
-      }
-      .carousel-container {
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
-      }
-      .carousel-viewport {
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
-        touch-action: pan-y;
-      }
-      .carousel-track {
-        touch-action: pan-y;
-      }
-      .carousel-controls {
-        justify-content: center;
-        gap: 16px;
-      }
-      .contact-card {
-        padding: 24px 18px;
-        border-radius: 20px;
-      }
+      .nav-links, .nav-actions .btn { display: none; }
+      .menu-toggle { display: grid; }
+      .dash-kpis { grid-template-columns: repeat(2, 1fr); }
+      .dash-main-grid { grid-template-columns: 1fr; }
+      .process-timeline { grid-template-columns: 1fr; }
+      .lighthouse-grid { grid-template-columns: repeat(2, 1fr); }
+      .console-dots, .console-status { display: none; }
+      .hero__ctas { flex-direction: column; width: 100%; }
+      .hero__ctas .btn { width: 100%; }
+      .hero__3d-stage { min-height: 300px; }
     }
 
     @media (max-width: 480px) {
-      .brand__sub {
-        display: none;
-      }
-      .console-topbar {
-        padding: 8px 10px;
-      }
-      .console-tab {
-        padding: 5px 9px;
-        font-size: 0.68rem;
-      }
-      .console-body {
-        height: auto;
-        min-height: auto;
-      }
-      .dash-kpis {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-      .dash-kpi-card {
-        padding: 9px 11px;
-      }
-      .dash-kpi-val {
-        font-size: 1.15rem;
-      }
-      .direct-box {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .copy-btn {
-        align-self: flex-end;
-      }
+      .brand__sub { display: none; }
+      .direct-box { flex-direction: column; align-items: flex-start; }
+      .copy-btn { align-self: flex-end; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2065,120 +1844,157 @@
   </style>
 </head>
 <body>
-  <!-- CHV Premium Loader (debe ir justo después de <body>) -->
+  <!-- CHV Premium 3D Volumetric Loader (justo después de <body>) -->
   <script src="assets/chv-loader/chv-loader.js"></script>
 
-  <!-- Ambient Cursor Glow Effect -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- Background Canvas for Ambient Micro-particles -->
-  <canvas id="ambientCanvas"></canvas>
-
-  <!-- Ambient Light Flares (Destellos contenidos sin causar desborde horizontal) -->
-  <div class="ambient-decorations-wrapper">
-    <div class="light-flare light-flare--orange" style="top: 15%; left: -60px;"></div>
-    <div class="light-flare light-flare--violet" style="top: 45%; right: -60px;"></div>
-    <div class="light-flare light-flare--orange" style="top: 75%; left: -40px;"></div>
+  <!-- Top Scroll Progress Laser Line -->
+  <div class="scroll-progress-track" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
   </div>
 
-  <!-- Navigation Bar -->
+  <!-- Ambient Cursor Glow Follower -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Background Star/Constellation Canvas -->
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Volumetric Orbs -->
+  <div class="ambient-stage" aria-hidden="true">
+    <div class="ambient-orb ambient-orb--1"></div>
+    <div class="ambient-orb ambient-orb--2"></div>
+    <div class="ambient-orb ambient-orb--3"></div>
+  </div>
+
+  <!-- Floating Navigation Header -->
   <header>
-    <div class="container nav-bar">
-      <a href="#top" class="brand magnetic-el">
-        <div class="brand__icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    <div class="container">
+      <div class="header-glass">
+        <a href="#top" class="brand magnetic-el">
+          <div class="brand__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="brand__text">
+            <span class="brand__name">CHV <span>SYSTEMS</span></span>
+            <span class="brand__sub">Web Design &amp; Systems</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#proyectos" data-i18n="nav.work">Proyectos</a></li>
+          <li><a href="#soluciones" data-i18n="nav.solutions">Soluciones</a></li>
+          <li><a href="#beneficios" data-i18n="nav.benefits">Impacto</a></li>
+          <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
+          <li><a href="#fundador" data-i18n="nav.founder">Fundador</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="icon-btn magnetic-el" id="themeToggle" type="button" aria-label="Cambiar tema">
+            <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          </button>
+
+          <button class="lang-btn magnetic-el" id="langToggle" type="button" aria-label="Cambiar idioma">EN</button>
+
+          <a href="#contacto" class="btn btn--primary btn--sm magnetic-el" data-i18n="nav.cta">Iniciar Proyecto</a>
+
+          <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
         </div>
-        <div class="brand__text">
-          <span class="brand__name">CHV <span>SYSTEMS</span></span>
-          <span class="brand__sub">Web Design &amp; Development</span>
-        </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#proyectos" data-i18n="nav.work">Proyectos</a></li>
-        <li><a href="#soluciones" data-i18n="nav.solutions">Soluciones</a></li>
-        <li><a href="#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
-        <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
-        <li><a href="#fundador" data-i18n="nav.founder">Fundador</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <!-- Theme Toggle -->
-        <button class="icon-btn magnetic-el" id="themeToggle" type="button" aria-label="Cambiar tema">
-          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
-          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-        </button>
-
-        <!-- Language Toggle -->
-        <button class="lang-btn magnetic-el" id="langToggle" type="button" aria-label="Switch Language">EN</button>
-
-        <a href="#contacto" class="btn btn--primary btn--sm magnetic-el" data-i18n="nav.cta">Iniciar Proyecto</a>
-
-        <!-- Mobile Menu Hamburger -->
-        <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
       </div>
     </div>
 
-    <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobileDrawer">
       <a href="#proyectos" class="drawer-link" data-i18n="nav.work">Proyectos</a>
       <a href="#soluciones" class="drawer-link" data-i18n="nav.solutions">Soluciones</a>
-      <a href="#beneficios" class="drawer-link" data-i18n="nav.benefits">Beneficios</a>
+      <a href="#beneficios" class="drawer-link" data-i18n="nav.benefits">Impacto</a>
       <a href="#proceso" class="drawer-link" data-i18n="nav.process">Proceso</a>
       <a href="#fundador" class="drawer-link" data-i18n="nav.founder">Fundador</a>
-      <a href="#contacto" class="btn btn--primary" style="margin-top:10px" data-i18n="nav.cta">Iniciar Proyecto</a>
+      <a href="#contacto" class="btn btn--primary" style="margin-top:8px" data-i18n="nav.cta">Iniciar Proyecto</a>
     </div>
   </header>
 
   <main id="top">
     <!-- ==========================================================================
-         HERO SECTION WITH CELESTIAL HORIZON ARC & DYNAMIC TYPEWRITER
+         HERO SECTION: EDITORIAL SPLIT + INTERACTIVE 3D TESSERACT & SYSTEM NODES
          ========================================================================== -->
     <section class="hero">
-      <!-- Ambient Studio Lighting Spotlight behind Hero & Showcase (No horizontal lines) -->
-      <div class="hero-ambient-spot" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Column: Persuade Headline & Proof -->
+          <div class="hero__copy">
+            <div class="status-line anim-hero">
+              <span class="status-line__dot"></span>
+              <span data-i18n="pill.ai">Gananova OS · Sistema de Gestión en Producción</span>
+            </div>
 
-      <div class="container hero__content">
-        <!-- Main Title with Dynamic Typewriter effect & Bespoke Editorial Typography -->
-        <h1 class="hero__title anim-hero">
-          <span data-i18n="hero.title1">Diseño web</span> <span class="serif-accent" data-i18n="hero.accent">que impresiona.</span><br>
-          <span class="hero__typewriter">
-            <span class="glow-orange" id="typewriterText">Páginas que Venden</span><span class="typewriter-cursor"></span>
-          </span><br>
-          <span class="gradient-text" data-i18n="hero.title3">que impulsan tu negocio real.</span>
-        </h1>
+            <h1 class="hero__title anim-hero">
+              <span data-i18n="hero.title1">Ingeniería web</span> <span class="serif-accent" data-i18n="hero.accent">que impresiona.</span><br>
+              <span class="hero__typewriter">
+                <span class="ink-orange" id="typewriterText">Páginas que Venden</span><span class="typewriter-cursor"></span>
+              </span><br>
+              <span data-i18n="hero.title3">que impulsan tu negocio real.</span>
+            </h1>
 
-        <!-- Subtitle Lede -->
-        <p class="hero__desc anim-hero" data-i18n="hero.desc">
-          Creamos páginas web y sistemas a la medida con diseño limpio, moderno y de alto impacto. Hechas para que tu empresa transmita confianza inmediata y convierta visitas en clientes.
-        </p>
+            <p class="hero__desc anim-hero" data-i18n="hero.desc">
+              Diseñamos y construimos páginas web y sistemas empresariales a la medida con estética de alto impacto, velocidad instantánea (0.4s) y conversión directa para que tu empresa cierre más clientes.
+            </p>
 
-        <!-- CTAs -->
-        <div class="hero__ctas anim-hero">
-          <a href="#contacto" class="btn btn--primary magnetic-el" data-i18n="hero.ctaPrimary">
-            <span data-i18n="hero.ctaPrimaryText">Iniciar un Proyecto</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#proyectos" class="btn btn--glass magnetic-el" data-i18n="hero.ctaSecondary">
-            <span data-i18n="hero.ctaSecondaryText">Explorar Proyectos</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </a>
+            <div class="hero__ctas anim-hero">
+              <a href="#contacto" class="btn btn--primary magnetic-el">
+                <span data-i18n="hero.ctaPrimaryText">Iniciar un Proyecto</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#proyectos" class="btn btn--glass magnetic-el">
+                <span data-i18n="hero.ctaSecondaryText">Explorar Proyectos</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+
+            <div class="hero__proof-strip anim-hero">
+              <div class="proof-metric">
+                <b>0.4s</b>
+                <span data-i18n="pill.uptime">Carga Instantánea Móvil</span>
+              </div>
+              <div class="proof-metric">
+                <b>100%</b>
+                <span data-i18n="proof.m2">Arquitectura a la Medida</span>
+              </div>
+              <div class="proof-metric">
+                <b>CR · USA</b>
+                <span data-i18n="proof.m3">Proyectos en Producción</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive 3D Architectural Core & Node Constellation -->
+          <div class="hero__3d-stage tilt-card anim-hero" id="hero3dContainer">
+            <canvas id="hero3dCanvas" aria-label="Núcleo 3D interactivo de sistemas conectados"></canvas>
+
+            <div class="stage-3d-top">
+              <div class="stage-3d-tag">
+                <span style="width:7px;height:7px;border-radius:50%;background:var(--accent-cyan);box-shadow:0 0 8px var(--accent-cyan);"></span>
+                <span data-i18n="stage3d.badge">NÚCLEO 3D INTERACTIVO · ARRASTRA PARA ROTAR</span>
+              </div>
+
+              <div class="stage-3d-modes" role="group" aria-label="Modo de visualización 3D">
+                <button type="button" class="mode-3d-btn active" data-mode="tesseract" data-i18n="stage3d.m1">Núcleo</button>
+                <button type="button" class="mode-3d-btn" data-mode="orbit" data-i18n="stage3d.m2">Órbita</button>
+                <button type="button" class="mode-3d-btn" data-mode="helix" data-i18n="stage3d.m3">Matriz</button>
+              </div>
+            </div>
+
+            <div class="stage-3d-bottom">
+              <div class="node-inspector-pill" id="nodeInspectorText">
+                SYS.MODULE // WEB · CRM · PRESUPUESTOS · KPIs · WHATSAPP
+              </div>
+              <div class="stage-3d-tag">60 FPS · 3D ENGINE</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Interactive Floating Console / Dashboard Showcase -->
+        <!-- Interactive 3D Perspective Command Console -->
         <div class="hero__showcase anim-hero">
-          <!-- Floating Accent Pills -->
-          <div class="floating-pill floating-pill--1">
-            <span style="color:var(--accent-orange)">✦</span>
-            <span data-i18n="pill.uptime">0.4s Carga Instantánea en Celulares</span>
-          </div>
-          <div class="floating-pill floating-pill--2">
-            <span style="color:var(--accent-violet)">⚡</span>
-            <span data-i18n="pill.ai">Gananova OS · Sistema de Gestión en Producción</span>
-          </div>
-
           <div class="console-frame tilt-card">
             <div class="console-topbar">
               <div class="console-dots">
@@ -2199,7 +2015,7 @@
             </div>
 
             <div class="console-body">
-              <!-- Panel 1: NATIVE CUSTOM DASHBOARD FOR CHV SYSTEMS (NO NEXUS, NO ALEX CHEN) -->
+              <!-- Panel 1: Live Custom Dashboard -->
               <div class="console-panel active" id="panel-preview">
                 <div class="native-dashboard">
                   <div class="dash-head">
@@ -2209,7 +2025,7 @@
                       </div>
                       <div>
                         <div class="dash-brand-title">CHV <span>SYSTEMS</span></div>
-                        <div class="dash-brand-sub" data-i18n="dash.sub">Panel de Rendimiento Web</div>
+                        <div class="dash-brand-sub" data-i18n="dash.sub">Panel de Rendimiento &amp; Conversión</div>
                       </div>
                     </div>
                     <div class="dash-status-pill">
@@ -2218,7 +2034,6 @@
                     </div>
                   </div>
 
-                  <!-- 4 Real Business Metric Cards -->
                   <div class="dash-kpis">
                     <div class="dash-kpi-card">
                       <span class="dash-kpi-lbl" data-i18n="dash.kpi1lbl">Nuevos Contactos</span>
@@ -2227,7 +2042,7 @@
                     </div>
                     <div class="dash-kpi-card">
                       <span class="dash-kpi-lbl" data-i18n="dash.kpi2lbl">Ventas &amp; Cotizaciones</span>
-                      <span class="dash-kpi-val highlight-violet">$18,450</span>
+                      <span class="dash-kpi-val highlight-cyan">$18,450</span>
                       <span class="dash-kpi-tag" data-i18n="dash.kpi2tag">En tiempo real</span>
                     </div>
                     <div class="dash-kpi-card">
@@ -2242,7 +2057,6 @@
                     </div>
                   </div>
 
-                  <!-- Main Chart & Conversion Breakdown -->
                   <div class="dash-main-grid">
                     <div class="dash-chart-box">
                       <div class="dash-chart-title">
@@ -2251,24 +2065,21 @@
                       </div>
                       <svg class="dash-chart-svg" viewBox="0 0 500 140">
                         <defs>
-                          <linearGradient id="chartViolet" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="var(--accent-violet)" stop-opacity="0.45"/>
-                            <stop offset="100%" stop-color="var(--accent-violet)" stop-opacity="0.0"/>
+                          <linearGradient id="chartCyan" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="var(--accent-cyan)" stop-opacity="0.38"/>
+                            <stop offset="100%" stop-color="var(--accent-cyan)" stop-opacity="0.0"/>
                           </linearGradient>
                           <linearGradient id="chartOrange" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="var(--accent-orange)" stop-opacity="0.45"/>
+                            <stop offset="0%" stop-color="var(--accent-orange)" stop-opacity="0.42"/>
                             <stop offset="100%" stop-color="var(--accent-orange)" stop-opacity="0.0"/>
                           </linearGradient>
                         </defs>
-                        <!-- Background Glow Areas -->
-                        <path d="M 0 110 Q 70 80, 140 95 T 280 40 T 420 50 T 500 20 L 500 140 L 0 140 Z" fill="url(#chartViolet)"/>
-                        <path d="M 0 130 Q 70 100, 140 105 T 280 65 T 420 70 T 500 35 L 500 140 L 0 140 Z" fill="url(#chartOrange)"/>
-                        <!-- Smooth Glowing Lines -->
-                        <path d="M 0 110 Q 70 80, 140 95 T 280 40 T 420 50 T 500 20" fill="none" stroke="var(--accent-violet)" stroke-width="2.5"/>
-                        <path d="M 0 130 Q 70 100, 140 105 T 280 65 T 420 70 T 500 35" fill="none" stroke="var(--accent-orange)" stroke-width="2.5"/>
-                        <!-- Target pulse circles -->
-                        <circle cx="280" cy="40" r="4.5" fill="#FFF" stroke="var(--accent-violet)" stroke-width="2"/>
-                        <circle cx="420" cy="70" r="4.5" fill="#FFF" stroke="var(--accent-orange)" stroke-width="2"/>
+                        <path d="M 0 112 Q 70 82, 140 94 T 280 38 T 420 48 T 500 18 L 500 140 L 0 140 Z" fill="url(#chartCyan)"/>
+                        <path d="M 0 128 Q 70 100, 140 106 T 280 62 T 420 68 T 500 32 L 500 140 L 0 140 Z" fill="url(#chartOrange)"/>
+                        <path d="M 0 112 Q 70 82, 140 94 T 280 38 T 420 48 T 500 18" fill="none" stroke="var(--accent-cyan)" stroke-width="2.5"/>
+                        <path d="M 0 128 Q 70 100, 140 106 T 280 62 T 420 68 T 500 32" fill="none" stroke="var(--accent-orange)" stroke-width="2.5"/>
+                        <circle cx="280" cy="38" r="4.5" fill="#FFF" stroke="var(--accent-cyan)" stroke-width="2"/>
+                        <circle cx="420" cy="68" r="4.5" fill="#FFF" stroke="var(--accent-orange)" stroke-width="2"/>
                       </svg>
                     </div>
 
@@ -2285,90 +2096,98 @@
                           <span data-i18n="dash.c2">Búsqueda en Google</span>
                           <b>28%</b>
                         </div>
-                        <div class="channel-bar"><div class="channel-fill" style="width:28%;background:var(--accent-violet);"></div></div>
+                        <div class="channel-bar"><div class="channel-fill" style="width:28%;background:var(--accent-cyan);"></div></div>
                       </div>
                       <div>
                         <div class="channel-row">
                           <span data-i18n="dash.c3">Redes Sociales</span>
                           <b>10%</b>
                         </div>
-                        <div class="channel-bar"><div class="channel-fill" style="width:10%;background:var(--accent-cyan);"></div></div>
+                        <div class="channel-bar"><div class="channel-fill" style="width:10%;background:var(--accent-violet);"></div></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Panel 2: Interactive Modules Matrix -->
+              <!-- Panel 2: Interactive Business Modules -->
               <div class="console-panel" id="panel-matrix">
                 <div class="matrix-panel">
                   <div class="matrix-card">
-                    <div class="matrix-icon">📱</div>
+                    <div class="matrix-icon">
+                      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
                     <h4 data-i18n="mod1.title">Contacto en 1 Clic</h4>
                     <p data-i18n="mod1.desc">Botones directos a WhatsApp y formularios claros para no perder ningún cliente.</p>
                   </div>
                   <div class="matrix-card">
-                    <div class="matrix-icon">📋</div>
+                    <div class="matrix-icon">
+                      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
+                    </div>
                     <h4 data-i18n="mod2.title">Control de Presupuestos</h4>
                     <p data-i18n="mod2.desc">Control automático de ingresos, gastos y presupuestos para tu negocio.</p>
                   </div>
                   <div class="matrix-card">
-                    <div class="matrix-icon">⚡</div>
+                    <div class="matrix-icon">
+                      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
                     <h4 data-i18n="mod3.title">Automatización Simple</h4>
                     <p data-i18n="mod3.desc">Ahorra tiempo automatizando cotizaciones, avisos y seguimiento de pedidos.</p>
                   </div>
                   <div class="matrix-card">
-                    <div class="matrix-icon">📊</div>
+                    <div class="matrix-icon">
+                      <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </div>
                     <h4 data-i18n="mod4.title">Métricas Claras</h4>
                     <p data-i18n="mod4.desc">Conoce cuánta gente visita tu página y de dónde llegan tus mejores clientes.</p>
                   </div>
                 </div>
               </div>
 
-              <!-- Panel 3: Why It Works (Enfoque comercial y de valor para el cliente) -->
+              <!-- Panel 3: Commercial Value -->
               <div class="console-panel" id="panel-value">
                 <div class="value-panel">
                   <div class="value-card">
-                    <h4 data-i18n="val1.title">01 / Sin Plantillas Lentas</h4>
+                    <h4 data-i18n="val1.title">Sin Plantillas Lentas</h4>
                     <p data-i18n="val1.desc">Las plantillas genéricas vienen cargadas de errores y tardan segundos en abrir. Nuestras webs cargan en 0.4s.</p>
                   </div>
                   <div class="value-card">
-                    <h4 data-i18n="val2.title">02 / Pensada para Celulares</h4>
+                    <h4 data-i18n="val2.title">Pensada para Celulares</h4>
                     <p data-i18n="val2.desc">El 80%+ del tráfico entra por teléfono. El diseño está optimizado para que navegar y comprar sea facilísimo.</p>
                   </div>
                   <div class="value-card">
-                    <h4 data-i18n="val3.title">03 / Trato Directo</h4>
+                    <h4 data-i18n="val3.title">Trato Directo</h4>
                     <p data-i18n="val3.desc">Sin intermediarios ni meses de espera. Tratas directamente conmigo para ajustar tu página cuando lo necesites.</p>
                   </div>
                   <div class="value-card">
-                    <h4 data-i18n="val4.title">04 / Enfoque en Ventas</h4>
+                    <h4 data-i18n="val4.title">Enfoque en Ventas</h4>
                     <p data-i18n="val4.desc">Cada elemento tiene un propósito: dar confianza, explicar lo que ofreces y guiar a tu cliente a escribirte.</p>
                   </div>
                 </div>
               </div>
 
-              <!-- Panel 4: Telemetry & Lighthouse -->
+              <!-- Panel 4: Lighthouse 100% Telemetry -->
               <div class="console-panel" id="panel-telemetry">
                 <div class="telemetry-panel">
                   <div class="lighthouse-grid">
                     <div class="gauge">
-                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">100</span></div>
                       <span class="gauge-label" data-i18n="gauge.perf">Velocidad</span>
                     </div>
                     <div class="gauge">
-                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">100</span></div>
                       <span class="gauge-label" data-i18n="gauge.a11y">Accesibilidad</span>
                     </div>
                     <div class="gauge">
-                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">100</span></div>
                       <span class="gauge-label" data-i18n="gauge.bp">Calidad</span>
                     </div>
                     <div class="gauge">
-                      <div class="gauge-circle"><span class="counter-num" data-target="100">0</span></div>
+                      <div class="gauge-circle"><span class="counter-num" data-target="100">100</span></div>
                       <span class="gauge-label" data-i18n="gauge.seo">SEO Google</span>
                     </div>
                   </div>
-                  <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--ink-secondary);text-align:center;" data-i18n="gauge.desc">
+                  <p style="font-family:var(--font-mono);font-size:0.84rem;color:var(--ink-secondary);text-align:center;" data-i18n="gauge.desc">
                     Arquitectura optimizada: 0 dependencias innecesarias · Carga instantánea · Código limpio
                   </p>
                 </div>
@@ -2380,37 +2199,43 @@
     </section>
 
     <!-- ==========================================================================
-       TRUSTED RESULTS MARQUEE (RESULTADOS REALES, NO JERGA)
-       ========================================================================== -->
-    <div class="marquee-section">
+         MARQUEE STRIP
+         ========================================================================== -->
+    <div class="marquee-section" aria-hidden="true">
       <div class="marquee-track">
-        <div class="marquee-item"><span>✦</span> DISEÑO WEB QUE VENDE</div>
-        <div class="marquee-item"><span>✦</span> CARGA INSTANTÁNEA EN 0.4s</div>
-        <div class="marquee-item"><span>✦</span> 100% ADAPTADA A CELULARES</div>
-        <div class="marquee-item"><span>✦</span> CONVERSIÓN DIRECTA A WHATSAPP</div>
-        <div class="marquee-item"><span>✦</span> IMAGEN PROFESIONAL Y MODERNA</div>
-        <div class="marquee-item"><span>✦</span> SISTEMAS A LA MEDIDA</div>
-        <div class="marquee-item"><span>✦</span> TRATO DIRECTO SIN AGENCIAS</div>
-        <!-- Infinite Marquee duplicate -->
-        <div class="marquee-item"><span>✦</span> DISEÑO WEB QUE VENDE</div>
-        <div class="marquee-item"><span>✦</span> CARGA INSTANTÁNEA EN 0.4s</div>
-        <div class="marquee-item"><span>✦</span> 100% ADAPTADA A CELULARES</div>
-        <div class="marquee-item"><span>✦</span> CONVERSIÓN DIRECTA A WHATSAPP</div>
-        <div class="marquee-item"><span>✦</span> IMAGEN PROFESIONAL Y MODERNA</div>
-        <div class="marquee-item"><span>✦</span> SISTEMAS A LA MEDIDA</div>
-        <div class="marquee-item"><span>✦</span> TRATO DIRECTO SIN AGENCIAS</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> DISEÑO WEB QUE VENDE</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> CARGA INSTANTÁNEA EN 0.4s</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> 100% ADAPTADA A CELULARES</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> CONVERSIÓN DIRECTA A WHATSAPP</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> IMAGEN PROFESIONAL Y MODERNA</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> SISTEMAS A LA MEDIDA</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> TRATO DIRECTO SIN AGENCIAS</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> DISEÑO WEB QUE VENDE</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> CARGA INSTANTÁNEA EN 0.4s</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> 100% ADAPTADA A CELULARES</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> CONVERSIÓN DIRECTA A WHATSAPP</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> IMAGEN PROFESIONAL Y MODERNA</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> SISTEMAS A LA MEDIDA</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2L15 9l7 3-7 3-3 7-3-7-7-3 7-3z"/></svg> TRATO DIRECTO SIN AGENCIAS</div>
       </div>
     </div>
 
     <!-- ==========================================================================
-       INTERACTIVE PROJECTS CAROUSEL (PROYECTOS ACTIVOS)
-       ========================================================================== -->
+         PROJECTS SHOWCASE (CAROUSEL + QUICK TABS)
+         ========================================================================== -->
     <section id="proyectos" class="carousel-section">
       <div class="container">
-        <div class="section-header reveal-title">
-          <div class="pill-badge" data-i18n="work.badge">[ PROYECTOS REALES ]</div>
+        <div class="editorial-header reveal-title">
           <h2 data-i18n="work.h2">Páginas &amp; Sistemas en Producción</h2>
           <p data-i18n="work.desc">Explora proyectos reales construidos para negocios activos: desde plataformas empresariales de gestión hasta sitios corporativos de alta captación.</p>
+        </div>
+
+        <div class="project-quick-tabs" id="projectQuickTabs">
+          <button type="button" class="project-quick-tab active" data-slide="0">Gananova OS</button>
+          <button type="button" class="project-quick-tab" data-slide="1">Gananova Consultoría</button>
+          <button type="button" class="project-quick-tab" data-slide="2">ADEFIP</button>
+          <button type="button" class="project-quick-tab" data-slide="3">Pura Vida Painting LLC</button>
         </div>
 
         <div class="carousel-container">
@@ -2441,7 +2266,7 @@
                     <li data-i18n="w1.b3">Métricas y reportes financieros en tiempo real</li>
                     <li data-i18n="w1.b4">Automatización de flujos y operaciones diarias</li>
                   </ul>
-                  <div style="margin-top:12px;">
+                  <div style="margin-top:8px;">
                     <a href="https://www.gananova.com" target="_blank" rel="noopener" class="btn btn--primary btn--sm" data-i18n="w1.link">
                       Visitar gananova.com →
                     </a>
@@ -2457,7 +2282,7 @@
                 <div class="slide-content">
                   <div class="slide-brand-header">
                     <div class="slide-logo-badge">
-                      <svg viewBox="0 0 32 32" fill="none"><path d="M6 24V14l10-8 10 8v10H6z" stroke="var(--accent-violet)" stroke-width="2.2"/><path d="M12 24v-6h8v6" fill="var(--accent-orange)"/><circle cx="16" cy="11" r="2.5" fill="#FFFFFF"/></svg>
+                      <svg viewBox="0 0 32 32" fill="none"><path d="M6 24V14l10-8 10 8v10H6z" stroke="var(--accent-cyan)" stroke-width="2.2"/><path d="M12 24v-6h8v6" fill="var(--accent-orange)"/><circle cx="16" cy="11" r="2.5" fill="#FFFFFF"/></svg>
                     </div>
                     <div class="slide-title-wrap">
                       <span class="slide-sub" data-i18n="w1.sub">Consultoría &amp; Empresa</span>
@@ -2472,7 +2297,7 @@
                     <li data-i18n="w2.b2">Digitalización integral de operaciones para pymes</li>
                     <li data-i18n="w2.b3">Soluciones prácticas de software para empresas</li>
                   </ul>
-                  <div style="margin-top:12px;">
+                  <div style="margin-top:8px;">
                     <a href="https://www.gananova.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w2.link">
                       Conocer Gananova →
                     </a>
@@ -2503,7 +2328,7 @@
                     <li data-i18n="w3.b2">Registro dinámico y panel de seguimiento deportivo</li>
                     <li data-i18n="w3.b3">Portal interactivo con carga instantánea y diseño limpio</li>
                   </ul>
-                  <div style="margin-top:12px;">
+                  <div style="margin-top:8px;">
                     <a href="https://www.adefip.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w3.link">
                       Explorar adefip.com →
                     </a>
@@ -2534,7 +2359,7 @@
                     <li data-i18n="w4.b2">Cotizador interactivo rápido con feedback instantáneo</li>
                     <li data-i18n="w4.b3">100% Adaptada a celulares para clientes en ruta</li>
                   </ul>
-                  <div style="margin-top:12px;">
+                  <div style="margin-top:8px;">
                     <a href="https://www.puravidapaintingllc.com" target="_blank" rel="noopener" class="btn btn--glass btn--sm" data-i18n="w4.link">
                       Ver puravidapaintingllc.com →
                     </a>
@@ -2545,13 +2370,12 @@
             </div>
           </div>
 
-          <!-- Carousel Controls -->
           <div class="carousel-controls">
             <div style="display:flex;gap:10px;">
-              <button class="carousel-nav-btn" id="prevSlide" aria-label="Slide anterior">
+              <button class="carousel-nav-btn" id="prevSlide" type="button" aria-label="Proyecto anterior">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
               </button>
-              <button class="carousel-nav-btn" id="nextSlide" aria-label="Siguiente slide">
+              <button class="carousel-nav-btn" id="nextSlide" type="button" aria-label="Siguiente proyecto">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -2563,101 +2387,130 @@
               <span class="carousel-dot" data-index="3"></span>
             </div>
 
-            <div class="carousel-counter" id="carouselCounter">
-              01 / 04
-            </div>
+            <div class="carousel-counter" id="carouselCounter">01 / 04</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-       ESPECTRO DE SOLUCIONES: DESDE WEBS SENCILLAS HASTA EXPERIENCIAS MODERNAS
-       ========================================================================== -->
+         SOLUTIONS SPECTRUM: ASYMMETRIC BENTO GRID WITH DRAWN SVG ICONS & LIVE WIDGETS
+         ========================================================================== -->
     <section id="soluciones" class="spectrum-section">
       <div class="container">
-        <div class="section-header reveal-title">
-          <div class="pill-badge" data-i18n="spectrum.badge">[ VERSATILIDAD PARA TU NEGOCIO ]</div>
-          <h2 data-i18n="spectrum.h2">Desde una web <span class="serif-accent">sencilla y directa</span>, hasta experiencias interactivas modernas <span class="serif-accent glow-orange">como esta</span>.</h2>
+        <div class="editorial-header reveal-title">
+          <h2 data-i18n="spectrum.h2">Desde una web <span class="serif-accent">sencilla y directa</span>, hasta experiencias interactivas modernas <span class="serif-accent">como esta</span>.</h2>
           <p data-i18n="spectrum.desc">
             Cada negocio tiene una escala y una meta distinta. No te cobro por cosas innecesarias: diseñamos justo la solución que tu cliente necesita para comprar o contactarte.
           </p>
         </div>
 
-        <div class="spectrum-grid">
-          <!-- Card 1: Restaurantes & Cafeterías -->
-          <div class="spectrum-card tilt-card">
+        <div class="bento-solutions">
+          <!-- Card 1: Gastronomía (Span 5) -->
+          <div class="bento-card bento-card--span-5 tilt-card spectrum-card">
             <div>
-              <div class="spectrum-top">
-                <div class="spectrum-icon">🍽️</div>
-                <span class="spectrum-tag" data-i18n="spec1.tag">GASTRONOMÍA</span>
+              <div class="bento-top">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM18 14h3M14 18v3"/></svg>
+                </div>
+                <span class="bento-tag" data-i18n="spec1.tag">GASTRONOMÍA</span>
               </div>
               <h3 data-i18n="spec1.title">Menús Digitales &amp; Códigos QR</h3>
               <p data-i18n="spec1.desc">
                 Ideal para restaurantes, cafeterías y bares. Menú web ultrarrápido para que tus clientes escaneen un código QR en la mesa, vean fotos apetitosas y hagan pedidos o reservas directamente por WhatsApp.
               </p>
             </div>
+
+            <div class="bento-micro-ui">
+              <span class="micro-status"><span style="color:var(--accent-emerald)">●</span> QR MESA #04 · ACTIVO</span>
+              <span class="micro-badge">0.3s LOAD</span>
+            </div>
+
             <ul class="spectrum-features">
-              <li><span>✦</span> <span data-i18n="spec1.f1">Código QR listo para imprimir en mesas</span></li>
-              <li><span>✦</span> <span data-i18n="spec1.f2">Carga en 0.3s sin descargar aplicaciones</span></li>
-              <li><span>✦</span> <span data-i18n="spec1.f3">Actualización instantánea de precios</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec1.f1">Código QR listo para imprimir en mesas</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec1.f2">Carga en 0.3s sin descargar aplicaciones</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec1.f3">Actualización instantánea de precios</span></li>
             </ul>
           </div>
 
-          <!-- Card 2: Talleres, Reparación & Servicios -->
-          <div class="spectrum-card tilt-card">
+          <!-- Card 2: Servicios Técnicos (Span 7) -->
+          <div class="bento-card bento-card--span-7 tilt-card spectrum-card">
             <div>
-              <div class="spectrum-top">
-                <div class="spectrum-icon">🔧</div>
-                <span class="spectrum-tag" data-i18n="spec2.tag">SERVICIOS RÁPIDOS</span>
+              <div class="bento-top">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <span class="bento-tag" data-i18n="spec2.tag">SERVICIOS RÁPIDOS</span>
               </div>
               <h3 data-i18n="spec2.title">Talleres Mecánicos &amp; Servicios Técnicos</h3>
               <p data-i18n="spec2.desc">
                 Para talleres mecánicos, cerrajerías, detailing, aires acondicionados y contratistas. Una página clara con tus servicios, botón de cotización exprés por WhatsApp y mapa directo a tu local.
               </p>
             </div>
+
+            <div class="bento-micro-ui">
+              <span class="micro-status"><span style="color:var(--accent-orange)">●</span> GPS WAZE &amp; GOOGLE MAPS INTEGRADO</span>
+              <span class="micro-badge">1-CLIC COTIZACIÓN</span>
+            </div>
+
             <ul class="spectrum-features">
-              <li><span>✦</span> <span data-i18n="spec2.f1">Cotizaciones rápidas por mensaje o foto</span></li>
-              <li><span>✦</span> <span data-i18n="spec2.f2">Ubicación conectada con Waze y Google Maps</span></li>
-              <li><span>✦</span> <span data-i18n="spec2.f3">Galería de trabajos y testimonios reales</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec2.f1">Cotizaciones rápidas por mensaje o foto</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec2.f2">Ubicación conectada con Waze y Google Maps</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec2.f3">Galería de trabajos y testimonios reales</span></li>
             </ul>
           </div>
 
-          <!-- Card 3: Empresas & Contratistas -->
-          <div class="spectrum-card tilt-card">
+          <!-- Card 3: Empresas & Marcas (Span 7) -->
+          <div class="bento-card bento-card--span-7 tilt-card spectrum-card">
             <div>
-              <div class="spectrum-top">
-                <div class="spectrum-icon">🏢</div>
-                <span class="spectrum-tag" data-i18n="spec3.tag">EMPRESAS &amp; MARCAS</span>
+              <div class="bento-top">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
+                </div>
+                <span class="bento-tag" data-i18n="spec3.tag">EMPRESAS &amp; MARCAS</span>
               </div>
               <h3 data-i18n="spec3.title">Páginas Corporativas de Alto Nivel</h3>
               <p data-i18n="spec3.desc">
                 Para contratistas, bufetes, firmas y empresas que compiten en mercados exigentes (como nuestro cliente Pura Vida Painting LLC en EE. UU.). Diseños que transmiten solidez y cierran ventas grandes.
               </p>
             </div>
+
+            <div class="bento-micro-ui">
+              <span class="micro-status"><span style="color:var(--accent-cyan)">●</span> ARQUITECTURA DE ALTA CONVERSIÓN</span>
+              <span class="micro-badge">ESTÁNDAR INTERNACIONAL</span>
+            </div>
+
             <ul class="spectrum-features">
-              <li><span>✦</span> <span data-i18n="spec3.f1">Estética impecable que genera autoridad</span></li>
-              <li><span>✦</span> <span data-i18n="spec3.f2">Muestrario de proyectos y casos de éxito</span></li>
-              <li><span>✦</span> <span data-i18n="spec3.f3">Estructura pensada para captar clientes</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec3.f1">Estética impecable que genera autoridad</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec3.f2">Muestrario de proyectos y casos de éxito</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec3.f3">Estructura pensada para captar clientes</span></li>
             </ul>
           </div>
 
-          <!-- Card 4: Sistemas & Plataformas Web -->
-          <div class="spectrum-card tilt-card">
+          <!-- Card 4: Sistemas a la Medida (Span 5) -->
+          <div class="bento-card bento-card--span-5 tilt-card spectrum-card">
             <div>
-              <div class="spectrum-top">
-                <div class="spectrum-icon">⚡</div>
-                <span class="spectrum-tag" data-i18n="spec4.tag">GESTIÓN &amp; CONTROL</span>
+              <div class="bento-top">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span class="bento-tag" data-i18n="spec4.tag">GESTIÓN &amp; CONTROL</span>
               </div>
               <h3 data-i18n="spec4.title">Sistemas a la Medida &amp; Portales</h3>
               <p data-i18n="spec4.desc">
                 Cuando tu negocio supera las hojas de Excel. Plataformas como Gananova OS para control financiero, seguimiento de presupuestos, inventario, CRM y dashboards ejecutivos en tiempo real.
               </p>
             </div>
+
+            <div class="bento-micro-ui">
+              <span class="micro-status"><span style="color:var(--accent-emerald)">●</span> GANANOVA OS ARCHITECTURE</span>
+              <span class="micro-badge">CLOUD SYNC</span>
+            </div>
+
             <ul class="spectrum-features">
-              <li><span>✦</span> <span data-i18n="spec4.f1">Control financiero y reportes en vivo</span></li>
-              <li><span>✦</span> <span data-i18n="spec4.f2">Control administrativo adaptado a tu flujo</span></li>
-              <li><span>✦</span> <span data-i18n="spec4.f3">Acceso seguro desde teléfono o computadora</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec4.f1">Control financiero y reportes en vivo</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec4.f2">Control administrativo adaptado a tu flujo</span></li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="spec4.f3">Acceso seguro desde teléfono o computadora</span></li>
             </ul>
           </div>
         </div>
@@ -2665,77 +2518,88 @@
     </section>
 
     <!-- ==========================================================================
-       RESULTADOS & BENEFICIOS PARA EL CLIENTE (REEMPLAZANDO JERGA TÉCNICA)
-       ========================================================================== -->
-    <section id="beneficios" style="background: color-mix(in srgb, var(--void-1) 35%, transparent);">
+         COMMERCIAL IMPACT LEDGER (EDITORIAL ROWS)
+         ========================================================================== -->
+    <section id="beneficios" style="background: color-mix(in srgb, var(--void-1) 38%, transparent);">
       <div class="container">
-        <div class="section-header reveal-title">
-          <div class="pill-badge" data-i18n="skills.badge">[ RESULTADOS CONCRETOS ]</div>
+        <div class="editorial-header reveal-title">
           <h2 data-i18n="skills.h2">Lo que una buena web hace por tu negocio</h2>
           <p data-i18n="skills.desc">No se trata de la tecnología que uso, sino de lo que consigues: más clientes, mejor imagen y un proceso sin complicaciones.</p>
         </div>
 
-        <div class="skills-grid">
-          <!-- Pillar 1: Ventas & Clientes -->
-          <div class="skill-card tilt-card skill-from-left">
-            <div class="skill-card__num">
-              <span>01</span>
-              <span class="tag-mini">VENTAS</span>
+        <div class="impact-ledger">
+          <!-- Row 1 -->
+          <div class="ledger-row ledger-anim">
+            <div class="ledger-meta">
+              <div class="ledger-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <span class="ledger-domain">VENTAS &amp; CAPTACIÓN</span>
             </div>
-            <h3 data-i18n="skill1.title">Más Clientes y Ventas</h3>
-            <p data-i18n="skill1.desc">Tu web diseñada para convencer: botones directos a WhatsApp, llamadas claras a la acción y estructura pensada para que las visitas se conviertan en clientes reales.</p>
-            <div class="skill-tags">
+            <div class="ledger-body">
+              <h3 data-i18n="skill1.title">Más Clientes y Ventas</h3>
+              <p data-i18n="skill1.desc">Tu web diseñada para convencer: botones directos a WhatsApp, llamadas claras a la acción y estructura pensada para que las visitas se conviertan en clientes reales.</p>
+            </div>
+            <div class="ledger-tags">
               <span class="skill-tag">Conversión a WhatsApp</span>
-              <span class="skill-tag">Formularios Rápidos</span>
               <span class="skill-tag">Estructura Comercial</span>
               <span class="skill-tag">Retorno de Inversión</span>
             </div>
           </div>
 
-          <!-- Pillar 2: Imagen y Confianza -->
-          <div class="skill-card tilt-card skill-from-bottom">
-            <div class="skill-card__num">
-              <span>02</span>
-              <span class="tag-mini">AUTORIDAD</span>
+          <!-- Row 2 -->
+          <div class="ledger-row ledger-anim">
+            <div class="ledger-meta">
+              <div class="ledger-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span class="ledger-domain">AUTORIDAD DE MARCA</span>
             </div>
-            <h3 data-i18n="skill2.title">Imagen que Inspira Confianza</h3>
-            <p data-i18n="skill2.desc">En los primeros 3 segundos, tus clientes sabrán que eres un negocio serio, moderno y superior a tu competencia. Una web limpia que genera credibilidad inmediata.</p>
-            <div class="skill-tags">
+            <div class="ledger-body">
+              <h3 data-i18n="skill2.title">Imagen que Inspira Confianza</h3>
+              <p data-i18n="skill2.desc">En los primeros 3 segundos, tus clientes sabrán que eres un negocio serio, moderno y superior a tu competencia. Una web limpia que genera credibilidad inmediata.</p>
+            </div>
+            <div class="ledger-tags">
               <span class="skill-tag">Diseño Limpio &amp; Moderno</span>
               <span class="skill-tag">Credibilidad Inmediata</span>
-              <span class="skill-tag">Identidad de Marca</span>
               <span class="skill-tag">Cero Plantillas Baratas</span>
             </div>
           </div>
 
-          <!-- Pillar 3: Móvil y Velocidad -->
-          <div class="skill-card tilt-card skill-from-bottom">
-            <div class="skill-card__num">
-              <span>03</span>
-              <span class="tag-mini">MÓVIL</span>
+          <!-- Row 3 -->
+          <div class="ledger-row ledger-anim">
+            <div class="ledger-meta">
+              <div class="ledger-icon">
+                <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              </div>
+              <span class="ledger-domain">RENDIMIENTO MÓVIL</span>
             </div>
-            <h3 data-i18n="skill3.title">Carga Rápida en Celulares</h3>
-            <p data-i18n="skill3.desc">Más del 80% de tus clientes entran desde su teléfono. Tu página cargará al instante (menos de 1 segundo), sin trabas, botones cortados ni esperas que pierdan ventas.</p>
-            <div class="skill-tags">
+            <div class="ledger-body">
+              <h3 data-i18n="skill3.title">Carga Rápida en Celulares</h3>
+              <p data-i18n="skill3.desc">Más del 80% de tus clientes entran desde su teléfono. Tu página cargará al instante (menos de 1 segundo), sin trabas, botones cortados ni esperas que pierdan ventas.</p>
+            </div>
+            <div class="ledger-tags">
               <span class="skill-tag">100% Adaptada a Celulares</span>
               <span class="skill-tag">Carga en 0.4s</span>
               <span class="skill-tag">Experiencia Fluida</span>
-              <span class="skill-tag">Sin Errores Técnicos</span>
             </div>
           </div>
 
-          <!-- Pillar 4: Trato Directo & Sistemas -->
-          <div class="skill-card tilt-card skill-from-right">
-            <div class="skill-card__num">
-              <span>04</span>
-              <span class="tag-mini">SISTEMAS</span>
+          <!-- Row 4 -->
+          <div class="ledger-row ledger-anim">
+            <div class="ledger-meta">
+              <div class="ledger-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="ledger-domain">INGENIERÍA &amp; PYMES</span>
             </div>
-            <h3 data-i18n="skill4.title">Trato Directo y Visión PYME</h3>
-            <p data-i18n="skill4.desc">Hablas directamente conmigo de principio a fin, sin agencias costosas ni intermediarios. Cuento con experiencia real en gestión y asesoría de PYMES con Gananova, creando desde páginas comerciales hasta sistemas de gestión si tu empresa lo necesita.</p>
-            <div class="skill-tags">
+            <div class="ledger-body">
+              <h3 data-i18n="skill4.title">Trato Directo y Visión PYME</h3>
+              <p data-i18n="skill4.desc">Hablas directamente conmigo de principio a fin, sin agencias costosas ni intermediarios. Cuento con experiencia real en gestión y asesoría de PYMES con Gananova, creando desde páginas comerciales hasta sistemas de gestión si tu empresa lo necesita.</p>
+            </div>
+            <div class="ledger-tags">
               <span class="skill-tag">Experiencia PYME Real</span>
               <span class="skill-tag">Gestión con Gananova</span>
-              <span class="skill-tag">Sistemas a la Medida</span>
               <span class="skill-tag">Trato 1 a 1 Directo</span>
             </div>
           </div>
@@ -2744,34 +2608,44 @@
     </section>
 
     <!-- ==========================================================================
-       4-PHASE PROCESS (PROCESO CLARO Y SIMPLE)
-       ========================================================================== -->
+         PROCESS SECTION
+         ========================================================================== -->
     <section id="proceso">
       <div class="container">
-        <div class="section-header reveal-title">
-          <div class="pill-badge" data-i18n="process.badge">[ PASO A PASO ]</div>
+        <div class="editorial-header reveal-title">
           <h2 data-i18n="process.h2">Cómo Trabajamos: Fácil y Transparente</h2>
           <p data-i18n="process.desc">Un proceso ordenado donde sabes exactamente qué esperar en cada etapa, sin complicaciones técnicas.</p>
         </div>
 
         <div class="process-timeline">
           <div class="process-card tilt-card process-anim-step">
-            <span class="process-card__step">01</span>
+            <div class="process-card__top">
+              <span class="process-card__step" data-i18n="step1.tag">FASE 1 · DIAGNÓSTICO</span>
+            </div>
             <h3 data-i18n="step1.title">Conversación Inicial</h3>
             <p data-i18n="step1.desc">Entiendo tu negocio, qué vendes y qué necesitas que haga tu página web para atraer más clientes.</p>
           </div>
+
           <div class="process-card tilt-card process-anim-step">
-            <span class="process-card__step">02</span>
+            <div class="process-card__top">
+              <span class="process-card__step" data-i18n="step2.tag">FASE 2 · ARQUITECTURA</span>
+            </div>
             <h3 data-i18n="step2.title">Propuesta &amp; Diseño</h3>
             <p data-i18n="step2.desc">Definimos cómo se verá la web con un diseño limpio, moderno y profesional alineado a tu marca.</p>
           </div>
+
           <div class="process-card tilt-card process-anim-step">
-            <span class="process-card__step">03</span>
+            <div class="process-card__top">
+              <span class="process-card__step" data-i18n="step3.tag">FASE 3 · DESARROLLO</span>
+            </div>
             <h3 data-i18n="step3.title">Construcción</h3>
             <p data-i18n="step3.desc">Creo tu página asegurando que cargue súper rápido, funcione perfecto en celulares y tenga enlaces directos a WhatsApp.</p>
           </div>
+
           <div class="process-card tilt-card process-anim-step">
-            <span class="process-card__step">04</span>
+            <div class="process-card__top">
+              <span class="process-card__step" data-i18n="step4.tag">FASE 4 · PRODUCCIÓN</span>
+            </div>
             <h3 data-i18n="step4.title">Lanzamiento</h3>
             <p data-i18n="step4.desc">Publicamos la web en tu dominio propio, probamos todo y te doy soporte para que empieces a compartirla con tus clientes.</p>
           </div>
@@ -2780,17 +2654,16 @@
     </section>
 
     <!-- ==========================================================================
-       FOUNDER & STUDIO CREDENTIALS
-       ========================================================================== -->
-    <section id="fundador" style="background: color-mix(in srgb, var(--void-1) 25%, transparent);">
+         FOUNDER SECTION
+         ========================================================================== -->
+    <section id="fundador" style="background: color-mix(in srgb, var(--void-1) 28%, transparent);">
       <div class="container">
         <div class="founder-box tilt-card founder-anim">
           <div class="founder-avatar">
-            <img src="assets/sculpture-loop.jpg" alt="CHV Systems Studio Philosophy">
+            <img src="assets/sculpture-loop.jpg" alt="Jose Pablo Chaves Hidalgo — CHV Systems">
           </div>
           <div class="founder-info">
-            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="founder.badge">[ QUIÉN SOY ]</div>
-            <h3>Jose Pablo Chaves Hidalgo</h3>
+            <h2>Jose Pablo Chaves Hidalgo</h2>
             <div class="founder-role" data-i18n="founder.role">Fundador de CHV Systems · Desarrollador en Gananova (Gestión y Asesoría de PYMES)</div>
             <p class="founder-bio" data-i18n="founder.bio">
               Estudiante de Ingeniería de Sistemas en la UISIL de Pérez Zeledón, Costa Rica. Cuento con amplia experiencia en el ámbito de las PYMES gracias a mi labor en Gananova, empresa especializada en gestión y asesoría empresarial donde he colaborado de cerca entendiendo cómo operan los negocios en el día a día, qué necesitan para vender más y cómo digitalizar sus procesos con éxito. Al trabajar conmigo tienes comunicación 100% directa: sin agencias infladas, con total compromiso y con la garantía de una web o sistema diseñado con visión de negocio para generar resultados reales y duraderos.
@@ -2815,23 +2688,26 @@
     </section>
 
     <!-- ==========================================================================
-       CONTACT & PROJECT INQUIRY
-       ========================================================================== -->
+         CONTACT & INTERACTIVE PROJECT DISPATCH
+         ========================================================================== -->
     <section id="contacto">
       <div class="container">
         <div class="contact-card tilt-card contact-anim">
           <div class="contact-left">
-            <div class="pill-badge" style="margin-bottom:14px;" data-i18n="contact.badge">[ HABLEMOS ]</div>
             <h2 data-i18n="contact.h2">¿Listo para tener una web que realmente venda?</h2>
             <p data-i18n="contact.p">
-              Cuéntame sobre tu negocio. Ya sea que necesites una página para captar clientes o un sistema para ordenar tus pedidos, hablemos directamente por WhatsApp o correo.
+              Cuéntame sobre tu negocio. Selecciona el tipo de proyecto que buscas y escríbeme directamente por WhatsApp o correo electrónico.
             </p>
 
             <div class="tag-selector" id="projectTags">
-              <span class="tag-option selected" data-type="Sitio Web Profesional" data-i18n="tag.web">Página Web Profesional</span>
-              <span class="tag-option" data-type="Sistema de Gestión / Pedidos" data-i18n="tag.system">Sistema para Negocio</span>
+              <span class="tag-option selected" data-type="Página Web Profesional" data-i18n="tag.web">Página Web Profesional</span>
+              <span class="tag-option" data-type="Sistema para Negocio" data-i18n="tag.system">Sistema para Negocio</span>
               <span class="tag-option" data-type="Automatización de Procesos" data-i18n="tag.auto">Automatización de Procesos</span>
               <span class="tag-option" data-type="Rediseño de Web Actual" data-i18n="tag.redesign">Rediseño de Web Actual</span>
+            </div>
+
+            <div class="contact-preview-box" id="contactPreviewBox">
+              <span data-i18n="contact.selectedLbl">Solicitud configurada:</span> <b id="selectedTypePreview">Página Web Profesional</b>
             </div>
           </div>
 
@@ -2860,13 +2736,13 @@
             </div>
 
             <div class="cta-group">
-              <a href="https://wa.me/50670806520?text=Hola%20Jose%20Pablo,%20quisiera%20conversar%20sobre%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--primary magnetic-el" style="width:100%;" data-i18n="contact.chatWa">
+              <a id="waDirectBtn" href="https://wa.me/50670806520?text=Hola%20Jose%20Pablo,%20quisiera%20conversar%20sobre%20un%20proyecto%20de%20P%C3%A1gina%20Web%20Profesional%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--primary magnetic-el" style="width:100%;">
                 <span data-i18n="contact.chatWaText">Chatear por WhatsApp Directo</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.975.571 3.816 1.558 5.378L2 22.062l4.802-1.523A9.99 9.99 0 0 0 12.031 22.062C17.566 22.062 22.062 17.566 22.062 12.031 22.062 6.496 17.566 2 12.031 2zm0 18.25c-1.636 0-3.167-.478-4.46-1.303l-.32-.204-2.852.905.922-2.775-.209-.333A8.176 8.176 0 0 1 3.844 12.031c0-4.514 3.673-8.187 8.187-8.187s8.188 3.673 8.188 8.187-3.674 8.219-8.188 8.219zm4.492-6.141c-.246-.123-1.459-.72-1.685-.802-.227-.083-.392-.123-.557.123-.165.247-.638.802-.782.966-.144.165-.288.185-.534.062-.247-.123-1.042-.385-1.986-1.226-.734-.654-1.23-1.463-1.374-1.71-.144-.247-.015-.38.108-.503.111-.11.247-.288.37-.432.124-.144.165-.247.247-.411.082-.165.041-.309-.021-.432-.061-.124-.557-1.341-.763-1.838-.2-.485-.403-.418-.557-.426-.144-.008-.309-.01-.473-.01-.165 0-.432.062-.658.309-.227.247-.864.844-.864 2.059 0 1.215.885 2.389 1.008 2.553.124.165 1.741 2.66 4.22 3.731.59.255 1.05.408 1.41.523.593.189 1.132.162 1.558.099.475-.071 1.459-.596 1.665-1.173.206-.576.206-1.07.144-1.173-.062-.103-.227-.165-.473-.288z"/>
                 </svg>
               </a>
-              <a id="mailToBtn" href="mailto:chavespablo640@gmail.com?subject=Consulta%20de%20P%C3%A1gina%20Web%20-%20CHV%20Systems" class="btn btn--glass magnetic-el" style="width:100%;" data-i18n="contact.sendMail">
+              <a id="mailToBtn" href="mailto:chavespablo640@gmail.com?subject=Consulta%20de%20P%C3%A1gina%20Web%20-%20CHV%20Systems" class="btn btn--glass magnetic-el" style="width:100%;">
                 <span data-i18n="contact.sendMailText">Enviar Correo Electrónico</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </a>
@@ -2880,12 +2756,8 @@
   <!-- Footer -->
   <footer>
     <div class="container footer-row">
-      <div class="footer-text">
-        DISEÑO &amp; DESARROLLO WEB — CHV SYSTEMS
-      </div>
-      <div class="footer-text">
-        © <span id="year">2026</span> Jose Pablo Chaves Hidalgo — Costa Rica
-      </div>
+      <div class="footer-text">WEB DESIGN &amp; DEVELOPMENT BY CHV SYSTEMS</div>
+      <div class="footer-text">© <span id="year">2026</span> Jose Pablo Chaves Hidalgo — Costa Rica</div>
     </div>
   </footer>
 
@@ -2895,18 +2767,26 @@
       <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.975.571 3.816 1.558 5.378L2 22.062l4.802-1.523A9.99 9.99 0 0 0 12.031 22.062C17.566 22.062 22.062 17.566 22.062 12.031 22.062 6.496 17.566 2 12.031 2zm0 18.25c-1.636 0-3.167-.478-4.46-1.303l-.32-.204-2.852.905.922-2.775-.209-.333A8.176 8.176 0 0 1 3.844 12.031c0-4.514 3.673-8.187 8.187-8.187s8.188 3.673 8.188 8.187-3.674 8.219-8.188 8.219zm4.492-6.141c-.246-.123-1.459-.72-1.685-.802-.227-.083-.392-.123-.557.123-.165.247-.638.802-.782.966-.144.165-.288.185-.534.062-.247-.123-1.042-.385-1.986-1.226-.734-.654-1.23-1.463-1.374-1.71-.144-.247-.015-.38.108-.503.111-.11.247-.288.37-.432.124-.144.165-.247.247-.411.082-.165.041-.309-.021-.432-.061-.124-.557-1.341-.763-1.838-.2-.485-.403-.418-.557-.426-.144-.008-.309-.01-.473-.01-.165 0-.432.062-.658.309-.227.247-.864.844-.864 2.059 0 1.215.885 2.389 1.008 2.553.124.165 1.741 2.66 4.22 3.731.59.255 1.05.408 1.41.523.593.189 1.132.162 1.558.099.475-.071 1.459-.596 1.665-1.173.206-.576.206-1.07.144-1.173-.062-.103-.227-.165-.473-.288z"/>
     </svg>
   </a>
-
   <!-- GSAP for Smooth Fluid Motion -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <script>
     (function () {
-      // Set current copyright year
       document.getElementById('year').textContent = new Date().getFullYear();
 
       // ======================================================================
-      // THEME TOGGLE (DARK / LIGHT)
+      // 1. TOP SCROLL LASER PROGRESS BAR
+      // ======================================================================
+      const scrollBar = document.getElementById('scrollProgressBar');
+      window.addEventListener('scroll', () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+        if (scrollBar) scrollBar.style.width = pct.toFixed(2) + '%';
+      }, { passive: true });
+
+      // ======================================================================
+      // 2. THEME TOGGLE (DARK / LIGHT)
       // ======================================================================
       const root = document.documentElement;
       const themeToggle = document.getElementById('themeToggle');
@@ -2921,31 +2801,37 @@
 
       themeToggle.addEventListener('click', function () {
         const current = root.getAttribute('data-theme') || 'dark';
-        const next = current === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
+        applyTheme(current === 'dark' ? 'light' : 'dark');
       });
 
       // ======================================================================
-      // BILINGUAL LOCALIZATION (ES / EN) — ENFOCADO EN RESULTADOS
+      // 3. BILINGUAL LOCALIZATION (ES / EN)
       // ======================================================================
       const DICT = {
         es: {
           'nav.work': 'Proyectos',
           'nav.solutions': 'Soluciones',
-          'nav.benefits': 'Beneficios',
+          'nav.benefits': 'Impacto',
           'nav.process': 'Proceso',
           'nav.founder': 'Quién Soy',
           'nav.cta': 'Iniciar Proyecto',
 
-          'hero.title1': 'Diseño web',
+          'hero.title1': 'Ingeniería web',
           'hero.accent': 'que impresiona.',
           'hero.title3': 'que impulsan tu negocio real.',
-          'hero.desc': 'Creamos páginas web y sistemas a la medida con diseño limpio, moderno y de alto impacto. Hechas para que tu empresa transmita confianza inmediata y convierta visitas en clientes.',
+          'hero.desc': 'Diseñamos y construimos páginas web y sistemas empresariales a la medida con estética de alto impacto, velocidad instantánea (0.4s) y conversión directa para que tu empresa cierre más clientes.',
           'hero.ctaPrimaryText': 'Iniciar un Proyecto',
           'hero.ctaSecondaryText': 'Explorar Proyectos',
 
-          'pill.uptime': '0.4s Carga Instantánea en Celulares',
+          'pill.uptime': 'Carga Instantánea Móvil',
           'pill.ai': 'Gananova OS · Sistema de Gestión en Producción',
+          'proof.m2': 'Arquitectura a la Medida',
+          'proof.m3': 'Proyectos en Producción',
+
+          'stage3d.badge': 'NÚCLEO 3D INTERACTIVO · ARRASTRA PARA ROTAR',
+          'stage3d.m1': 'Núcleo',
+          'stage3d.m2': 'Órbita',
+          'stage3d.m3': 'Matriz',
 
           'tab.dashboard': 'Panel de Control',
           'tab.modules': 'Módulos de Negocio',
@@ -2953,7 +2839,7 @@
           'tab.telemetry': 'Velocidad 100%',
           'status.online': 'SISTEMA ACTIVO',
 
-          'dash.sub': 'Panel de Rendimiento Web',
+          'dash.sub': 'Panel de Rendimiento & Conversión',
           'dash.online': 'EN LÍNEA',
           'dash.kpi1lbl': 'Nuevos Contactos',
           'dash.kpi1tag': '↑ 28% este mes',
@@ -2977,13 +2863,13 @@
           'mod4.title': 'Métricas Claras',
           'mod4.desc': 'Conoce cuánta gente visita tu página y de dónde llegan tus mejores clientes.',
 
-          'val1.title': '01 / Sin Plantillas Lentas',
+          'val1.title': 'Sin Plantillas Lentas',
           'val1.desc': 'Las plantillas genéricas vienen cargadas de errores y tardan segundos en abrir. Nuestras webs cargan en 0.4s.',
-          'val2.title': '02 / Pensada para Celulares',
+          'val2.title': 'Pensada para Celulares',
           'val2.desc': 'El 80%+ del tráfico entra por teléfono. El diseño está optimizado para que navegar y comprar sea facilísimo.',
-          'val3.title': '03 / Trato Directo',
+          'val3.title': 'Trato Directo',
           'val3.desc': 'Sin intermediarios ni meses de espera. Tratas directamente conmigo para ajustar tu página cuando lo necesites.',
-          'val4.title': '04 / Enfoque en Ventas',
+          'val4.title': 'Enfoque en Ventas',
           'val4.desc': 'Cada elemento tiene un propósito: dar confianza, explicar lo que ofreces y guiar a tu cliente a escribirte.',
 
           'gauge.perf': 'Velocidad',
@@ -2992,7 +2878,6 @@
           'gauge.seo': 'SEO Google',
           'gauge.desc': 'Arquitectura optimizada: 0 dependencias innecesarias · Carga instantánea · Código limpio',
 
-          'work.badge': '[ PROYECTOS REALES ]',
           'work.h2': 'Páginas & Sistemas en Producción',
           'work.desc': 'Explora proyectos reales construidos para negocios activos: desde plataformas empresariales de gestión hasta sitios corporativos de alta captación.',
 
@@ -3005,7 +2890,6 @@
           'w1.b4': 'Automatización de flujos y operaciones diarias',
           'w1.link': 'Visitar gananova.com →',
 
-          'w2.sub': 'Consultoría & Empresa',
           'w2.b1': 'Estrategia de negocios & optimización de flujos',
           'w2.b2': 'Digitalización integral de operaciones para pymes',
           'w2.b3': 'Soluciones prácticas de software para empresas',
@@ -3025,8 +2909,7 @@
           'w4.b3': '100% Adaptada a celulares para clientes en ruta',
           'w4.link': 'Ver puravidapaintingllc.com →',
 
-          'spectrum.badge': '[ VERSATILIDAD PARA TU NEGOCIO ]',
-          'spectrum.h2': 'Desde una web <span class="serif-accent">sencilla y directa</span>, hasta experiencias interactivas modernas <span class="serif-accent glow-orange">como esta</span>.',
+          'spectrum.h2': 'Desde una web <span class="serif-accent">sencilla y directa</span>, hasta experiencias interactivas modernas <span class="serif-accent">como esta</span>.',
           'spectrum.desc': 'Cada negocio tiene una escala y una meta distinta. No te cobro por cosas innecesarias: diseñamos justo la solución que tu cliente necesita para comprar o contactarte.',
 
           'spec1.tag': 'GASTRONOMÍA',
@@ -3057,7 +2940,6 @@
           'spec4.f2': 'Control administrativo adaptado a tu flujo',
           'spec4.f3': 'Acceso seguro desde teléfono o computadora',
 
-          'skills.badge': '[ RESULTADOS CONCRETOS ]',
           'skills.h2': 'Lo que una buena web hace por tu negocio',
           'skills.desc': 'No se trata de la tecnología que uso, sino de lo que consigues: más clientes, mejor imagen y un proceso sin complicaciones.',
 
@@ -3070,20 +2952,22 @@
           'skill4.title': 'Trato Directo y Visión PYME',
           'skill4.desc': 'Hablas directamente conmigo de principio a fin, sin agencias costosas ni intermediarios. Cuento con experiencia real en gestión y asesoría de PYMES con Gananova, creando desde páginas comerciales hasta sistemas de gestión si tu empresa lo necesita.',
 
-          'process.badge': '[ PASO A PASO ]',
           'process.h2': 'Cómo Trabajamos: Fácil y Transparente',
           'process.desc': 'Un proceso ordenado donde sabes exactamente qué esperar en cada etapa, sin complicaciones técnicas.',
 
+          'step1.tag': 'FASE 1 · DIAGNÓSTICO',
           'step1.title': 'Conversación Inicial',
           'step1.desc': 'Entiendo tu negocio, qué vendes y qué necesitas que haga tu página web para atraer más clientes.',
+          'step2.tag': 'FASE 2 · ARQUITECTURA',
           'step2.title': 'Propuesta & Diseño',
           'step2.desc': 'Definimos cómo se verá la web con un diseño limpio, moderno y profesional alineado a tu marca.',
+          'step3.tag': 'FASE 3 · DESARROLLO',
           'step3.title': 'Construcción',
           'step3.desc': 'Creo tu página asegurando que cargue súper rápido, funcione perfecto en celulares y tenga enlaces directos a WhatsApp.',
+          'step4.tag': 'FASE 4 · PRODUCCIÓN',
           'step4.title': 'Lanzamiento',
           'step4.desc': 'Publicamos la web en tu dominio propio, probamos todo y te doy soporte para que empieces a compartirla con tus clientes.',
 
-          'founder.badge': '[ QUIÉN SOY ]',
           'founder.role': 'Fundador de CHV Systems · Desarrollador en Gananova (Gestión y Asesoría de PYMES)',
           'founder.bio': 'Estudiante de Ingeniería de Sistemas en la UISIL de Pérez Zeledón, Costa Rica. Cuento con amplia experiencia en el ámbito de las PYMES gracias a mi labor en Gananova, empresa especializada en gestión y asesoría empresarial donde he colaborado de cerca entendiendo cómo operan los negocios en el día a día, qué necesitan para vender más y cómo digitalizar sus procesos con éxito. Al trabajar conmigo tienes comunicación 100% directa: sin agencias infladas, con total compromiso y con la garantía de una web o sistema diseñado con visión de negocio para generar resultados reales y duraderos.',
           'stat1.val': 'UISIL Pérez Zeledón',
@@ -3093,13 +2977,13 @@
           'stat3.val': 'Diseño Web + Sistemas',
           'stat3.lbl': 'Especialización PYMES',
 
-          'contact.badge': '[ HABLEMOS ]',
           'contact.h2': '¿Listo para tener una web que realmente venda?',
-          'contact.p': 'Cuéntame sobre tu negocio. Ya sea que necesites una página para captar clientes o un sistema para ordenar tus pedidos, hablemos directamente por WhatsApp o correo.',
+          'contact.p': 'Cuéntame sobre tu negocio. Selecciona el tipo de proyecto que buscas y escríbeme directamente por WhatsApp o correo electrónico.',
           'tag.web': 'Página Web Profesional',
           'tag.system': 'Sistema para Negocio',
           'tag.auto': 'Automatización de Procesos',
           'tag.redesign': 'Rediseño de Web Actual',
+          'contact.selectedLbl': 'Solicitud configurada:',
           'contact.emailLbl': 'Correo Electrónico Directo',
           'contact.phoneLbl': 'WhatsApp / Teléfono',
           'contact.copy': 'Copiar',
@@ -3110,20 +2994,27 @@
         en: {
           'nav.work': 'Projects',
           'nav.solutions': 'Solutions',
-          'nav.benefits': 'Benefits',
+          'nav.benefits': 'Impact',
           'nav.process': 'Process',
           'nav.founder': 'About Me',
           'nav.cta': 'Start a Project',
 
-          'hero.title1': 'Web design',
+          'hero.title1': 'Web engineering',
           'hero.accent': 'that stands out.',
           'hero.title3': 'that power your business growth.',
-          'hero.desc': 'We build custom, modern, high-impact websites and digital systems. Designed to earn trust in seconds and turn visitors into paying customers.',
+          'hero.desc': 'We design and engineer custom, high-impact websites and business systems with instant 0.4s load speed and direct conversion funnels that turn visitors into paying clients.',
           'hero.ctaPrimaryText': 'Start a Project',
           'hero.ctaSecondaryText': 'Explore Projects',
 
-          'pill.uptime': '0.4s Instant Mobile Load Speed',
+          'pill.uptime': 'Instant Mobile Speed',
           'pill.ai': 'Gananova OS · Live Business Management Platform',
+          'proof.m2': 'Bespoke Architecture',
+          'proof.m3': 'Live Production Systems',
+
+          'stage3d.badge': 'INTERACTIVE 3D CORE · DRAG TO ROTATE',
+          'stage3d.m1': 'Core',
+          'stage3d.m2': 'Orbit',
+          'stage3d.m3': 'Matrix',
 
           'tab.dashboard': 'Control Panel',
           'tab.modules': 'Business Modules',
@@ -3131,7 +3022,7 @@
           'tab.telemetry': '100% Speed',
           'status.online': 'SYSTEM ONLINE',
 
-          'dash.sub': 'Web Performance Overview',
+          'dash.sub': 'Performance & Conversion Overview',
           'dash.online': 'ONLINE',
           'dash.kpi1lbl': 'New Inquiries',
           'dash.kpi1tag': '↑ 28% this month',
@@ -3155,13 +3046,13 @@
           'mod4.title': 'Clear Analytics',
           'mod4.desc': 'Understand where your visitors come from and which marketing channels bring revenue.',
 
-          'val1.title': '01 / No Slow Templates',
+          'val1.title': 'No Slow Templates',
           'val1.desc': 'Generic templates are bloated and take seconds to open. Our sites open in 0.4s flat.',
-          'val2.title': '02 / Built for Mobile',
+          'val2.title': 'Built for Mobile',
           'val2.desc': 'Over 80% of your customers browse on phones. Our UX makes messaging or buying effortless.',
-          'val3.title': '03 / Direct Communication',
+          'val3.title': 'Direct Communication',
           'val3.desc': 'No agency bureaucracy or lost-in-translation delays. You work directly with the creator.',
-          'val4.title': '04 / Focused on Sales',
+          'val4.title': 'Focused on Sales',
           'val4.desc': 'Every element serves a single goal: build trust, clarify your value, and guide action.',
 
           'gauge.perf': 'Speed',
@@ -3170,7 +3061,6 @@
           'gauge.seo': 'Google SEO',
           'gauge.desc': 'Optimized architecture: zero bloat · Instantaneous loading · Pure craftsmanship',
 
-          'work.badge': '[ REAL EVIDENCE ]',
           'work.h2': 'Websites & Systems in Production',
           'work.desc': 'Explore active client platforms: from full business management engines to high-converting corporate portals.',
 
@@ -3183,7 +3073,6 @@
           'w1.b4': 'Streamlined operational workflow automation',
           'w1.link': 'Visit gananova.com →',
 
-          'w2.sub': 'Consultancy & Enterprise',
           'w2.b1': 'Business strategy & workflow optimization',
           'w2.b2': 'End-to-end operational digitalization for SMEs',
           'w2.b3': 'Practical software solutions for active enterprises',
@@ -3203,8 +3092,7 @@
           'w4.b3': '100% Mobile-optimized for customers on the go',
           'w4.link': 'View puravidapaintingllc.com →',
 
-          'spectrum.badge': '[ TAILORED TO YOUR SCALE ]',
-          'spectrum.h2': 'From a simple, <span class="serif-accent">direct website</span> to modern animated experiences <span class="serif-accent glow-orange">like this one</span>.',
+          'spectrum.h2': 'From a simple, <span class="serif-accent">direct website</span> to modern animated experiences <span class="serif-accent">like this one</span>.',
           'spectrum.desc': 'Every business has its own scale and goals. We do not bill for bloated features: we build the exact digital experience your clients need to trust and buy.',
 
           'spec1.tag': 'HOSPITALITY',
@@ -3235,7 +3123,6 @@
           'spec4.f2': 'Admin workflows tailored to you',
           'spec4.f3': 'Secure multi-device cloud access',
 
-          'skills.badge': '[ CONCRETE RESULTS ]',
           'skills.h2': 'What a Great Website Does for Your Business',
           'skills.desc': 'It is not about the tooling I use, but what you achieve: more customers, stronger reputation, and a frictionless process.',
 
@@ -3248,22 +3135,24 @@
           'skill4.title': 'Direct Partnership & SME Insight',
           'skill4.desc': 'You communicate directly with me start to finish—no bloated agencies or middlemen. Backed by real-world SME consulting and digitalization experience at Gananova, I build everything from commercial websites to operational management systems.',
 
-          'process.badge': '[ STEP BY STEP ]',
           'process.h2': 'How We Work: Simple & Transparent',
           'process.desc': 'A clear, predictable progression where you know exactly what is happening at every milestone.',
 
+          'step1.tag': 'PHASE 1 · DISCOVERY',
           'step1.title': 'Initial Chat',
           'step1.desc': 'I learn about your business, what you offer, and what your website must achieve to attract clients.',
+          'step2.tag': 'PHASE 2 · ARCHITECTURE',
           'step2.title': 'Concept & Design',
           'step2.desc': 'We define the look and feel with a clean, modern aesthetic aligned with your brand identity.',
+          'step3.tag': 'PHASE 3 · ENGINEERING',
           'step3.title': 'Building',
           'step3.desc': 'I build your site ensuring instant load speeds, flawless mobile ergonomics, and direct contact buttons.',
+          'step4.tag': 'PHASE 4 · PRODUCTION',
           'step4.title': 'Launch',
           'step4.desc': 'We connect your custom domain, test everything thoroughly, and provide support so you can start selling.',
 
-          'founder.badge': '[ ABOUT ME ]',
           'founder.role': 'Founder of CHV Systems · Developer at Gananova (SME Management & Consulting)',
-          'founder.bio': 'Systems Engineering student at UISIL (Universidad Internacional San Isidro Labrador) in Pérez Zeledón, Costa Rica. I bring direct, hands-on experience in the SME (small and medium business) sector through my work at Gananova, a consulting firm specialized in enterprise management and advisory for growing businesses. This experience allows me to deeply understand how real businesses operate day-to-day, what they need to increase sales, and how to effectively digitize their operations. Working with me means 100% direct communication: no agency overhead, full transparency, and the guarantee of a website or system engineered with genuine business insight to deliver lasting results.',
+          'founder.bio': 'Systems Engineering student at UISIL (Universidad Internacional San Isidro Labrador) in Pérez Zeledón, Costa Rica. I bring direct, hands-on experience in the SME (small and medium business) sector through my work at Gananova, a consulting firm specialized in enterprise management and advisory for growing businesses. Working with me means 100% direct communication: no agency overhead, full transparency, and the guarantee of a website or system engineered with genuine business insight.',
           'stat1.val': 'UISIL Pérez Zeledón',
           'stat1.lbl': 'Systems Engineering',
           'stat2.val': 'Gananova OS',
@@ -3271,13 +3160,13 @@
           'stat3.val': 'Web Design + Systems',
           'stat3.lbl': 'SME Specialization',
 
-          'contact.badge': '[ LET\'S TALK ]',
           'contact.h2': 'Ready for a website that actually sells?',
-          'contact.p': 'Tell me about your business. Whether you need a customer acquisition site or a management portal, let us talk directly.',
+          'contact.p': 'Tell me about your business. Select the type of project you need and message me directly on WhatsApp or email.',
           'tag.web': 'Professional Website',
           'tag.system': 'Business System',
           'tag.auto': 'Workflow Automation',
           'tag.redesign': 'Current Website Redesign',
+          'contact.selectedLbl': 'Configured inquiry:',
           'contact.emailLbl': 'Direct Email',
           'contact.phoneLbl': 'WhatsApp / Phone',
           'contact.copy': 'Copy',
@@ -3304,7 +3193,6 @@
 
         charIdx = 0;
         isDeleting = false;
-
         try { localStorage.setItem('chv-lang', lang); } catch (e) {}
       }
 
@@ -3318,17 +3206,17 @@
       });
 
       // ======================================================================
-      // DYNAMIC ROTATING TYPEWRITER EFFECT IN HERO (RESULTADOS COMERCIALES)
+      // 4. DYNAMIC TYPEWRITER IN HERO
       // ======================================================================
       const phrasesEs = [
         "Páginas que Venden",
-        "Sitios Web Modernos",
+        "Experiencias 3D Modernas",
         "Diseño que Atrae Clientes",
         "Sistemas para tu Negocio"
       ];
       const phrasesEn = [
         "Websites that Sell",
-        "Modern Web Experiences",
+        "Modern 3D Web Experiences",
         "Design that Attracts Clients",
         "Systems for your Business"
       ];
@@ -3337,37 +3225,314 @@
       let phraseIdx = 0;
       let charIdx = 0;
       let isDeleting = false;
-      let typingSpeed = 90;
 
       function typeLoop() {
         const currentPhrases = (currentLang === 'en') ? phrasesEn : phrasesEs;
         const currentPhrase = currentPhrases[phraseIdx % currentPhrases.length];
+        let speed = 85;
 
         if (isDeleting) {
           typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1);
           charIdx--;
-          typingSpeed = 45;
+          speed = 40;
         } else {
           typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1);
           charIdx++;
-          typingSpeed = 90;
+          speed = 85;
         }
 
         if (!isDeleting && charIdx === currentPhrase.length) {
           isDeleting = true;
-          typingSpeed = 2200;
+          speed = 2100;
         } else if (isDeleting && charIdx === 0) {
           isDeleting = false;
           phraseIdx++;
-          typingSpeed = 400;
+          speed = 380;
         }
-
-        setTimeout(typeLoop, typingSpeed);
+        setTimeout(typeLoop, speed);
       }
       typeLoop();
 
       // ======================================================================
-      // MOBILE DRAWER
+      // 5. INTERACTIVE 3D ARCHITECTURAL TESSERACT & SYSTEM CONSTELLATION ENGINE
+      // ======================================================================
+      (function initHero3DStage() {
+        const stageCanvas = document.getElementById('hero3dCanvas');
+        const inspectorEl = document.getElementById('nodeInspectorText');
+        if (!stageCanvas) return;
+        const ctx3d = stageCanvas.getContext('2d');
+        let cw = 0, ch = 0, dpr = 1;
+        let mode3d = 'tesseract'; // 'tesseract' | 'orbit' | 'helix'
+
+        function resize3D() {
+          const rect = stageCanvas.parentElement.getBoundingClientRect();
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          cw = rect.width;
+          ch = rect.height;
+          stageCanvas.width = cw * dpr;
+          stageCanvas.height = ch * dpr;
+          ctx3d.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        window.addEventListener('resize', resize3D);
+        resize3D();
+
+        // Mode switcher buttons
+        document.querySelectorAll('.mode-3d-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.mode-3d-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            mode3d = btn.getAttribute('data-mode') || 'tesseract';
+          });
+        });
+
+        // Build 3D Geometry: Inner Cube (8 verts) + Outer Cube (8 verts) + 6 Labeled Business Satellite Nodes
+        const baseVerts = [];
+        for (let i = 0; i < 8; i++) {
+          baseVerts.push({
+            x: (i & 1) ? 1 : -1,
+            y: (i & 2) ? 1 : -1,
+            z: (i & 4) ? 1 : -1,
+            layer: 'inner'
+          });
+        }
+        for (let i = 0; i < 8; i++) {
+          baseVerts.push({
+            x: ((i & 1) ? 1 : -1) * 1.85,
+            y: ((i & 2) ? 1 : -1) * 1.85,
+            z: ((i & 4) ? 1 : -1) * 1.85,
+            layer: 'outer'
+          });
+        }
+
+        const satellites = [
+          { x: 2.55, y: 0, z: 0, label: 'WEB 0.4s', desc: 'Arquitectura Web Ultrarrápida · SEO & Conversión', color: '#FF7029' },
+          { x: -2.55, y: 0, z: 0, label: 'CRM PYME', desc: 'Seguimiento Centralizado de Clientes & Prospectos', color: '#38BDF8' },
+          { x: 0, y: 2.45, z: 0, label: 'PRESUPUESTOS', desc: 'Control de Ingresos, Gastos y Cotizaciones', color: '#FF9E2C' },
+          { x: 0, y: -2.45, z: 0, label: 'KPIs LIVE', desc: 'Métricas y Telemetría de Negocio en Tiempo Real', color: '#10B981' },
+          { x: 0, y: 0, z: 2.55, label: 'WHATSAPP 1-CLIC', desc: 'Embudo de Conversión Directa al Teléfono', color: '#25D366' },
+          { x: 0, y: 0, z: -2.55, label: 'GANANOVA OS', desc: 'Núcleo de Automatización & Gestión Empresarial', color: '#8B5CF6' }
+        ];
+
+        const edges = [];
+        // Cube edges
+        for (let offset of [0, 8]) {
+          for (let i = 0; i < 8; i++) {
+            for (let j = i + 1; j < 8; j++) {
+              const diff = i ^ j;
+              if (diff === 1 || diff === 2 || diff === 4) {
+                edges.push([offset + i, offset + j, offset === 0 ? 'inner' : 'outer']);
+              }
+            }
+          }
+        }
+        // Hypercube bridges (inner to outer)
+        for (let i = 0; i < 8; i++) {
+          edges.push([i, i + 8, 'bridge']);
+        }
+
+        // Interactive rotation & drag state
+        let rotX = 0.42, rotY = -0.55;
+        let velX = 0.0025, velY = 0.0045;
+        let isDragging = false;
+        let lastMouseX = 0, lastMouseY = 0;
+        let pointerX = -999, pointerY = -999;
+
+        stageCanvas.addEventListener('pointerdown', (e) => {
+          isDragging = true;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+          stageCanvas.setPointerCapture(e.pointerId);
+        });
+        stageCanvas.addEventListener('pointermove', (e) => {
+          const rect = stageCanvas.getBoundingClientRect();
+          pointerX = e.clientX - rect.left;
+          pointerY = e.clientY - rect.top;
+          if (!isDragging) return;
+          const dx = e.clientX - lastMouseX;
+          const dy = e.clientY - lastMouseY;
+          rotY += dx * 0.008;
+          rotX += dy * 0.008;
+          velY = dx * 0.0006;
+          velX = dy * 0.0006;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+        });
+        stageCanvas.addEventListener('pointerup', () => { isDragging = false; });
+        stageCanvas.addEventListener('pointerleave', () => {
+          isDragging = false;
+          pointerX = -999;
+          pointerY = -999;
+        });
+
+        function project3D(x, y, z, scale) {
+          const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+          const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+
+          const y1 = y * cosX - z * sinX;
+          const z1 = y * sinX + z * cosX;
+          const x2 = x * cosY + z1 * sinY;
+          const z2 = -x * sinY + z1 * cosY;
+
+          const cameraDist = 7.2;
+          const fov = cameraDist / (cameraDist + z2);
+          return {
+            x: cw * 0.5 + x2 * scale * fov,
+            y: ch * 0.5 + y1 * scale * fov,
+            z: z2,
+            fov: fov
+          };
+        }
+
+        function animate3D(now) {
+          ctx3d.clearRect(0, 0, cw, ch);
+          const isLight = root.getAttribute('data-theme') === 'light';
+
+          if (!isDragging) {
+            rotY += velY;
+            rotX += (0.38 * Math.sin(now * 0.0006) - rotX) * 0.015;
+            velY += (0.0042 - velY) * 0.03;
+          }
+
+          const baseScale = Math.min(cw, ch) * 0.135;
+          const breathe = 1 + Math.sin(now * 0.0022) * 0.045;
+
+          // Compute vertex positions based on active 3D mode
+          const projected = baseVerts.map((v, idx) => {
+            let vx = v.x, vy = v.y, vz = v.z;
+            if (mode3d === 'orbit') {
+              const angle = idx * 0.45 + now * 0.0008;
+              const rad = v.layer === 'inner' ? 1.15 : 2.15;
+              vx = Math.cos(angle) * rad;
+              vz = Math.sin(angle) * rad;
+              vy = ((idx % 4) - 1.5) * 0.65;
+            } else if (mode3d === 'helix') {
+              const hAngle = idx * 0.52 + now * 0.0012;
+              const hRad = v.layer === 'inner' ? 1.0 : 1.75;
+              vx = Math.cos(hAngle) * hRad;
+              vz = Math.sin(hAngle) * hRad;
+              vy = ((idx / 15) - 0.5) * 3.4;
+            } else {
+              const s = v.layer === 'inner' ? breathe : (2 - breathe);
+              vx *= s; vy *= s; vz *= s;
+            }
+            return project3D(vx, vy, vz, baseScale);
+          });
+
+          // Draw subtle orbital horizon rings
+          for (let r = 0; r < 2; r++) {
+            ctx3d.beginPath();
+            const rad = r === 0 ? 2.25 : 2.75;
+            const tilt = r === 0 ? 0.55 : -0.45;
+            for (let s = 0; s <= 56; s++) {
+              const a = (s / 56) * Math.PI * 2;
+              const pt = project3D(Math.cos(a) * rad, Math.sin(a) * Math.sin(tilt) * rad, Math.sin(a) * Math.cos(tilt) * rad, baseScale);
+              if (s === 0) ctx3d.moveTo(pt.x, pt.y);
+              else ctx3d.lineTo(pt.x, pt.y);
+            }
+            ctx3d.strokeStyle = isLight ? 'rgba(15, 23, 42, 0.08)' : 'rgba(56, 189, 248, 0.12)';
+            ctx3d.lineWidth = 1;
+            ctx3d.stroke();
+          }
+
+          // Draw edges + travelling data packets
+          edges.forEach((e, eIdx) => {
+            const p1 = projected[e[0]];
+            const p2 = projected[e[1]];
+            const avgZ = (p1.z + p2.z) * 0.5;
+            const alpha = Math.max(0.08, Math.min(0.65, (avgZ + 2.5) * 0.16));
+
+            ctx3d.beginPath();
+            ctx3d.moveTo(p1.x, p1.y);
+            ctx3d.lineTo(p2.x, p2.y);
+
+            if (e[2] === 'inner') {
+              ctx3d.strokeStyle = `rgba(255, 112, 41, ${(alpha * 1.15).toFixed(3)})`;
+              ctx3d.lineWidth = 1.6;
+            } else if (e[2] === 'bridge') {
+              ctx3d.strokeStyle = `rgba(56, 189, 248, ${(alpha * 0.85).toFixed(3)})`;
+              ctx3d.lineWidth = 1.1;
+            } else {
+              ctx3d.strokeStyle = isLight ? `rgba(15, 23, 42, ${(alpha * 0.55).toFixed(3)})` : `rgba(148, 163, 184, ${(alpha * 0.55).toFixed(3)})`;
+              ctx3d.lineWidth = 1.1;
+            }
+            ctx3d.stroke();
+
+            // Data packet pulse along bridge edges
+            if (e[2] === 'bridge' && eIdx % 2 === 0) {
+              const t = ((now * 0.0008 + eIdx * 0.17) % 1);
+              const px = p1.x + (p2.x - p1.x) * t;
+              const py = p1.y + (p2.y - p1.y) * t;
+              ctx3d.fillStyle = '#FF9E2C';
+              ctx3d.beginPath();
+              ctx3d.arc(px, py, 2.2, 0, Math.PI * 2);
+              ctx3d.fill();
+            }
+          });
+
+          // Draw vertices
+          projected.forEach((p, idx) => {
+            const isInner = idx < 8;
+            ctx3d.fillStyle = isInner ? '#FF7029' : '#38BDF8';
+            ctx3d.beginPath();
+            ctx3d.arc(p.x, p.y, (isInner ? 3.2 : 2.4) * p.fov, 0, Math.PI * 2);
+            ctx3d.fill();
+          });
+
+          // Draw & hit-test 6 Labeled Business Satellite Nodes
+          let hoveredNode = null;
+          satellites.forEach((sat, sIdx) => {
+            const p = project3D(sat.x, sat.y, sat.z, baseScale);
+            const corePt = projected[sIdx % 8];
+
+            // Conduit line to inner core
+            ctx3d.beginPath();
+            ctx3d.moveTo(corePt.x, corePt.y);
+            ctx3d.lineTo(p.x, p.y);
+            ctx3d.strokeStyle = 'rgba(255, 112, 41, 0.22)';
+            ctx3d.setLineDash([3, 4]);
+            ctx3d.stroke();
+            ctx3d.setLineDash([]);
+
+            const distToMouse = Math.hypot(pointerX - p.x, pointerY - p.y);
+            const isHovered = distToMouse < 28;
+            if (isHovered) hoveredNode = sat;
+
+            // Node halo & core
+            ctx3d.fillStyle = sat.color;
+            ctx3d.beginPath();
+            ctx3d.arc(p.x, p.y, (isHovered ? 7 : 4.8) * p.fov, 0, Math.PI * 2);
+            ctx3d.fill();
+
+            // Pill label in 3D space
+            ctx3d.font = '600 10px "JetBrains Mono", monospace';
+            const textW = ctx3d.measureText(sat.label).width;
+            const boxX = p.x - textW * 0.5 - 7;
+            const boxY = p.y - 24 * p.fov;
+
+            ctx3d.fillStyle = isLight ? 'rgba(255, 255, 255, 0.92)' : 'rgba(7, 11, 20, 0.86)';
+            ctx3d.strokeStyle = isHovered ? sat.color : 'rgba(255, 255, 255, 0.14)';
+            ctx3d.lineWidth = 1;
+            ctx3d.beginPath();
+            if (ctx3d.roundRect) ctx3d.roundRect(boxX, boxY, textW + 14, 18, 9);
+            else ctx3d.rect(boxX, boxY, textW + 14, 18);
+            ctx3d.fill();
+            ctx3d.stroke();
+
+            ctx3d.fillStyle = isLight ? '#0F172A' : '#F8FAFC';
+            ctx3d.fillText(sat.label, boxX + 7, boxY + 12.5);
+          });
+
+          if (hoveredNode && inspectorEl) {
+            inspectorEl.textContent = `${hoveredNode.label} // ${hoveredNode.desc}`;
+          }
+
+          requestAnimationFrame(animate3D);
+        }
+        requestAnimationFrame(animate3D);
+      })();
+
+      // ======================================================================
+      // 6. MOBILE DRAWER
       // ======================================================================
       const menuToggle = document.getElementById('menuToggle');
       const mobileDrawer = document.getElementById('mobileDrawer');
@@ -3379,13 +3544,14 @@
       });
 
       // ======================================================================
-      // INTERACTIVE PROJECTS CAROUSEL (TOUCH, SWIPE & AUTOPLAY)
+      // 7. INTERACTIVE PROJECTS CAROUSEL + QUICK TABS
       // ======================================================================
       const carouselTrack = document.getElementById('carouselTrack');
       const slides = document.querySelectorAll('.carousel-slide');
       const prevBtn = document.getElementById('prevSlide');
       const nextBtn = document.getElementById('nextSlide');
       const dots = document.querySelectorAll('.carousel-dot');
+      const quickTabs = document.querySelectorAll('.project-quick-tab');
       const counterEl = document.getElementById('carouselCounter');
 
       let currentSlide = 0;
@@ -3396,79 +3562,62 @@
         currentSlide = (idx + totalSlides) % totalSlides;
         carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === currentSlide);
-        });
-
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+        quickTabs.forEach((qt, i) => qt.classList.toggle('active', i === currentSlide));
         counterEl.textContent = `0${currentSlide + 1} / 0${totalSlides}`;
       }
 
-      function nextSlide() {
-        updateCarousel(currentSlide + 1);
-      }
-      function prevSlide() {
-        updateCarousel(currentSlide - 1);
-      }
+      function nextSlide() { updateCarousel(currentSlide + 1); }
+      function prevSlide() { updateCarousel(currentSlide - 1); }
 
       prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
       nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
 
       dots.forEach(dot => {
         dot.addEventListener('click', () => {
-          const idx = parseInt(dot.getAttribute('data-index'), 10);
-          updateCarousel(idx);
+          updateCarousel(parseInt(dot.getAttribute('data-index'), 10));
           resetAutoPlay();
         });
       });
 
-      // Autoplay
-      function startAutoPlay() {
-        autoPlayTimer = setInterval(nextSlide, 6000);
-      }
-      function resetAutoPlay() {
-        clearInterval(autoPlayTimer);
-        startAutoPlay();
-      }
+      quickTabs.forEach(qt => {
+        qt.addEventListener('click', () => {
+          updateCarousel(parseInt(qt.getAttribute('data-slide'), 10));
+          resetAutoPlay();
+        });
+      });
+
+      function startAutoPlay() { autoPlayTimer = setInterval(nextSlide, 6500); }
+      function resetAutoPlay() { clearInterval(autoPlayTimer); startAutoPlay(); }
       startAutoPlay();
 
-      // Pause on hover
       const carouselViewport = document.getElementById('carouselViewport');
       carouselViewport.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
       carouselViewport.addEventListener('mouseleave', () => startAutoPlay());
 
-      // Touch & Swipe Support for Mobile
-      let startX = 0;
-      let currentX = 0;
-      let isSwiping = false;
-
+      let startX = 0, currentX = 0, isSwiping = false;
       carouselViewport.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         currentX = startX;
         isSwiping = true;
         clearInterval(autoPlayTimer);
       }, { passive: true });
-
       carouselViewport.addEventListener('touchmove', (e) => {
-        if (!isSwiping) return;
-        currentX = e.touches[0].clientX;
+        if (isSwiping) currentX = e.touches[0].clientX;
       }, { passive: true });
-
       carouselViewport.addEventListener('touchend', () => {
         if (!isSwiping) return;
         isSwiping = false;
         const diff = startX - currentX;
         if (Math.abs(diff) > 45) {
-          if (diff > 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
+          if (diff > 0) nextSlide();
+          else prevSlide();
         }
         startAutoPlay();
       });
 
       // ======================================================================
-      // INTERACTIVE CONSOLE TABS
+      // 8. INTERACTIVE CONSOLE TABS
       // ======================================================================
       const tabs = document.querySelectorAll('.console-tab');
       const panels = {
@@ -3484,48 +3633,43 @@
           tab.classList.add('active');
           const target = tab.getAttribute('data-tab');
           Object.keys(panels).forEach(key => {
-            if (key === target) {
-              panels[key].classList.add('active');
-            } else {
-              panels[key].classList.remove('active');
-            }
+            panels[key].classList.toggle('active', key === target);
           });
-
-          if (target === 'telemetry') {
-            runCounters();
+          if (target === 'telemetry' && window.gsap) {
+            document.querySelectorAll('.counter-num').forEach(counter => {
+              const targetVal = +counter.getAttribute('data-target') || 100;
+              gsap.fromTo(counter, { innerText: 0 }, {
+                innerText: targetVal,
+                duration: 1.4,
+                ease: 'power2.out',
+                snap: { innerText: 1 }
+              });
+            });
           }
         });
       });
 
-      function runCounters() {
-        document.querySelectorAll('.counter-num').forEach(counter => {
-          const target = +counter.getAttribute('data-target') || 100;
-          gsap.fromTo(counter, { innerText: 0 }, {
-            innerText: target,
-            duration: 1.5,
-            ease: 'power2.out',
-            snap: { innerText: 1 }
-          });
-        });
-      }
-
       // ======================================================================
-      // CONTACT TAG SELECTOR & DYNAMIC MAILTO
+      // 9. CONTACT PROJECT CONFIGURATOR & CLIPBOARD COPY
       // ======================================================================
       const tagOptions = document.querySelectorAll('.tag-option');
       const mailToBtn = document.getElementById('mailToBtn');
-      let selectedType = 'Página Web Profesional';
+      const waDirectBtn = document.getElementById('waDirectBtn');
+      const selectedTypePreview = document.getElementById('selectedTypePreview');
 
       tagOptions.forEach(tag => {
         tag.addEventListener('click', () => {
           tagOptions.forEach(t => t.classList.remove('selected'));
           tag.classList.add('selected');
-          selectedType = tag.getAttribute('data-type');
-          mailToBtn.href = `mailto:chavespablo640@gmail.com?subject=Consulta%20Proyecto:%20${encodeURIComponent(selectedType)}%20-%20CHV%20Systems`;
+          const selectedType = tag.textContent.trim();
+          if (selectedTypePreview) selectedTypePreview.textContent = selectedType;
+          mailToBtn.href = `mailto:chavespablo640@gmail.com?subject=${encodeURIComponent('Consulta Proyecto: ' + selectedType + ' - CHV Systems')}`;
+          if (waDirectBtn) {
+            waDirectBtn.href = `https://wa.me/50670806520?text=${encodeURIComponent('Hola Jose Pablo, quisiera conversar sobre un proyecto de ' + selectedType + ' para mi negocio')}`;
+          }
         });
       });
 
-      // Wire Copy Buttons
       function setupCopy(btnId, valId) {
         const btn = document.getElementById(btnId);
         const val = document.getElementById(valId);
@@ -3546,12 +3690,11 @@
       setupCopy('copyPhoneBtn', 'phoneVal');
 
       // ======================================================================
-      // AMBIENT PARTICLES CANVAS
+      // 10. AMBIENT STAR-DUST CANVAS
       // ======================================================================
       const canvas = document.getElementById('ambientCanvas');
       const ctx = canvas.getContext('2d');
-      let w, h;
-      let particles = [];
+      let w, h, particles = [];
 
       function resizeCanvas() {
         w = canvas.width = window.innerWidth;
@@ -3561,23 +3704,19 @@
       resizeCanvas();
 
       class Particle {
-        constructor() {
-          this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
           this.x = Math.random() * w;
           this.y = Math.random() * h;
-          this.size = Math.random() * 1.5 + 0.3;
-          this.vx = (Math.random() - 0.5) * 0.25;
-          this.vy = (Math.random() - 0.5) * 0.25;
-          this.alpha = Math.random() * 0.6 + 0.1;
+          this.size = Math.random() * 1.4 + 0.3;
+          this.vx = (Math.random() - 0.5) * 0.22;
+          this.vy = (Math.random() - 0.5) * 0.22;
+          this.alpha = Math.random() * 0.55 + 0.1;
         }
         update() {
           this.x += this.vx;
           this.y += this.vy;
-          if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) {
-            this.reset();
-          }
+          if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
         }
         draw() {
           ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
@@ -3587,28 +3726,23 @@
         }
       }
 
-      const count = Math.min(65, Math.floor(window.innerWidth / 24));
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-      }
+      const count = Math.min(60, Math.floor(window.innerWidth / 26));
+      for (let i = 0; i < count; i++) particles.push(new Particle());
 
-      function loop() {
+      function loopParticles() {
         ctx.clearRect(0, 0, w, h);
-        for (let p of particles) {
-          p.update();
-          p.draw();
-        }
-        requestAnimationFrame(loop);
+        for (let p of particles) { p.update(); p.draw(); }
+        requestAnimationFrame(loopParticles);
       }
-      loop();
+      loopParticles();
 
       // ======================================================================
-      // CURSOR GLOW & 3D TILT WITH SPOTLIGHT EFFECT
+      // 11. 3D PERSPECTIVE TILT, SPOTLIGHT & MAGNETIC PHYSICS
       // ======================================================================
       const cursorGlow = document.getElementById('cursorGlow');
       const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-      if (isFinePointer) {
+      if (isFinePointer && window.gsap) {
         window.addEventListener('mousemove', (e) => {
           gsap.to(cursorGlow, {
             x: e.clientX,
@@ -3618,23 +3752,19 @@
           });
         });
 
-        // 3D Tilt on all cards with .tilt-card
         document.querySelectorAll('.tilt-card').forEach(card => {
           card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -6.5;
-            const rotateY = ((x - centerX) / centerX) * 6.5;
+            const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -5.2;
+            const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 5.2;
 
             card.style.setProperty('--spot-x', `${x}px`);
             card.style.setProperty('--spot-y', `${y}px`);
 
             gsap.to(card, {
-              transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`,
+              transform: `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-3px)`,
               duration: 0.35,
               ease: 'power2.out'
             });
@@ -3642,22 +3772,21 @@
 
           card.addEventListener('mouseleave', () => {
             gsap.to(card, {
-              transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)',
+              transform: 'perspective(1100px) rotateX(0deg) rotateY(0deg) translateY(0px)',
               duration: 0.6,
               ease: 'power3.out'
             });
           });
         });
 
-        // Magnetic Attraction on primary interactive elements
         document.querySelectorAll('.magnetic-el').forEach(el => {
           el.addEventListener('mousemove', (e) => {
             const rect = el.getBoundingClientRect();
             const relX = e.clientX - rect.left - rect.width / 2;
             const relY = e.clientY - rect.top - rect.height / 2;
             gsap.to(el, {
-              x: relX * 0.28,
-              y: relY * 0.28,
+              x: relX * 0.25,
+              y: relY * 0.25,
               duration: 0.35,
               ease: 'power2.out'
             });
@@ -3669,39 +3798,38 @@
       }
 
       // ======================================================================
-      // RICH GSAP SCROLLTRIGGER ANIMATIONS
+      // 12. CHOREOGRAPHED GSAP SCROLLTRIGGER ANIMATIONS
       // ======================================================================
       if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero Entrance Timeline
         const heroTl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
-        // Arranca cuando la cortina del loader empieza a subir
-        if (window.CHVLoader) CHVLoader.onReveal(() => heroTl.play()); else heroTl.play();
-        heroTl
-          .from('.hero__title', { y: 35, opacity: 0, duration: 0.9, delay: 0.15 })
-          .from('.hero__desc', { y: 25, opacity: 0, duration: 0.8 }, '-=0.6')
-          .from('.hero__ctas', { y: 20, opacity: 0, duration: 0.7 }, '-=0.5')
-          .from('.hero__showcase', { y: 55, scale: 0.95, opacity: 0, duration: 1.1, ease: 'expo.out' }, '-=0.6')
-          .from('.floating-pill--1', { x: -30, opacity: 0, duration: 0.8 }, '-=0.4')
-          .from('.floating-pill--2', { x: 30, opacity: 0, duration: 0.8 }, '-=0.6');
+        if (window.CHVLoader) CHVLoader.onReveal(() => heroTl.play());
+        else heroTl.play();
 
-        // Section Headers Reveal
+        heroTl
+          .from('.anim-hero', {
+            y: 32,
+            opacity: 0,
+            duration: 0.85,
+            stagger: 0.1,
+            ease: 'expo.out'
+          });
+
         gsap.utils.toArray('.reveal-title').forEach(el => {
           gsap.from(el, {
-            scrollTrigger: { trigger: el, start: 'top 85%' },
-            y: 30,
+            scrollTrigger: { trigger: el, start: 'top 86%' },
+            y: 28,
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out'
           });
         });
 
-        // Solutions Spectrum Cards Reveal
         gsap.utils.toArray('.spectrum-card').forEach((card, idx) => {
           gsap.from(card, {
             scrollTrigger: { trigger: card, start: 'top 88%' },
-            y: 35,
+            y: 36,
             opacity: 0,
             duration: 0.75,
             delay: (idx % 2) * 0.1,
@@ -3709,68 +3837,41 @@
           });
         });
 
-        // Carousel Container Reveal
-        gsap.from('.carousel-viewport', {
-          scrollTrigger: { trigger: '.carousel-viewport', start: 'top 82%' },
-          scale: 0.95,
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out'
-        });
-
-        // Skills Cards: Varied Multi-Directional Entrances
-        gsap.from('.skill-from-left', {
-          scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' },
-          x: -60,
-          opacity: 0,
-          duration: 0.85,
-          ease: 'power3.out'
-        });
-        gsap.from('.skill-from-bottom', {
-          scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' },
-          y: 60,
-          opacity: 0,
-          stagger: 0.12,
-          duration: 0.85,
-          ease: 'power3.out'
-        });
-        gsap.from('.skill-from-right', {
-          scrollTrigger: { trigger: '.skills-grid', start: 'top 85%' },
-          x: 60,
-          opacity: 0,
-          duration: 0.85,
-          ease: 'power3.out'
-        });
-
-        // Process Steps Staggered Cascade
-        gsap.utils.toArray('.process-anim-step').forEach((step, idx) => {
-          gsap.from(step, {
-            scrollTrigger: { trigger: '.process-timeline', start: 'top 85%' },
-            y: 45,
+        gsap.utils.toArray('.ledger-anim').forEach((row, idx) => {
+          gsap.from(row, {
+            scrollTrigger: { trigger: row, start: 'top 88%' },
+            x: -24,
             opacity: 0,
             duration: 0.7,
-            delay: idx * 0.14,
+            delay: idx * 0.06,
             ease: 'power3.out'
           });
         });
 
-        // Founder Box Reveal
+        gsap.utils.toArray('.process-anim-step').forEach((step, idx) => {
+          gsap.from(step, {
+            scrollTrigger: { trigger: '.process-timeline', start: 'top 85%' },
+            y: 40,
+            opacity: 0,
+            duration: 0.7,
+            delay: idx * 0.12,
+            ease: 'power3.out'
+          });
+        });
+
         gsap.from('.founder-anim', {
           scrollTrigger: { trigger: '.founder-anim', start: 'top 85%' },
-          y: 50,
-          scale: 0.96,
+          y: 44,
           opacity: 0,
-          duration: 0.9,
+          duration: 0.85,
           ease: 'power3.out'
         });
 
-        // Contact Box Reveal
         gsap.from('.contact-anim', {
           scrollTrigger: { trigger: '.contact-anim', start: 'top 85%' },
-          y: 50,
+          y: 44,
           opacity: 0,
-          duration: 0.9,
+          duration: 0.85,
           ease: 'power3.out'
         });
       }
