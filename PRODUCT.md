@@ -41,7 +41,7 @@ No other case studies, testimonials, pricing, or client logos exist yet; do not 
 
 - Name: **CHV SYSTEMS**. Tagline given by the user: "WEB DESIGN & DEVELOPMENT BY CHV SYSTEMS."
 - Founder: **Jose Pablo Chaves Hidalgo**, Systems Engineering student, Costa Rica — to be credited in an About/Founder section.
-- Visual constraint pinned directly by the user (binding, not to be re-rolled): dark theme by default, navy-blue-led palette, glowing/light-flare background accents, with a light-mode toggle that preserves the same premium "essence" (not a flattened generic light theme).
+- Visual constraint pinned directly by the user (binding, superseding prior dark-navy/glow theme): futuristic modern maximalist mosaic inspired by opulent color-blocked structural grids — visible architectural grid lines, perimeter 4-sided kinetic marquee frame, saturated color-blocked cells (acid lime, hyper vermilion, cyber lavender, electric sky cyan, stark obsidian/chalk), monumental stacked display typography, dual dark/light mode, and firm mechanical/editorial motion (no 3D rotating cube, no typewriter cursor, no 3D card tilt, no slow volumetric loader).
 
 ## Evidence on Hand
 
@@ -50,7 +50,7 @@ Real: Gananova (live product + real feature set, sourced from www.gananova.com),
 ## Product Principles
 
 1. Prove capability with real, working systems (Gananova) rather than generic "I build websites" claims.
-2. Respect the pinned dark-navy/light-flare identity at every surface; the light mode is a variant of the same world, not a different brand.
+2. Commit fully to the futuristic modern maximalist color-block grid identity across both dark and light modes; light mode is a daylight variant of the same opulent mosaic, not a generic white page.
 3. Write for SME owners deciding whether to trust one person with a real piece of their business — clarity and confidence over cleverness.
 4. Never invent client counts, revenue numbers, testimonials, or pricing not confirmed by the user.
 
