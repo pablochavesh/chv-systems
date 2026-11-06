@@ -366,13 +366,19 @@
     }
 
     .header-inner {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      width: 100%;
+      min-height: 50px;
     }
 
     .brand-link {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -383,8 +389,9 @@
       -webkit-backdrop-filter: blur(18px) saturate(155%);
       border: 1px solid var(--glass-border-soft);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 12px 26px -10px rgba(0, 0, 0, 0.36);
-      min-height: 46px;
-      transition: opacity 0.36s var(--ease-fluid), transform 0.36s var(--ease-fluid), visibility 0.36s;
+      height: 46px;
+      transition: opacity 0.42s var(--ease-fluid), transform 0.42s var(--ease-fluid), visibility 0.42s;
+      z-index: 2;
     }
     [data-theme="light"] .brand-link {
       background: rgba(255, 255, 255, 0.78);
@@ -396,7 +403,13 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(-10px) scale(0.95);
+      transform: translateX(-16px) scale(0.95);
+    }
+    .site-header.past-hero .brand-link {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(0) scale(1);
     }
     .site-header.past-hero .brand-link:hover {
       transform: translateY(-1px) scale(1.01);
@@ -417,8 +430,9 @@
       text-transform: uppercase;
     }
 
-    /* Reference Right Capsule Pill */
+    /* Reference Right Capsule Pill: Centered in Hero, Glides to Right Past Hero */
     .nav-capsule {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 4px;
@@ -429,6 +443,14 @@
       -webkit-backdrop-filter: blur(26px) saturate(170%);
       border: 1px solid var(--glass-border);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 14px 34px -10px rgba(0, 0, 0, 0.55);
+      left: 50%;
+      transform: translateX(-50%);
+      transition: left 0.52s cubic-bezier(0.16, 1, 0.3, 1), transform 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+    .site-header.past-hero .nav-capsule {
+      left: 100%;
+      transform: translateX(-100%);
     }
 
     .nav-links {
@@ -588,11 +610,11 @@
        ========================================================================== */
     .hero-stage {
       position: relative;
-      min-height: min(100svh, 900px);
+      min-height: min(100svh, 860px);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 92px 0 20px;
+      justify-content: flex-start;
+      padding: 72px 0 18px;
       overflow: hidden;
       border-bottom: 1px solid var(--glass-divider);
     }
@@ -729,10 +751,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
-      gap: clamp(16px, 2.6vh, 26px);
-      padding-block: clamp(14px, 2.8vh, 32px);
+      gap: clamp(14px, 2.2vh, 22px);
+      padding-top: clamp(8px, 1.8vh, 18px);
+      padding-bottom: clamp(14px, 2.2vh, 26px);
       max-width: 980px;
       margin: 0 auto;
       width: 100%;
@@ -742,47 +765,6 @@
     @keyframes heroGlideUp {
       from { opacity: 0; transform: translate3d(0, 20px, 0) scale(0.985); }
       to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
-    }
-
-    /* Centered Motto Pill */
-    .hero-motto-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 18px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border-soft);
-      font-family: var(--font-display);
-      font-size: clamp(0.85rem, 1.1vw, 0.94rem);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--ink-secondary);
-      animation: heroGlideUp 0.72s var(--ease-fluid) both;
-    }
-    [data-theme="light"] .hero-motto-pill {
-      background: rgba(255, 255, 255, 0.76);
-      border-color: rgba(15, 18, 28, 0.10);
-      color: #2D3444;
-      box-shadow: 0 4px 14px -4px rgba(15, 20, 35, 0.06);
-    }
-
-    .hero-motto-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--ruby-core);
-      flex-shrink: 0;
-    }
-
-    .hero-motto-text {
-      font-family: var(--font-display);
-      font-size: inherit;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: inherit;
     }
 
     /* Slab Perspective Wrapper for GSAP 3D Optical Tilt */
@@ -913,26 +895,6 @@
         rgba(255, 255, 255, 0.46) 76%,
         transparent 86%
       );
-    }
-
-    /* Reference 4-Point Optical Star Glint in Top-Right of Slab (Neutral Graphite/Silver) */
-    @keyframes starOpticalTwinkle {
-      0%, 100% { transform: scale(0.92) rotate(0deg); opacity: 0.65; }
-      50% { transform: scale(1.08) rotate(8deg); opacity: 1; }
-    }
-
-    .slab-star-glint {
-      position: absolute;
-      top: clamp(18px, 2.5vw, 30px);
-      right: clamp(20px, 3vw, 38px);
-      width: clamp(22px, 2.6vw, 32px);
-      height: clamp(22px, 2.6vw, 32px);
-      color: rgba(255, 255, 255, 0.88);
-      pointer-events: none;
-      animation: starOpticalTwinkle 5.2s ease-in-out infinite;
-    }
-    [data-theme="light"] .slab-star-glint {
-      color: rgba(15, 20, 32, 0.48);
     }
 
     .hero-slab-logo {
@@ -1269,11 +1231,11 @@
     }
 
     .flagship-info-pane {
-      padding: clamp(26px, 3.6vw, 46px);
+      padding: clamp(28px, 3.8vw, 48px);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 24px;
+      justify-content: center;
+      gap: clamp(24px, 2.8vw, 36px);
     }
 
     .proj-header-group {
@@ -1331,43 +1293,68 @@
     .tech-tags-wrap {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      padding-top: 20px;
+      gap: 14px;
+      padding-top: 24px;
       border-top: 1px solid var(--glass-divider);
     }
 
     .tech-tags-label {
       font-family: var(--font-display);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--ink-Soft);
+      color: var(--ink-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tech-tags-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ruby-core);
+      flex-shrink: 0;
     }
 
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      align-items: center;
+      gap: 10px 12px;
     }
 
     .tech-tag {
-      padding: 7px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
       border-radius: var(--radius-pill);
-      border: 1px solid var(--glass-border);
-      background: rgba(255, 255, 255, 0.06);
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--ink-primary);
-      transition: transform 0.24s var(--ease-fluid), border-color 0.24s var(--ease-fluid);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(15, 20, 35, 0.12);
+      box-shadow: 0 4px 12px -3px rgba(15, 20, 35, 0.08);
+      transition: transform 0.24s var(--ease-fluid), border-color 0.24s var(--ease-fluid), box-shadow 0.24s var(--ease-fluid);
     }
     [data-theme="light"] .tech-tag {
-      background: rgba(15, 18, 28, 0.045);
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(15, 20, 35, 0.14);
+      color: #0F1420;
+    }
+    [data-theme="dark"] .tech-tag {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 4px 14px -3px rgba(0, 0, 0, 0.45);
+      color: #F5F6FA;
     }
     .tech-tag:hover {
       transform: translateY(-2px);
       border-color: var(--ruby-border);
+      box-shadow: 0 8px 18px -4px var(--ruby-glow);
     }
 
     /* Subblock Section Headings inside #proyectos */
@@ -1378,25 +1365,31 @@
     }
 
     .subblock-head {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .subblock-kicker {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ruby-core);
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-    }
-    .subblock-head::before {
-      content: "";
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--ruby-core);
-      flex-shrink: 0;
+      gap: 6px;
     }
 
     .subblock-head h3 {
       font-family: var(--font-display);
-      font-size: clamp(1.22rem, 1.85vw, 1.52rem);
+      font-size: clamp(1.36rem, 2.1vw, 1.75rem);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
       color: var(--ink-primary);
+      margin: 0;
     }
 
     /* Part 3: 3 Cards — Experiencia por tipo de negocio */
@@ -1407,44 +1400,57 @@
     }
 
     .industry-card {
-      padding: clamp(24px, 2.6vw, 32px);
+      padding: clamp(26px, 2.8vw, 34px);
       display: flex;
       flex-direction: column;
       gap: 16px;
+      border-radius: var(--radius-card);
+      opacity: 1;
       transition: transform 0.34s var(--ease-fluid), border-color 0.28s var(--ease-fluid);
     }
     .industry-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       border-color: var(--ruby-border);
+    }
+
+    .industry-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .industry-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ruby-tint);
+      border: 1px solid var(--ruby-border);
+      color: var(--ruby-core);
+      flex-shrink: 0;
+      transition: transform 0.3s var(--ease-fluid), background-color 0.3s var(--ease-fluid);
+    }
+    .industry-card:hover .industry-icon-box {
+      transform: scale(1.08);
+      background: rgba(225, 29, 72, 0.16);
     }
 
     .industry-card-title {
       margin: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
       font-family: var(--font-display);
-      font-size: 1.22rem;
+      font-size: 1.25rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--ink-primary);
     }
 
-    .industry-svg {
-      width: 24px;
-      height: 24px;
-      color: var(--ruby-core);
-      flex-shrink: 0;
-      transition: transform 0.3s var(--ease-fluid);
-    }
-    .industry-card:hover .industry-svg {
-      transform: scale(1.12);
-    }
-
     .industry-card p {
-      font-size: 0.96rem;
+      margin: 0;
+      font-size: 0.98rem;
       color: var(--ink-secondary);
-      line-height: 1.62;
+      line-height: 1.65;
     }
 
     /* Part 4: Secondary Project (Sitio web de Gananova) + Real Delivered Sites */
@@ -2345,11 +2351,22 @@
     }
 
     @media (max-width: 880px) {
+      .header-inner {
+        justify-content: space-between;
+      }
+      .brand-link {
+        position: relative;
+        left: auto;
+        top: auto;
+        bottom: auto;
+        margin: 0;
+      }
       .nav-capsule {
         display: none;
       }
       .mobile-bar-actions {
         display: inline-flex;
+        margin-left: auto;
       }
       .sec-head {
         grid-template-columns: 1fr;
@@ -2387,17 +2404,13 @@
         font-size: 0.72rem;
         letter-spacing: 0.16em;
       }
-      .hero-motto-pill {
-        padding: 6px 14px;
-        font-size: 0.82rem;
-      }
       .hero-center-pitch {
         padding: 22px 16px;
       }
       .hero-stage {
         min-height: auto;
-        padding: 88px 0 26px;
-        gap: 24px;
+        padding: 66px 0 20px;
+        gap: 18px;
       }
       .hero-content {
         gap: 22px;
@@ -2587,19 +2600,9 @@
         <div class="glass-orb glass-orb--br" aria-hidden="true"></div>
 
         <div class="container hero-content">
-          <!-- Centered Motto Pill -->
-          <div class="hero-motto-pill">
-            <span class="hero-motto-dot" aria-hidden="true"></span>
-            <span class="hero-motto-text" data-i18n="hero.motto">Diseño. Desarrollo. Orden.</span>
-          </div>
-
           <!-- Centered Monumental Liquid Glass Slab (Pure Frosted Crystal — Zero Red Sheen) -->
           <div class="hero-slab-wrapper" id="heroSlabWrapper">
             <div class="hero-glass-slab" id="heroGlassSlab">
-              <svg class="slab-star-glint" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                <path d="M16 1L18.2 13.8L31 16L18.2 18.2L16 31L13.8 18.2L1 16L13.8 13.8L16 1Z" fill="currentColor"/>
-              </svg>
-
               <svg class="hero-slab-logo" viewBox="0 0 360 90" fill="none" role="img" aria-label="CHV Systems">
                 <defs>
                   <linearGradient id="heroMetallic" x1="0" y1="6" x2="0" y2="84" gradientUnits="userSpaceOnUse">
@@ -2717,47 +2720,54 @@
             <!-- 3. Tres tarjetas: Experiencia por tipo de negocio -->
             <div class="subblock-group">
               <div class="subblock-head">
+                <span class="subblock-kicker">• Sectores de operación</span>
                 <h3 data-i18n="ind.h3">Experiencia por tipo de negocio</h3>
               </div>
 
               <div class="industry-grid">
-                <article class="industry-card liquid-glass stagger-item" style="--stagger:0">
-                  <h4 class="industry-card-title">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="industry-svg" aria-hidden="true">
-                      <path d="M3 17h13l3-5h2v5h1"/>
-                      <path d="M5 17V9h7l3 3v5"/>
-                      <circle cx="7.5" cy="17.5" r="2.5"/>
-                      <circle cx="17.5" cy="17.5" r="2.5"/>
-                    </svg>
-                    <span data-i18n="ind1.title">Maquinaria pesada</span>
-                  </h4>
+                <article class="industry-card liquid-glass">
+                  <div class="industry-card-header">
+                    <div class="industry-icon-box" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 17h13l3-5h2v5h1"/>
+                        <path d="M5 17V9h7l3 3v5"/>
+                        <circle cx="7.5" cy="17.5" r="2.5"/>
+                        <circle cx="17.5" cy="17.5" r="2.5"/>
+                      </svg>
+                    </div>
+                    <h4 class="industry-card-title" data-i18n="ind1.title">Maquinaria pesada</h4>
+                  </div>
                   <p data-i18n="ind1.desc">
                     Control operativo de campo y oficina: reportería de trabajo diario, control de activos y supervisión administrativa centralizada.
                   </p>
                 </article>
 
-                <article class="industry-card liquid-glass stagger-item" style="--stagger:1">
-                  <h4 class="industry-card-title">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="industry-svg" aria-hidden="true">
-                      <circle cx="12" cy="12" r="9"/>
-                      <polygon points="12 7.5 15 9.8 13.8 13.5 10.2 13.5 9 9.8 12 7.5"/>
-                    </svg>
-                    <span data-i18n="ind2.title">Escuelas deportivas</span>
-                  </h4>
+                <article class="industry-card liquid-glass">
+                  <div class="industry-card-header">
+                    <div class="industry-icon-box" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <polygon points="12 7.5 15 9.8 13.8 13.5 10.2 13.5 9 9.8 12 7.5"/>
+                      </svg>
+                    </div>
+                    <h4 class="industry-card-title" data-i18n="ind2.title">Escuelas deportivas</h4>
+                  </div>
                   <p data-i18n="ind2.desc">
                     Gestión de comunidades y cobros: administración de matrículas, seguimiento financiero y comunicación directa con usuarios y encargados.
                   </p>
                 </article>
 
-                <article class="industry-card liquid-glass stagger-item" style="--stagger:2">
-                  <h4 class="industry-card-title">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="industry-svg" aria-hidden="true">
-                      <path d="M3 9l2-5h14l2 5"/>
-                      <path d="M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/>
-                      <path d="M5 12v8h14v-8"/>
-                    </svg>
-                    <span data-i18n="ind3.title">Comercio y outlets</span>
-                  </h4>
+                <article class="industry-card liquid-glass">
+                  <div class="industry-card-header">
+                    <div class="industry-icon-box" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l2-5h14l2 5"/>
+                        <path d="M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/>
+                        <path d="M5 12v8h14v-8"/>
+                      </svg>
+                    </div>
+                    <h4 class="industry-card-title" data-i18n="ind3.title">Comercio y outlets</h4>
+                  </div>
                   <p data-i18n="ind3.desc">
                     Punto de venta y administración comercial: control de inventario multisede, movimientos de caja y seguimiento de ventas del día a día.
                   </p>
@@ -2768,6 +2778,7 @@
             <!-- 4. Proyecto secundario: Sitio web de Gananova (+ otros sitios reales entregados) -->
             <div class="subblock-group">
               <div class="subblock-head">
+                <span class="subblock-kicker">• Presencia digital</span>
                 <h3 data-i18n="web.h3">Sitios web desarrollados</h3>
               </div>
 
@@ -3798,9 +3809,9 @@
       wireCopy('copyEmailBtn', 'emailVal');
 
       // ======================================================================
-      // 7. STAGGERED LIQUID GLASS SCROLL REVEAL (FALLBACK OBSERVER)
+      // 7. STAGGERED LIQUID GLASS SCROLL REVEAL (FALLBACK OBSERVER IF NO GSAP)
       // ======================================================================
-      if (!reducedMotion && 'IntersectionObserver' in window) {
+      if (!reducedMotion && typeof window.gsap === 'undefined' && 'IntersectionObserver' in window) {
         root.classList.add('js-motion');
         var revealEls = document.querySelectorAll('.reveal-glass, .stagger-item');
         var io = new IntersectionObserver(function (entries) {
@@ -3852,7 +3863,6 @@
         // B. Hero Staged Cinematic Entry Timeline
         var heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
         heroTl
-          .from('.hero-motto-pill', { opacity: 0, y: -16, duration: 0.65 }, 0.05)
           .from('#heroGlassSlab', {
             opacity: 0,
             scale: 0.9,
@@ -3860,8 +3870,8 @@
             rotationX: 10,
             duration: 1.0,
             ease: 'power3.out'
-          }, 0.15)
-          .from('.hero-h1', { opacity: 0, y: 25, duration: 0.75 }, 0.4)
+          }, 0.1)
+          .from('.hero-h1', { opacity: 0, y: 25, duration: 0.75 }, 0.35)
           .from('.hero-subcopy', { opacity: 0, y: 20, duration: 0.7 }, 0.55)
           .from('.hero-cta-btn', { opacity: 0, y: 18, scale: 0.95, stagger: 0.1, duration: 0.65 }, 0.7)
           .from('.hero-cap-pill', { opacity: 0, scale: 0.85, stagger: 0.06, duration: 0.55, ease: 'back.out(1.8)' }, 0.82)
@@ -3948,13 +3958,13 @@
             gsap.from(head, {
               scrollTrigger: {
                 trigger: head,
-                start: 'top 88%',
+                start: 'top bottom',
                 toggleActions: 'play none none none'
               },
-              opacity: 0,
-              y: 35,
-              duration: 0.85,
-              ease: 'power3.out'
+              y: 16,
+              duration: 0.6,
+              ease: 'power2.out',
+              clearProps: 'all'
             });
           });
 
@@ -3964,45 +3974,30 @@
             gsap.from(flagship, {
               scrollTrigger: {
                 trigger: flagship,
-                start: 'top 85%',
+                start: 'top bottom',
                 toggleActions: 'play none none none'
               },
-              opacity: 0,
-              y: 55,
-              rotationX: 6,
-              transformPerspective: 1000,
-              duration: 1.0,
-              ease: 'power3.out'
-            });
-
-            gsap.from('.tech-tag', {
-              scrollTrigger: {
-                trigger: '.tech-tags',
-                start: 'top 92%',
-                toggleActions: 'play none none none'
-              },
-              opacity: 0,
-              scale: 0.5,
-              stagger: 0.08,
-              duration: 0.6,
-              ease: 'back.out(2.2)'
+              y: 24,
+              duration: 0.7,
+              ease: 'power2.out',
+              clearProps: 'all'
             });
           }
 
           // 3 Industry Cards Stagger
-          var indGrid = document.querySelector('.industry-grid');
-          if (indGrid) {
-            gsap.from('.industry-card', {
+          var indCards = document.querySelectorAll('.industry-card');
+          if (indCards.length) {
+            gsap.from(indCards, {
               scrollTrigger: {
-                trigger: indGrid,
-                start: 'top 85%',
+                trigger: indCards[0],
+                start: 'top bottom',
                 toggleActions: 'play none none none'
               },
-              opacity: 0,
-              y: 45,
-              stagger: 0.14,
-              duration: 0.85,
-              ease: 'power2.out'
+              y: 20,
+              stagger: 0.08,
+              duration: 0.65,
+              ease: 'power2.out',
+              clearProps: 'all'
             });
           }
 
@@ -4012,15 +4007,16 @@
             gsap.from('.site-mini-card', {
               scrollTrigger: {
                 trigger: otherSites,
-                start: 'top 88%',
+                start: 'top 94%',
                 toggleActions: 'play none none none'
               },
               opacity: 0,
-              y: 40,
+              y: 35,
               scale: 0.96,
               stagger: 0.16,
               duration: 0.85,
-              ease: 'power3.out'
+              ease: 'power3.out',
+              clearProps: 'opacity,transform'
             });
           }
 
@@ -4030,7 +4026,7 @@
             gsap.from('.also-pill', {
               scrollTrigger: {
                 trigger: alsoPills,
-                start: 'top 92%',
+                start: 'top 94%',
                 toggleActions: 'play none none none'
               },
               opacity: 0,
@@ -4038,7 +4034,8 @@
               y: 15,
               stagger: 0.07,
               duration: 0.55,
-              ease: 'back.out(2)'
+              ease: 'back.out(2)',
+              clearProps: 'opacity,transform'
             });
           }
 
