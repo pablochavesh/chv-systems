@@ -253,7 +253,17 @@
       {
         "name": "loader-veil",
         "value": "0.48s cubic-bezier(0.22, 1, 0.36, 1)",
-        "purpose": "Fast ~480ms smoked Liquid Glass entrance veil using GPU-only opacity and transform."
+        "purpose": "Fast ~480ms frosted daylight-default Liquid Glass entrance veil using GPU-only opacity and transform."
+      },
+      {
+        "name": "hero-specular-sweep",
+        "value": "9s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+        "purpose": "Autonomous pure-white diagonal specular reflection sweeping across the neutral CHV SYSTEMS hero crystal slab."
+      },
+      {
+        "name": "stagger-cascade",
+        "value": "0.68s cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Scroll-triggered staggered entrance (--stagger * 80ms) on industry lenses, live site cards, and capability pills."
       }
     ],
     "breakpoints": [
@@ -307,9 +317,9 @@
       "name": "Monumental Frosted CHV Emblem Slab",
       "kind": "custom",
       "refersTo": "glass-slab",
-      "description": "Signature frosted Liquid Glass centerpiece with custom geometric CHV vector emblem and 4-point star glint.",
-      "html": "<div class=\"ds-hero-slab\" tabindex=\"0\"><svg class=\"ds-star\" viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"M16 1L18.2 13.8L31 16L18.2 18.2L16 31L13.8 18.2L1 16L13.8 13.8L16 1Z\" fill=\"currentColor\"/></svg><svg class=\"ds-chv\" viewBox=\"0 0 360 90\" fill=\"none\"><path d=\"M36 10H114L101 28H38C30.8 28 26 32.8 26 40V50C26 57.2 30.8 62 38 62H108V80H36C18.4 80 8 69.6 8 52V38C8 20.4 18.4 10 36 10Z\" fill=\"#F5F6FA\"/><path d=\"M128 10H146V36H210V10H228V68L210 81V54H146V80H128V10Z\" fill=\"#E2E5EE\"/><path d=\"M234 10H254L292 60L330 10H350L301 75C296.5 80.8 287.5 80.8 283 75L234 10Z\" fill=\"#F5F6FA\"/></svg><span class=\"ds-sys-word\">SYSTEMS</span></div>",
-      "css": ".ds-hero-slab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 40px 48px; border-radius: 32px; background: linear-gradient(122deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 28%, rgba(255, 255, 255, 0.13) 48%, rgba(16, 17, 23, 0.32) 68%, rgba(225, 29, 72, 0.13) 100%); backdrop-filter: blur(26px) saturate(165%); border: 1px solid rgba(255, 255, 255, 0.32); box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.62), inset 0 -1.5px 0 rgba(255, 255, 255, 0.22), 0 32px 68px -18px rgba(0, 0, 0, 0.75); transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); } .ds-hero-slab:hover { border-color: rgba(253, 164, 175, 0.55); transform: translateY(-2px); } .ds-hero-slab:focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; } .ds-star { position: absolute; top: 18px; right: 22px; width: 22px; height: 22px; color: rgba(255, 255, 255, 0.88); } .ds-chv { width: 240px; height: auto; } .ds-sys-word { font-family: 'Onest', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.62em; text-indent: 0.62em; color: #F5F6FA; }"
+      "description": "Signature pure-neutral frosted Liquid Glass centerpiece (zero red tint) with custom geometric CHV vector emblem and neutral 4-point optical star glint.",
+      "html": "<div class=\"ds-hero-slab\" tabindex=\"0\"><svg class=\"ds-star\" viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"M16 1L18.2 13.8L31 16L18.2 18.2L16 31L13.8 18.2L1 16L13.8 13.8L16 1Z\" fill=\"currentColor\"/></svg><svg class=\"ds-chv\" viewBox=\"0 0 360 90\" fill=\"none\"><path d=\"M36 10H114L101 28H38C30.8 28 26 32.8 26 40V50C26 57.2 30.8 62 38 62H108V80H36C18.4 80 8 69.6 8 52V38C8 20.4 18.4 10 36 10Z\" fill=\"#161B26\"/><path d=\"M128 10H146V36H210V10H228V68L210 81V54H146V80H128V10Z\" fill=\"#2B3344\"/><path d=\"M234 10H254L292 60L330 10H350L301 75C296.5 80.8 287.5 80.8 283 75L234 10Z\" fill=\"#161B26\"/></svg><span class=\"ds-sys-word\">SYSTEMS</span></div>",
+      "css": ".ds-hero-slab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 40px 48px; border-radius: 32px; background: linear-gradient(122deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.56) 32%, rgba(255, 255, 255, 0.78) 54%, rgba(232, 236, 244, 0.64) 100%); backdrop-filter: blur(26px) saturate(165%); border: 1px solid rgba(255, 255, 255, 0.92); box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(15, 20, 35, 0.08), 0 32px 68px -18px rgba(15, 20, 35, 0.16); transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); } .ds-hero-slab:hover { border-color: rgba(15, 20, 35, 0.24); transform: translateY(-2px); } .ds-hero-slab:focus-visible { outline: 2px solid #BE123C; outline-offset: 3px; } .ds-star { position: absolute; top: 18px; right: 22px; width: 22px; height: 22px; color: rgba(15, 20, 32, 0.48); } .ds-chv { width: 240px; height: auto; } .ds-sys-word { font-family: 'Onest', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.62em; text-indent: 0.62em; color: #0D1017; }"
     }
   ],
   "narrative": {

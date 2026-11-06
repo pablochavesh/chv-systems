@@ -1,6 +1,6 @@
 ---
 name: CHV Systems
-description: Architectural Apple Liquid Glass with Subtle Crimson Nuances — smoked refractive glass slabs and crescent-lit spheres floating over poured-concrete monoliths, paired with warm everyday Spanish and English copy.
+description: Daylight-first Architectural Apple Liquid Glass — pure neutral frosted crystal hero slab over architectural stone monoliths, restrained crimson-ruby conversion accents, GPU-composited optical motion, and direct first-person Spanish/English copy.
 colors:
   ruby-core: "#E11D48"
   ruby-deep: "#BE123C"
@@ -98,115 +98,110 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Ruby-Seamed Liquid Glass Monolith"**
+**Creative North Star: "Daylight Crystal & Obsidian Liquid Glass Studio"**
 
-CHV Systems presents custom web design and business software inside an architectural studio built from dark poured-concrete monoliths, faint hairline coordinate rulings, and genuine Apple-inspired Liquid Glass lenses warmed by restrained crimson-ruby light seams. Every glass slab, capsule pill, and crescent-lit sphere earns its translucency by refracting physical architectural planes behind it (`backdrop-filter: blur(28px) saturate(168%)`), framing real delivered client projects in Costa Rica and the United States with calm optical authority.
+CHV Systems presents Jose Pablo Chaves Hidalgo's custom software and web engineering work in Costa Rica inside an Apple-inspired Liquid Glass studio that opens by default in crisp **Light mode** (`data-theme="light"`, `daylight-pearl`) with instant 1-click parity in **Dark mode** (`obsidian-void`). Every frosted pearl or smoked obsidian lens earns its translucency by refracting angled architectural stone planes behind it (`backdrop-filter: blur(28px) saturate(168%)`), framing **Gananova OS** as the primary engineering case study alongside live client websites.
 
-While the material language is sculptural and modern, every word on the surface speaks in clear, everyday human Spanish and English so any business owner understands what CHV Systems builds within seconds. Motion stays tactile and GPU-composited: pointer-tracked optical caustics across glass surfaces, smooth pill-tab transitions (`cubic-bezier(0.22, 1, 0.36, 1)`), and a ~480ms smoked glass veil loader. Confirmed visual rejections permanently excluded from this world: cryptic technical telemetry (`0.4s`, `LOAD`, `60Hz`), uppercase kicker/eyebrow labels above headings, cards nested inside cards, uniform SaaS icon-card grids, 3D rotating wireframe cubes, typewriter text cursors, and 3D card-tilt wobble.
+The monumental `CHV SYSTEMS` hero slab is strictly **pure neutral frosted crystal** (zero red/pink sheen or tint), and the top-left header brand capsule stays hidden while `#heroGlassSlab` is in view so the emblem never duplicates in the first viewport. Crimson-ruby (`ruby-deep` in Light, `ruby-core` in Dark) is reserved for conversion buttons, active tabs, and restrained section highlights below the hero. Motion is rich yet strictly GPU-composited (`transform`, `opacity`): staged hero entrance, orbital sphere drift, autonomous white specular sweep, subtle scroll parallax, pointer-tracked caustics, and staggered reveal cascades.
 
 **Key Characteristics:**
-- Smoked refractive Liquid Glass slabs and pills (`26px`–`32px` and `999px` radii) with `1px` bright white specular rims and pointer-tracked caustic light.
-- Architectural poured-concrete studio ground (`obsidian-void` and `monolith-stone`) crossed by angled stone bevels and warm crimson-ruby seams so `backdrop-filter` visibly refracts edges throughout the scroll.
-- Crescent-rimmed translucent Liquid Glass spheres with directional specular falloff instead of flat uniform circle strokes.
-- Self-hosted `Onest` display typography paired with `Figtree` body prose for clean geometric authority and warm everyday readability.
-- Parity-first Dark and Light modes where Light mode shifts to daylight stone-pearl (`daylight-pearl`) with translucent smoked pearl glass and deep burgundy-crimson accents (`ruby-deep`).
+- Daylight-first (`daylight-pearl` `#F2F3F7`) frosted Liquid Glass slabs and pills (`26px`–`32px` and `999px` radii) with `1px` bright white specular rims, pointer-tracked caustics, and full Dark-mode parity.
+- Pure neutral frosted crystal centerpiece in `#inicio` (`hero-glass-slab`) with neutral metallic `CHV` vector gradient (`#384152` → `#0B0E14` in Light; `#FFFFFF` → `#D5D9E6` in Dark) and zero red glow.
+- Context-aware floating header where `.brand-link` stays hidden in `#inicio` and glides into view (`past-hero`) once scrolled past the large hero logo.
+- Direct, first-person Costa Rican Spanish (`contame`, `trabajás`) and English copy with zero hollow buzzwords (`innovador`, `revolucionario`, `soluciones integrales`) and zero SaaS pricing/demo buttons on Gananova OS.
+- GPU-only (`transform`, `opacity`) Liquid Glass animations (`heroGlideUp`, `orbFloatTL`/`BR`, `slabSpecularSweep`, `starOpticalTwinkle`, `.stagger-item`) honoring `prefers-reduced-motion`.
 
 ## Colors
 
-The palette pairs quiet architectural obsidian and limestone neutrals with a single disciplined crimson-ruby light source that warms glass edges and conversion controls without flooding reading fields.
+The palette pairs clean architectural limestone/pearl and deep obsidian neutrals with a disciplined crimson-ruby accent reserved for actions and lower-section emphasis.
 
 ### Primary
-- **Ruby Core** (`ruby-core`): Primary conversion accent for WhatsApp/inquiry pill buttons, active project-selector pills, status dots, and recessed architectural light seams in Dark mode.
-- **Ruby Deep** (`ruby-deep`): Pressed/hover depth partner in Dark mode and primary high-contrast crimson accent across buttons, inline highlights, and optical glints in Light mode.
-- **Ruby Soft** (`ruby-soft`): Luminous rose-ruby highlight reserved for inline headline emphasis (`<span>` / `<mark>`), active badge text, and outcome markers over dark smoked glass.
+- **Ruby Core** (`ruby-core`): Primary conversion accent for WhatsApp/contact pill buttons, active comparison tabs, and status indicators in Dark mode.
+- **Ruby Deep** (`ruby-deep`): Primary high-contrast crimson accent across buttons, inline headline emphasis, and active controls in default Light mode.
+- **Ruby Soft** (`ruby-soft`): Luminous rose-ruby highlight reserved for inline headline emphasis over dark smoked glass.
 
 ### Neutral
-- **Obsidian Void** (`obsidian-void`): Deepest studio ground and browser canvas in Dark mode, establishing theatrical contrast behind concrete monoliths and refractive glass.
-- **Monolith Stone & Obsidian Elevated** (`monolith-stone`, `obsidian-elevated`): Angled architectural stone planes and recessed showcase frames that pass behind Liquid Glass panels so `backdrop-filter` has real tonal edges to refract.
-- **Glass Pill Dark** (`glass-pill-dark`): Smoked translucent fill for floating navigation capsules, secondary pill buttons, and segmented tab rails.
-- **Alabaster Ink Ramp** (`ink-primary`, `ink-secondary`, `ink-soft`): High-legibility foreground hierarchy over smoked dark glass, maintaining ≥4.5:1 contrast across all body copy and controls.
-- **Daylight Pearl & Stone** (`daylight-pearl`, `daylight-stone`, `ink-daylight`): Light-mode architectural limestone ground and deep obsidian ink (`ink-daylight`) supporting translucent frosted pearl glass.
+- **Daylight Pearl & Stone** (`daylight-pearl`, `daylight-stone`, `ink-daylight`): Default Light-mode architectural limestone canvas (`#F2F3F7` / `#E7E9EF`) and crisp obsidian ink (`#0D1017`) supporting frosted pearl glass.
+- **Obsidian Void, Monolith Stone & Obsidian Elevated** (`obsidian-void`, `monolith-stone`, `obsidian-elevated`): Dark-mode studio ground and angled stone bevels behind smoked Liquid Glass panels.
+- **Glass Pill Dark & Alabaster Ink Ramp** (`glass-pill-dark`, `ink-primary`, `ink-secondary`, `ink-soft`): Translucent capsule fills and high-legibility foreground hierarchy maintaining WCAG AA ≥4.5:1 contrast.
 
 ### Named Rules
-**The Edge-Lit Ruby Discipline Rule.** Crimson-ruby lives in recessed architectural light seams, primary conversion pills, and subtle inline headline emphasis — never as full-screen neon washes or colored drop-shadow glows.
+**The Neutral Hero Crystal Rule.** The monumental `CHV SYSTEMS` hero slab, its metallic SVG emblem, its 4-point optical star glint, and its flanking glass orbs must remain 100% neutral frosted pearl/obsidian crystal — never tinted with red, pink, or burgundy stops.
 
-**The Tinted-Surface Harmony Rule.** When a glass surface carries a ruby tint (such as the custom software lens), secondary body copy shifts to a warm rose-tinted foreground (`#F0DCE2` in Dark mode, `#4A1C29` in Light mode) rather than neutral cool slate.
+**The Edge-Lit Ruby Discipline Rule.** Outside the neutral hero slab, crimson-ruby lives in primary conversion pills, active selector chips, and restrained inline headline emphasis — never as full-screen neon washes or colored `box-shadow` glows.
 
 ## Typography
 
 **Display Font:** Onest (self-hosted variable `woff2`, weights 500–800, with `-apple-system, BlinkMacSystemFont, sans-serif` fallback)
 **Body Font:** Figtree (self-hosted variable `woff2`, weights 400–700, with `-apple-system, BlinkMacSystemFont, sans-serif` fallback)
 
-**Character:** `Onest` brings crisp humanist-geometric precision suited to Apple-caliber optical hardware without cold technical stiffness, while `Figtree` keeps everyday Spanish and English explanations warm, open, and effortless to scan on mobile screens.
+**Character:** `Onest` delivers crisp geometric authority for custom software architecture, while `Figtree` keeps first-person operational descriptions effortless to read on mobile and desktop.
 
 ### Hierarchy
-- **Headline** (700, `clamp(1.85rem, 3.6vw, 3rem)`, line-height `1.12`, tracking `-0.032em`): Primary section statements paired directly with a plain-spoken lead paragraph, with key phrases highlighted in `ruby-soft` (`ruby-deep` in Light mode).
-- **Display** (600, `clamp(1.55rem, 2.65vw, 2.35rem)`, line-height `1.2`, tracking `-0.028em`): First-viewport value proposition anchored inside a smoked glass pitch lens below the monumental `CHV SYSTEMS` emblem slab.
-- **Title** (700, `clamp(1.32rem, 2vw, 1.68rem)`, line-height `1.22`, tracking `-0.022em`): Project titles, tailored business solution headings, and workflow step titles.
-- **Body** (400–500, `16px` / `0.98rem`–`1.06rem`, line-height `1.58`–`1.66`): Plain everyday descriptions constrained to `52ch`–`64ch` measure for comfortable reading.
-- **Label** (600, `0.84rem`–`0.95rem`, tracking `-0.01em` to `0.02em`): Pill buttons, segmented tab labels, and direct contact actions; wide uppercase tracking (`0.28em`–`0.62em`) is reserved exclusively for the `S Y S T E M S` brand wordmark.
+- **Headline** (700, `clamp(1.85rem, 3.6vw, 3rem)`, line-height `1.12`, tracking `-0.032em`): Primary section statements ("Software hecho a la medida de cada operación").
+- **Display** (600, `clamp(1.55rem, 2.65vw, 2.35rem)`, line-height `1.2`, tracking `-0.028em`): First-viewport custom software pitch anchored below the `CHV SYSTEMS` glass slab.
+- **Title** (700, `clamp(1.32rem, 2vw, 1.68rem)`, line-height `1.22`, tracking `-0.022em`): Case study titles (`Gananova OS`, `Sitio web de Gananova`), industry experience headings, and workflow steps.
+- **Body** (400–500, `16px` / `0.98rem`–`1.06rem`, line-height `1.58`–`1.66`): Direct first-person prose capped at `52ch`–`65ch`.
+- **Label** (600, `0.84rem`–`0.95rem`, tracking `-0.01em` to `0.02em`): Pill buttons, tech stack tags (`Next.js`, `TypeScript`, `PostgreSQL`, `Prisma`, `Docker`), and capability pills.
 
 ### Named Rules
-**The Everyday Plain-Language Rule.** Headings and labels name real business outcomes in plain words ("Trabajos reales funcionando hoy", "Ordenar tu negocio") — never uppercase category kickers, technical acronyms, or synthetic performance metrics.
+**The Direct First-Person Rule.** Copy speaks directly in first person about concrete operational workflows (invoicing, fleet hours, tuition portals, cash-register closing) and bans empty buzzwords (`innovador`, `revolucionario`, `soluciones integrales`) and cryptic telemetry (`0.4s`, `LOAD`, `60Hz`).
 
 ## Layout
 
-The page uses a centered `min(1280px, calc(100% - clamp(32px, 6vw, 88px)))` container (`calc(100% - 28px)` below `600px`) over a fixed faint coordinate grid (`clamp(90px, 14vw, 210px)`) and alternating angled architectural stone planes. Major sections breathe with `88px` vertical padding separated by `1px` translucent hairline dividers (`rgba(255, 255, 255, 0.11)`), opening with an asymmetric two-column header (`1.15fr / 0.85fr`) that aligns the section `h2` against its lead paragraph without eyebrow kickers.
+The page uses a centered `min(1280px, calc(100% - clamp(32px, 6vw, 88px)))` container (`calc(100% - 28px)` below `600px`) over a faint coordinate grid and angled stone planes. Sections use `88px` vertical rhythm and distinct topologies:
+1. **Hero (`#inicio`)**: 12-column optical stage with neutral frosted `CHV SYSTEMS` centerpiece slab, floating crescent orbs, and hidden top-left `.brand-link`.
+2. **Proyectos (`#proyectos`)**: 6-part custom-software showcase — (1) title & subtitle, (2) dominant `1.38fr / 0.82fr` `Gananova OS` flagship slab with sanitized `gananova-dashboard.svg` and 5 stack tags (zero pricing/demo buttons), (3) 3-column `"Experiencia por tipo de negocio"` industry cards, (4) horizontal `Sitio web de Gananova` secondary card + 2-up `ADEFIP` & `Pura Vida Painting LLC` live site cards, (5) `"También desarrollo"` pill strip, and (6) `"Conversemos"` closing CTA bar.
+3. **Servicios, Ventajas, Proceso, Fundador & Contacto**: Asymmetric `5/7` & `7/5` service bento, tabbed Excel/WhatsApp-vs-custom-software comparison table, 4-column hairline workflow ribbon, founder split sheet, and WhatsApp/email configurator.
 
-Each section adopts a distinct spatial topology rather than repeating card grids: a 12-column architectural hero stage bounded to `min(100svh, 900px)` on desktop; a flattened two-column project showcase (`1.25fr / 0.85fr`); an asymmetric `5/7` and `7/5` bento of four internally distinct business lenses; a tabbed three-column before/after comparison table; a continuous 4-column workflow ribbon divided by `1px` hairlines; and split two-pane founder and contact sheets. Breakpoints at `1040px`, `880px`, and `600px` collapse multi-column sheets cleanly into single-column stacks, reflowing the 4 project tabs into a 2x2 pill grid on mobile (`<=600px`) so zero controls clip off-screen.
+Every `.liquid-glass` card is a top-level sibling inside plain layout grids — never nested inside another `.liquid-glass` container.
 
 ## Elevation & Depth
 
-Depth is optical and refractive rather than flat or drop-shadow-heavy: Liquid Glass panels float over angled poured-concrete ridges and subtle crimson light blooms, combining `backdrop-filter: blur(28px) saturate(168%)`, directional `1px` inset specular rims (brightest along the top edge where studio light strikes), pointer-tracked radial caustic highlights, and neutral black ambient elevation shadows.
+Depth combines `backdrop-filter: blur(28px) saturate(168%)`, directional `1px`–`1.5px` white inset specular rims, autonomous diagonal white sheen on the hero slab, pointer-tracked radial glints, and pure neutral slate/black elevation shadows.
 
 ### Shadow Vocabulary
-- **Liquid Glass Rim & Elevation** (`inset 0 1px 0 0 rgba(255, 255, 255, 0.44), inset 1px 0 0 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(255, 255, 255, 0.08), 0 28px 64px -16px rgba(0, 0, 0, 0.72), 0 8px 22px -6px rgba(0, 0, 0, 0.46)`): Standard optical depth for `.liquid-glass` slabs and showcases in Dark mode.
-- **Monumental Hero Slab Depth** (`inset 0 1.5px 0 0 rgba(255, 255, 255, 0.62), inset 0 -1.5px 0 0 rgba(255, 255, 255, 0.22), 0 36px 80px -18px rgba(0, 0, 0, 0.78)`): High-refraction centerpiece elevation over the concrete monolith backdrop.
-- **Daylight Pearl Glass Depth** (`inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 0 rgba(15, 20, 35, 0.06), 0 24px 54px -16px rgba(15, 20, 35, 0.14), 0 6px 18px -4px rgba(15, 20, 35, 0.07)`): Clean optical lift over daylight stone-pearl in Light mode.
+- **Daylight Pearl Glass Depth** (`inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 0 rgba(15, 20, 35, 0.06), 0 24px 54px -16px rgba(15, 20, 35, 0.14), 0 6px 18px -4px rgba(15, 20, 35, 0.07)`): Default Light-mode optical lift over `daylight-pearl`.
+- **Monumental Hero Slab Depth** (`inset 0 1.5px 0 0 rgba(255, 255, 255, 0.62), inset 0 -1.5px 0 0 rgba(255, 255, 255, 0.22), 0 36px 80px -18px rgba(0, 0, 0, 0.78)`): High-refraction neutral centerpiece depth.
+- **Liquid Glass Rim & Elevation (Dark)** (`inset 0 1px 0 0 rgba(255, 255, 255, 0.44), inset 1px 0 0 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(255, 255, 255, 0.08), 0 28px 64px -16px rgba(0, 0, 0, 0.72), 0 8px 22px -6px rgba(0, 0, 0, 0.46)`): Smoked glass depth in Dark mode.
 
 ### Named Rules
-**The Neutral Shadow & Refractive Ground Rule.** `box-shadow` declarations use pure neutral black/slate alpha for physical depth and white alpha for inset specular rims — never colored neon `box-shadow` glows — and every glass section sits over an angled tonal plane so `backdrop-filter` refracts visible structure.
+**The Neutral Shadow & GPU Motion Rule.** `box-shadow` uses only neutral slate/black and white specular alpha, and all continuous/scroll animations touch exclusively `transform` and `opacity` (never `transition: all`).
 
 ## Shapes
 
-Form language contrasts crisp architectural concrete diagonals in the ground against smooth, tactile optical curvature in the foreground: `999px` full-pill capsules for all navigation bars, buttons, and filter chips; `32px` (`slab`) corners on primary showcases and ribbons; `26px` (`panel`) corners on bento lenses; and `18px` (`soft`) corners on embedded screenshot frames. Decorative glass spheres use `1.5px` gradient-masked crescent rims (`mask-composite: exclude`) that fade to `0%` opacity on their shadow side, while internal subdivisions inside glass slabs use `1px` translucent hairlines instead of nested bordered cards.
+`999px` full-pill capsules for navigation, buttons, stack tags, and `"También desarrollo"` items; `32px` (`slab`) corners on the hero emblem slab, `Gananova OS` flagship showcase, workflow ribbon, and closing sheets; `24px`–`26px` (`panel`) corners on industry and live-site cards; and `16px`–`18px` (`soft`) corners on uncropped screenshot frames.
 
 ## Components
 
 ### Buttons
-Tactile optical pill capsules with a minimum `48px` height (`≥44px` across all utility and compact actions) and directional `↗` or WhatsApp vector icons that shift `translate(2px, -2px)` on hover.
-- **Shape:** Full capsule (`999px` radius), `12px 24px` padding, `12px` icon gap.
-- **Primary (`btn-glass--ruby`):** Diagonal crimson-ruby gradient (`rgba(225, 29, 72, 0.92)` to `rgba(159, 18, 57, 0.90)`), `1px` rose-pearl rim (`rgba(255, 180, 195, 0.48)`), crisp `#FFFFFF` label, and top inset highlight.
-- **Secondary (`btn-glass`):** Smoked glass pill (`glass-pill-dark`) with `blur(20px) saturate(160%)`, `1px` translucent border, lifting `translateY(-2px)` on hover.
-- **Focus:** `2px solid` `ruby-core` outline at `3px` offset.
+- **Primary (`btn-glass--ruby`):** `48px` min-height (`999px` pill), crimson-ruby gradient, crisp `#FFFFFF` label, directional icon nudge (`translate(2px, -2px)` on hover).
+- **Secondary (`btn-glass`):** Frosted pearl (Light) or smoked obsidian (Dark) pill with `blur(20px) saturate(160%)` and `translateY(-2px)` hover lift.
 
-### Chips
-Interactive pill selectors (`44px` minimum height) used for project switching, benefit comparison tabs, and inquiry topic selection.
-- **Style:** `999px` radius, `10px 18px` (`11px 18px` on contact tags) padding, `Onest` `600` weight.
-- **State:** Unselected chips rest on subtle translucent fills (`rgba(255, 255, 255, 0.05)`) with `ink-secondary` text; active/selected chips illuminate with crimson-ruby gradient or `ruby-tint` fill and `ruby-border` stroke.
+### Chips & Stack Tags
+- **Tech Stack & Capability Pills (`tech-tag-pill`, `also-pill`):** Non-interactive optical pills displaying concrete stack (`Next.js`, `TypeScript`, `PostgreSQL`, `Prisma`, `Docker`) and deliverables (`Landing pages`, `Sitios corporativos`, `Portales de clientes`, `Sistemas internos`, `Integraciones`).
+- **Selector Chips (`tag-option`, `benefit-tab`):** `≥44px` interactive pills with explicit `transform`, `background`, `color`, and `border-color` transitions.
 
 ### Cards / Containers
-Refractive `.liquid-glass` lenses that organize content through internal `1px` hairline splits rather than nested sub-cards.
-- **Corner Style:** `32px` (`slab`) for full-width showcases, ribbons, and sheets; `26px` (`panel`) for multi-lens bento items.
-- **Background:** 135deg translucent white-to-ruby gradient (`rgba(255, 255, 255, 0.11)` to `rgba(225, 29, 72, 0.06)`) over `blur(28px) saturate(168%)`.
-- **Border & Padding:** `1px solid` specular border (`rgba(255, 255, 255, 0.19)` in Dark, `rgba(15, 18, 28, 0.13)` in Light) with `28px`–`44px` internal padding.
+- **Flagship Case Study (`flagship-case`):** `1.38fr / 0.82fr` `.liquid-glass` slab pairing the sanitized `gananova-dashboard.svg` browser frame with first-person narrative and stack pills — strictly free of pricing or demo buttons.
+- **Industry & Live-Site Lenses (`industry-card`, `sec-featured-web`, `site-mini-card`):** Sibling `.liquid-glass` containers with tactile `translateY(-4px)` hover lift and uncropped real screenshots.
 
 ### Navigation
-Floating dual-capsule top bar pairing the custom geometric `CHV SYSTEMS` wordmark pill on the left with a smoked Liquid Glass navigation capsule on the right (`44px` touch targets for links, `ES/EN` toggle, `Dark/Light` toggle, and `Hablemos ↗` action orb), collapsing below `880px` into a `44px`-target mobile pill bar and frosted glass dropdown sheet. A fixed WhatsApp trigger (`54x54px`) remains hidden in the first viewport and reveals smoothly once the user scrolls past the hero stage.
+Floating top header where `.brand-link` (`CHV SYSTEMS`) is hidden (`opacity: 0; visibility: hidden; transform: translateY(-10px) scale(0.95)`) while in `#inicio` and smoothly reveals when `.site-header.past-hero` activates past `#heroGlassSlab`.
 
-### Signature Component: Monumental Frosted CHV Slab & Crescent Orbs
-The first-viewport centerpiece (`hero-glass-slab`) suspends the custom notched geometric `CHV` metallic vector logotype and wide-tracked `S Y S T E M S` wordmark inside a thick frosted glass slab (`blur(26px) saturate(165%)`) accented by a four-point optical star glint in the upper-right corner and a pointer-responsive diagonal caustic sheen (`--caustic-shift`), flanked by top-left and bottom-right crescent-rimmed glass spheres.
+### Signature Component: Neutral Frosted CHV Slab & Crescent Orbs
+The hero centerpiece (`hero-glass-slab`) suspends the geometric `CHV` emblem inside a pure neutral frosted crystal slab with an autonomous pure-white diagonal specular sweep (`slabSpecularSweep`), a softly twinkling neutral 4-point star (`starOpticalTwinkle`), and slow-floating crescent-rimmed glass spheres (`orbFloatTL`, `orbFloatBR`).
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** place Liquid Glass surfaces over visible architectural stone bevels, photography, or subtle ruby light seams so `backdrop-filter` visibly refracts tonal edges.
-- **Do** keep all user-facing Spanish and English copy in warm, everyday business language, and explicitly label any illustrative software sample numbers (`Ejemplo ilustrativo · Datos de muestra`).
-- **Do** render full-width real client screenshots (`gananova-preview.jpg`, `adefip-preview.jpg`, `puravida-preview.png`) uncropped inside matched dark frames (`height: auto`) so navigation menus and margins stay intact.
-- **Do** enforce `≥44x44px` touch targets on every button, tab, language/theme switch, and copy pill across both desktop and `390px` mobile viewports.
+- **Do** boot into Light mode (`data-theme="light"`) by default while maintaining full visual parity in Dark mode.
+- **Do** keep the hero `CHV SYSTEMS` glass slab 100% neutral crystal (zero red sheen) and keep `.brand-link` hidden until scrolling past the hero logo.
+- **Do** sanitize all private system screenshots (`gananova-dashboard.svg`) with fictitious sample data (`Almacén Monte Verde · Datos ficticios de muestra`) and non-client branding colors (deep slate-navy `#162338` sidebar).
+- **Do** present Gananova OS strictly as an engineering case study without prices, plans, `"comprar"`, or `"probar demo"` buttons.
 
 ### Don't:
-- **Don't** put `#E11D48` or colored neon tints into `box-shadow` declarations; express crimson-ruby strictly through surface gradients, borders, and recessed ambient backdrops.
-- **Don't** nest bordered cards inside `.liquid-glass` containers; subdivide interior layouts with `1px` translucent hairline rules (`--glass-divider`).
-- **Don't** reintroduce technical telemetry (`0.4s`, `LOAD`, `100%`, `CORE`, `60Hz`), unexplained acronyms (`CRM`, `ERP`, `OKR`), uppercase eyebrow kickers, 3D rotating cubes, typewriter cursors, or 3D card-tilt effects.
-- **Don't** clip multi-tab switchers behind hidden horizontal scrollbars on mobile; reflow pill tabs into a visible 2x2 grid on narrow viewports.
+- **Don't** add red/pink gradients, borders, or star tints to `.hero-glass-slab` or `#chv-loader`.
+- **Don't** use hollow buzzwords (`innovador`, `revolucionario`, `soluciones integrales`), cryptic telemetry (`0.4s`, `LOAD`, `60Hz`), or invented client figures/testimonials.
+- **Don't** nest `.liquid-glass` cards inside other `.liquid-glass` cards or use `transition: all`.
+- **Don't** add 3D rotating wireframe cubes, typewriter cursors, 3D card-tilt wobble, or slow loaders.
