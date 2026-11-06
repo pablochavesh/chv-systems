@@ -726,11 +726,16 @@
       position: relative;
       z-index: 2;
       flex: 1;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 16px;
-      padding-block: 8px;
+      justify-content: center;
+      text-align: center;
+      gap: clamp(16px, 2.6vh, 26px);
+      padding-block: clamp(14px, 2.8vh, 32px);
+      max-width: 980px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     /* Staged Hero Entrance Choreography */
@@ -739,21 +744,29 @@
       to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
     }
 
-    /* Above-Slab Tagline Row */
-    .hero-center-wrap {
-      grid-column: 3 / 11;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transform: translate3d(0, var(--parallax-slab, 0px), 0);
-    }
-
-    .hero-motto-row {
+    /* Centered Motto Pill */
+    .hero-motto-pill {
       display: inline-flex;
       align-items: center;
-      gap: 16px;
-      padding-left: 6px;
+      gap: 10px;
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border-soft);
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 1.1vw, 0.94rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ink-secondary);
       animation: heroGlideUp 0.72s var(--ease-fluid) both;
+    }
+    [data-theme="light"] .hero-motto-pill {
+      background: rgba(255, 255, 255, 0.76);
+      border-color: rgba(15, 18, 28, 0.10);
+      color: #2D3444;
+      box-shadow: 0 4px 14px -4px rgba(15, 20, 35, 0.06);
     }
 
     .hero-motto-dot {
@@ -766,26 +779,28 @@
 
     .hero-motto-text {
       font-family: var(--font-display);
-      font-size: clamp(1rem, 1.35vw, 1.22rem);
-      font-weight: 500;
+      font-size: inherit;
+      font-weight: 600;
       letter-spacing: -0.01em;
-      color: var(--ink-primary);
+      color: inherit;
     }
 
-    .hero-motto-line {
-      width: clamp(44px, 7vw, 96px);
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.14), transparent);
-    }
-    [data-theme="light"] .hero-motto-line {
-      background: linear-gradient(90deg, rgba(15, 18, 28, 0.35), rgba(15, 18, 28, 0.10), transparent);
+    /* Slab Perspective Wrapper for GSAP 3D Optical Tilt */
+    .hero-slab-wrapper {
+      position: relative;
+      perspective: 1100px;
+      transform-style: preserve-3d;
+      will-change: transform;
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
 
     /* Monumental Reference Frosted Liquid Glass Slab — Pure Neutral Crystal (Zero Red Sheen) */
     .hero-glass-slab {
       position: relative;
-      border-radius: clamp(24px, 3vw, 38px);
-      padding: clamp(30px, 4vw, 50px) clamp(26px, 4.8vw, 62px);
+      border-radius: clamp(24px, 3.2vw, 38px);
+      padding: clamp(28px, 3.6vw, 46px) clamp(30px, 4.8vw, 68px);
       background:
         linear-gradient(125deg,
           rgba(255, 255, 255, 0.17) 0%,
@@ -806,6 +821,9 @@
       justify-content: center;
       gap: clamp(14px, 2vw, 22px);
       overflow: hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
+      cursor: default;
       animation: heroGlideUp 0.82s 0.08s var(--ease-fluid) both;
     }
 
@@ -937,45 +955,40 @@
       text-transform: uppercase;
     }
 
-    /* Asymmetric Lower-Left Pitch & Mid-Right Capabilities Row */
-    .hero-lower-grid {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
-      align-items: end;
-      gap: clamp(24px, 4vw, 56px);
-      margin-top: clamp(6px, 1.5vh, 18px);
-    }
-
-    .hero-pitch-block {
-      max-width: 590px;
+    /* Centered Pitch & Conversion Block */
+    .hero-center-pitch {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      align-items: center;
+      text-align: center;
+      gap: clamp(14px, 2vh, 20px);
+      max-width: 840px;
+      margin: 0 auto;
       padding: 28px;
-      border-radius: 24px;
-      background: rgba(8, 9, 14, 0.76);
-      backdrop-filter: blur(22px) saturate(160%);
-      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      border-radius: var(--radius-panel);
+      background: rgba(8, 9, 14, 0.72);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
       border: 1px solid var(--glass-border-soft);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 22px 48px -16px rgba(0, 0, 0, 0.62);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 24px 52px -16px rgba(0, 0, 0, 0.65);
       animation: heroGlideUp 0.84s 0.16s var(--ease-fluid) both;
     }
-    [data-theme="light"] .hero-pitch-block {
-      background: rgba(255, 255, 255, 0.84);
+    [data-theme="light"] .hero-center-pitch {
+      background: rgba(255, 255, 255, 0.86);
       border-color: rgba(15, 18, 28, 0.11);
-      box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.96), 0 18px 40px -14px rgba(15, 20, 35, 0.10);
+      box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.96), 0 20px 44px -14px rgba(15, 20, 35, 0.10);
     }
 
     .hero-h1 {
       margin: 0;
       font-family: var(--font-display);
-      font-size: clamp(1.55rem, 2.65vw, 2.35rem);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.028em;
+      font-size: clamp(1.75rem, 3.2vw, 2.65rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
       color: var(--ink-primary);
       text-wrap: balance;
+      max-width: 24ch;
     }
 
     .hero-h1 span {
@@ -987,57 +1000,63 @@
 
     .hero-subcopy {
       margin: 0;
-      font-size: clamp(0.98rem, 1.12vw, 1.06rem);
+      font-size: clamp(0.98rem, 1.15vw, 1.08rem);
       color: #D7DCE8;
-      max-width: 54ch;
-      line-height: 1.58;
+      max-width: 60ch;
+      line-height: 1.62;
+      text-wrap: balance;
     }
     [data-theme="light"] .hero-subcopy {
-      color: var(--ink-secondary);
+      color: #4A5266;
     }
 
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 2px;
     }
 
-    .hero-services-aside {
-      justify-self: end;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      padding: 18px 22px;
-      border-radius: 20px;
-      background: rgba(12, 13, 18, 0.44);
-      backdrop-filter: blur(18px) saturate(150%);
-      -webkit-backdrop-filter: blur(18px) saturate(150%);
-      border: 1px solid var(--glass-border-soft);
-      animation: heroGlideUp 0.84s 0.24s var(--ease-fluid) both;
-    }
-    [data-theme="light"] .hero-services-aside {
-      background: rgba(255, 255, 255, 0.68);
-    }
-
-    .aside-dash {
-      width: 28px;
-      height: 2px;
-      background: var(--ruby-core);
-      border-radius: 999px;
-    }
-
-    .aside-list {
+    /* Centered Capabilities Pill Bar */
+    .hero-capabilities-bar {
       list-style: none;
       display: flex;
-      flex-direction: column;
-      gap: 5px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0;
+      margin: 8px 0 0;
+    }
+
+    .hero-cap-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border-soft);
       font-family: var(--font-display);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.14em;
       color: var(--ink-secondary);
-      text-transform: uppercase;
+      transition: transform 0.28s var(--ease-fluid), border-color 0.28s var(--ease-fluid), color 0.28s;
+    }
+    [data-theme="light"] .hero-cap-pill {
+      background: rgba(15, 20, 35, 0.045);
+      border-color: rgba(15, 18, 28, 0.09);
+      color: #384152;
+    }
+    .hero-cap-pill:hover {
+      transform: translateY(-2px);
+      border-color: var(--ruby-border);
+      color: var(--ink-primary);
+    }
+    [data-theme="light"] .hero-cap-pill:hover {
+      color: var(--ruby-core);
     }
 
     /* Hero Bottom Corner Strip (EST. / Costa Rica) */
@@ -2289,9 +2308,6 @@
        15. MOBILE & TABLET ADAPTATION ("BIEN ADAPTADO A MOBILE")
        ========================================================================== */
     @media (max-width: 1040px) {
-      .hero-center-wrap {
-        grid-column: 2 / 12;
-      }
       .flagship-case,
       .sec-featured-web {
         grid-template-columns: 1fr;
@@ -2339,16 +2355,6 @@
         grid-template-columns: 1fr;
         gap: 12px;
       }
-      .hero-center-wrap {
-        grid-column: 1 / -1;
-      }
-      .hero-lower-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-      .hero-services-aside {
-        justify-self: stretch;
-      }
       .industry-grid,
       .other-sites-grid {
         grid-template-columns: 1fr;
@@ -2381,11 +2387,12 @@
         font-size: 0.72rem;
         letter-spacing: 0.16em;
       }
-      .hero-motto-row {
-        gap: 10px;
+      .hero-motto-pill {
+        padding: 6px 14px;
+        font-size: 0.82rem;
       }
-      .hero-motto-text {
-        font-size: 0.92rem;
+      .hero-center-pitch {
+        padding: 22px 16px;
       }
       .hero-stage {
         min-height: auto;
@@ -2580,14 +2587,14 @@
         <div class="glass-orb glass-orb--br" aria-hidden="true"></div>
 
         <div class="container hero-content">
-          <!-- Centerpiece Stage (Pure Frosted Crystal — Zero Red Sheen) -->
-          <div class="hero-center-wrap">
-            <div class="hero-motto-row">
-              <span class="hero-motto-dot" aria-hidden="true"></span>
-              <span class="hero-motto-text" data-i18n="hero.motto">Diseño. Desarrollo. Orden.</span>
-              <span class="hero-motto-line" aria-hidden="true"></span>
-            </div>
+          <!-- Centered Motto Pill -->
+          <div class="hero-motto-pill">
+            <span class="hero-motto-dot" aria-hidden="true"></span>
+            <span class="hero-motto-text" data-i18n="hero.motto">Diseño. Desarrollo. Orden.</span>
+          </div>
 
+          <!-- Centered Monumental Liquid Glass Slab (Pure Frosted Crystal — Zero Red Sheen) -->
+          <div class="hero-slab-wrapper" id="heroSlabWrapper">
             <div class="hero-glass-slab" id="heroGlassSlab">
               <svg class="slab-star-glint" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                 <path d="M16 1L18.2 13.8L31 16L18.2 18.2L16 31L13.8 18.2L1 16L13.8 13.8L16 1Z" fill="currentColor"/>
@@ -2615,36 +2622,32 @@
             </div>
           </div>
 
-          <!-- Lower Framing: Direct First-Person Pitch Left + Capabilities List Right -->
-          <div class="hero-lower-grid">
-            <div class="hero-pitch-block">
-              <h1 class="hero-h1" data-i18n="hero.h1">
-                Desarrollo <span>software a la medida y sitios web</span> pensados para cómo trabaja tu negocio.
-              </h1>
-              <p class="hero-subcopy" data-i18n="hero.desc">
-                Soy desarrollador de software en Costa Rica. Construyo sistemas internos, portales por rol y sitios web claros para empresas que quieren ordenar su operación diaria y atender mejor a sus clientes.
-              </p>
-              <div class="hero-cta-row">
-                <a href="#proyectos" class="btn-glass">
-                  <span data-i18n="hero.ctaWork">Ver proyectos</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-                </a>
-                <a href="#contacto" class="btn-glass btn-glass--ruby">
-                  <span data-i18n="hero.ctaWa">Conversemos</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                </a>
-              </div>
+          <!-- Centered Pitch & Conversion Block -->
+          <div class="hero-center-pitch">
+            <h1 class="hero-h1" data-i18n="hero.h1">
+              Desarrollo <span>software a la medida y sitios web</span> pensados para cómo trabaja tu negocio.
+            </h1>
+            <p class="hero-subcopy" data-i18n="hero.desc">
+              Soy desarrollador de software en Costa Rica. Construyo sistemas internos, portales por rol y sitios web claros para empresas que quieren ordenar su operación diaria y atender mejor a sus clientes.
+            </p>
+            <div class="hero-cta-row">
+              <a href="#proyectos" class="btn-glass hero-cta-btn">
+                <span data-i18n="hero.ctaWork">Ver proyectos</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+              <a href="#contacto" class="btn-glass btn-glass--ruby hero-cta-btn">
+                <span data-i18n="hero.ctaWa">Conversemos</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </a>
             </div>
 
-            <aside class="hero-services-aside" aria-label="Qué desarrollo">
-              <span class="aside-dash" aria-hidden="true"></span>
-              <ul class="aside-list">
-                <li data-i18n="hero.s1">Sistemas a la medida</li>
-                <li data-i18n="hero.s2">Portales con roles</li>
-                <li data-i18n="hero.s3">Sitios corporativos</li>
-                <li data-i18n="hero.s4">Trato directo 1 a 1</li>
-              </ul>
-            </aside>
+            <!-- Sleek Horizontal Centered Capabilities Bar -->
+            <ul class="hero-capabilities-bar" aria-label="Capacidades">
+              <li class="hero-cap-pill" data-i18n="hero.s1">Sistemas a la medida</li>
+              <li class="hero-cap-pill" data-i18n="hero.s2">Portales con roles</li>
+              <li class="hero-cap-pill" data-i18n="hero.s3">Sitios corporativos</li>
+              <li class="hero-cap-pill" data-i18n="hero.s4">Trato directo 1 a 1</li>
+            </ul>
           </div>
         </div>
 
@@ -3255,6 +3258,10 @@
     </svg>
   </a>
 
+  <!-- GSAP & ScrollTrigger Animation Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <script>
     (function () {
       'use strict';
@@ -3791,7 +3798,7 @@
       wireCopy('copyEmailBtn', 'emailVal');
 
       // ======================================================================
-      // 7. STAGGERED LIQUID GLASS SCROLL REVEAL (SKIPPED IF REDUCED MOTION)
+      // 7. STAGGERED LIQUID GLASS SCROLL REVEAL (FALLBACK OBSERVER)
       // ======================================================================
       if (!reducedMotion && 'IntersectionObserver' in window) {
         root.classList.add('js-motion');
@@ -3811,6 +3818,264 @@
             io.observe(el);
           }
         });
+      }
+
+      // ======================================================================
+      // 8. GSAP & SCROLLTRIGGER CREATIVE ANIMATION SUITE
+      // ======================================================================
+      if (!reducedMotion && typeof window.gsap !== 'undefined') {
+        var gsap = window.gsap;
+        if (typeof window.ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(window.ScrollTrigger);
+        }
+
+        // A. Continuous Organic Liquid Glass Floating Orbs
+        gsap.to('.glass-orb--tl', {
+          y: 28,
+          x: -16,
+          rotation: 5,
+          duration: 7,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+        gsap.to('.glass-orb--br', {
+          y: -30,
+          x: 20,
+          rotation: -6,
+          duration: 8.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+
+        // B. Hero Staged Cinematic Entry Timeline
+        var heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        heroTl
+          .from('.hero-motto-pill', { opacity: 0, y: -16, duration: 0.65 }, 0.05)
+          .from('#heroGlassSlab', {
+            opacity: 0,
+            scale: 0.9,
+            y: 35,
+            rotationX: 10,
+            duration: 1.0,
+            ease: 'power3.out'
+          }, 0.15)
+          .from('.hero-h1', { opacity: 0, y: 25, duration: 0.75 }, 0.4)
+          .from('.hero-subcopy', { opacity: 0, y: 20, duration: 0.7 }, 0.55)
+          .from('.hero-cta-btn', { opacity: 0, y: 18, scale: 0.95, stagger: 0.1, duration: 0.65 }, 0.7)
+          .from('.hero-cap-pill', { opacity: 0, scale: 0.85, stagger: 0.06, duration: 0.55, ease: 'back.out(1.8)' }, 0.82)
+          .from('.hero-foot-strip', { opacity: 0, y: 14, duration: 0.7 }, 0.95);
+
+        // C. Interactive 3D Optical Tilt & Specular Tracking on Hero Slab (Desktop)
+        var slab = document.getElementById('heroGlassSlab');
+        var stage = document.getElementById('inicio');
+        if (slab && stage && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          var rotYTo = gsap.quickTo(slab, 'rotationY', { duration: 0.45, ease: 'power2.out' });
+          var rotXTo = gsap.quickTo(slab, 'rotationX', { duration: 0.45, ease: 'power2.out' });
+          var zTo = gsap.quickTo(slab, 'z', { duration: 0.45, ease: 'power2.out' });
+
+          stage.addEventListener('mousemove', function (e) {
+            var r = stage.getBoundingClientRect();
+            var xNorm = (e.clientX - r.left) / r.width - 0.5;
+            var yNorm = (e.clientY - r.top) / r.height - 0.5;
+
+            rotYTo(xNorm * 18);
+            rotXTo(-yNorm * 18);
+            zTo(22);
+
+            slab.style.setProperty('--caustic-shift', (xNorm * 80).toFixed(1) + 'px');
+            slab.style.setProperty('--glint-x', ((xNorm + 0.5) * 100).toFixed(1) + '%');
+            slab.style.setProperty('--glint-y', ((yNorm + 0.5) * 100).toFixed(1) + '%');
+          });
+
+          stage.addEventListener('mouseleave', function () {
+            rotYTo(0);
+            rotXTo(0);
+            zTo(0);
+            slab.style.setProperty('--caustic-shift', '0px');
+          });
+        }
+
+        // D. Interactive Magnetic Pull on Interactive Buttons (Desktop)
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          var magnetics = document.querySelectorAll('.btn-glass, .btn-glass--ruby, .brand-link, .fab-whatsapp, .hero-cap-pill');
+          magnetics.forEach(function (btn) {
+            var mX = gsap.quickTo(btn, 'x', { duration: 0.32, ease: 'power2.out' });
+            var mY = gsap.quickTo(btn, 'y', { duration: 0.32, ease: 'power2.out' });
+
+            btn.addEventListener('mousemove', function (e) {
+              var r = btn.getBoundingClientRect();
+              var dx = (e.clientX - (r.left + r.width / 2)) * 0.28;
+              var dy = (e.clientY - (r.top + r.height / 2)) * 0.28;
+              mX(dx);
+              mY(dy);
+            });
+            btn.addEventListener('mouseleave', function () {
+              gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1.2, 0.4)' });
+            });
+          });
+        }
+
+        // E. ScrollTrigger Scroll Animations
+        if (typeof window.ScrollTrigger !== 'undefined') {
+          // Parallax Exit on Hero Scroll
+          gsap.to('#heroGlassSlab', {
+            scrollTrigger: {
+              trigger: '#inicio',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 0.5
+            },
+            y: -75,
+            scale: 1.05,
+            opacity: 0.32
+          });
+
+          gsap.to('.hero-center-pitch', {
+            scrollTrigger: {
+              trigger: '#inicio',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 0.5
+            },
+            y: 45,
+            opacity: 0.65
+          });
+
+          // Section Titles & Subtitles Scroll Reveal
+          gsap.utils.toArray('.sec-head, .subblock-head').forEach(function (head) {
+            gsap.from(head, {
+              scrollTrigger: {
+                trigger: head,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              y: 35,
+              duration: 0.85,
+              ease: 'power3.out'
+            });
+          });
+
+          // Gananova OS Flagship Case Study
+          var flagship = document.querySelector('.flagship-case');
+          if (flagship) {
+            gsap.from(flagship, {
+              scrollTrigger: {
+                trigger: flagship,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              y: 55,
+              rotationX: 6,
+              transformPerspective: 1000,
+              duration: 1.0,
+              ease: 'power3.out'
+            });
+
+            gsap.from('.tech-tag', {
+              scrollTrigger: {
+                trigger: '.tech-tags',
+                start: 'top 92%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              scale: 0.5,
+              stagger: 0.08,
+              duration: 0.6,
+              ease: 'back.out(2.2)'
+            });
+          }
+
+          // 3 Industry Cards Stagger
+          var indGrid = document.querySelector('.industry-grid');
+          if (indGrid) {
+            gsap.from('.industry-card', {
+              scrollTrigger: {
+                trigger: indGrid,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              y: 45,
+              stagger: 0.14,
+              duration: 0.85,
+              ease: 'power2.out'
+            });
+          }
+
+          // Live Websites Cards
+          var otherSites = document.querySelector('.other-sites-grid');
+          if (otherSites) {
+            gsap.from('.site-mini-card', {
+              scrollTrigger: {
+                trigger: otherSites,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              y: 40,
+              scale: 0.96,
+              stagger: 0.16,
+              duration: 0.85,
+              ease: 'power3.out'
+            });
+          }
+
+          // Also Build Pills
+          var alsoPills = document.querySelector('.also-pills-list');
+          if (alsoPills) {
+            gsap.from('.also-pill', {
+              scrollTrigger: {
+                trigger: alsoPills,
+                start: 'top 92%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              scale: 0.8,
+              y: 15,
+              stagger: 0.07,
+              duration: 0.55,
+              ease: 'back.out(2)'
+            });
+          }
+
+          // Service Bento Cards
+          var sCards = document.querySelectorAll('.service-lens');
+          if (sCards.length) {
+            gsap.from(sCards, {
+              scrollTrigger: {
+                trigger: '#servicios',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              y: 40,
+              stagger: 0.12,
+              duration: 0.8,
+              ease: 'power2.out'
+            });
+          }
+
+          // Process Step Sequential Highlights
+          var procCols = document.querySelectorAll('.proc-col');
+          if (procCols.length) {
+            gsap.from(procCols, {
+              scrollTrigger: {
+                trigger: '.process-ribbon',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              },
+              opacity: 0,
+              y: 40,
+              stagger: 0.12,
+              duration: 0.75,
+              ease: 'power2.out'
+            });
+          }
+        }
       }
     })();
   </script>
