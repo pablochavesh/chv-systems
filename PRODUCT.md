@@ -25,10 +25,10 @@ Custom software developer in Costa Rica (`"Software hecho a la medida de cada op
 ## Operating Context
 
 Real evidence available:
-- **Gananova OS** (primary case study, custom enterprise management platform designed and built by Jose Pablo): over a shared core run portals adapted to each business type, with modules for invoicing (`facturación`), inventory (`inventario`), finance (`finances`), accounting (`contabilidad`), and staff (`personal`), plus role-based user permissions (`usuarios con permisos por rol`). Stack: `Next.js`, `TypeScript`, `PostgreSQL`, `Prisma`, `Docker`. Real sector experience:
-  1. **Maquinaria pesada**: operators log hours, trips, and photos from their phones; the office reviews, bills, and controls fleet, maintenance, and payroll.
-  2. **Escuelas deportivas**: monthly tuition and payment receipts, a family portal, attendance and collections for coaches, and delinquency tracking.
-  3. **Comercio y outlets**: invoicing, inventory, credit and layaways (`apartados`), returns, and daily cash-register closing.
+- **Gananova OS** (private case study, custom enterprise management platform designed and built by Jose Pablo): multi-tenant architecture with role-based secure access and custom workflows, presented executively to protect proprietary system blueprints and workflows. Stack: `Next.js`, `TypeScript`, `PostgreSQL`, `Prisma`, `Docker`. Real sector experience:
+  1. **Maquinaria pesada**: field and office operational control (daily work reporting, asset tracking, centralized administrative oversight).
+  2. **Escuelas deportivas**: community and billing management (enrollment tracking, financial oversight, direct coordination).
+  3. **Comercio y outlets**: point of sale and retail operations (multi-location inventory control, cash flow monitoring, sales tracking).
 - **Sitio web de Gananova** (`www.gananova.com`, live) — corporate website designed and built for Gananova (`Dirección y Estrategia`) in San Isidro del General, Pérez Zeledón.
 - **ADEFIP** (`www.adefip.com`, live) — website and sports portal built for the youth football school in Pedregoso (`desde 1994`) in collaboration with Gananova.
 - **Pura Vida Painting LLC** (`www.puravidapaintingllc.com`, live) — residential & commercial painting website built for a client in North Carolina, United States.
