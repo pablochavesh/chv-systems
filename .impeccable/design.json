@@ -1,344 +1,360 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-05T22:15:00Z",
+  "generatedAt": "2026-11-06T00:29:00Z",
   "title": "Design System: CHV Systems",
   "extensions": {
     "colorMeta": {
-      "acid-volt": {
+      "ruby-core": {
         "role": "primary",
-        "displayName": "Acid Volt",
-        "canonical": "oklch(93% 0.24 123)",
+        "displayName": "Ruby Core",
+        "canonical": "oklch(58.6% 0.228 16.5)",
         "tonalRamp": [
-          "oklch(20% 0.08 123)",
-          "oklch(32% 0.12 123)",
-          "oklch(45% 0.16 123)",
-          "oklch(58% 0.20 123)",
-          "oklch(72% 0.22 123)",
-          "oklch(84% 0.24 123)",
-          "oklch(93% 0.24 123)",
-          "oklch(97% 0.10 123)"
+          "oklch(22% 0.09 16.5)",
+          "oklch(32% 0.14 16.5)",
+          "oklch(44% 0.19 16.5)",
+          "oklch(58.6% 0.228 16.5)",
+          "oklch(68% 0.19 16.5)",
+          "oklch(78% 0.13 16.5)",
+          "oklch(88% 0.07 16.5)",
+          "oklch(95% 0.03 16.5)"
         ]
       },
-      "hyper-vermilion": {
+      "ruby-deep": {
         "role": "primary",
-        "displayName": "Hyper Vermilion",
-        "canonical": "oklch(65% 0.24 33)",
+        "displayName": "Ruby Deep",
+        "canonical": "oklch(51.4% 0.205 16.9)",
         "tonalRamp": [
-          "oklch(20% 0.09 33)",
-          "oklch(32% 0.14 33)",
-          "oklch(44% 0.19 33)",
-          "oklch(55% 0.22 33)",
-          "oklch(65% 0.24 33)",
-          "oklch(76% 0.18 33)",
-          "oklch(87% 0.11 33)",
-          "oklch(95% 0.05 33)"
+          "oklch(19% 0.08 16.9)",
+          "oklch(29% 0.13 16.9)",
+          "oklch(40% 0.17 16.9)",
+          "oklch(51.4% 0.205 16.9)",
+          "oklch(63% 0.17 16.9)",
+          "oklch(75% 0.12 16.9)",
+          "oklch(86% 0.06 16.9)",
+          "oklch(94% 0.025 16.9)"
         ]
       },
-      "cyber-lavender": {
-        "role": "secondary",
-        "displayName": "Cyber Lavender",
-        "canonical": "oklch(74% 0.17 302)",
+      "ruby-soft": {
+        "role": "primary",
+        "displayName": "Ruby Soft",
+        "canonical": "oklch(81.2% 0.108 15.2)",
         "tonalRamp": [
-          "oklch(20% 0.08 302)",
-          "oklch(32% 0.11 302)",
-          "oklch(45% 0.14 302)",
-          "oklch(58% 0.16 302)",
-          "oklch(74% 0.17 302)",
-          "oklch(83% 0.12 302)",
-          "oklch(90% 0.07 302)",
-          "oklch(96% 0.03 302)"
+          "oklch(24% 0.08 15.2)",
+          "oklch(36% 0.11 15.2)",
+          "oklch(49% 0.13 15.2)",
+          "oklch(62% 0.13 15.2)",
+          "oklch(72% 0.12 15.2)",
+          "oklch(81.2% 0.108 15.2)",
+          "oklch(90% 0.06 15.2)",
+          "oklch(96% 0.025 15.2)"
         ]
       },
-      "signal-sky": {
-        "role": "secondary",
-        "displayName": "Signal Sky",
-        "canonical": "oklch(82% 0.13 232)",
-        "tonalRamp": [
-          "oklch(20% 0.06 232)",
-          "oklch(32% 0.09 232)",
-          "oklch(45% 0.11 232)",
-          "oklch(60% 0.12 232)",
-          "oklch(72% 0.13 232)",
-          "oklch(82% 0.13 232)",
-          "oklch(90% 0.08 232)",
-          "oklch(96% 0.04 232)"
-        ]
-      },
-      "light-sky-frame": {
-        "role": "tertiary",
-        "displayName": "Daylight Sky Frame",
-        "canonical": "oklch(83% 0.11 228)",
-        "tonalRamp": [
-          "oklch(20% 0.05 228)",
-          "oklch(34% 0.08 228)",
-          "oklch(48% 0.10 228)",
-          "oklch(62% 0.11 228)",
-          "oklch(74% 0.11 228)",
-          "oklch(83% 0.11 228)",
-          "oklch(91% 0.07 228)",
-          "oklch(96% 0.03 228)"
-        ]
-      },
-      "chassis-obsidian": {
+      "obsidian-void": {
         "role": "neutral",
-        "displayName": "Chassis Obsidian",
-        "canonical": "oklch(14% 0.015 268)",
+        "displayName": "Obsidian Void",
+        "canonical": "oklch(13.2% 0.008 275)",
         "tonalRamp": [
-          "oklch(14% 0.015 268)",
-          "oklch(22% 0.018 268)",
-          "oklch(32% 0.02 268)",
-          "oklch(45% 0.02 268)",
-          "oklch(58% 0.018 268)",
-          "oklch(72% 0.014 268)",
-          "oklch(85% 0.01 268)",
-          "oklch(95% 0.005 268)"
+          "oklch(13.2% 0.008 275)",
+          "oklch(22% 0.01 275)",
+          "oklch(34% 0.012 275)",
+          "oklch(46% 0.012 275)",
+          "oklch(58% 0.012 275)",
+          "oklch(72% 0.01 275)",
+          "oklch(85% 0.008 275)",
+          "oklch(95% 0.005 275)"
         ]
       },
-      "cell-pitch": {
+      "monolith-stone": {
         "role": "neutral",
-        "displayName": "Cell Pitch",
-        "canonical": "oklch(15% 0.016 265)",
+        "displayName": "Monolith Stone",
+        "canonical": "oklch(17.1% 0.011 272)",
         "tonalRamp": [
-          "oklch(15% 0.016 265)",
-          "oklch(24% 0.02 265)",
-          "oklch(35% 0.02 265)",
-          "oklch(48% 0.02 265)",
-          "oklch(62% 0.016 265)",
-          "oklch(75% 0.012 265)",
-          "oklch(86% 0.008 265)",
-          "oklch(95% 0.004 265)"
+          "oklch(17.1% 0.011 272)",
+          "oklch(26% 0.012 272)",
+          "oklch(38% 0.014 272)",
+          "oklch(50% 0.014 272)",
+          "oklch(62% 0.012 272)",
+          "oklch(75% 0.01 272)",
+          "oklch(87% 0.008 272)",
+          "oklch(95% 0.005 272)"
         ]
       },
-      "cell-base": {
+      "obsidian-elevated": {
         "role": "neutral",
-        "displayName": "Cell Base Dark",
-        "canonical": "oklch(18% 0.022 266)",
+        "displayName": "Obsidian Elevated",
+        "canonical": "oklch(20.4% 0.014 270)",
         "tonalRamp": [
-          "oklch(15% 0.018 266)",
-          "oklch(18% 0.022 266)",
-          "oklch(28% 0.024 266)",
-          "oklch(40% 0.022 266)",
-          "oklch(54% 0.018 266)",
-          "oklch(68% 0.014 266)",
-          "oklch(82% 0.01 266)",
-          "oklch(94% 0.005 266)"
+          "oklch(16% 0.012 270)",
+          "oklch(20.4% 0.014 270)",
+          "oklch(33% 0.015 270)",
+          "oklch(46% 0.015 270)",
+          "oklch(59% 0.013 270)",
+          "oklch(73% 0.011 270)",
+          "oklch(86% 0.008 270)",
+          "oklch(95% 0.005 270)"
         ]
       },
-      "cell-alt": {
+      "glass-pill-dark": {
         "role": "neutral",
-        "displayName": "Cell Elevated Dark",
-        "canonical": "oklch(22% 0.028 266)",
+        "displayName": "Glass Pill Dark",
+        "canonical": "oklch(19% 0.013 272 / 0.62)",
         "tonalRamp": [
-          "oklch(16% 0.02 266)",
-          "oklch(22% 0.028 266)",
-          "oklch(32% 0.028 266)",
-          "oklch(44% 0.025 266)",
-          "oklch(58% 0.02 266)",
-          "oklch(72% 0.015 266)",
-          "oklch(84% 0.01 266)",
-          "oklch(95% 0.005 266)"
+          "oklch(16% 0.012 272)",
+          "oklch(24% 0.013 272)",
+          "oklch(36% 0.014 272)",
+          "oklch(48% 0.014 272)",
+          "oklch(60% 0.012 272)",
+          "oklch(74% 0.01 272)",
+          "oklch(86% 0.008 272)",
+          "oklch(95% 0.005 272)"
         ]
       },
-      "chalk": {
+      "ink-primary": {
         "role": "neutral",
-        "displayName": "Chalk",
-        "canonical": "oklch(97% 0.006 95)",
+        "displayName": "Alabaster Primary Ink",
+        "canonical": "oklch(97.4% 0.005 268)",
         "tonalRamp": [
-          "oklch(20% 0.006 95)",
-          "oklch(34% 0.006 95)",
-          "oklch(48% 0.006 95)",
-          "oklch(62% 0.006 95)",
-          "oklch(76% 0.006 95)",
-          "oklch(86% 0.006 95)",
-          "oklch(93% 0.006 95)",
-          "oklch(97% 0.006 95)"
+          "oklch(18% 0.01 268)",
+          "oklch(30% 0.01 268)",
+          "oklch(44% 0.01 268)",
+          "oklch(58% 0.009 268)",
+          "oklch(71% 0.008 268)",
+          "oklch(83% 0.007 268)",
+          "oklch(92% 0.006 268)",
+          "oklch(97.4% 0.005 268)"
         ]
       },
-      "chalk-alt": {
+      "ink-secondary": {
         "role": "neutral",
-        "displayName": "Chalk Subsurface",
-        "canonical": "oklch(94% 0.01 95)",
+        "displayName": "Silver Mist Ink",
+        "canonical": "oklch(83.6% 0.016 268)",
         "tonalRamp": [
-          "oklch(20% 0.01 95)",
-          "oklch(32% 0.01 95)",
-          "oklch(46% 0.01 95)",
-          "oklch(60% 0.01 95)",
-          "oklch(74% 0.01 95)",
-          "oklch(84% 0.01 95)",
-          "oklch(90% 0.01 95)",
-          "oklch(94% 0.01 95)"
+          "oklch(18% 0.016 268)",
+          "oklch(30% 0.016 268)",
+          "oklch(43% 0.016 268)",
+          "oklch(56% 0.016 268)",
+          "oklch(69% 0.016 268)",
+          "oklch(83.6% 0.016 268)",
+          "oklch(90% 0.01 268)",
+          "oklch(96% 0.006 268)"
         ]
       },
-      "ink-muted": {
+      "ink-soft": {
         "role": "neutral",
-        "displayName": "Muted Slate",
-        "canonical": "oklch(86% 0.02 252)",
+        "displayName": "Muted Slate Ink",
+        "canonical": "oklch(70.8% 0.024 268)",
         "tonalRamp": [
-          "oklch(22% 0.02 252)",
-          "oklch(34% 0.02 252)",
-          "oklch(48% 0.02 252)",
-          "oklch(60% 0.02 252)",
-          "oklch(74% 0.02 252)",
-          "oklch(86% 0.02 252)",
-          "oklch(92% 0.012 252)",
-          "oklch(96% 0.006 252)"
+          "oklch(18% 0.022 268)",
+          "oklch(30% 0.024 268)",
+          "oklch(43% 0.024 268)",
+          "oklch(57% 0.024 268)",
+          "oklch(70.8% 0.024 268)",
+          "oklch(81% 0.018 268)",
+          "oklch(90% 0.012 268)",
+          "oklch(96% 0.006 268)"
+        ]
+      },
+      "daylight-pearl": {
+        "role": "neutral",
+        "displayName": "Daylight Stone Pearl",
+        "canonical": "oklch(96.2% 0.006 268)",
+        "tonalRamp": [
+          "oklch(20% 0.01 268)",
+          "oklch(32% 0.01 268)",
+          "oklch(45% 0.01 268)",
+          "oklch(59% 0.009 268)",
+          "oklch(72% 0.008 268)",
+          "oklch(84% 0.007 268)",
+          "oklch(91% 0.006 268)",
+          "oklch(96.2% 0.006 268)"
+        ]
+      },
+      "daylight-stone": {
+        "role": "neutral",
+        "displayName": "Daylight Architectural Stone",
+        "canonical": "oklch(93.1% 0.009 268)",
+        "tonalRamp": [
+          "oklch(19% 0.012 268)",
+          "oklch(31% 0.012 268)",
+          "oklch(44% 0.012 268)",
+          "oklch(58% 0.011 268)",
+          "oklch(71% 0.01 268)",
+          "oklch(83% 0.009 268)",
+          "oklch(93.1% 0.009 268)",
+          "oklch(97% 0.005 268)"
+        ]
+      },
+      "ink-daylight": {
+        "role": "neutral",
+        "displayName": "Daylight Obsidian Ink",
+        "canonical": "oklch(17.2% 0.016 266)",
+        "tonalRamp": [
+          "oklch(17.2% 0.016 266)",
+          "oklch(28% 0.016 266)",
+          "oklch(40% 0.016 266)",
+          "oklch(53% 0.014 266)",
+          "oklch(66% 0.012 266)",
+          "oklch(78% 0.01 266)",
+          "oklch(89% 0.007 266)",
+          "oklch(96% 0.004 266)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Display Condensed",
-        "purpose": "Stacked color-blocked hero H1 words with acute-accent headroom."
+        "displayName": "Display Value Proposition",
+        "purpose": "First-viewport plain-language H1 anchored inside the smoked glass pitch lens."
       },
       "headline": {
         "displayName": "Section Headline",
-        "purpose": "Section banner H2 titles with inline Acid Volt highlights."
+        "purpose": "Primary section H2 statements with rose-ruby inline emphasis."
       },
       "title": {
-        "displayName": "Wide Geometric Title",
-        "purpose": "Sub-manifesto H2s, navigation links, tab switches, and button labels."
+        "displayName": "Lens & Case Study Title",
+        "purpose": "Project names, business-type solution headings, and process step titles."
       },
       "body": {
-        "displayName": "Editorial Body",
-        "purpose": "Persuasive commercial prose, project descriptions, and role stamps."
+        "displayName": "Everyday Body Prose",
+        "purpose": "Warm, jargon-free Spanish and English copy capped at 52ch-64ch."
       },
       "label": {
-        "displayName": "Telemetry Mono",
-        "purpose": "Strictly reserved for real telemetry, URLs, coordinates, serial codes, and direct email/phone values."
+        "displayName": "Pill & Control Label",
+        "purpose": "Buttons, segmented project tabs, language/theme controls, and copy actions."
       }
     },
     "shadows": [
       {
-        "name": "shell-grounding",
-        "value": "0 16px 34px -10px rgba(0, 0, 0, 0.55)",
-        "purpose": "Grounds the outer maximalist shell over the coordinate backdrop."
+        "name": "liquid-glass-dark",
+        "value": "inset 0 1px 0 0 rgba(255, 255, 255, 0.44), inset 1px 0 0 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(255, 255, 255, 0.08), 0 28px 64px -16px rgba(0, 0, 0, 0.72), 0 8px 22px -6px rgba(0, 0, 0, 0.46)",
+        "purpose": "Directional top/left specular rim plus neutral studio depth on Dark-mode Liquid Glass slabs."
       },
       {
-        "name": "neutral-action-lift",
-        "value": "0 12px 24px -8px rgba(8, 9, 14, 0.45)",
-        "purpose": "Neutral dark depth under primary Vermilion CTAs and the fixed WhatsApp trigger."
+        "name": "hero-slab-depth",
+        "value": "inset 0 1.5px 0 0 rgba(255, 255, 255, 0.62), inset 0 -1.5px 0 0 rgba(255, 255, 255, 0.22), 0 36px 80px -18px rgba(0, 0, 0, 0.78)",
+        "purpose": "High-refraction centerpiece depth for the monumental CHV SYSTEMS glass slab."
+      },
+      {
+        "name": "liquid-glass-daylight",
+        "value": "inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 0 rgba(15, 20, 35, 0.06), 0 24px 54px -16px rgba(15, 20, 35, 0.14), 0 6px 18px -4px rgba(15, 20, 35, 0.07)",
+        "purpose": "Crisp white bevel and soft slate elevation over daylight stone-pearl in Light mode."
       }
     ],
     "motion": [
       {
-        "name": "ease-shutter",
-        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Firm mechanical easing for shutter clip-path reveals, bay switches, and button lifts."
+        "name": "ease-fluid",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Primary Apple-caliber optical easing for pill lifts, caustic shifts, and tab switches."
       },
       {
-        "name": "ease-curtain",
-        "value": "cubic-bezier(0.76, 0, 0.24, 1)",
-        "purpose": "Fast 0.52s vertical shutter exit on the initial 620ms loader."
+        "name": "caustic-pointer",
+        "value": "0.35s cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Pointer-responsive diagonal light sheen (--caustic-shift) and radial glint (--glint-x/--glint-y)."
+      },
+      {
+        "name": "loader-veil",
+        "value": "0.48s cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Fast ~480ms smoked Liquid Glass entrance veil using GPU-only opacity and transform."
       }
     ],
     "breakpoints": [
-      { "name": "tablet", "value": "1120px" },
-      { "name": "compact", "value": "860px" },
-      { "name": "mobile", "value": "640px" }
+      { "name": "sm", "value": "600px" },
+      { "name": "md", "value": "880px" },
+      { "name": "lg", "value": "1040px" }
     ]
   },
   "components": [
     {
-      "name": "Primary Vermilion Button",
+      "name": "Primary Ruby Liquid Glass Pill",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Primary conversion CTA plate with inline stroke arrow SVG.",
-      "html": "<a href=\"#contacto\" class=\"ds-btn-primary\"><span>INICIAR UN PROYECTO</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.8\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg></a>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; background: #FF441F; color: #08090E; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; padding: 15px 24px; border: 2.5px solid #08090E; box-shadow: 0 12px 24px -8px rgba(8, 9, 14, 0.45); transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s ease, color 0.18s ease; } .ds-btn-primary:hover { background: #08090E; color: #C9FF1F; transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 3px solid #C9FF1F; outline-offset: 2px; }"
+      "description": "Primary conversion button for direct WhatsApp and live project visits.",
+      "html": "<button class=\"ds-btn-ruby\"><span>Escribir por WhatsApp</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></button>",
+      "css": ".ds-btn-ruby { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 12px 24px; border-radius: 999px; background: linear-gradient(135deg, rgba(225, 29, 72, 0.92), rgba(159, 18, 57, 0.90)); border: 1px solid rgba(255, 180, 195, 0.48); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 14px 32px -10px rgba(0, 0, 0, 0.55); font-family: var(--font-display, 'Onest', sans-serif); font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; color: #FFFFFF; cursor: pointer; transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background 0.28s ease, border-color 0.28s ease; } .ds-btn-ruby svg { width: 16px; height: 16px; transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-ruby:hover { transform: translateY(-2px); background: linear-gradient(135deg, rgba(244, 63, 94, 0.95), rgba(190, 18, 60, 0.92)); border-color: rgba(255, 210, 220, 0.65); } .ds-btn-ruby:hover svg { transform: translate(2px, -2px); } .ds-btn-ruby:focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; }"
     },
     {
-      "name": "Acid Volt Action Button",
+      "name": "Smoked Liquid Glass Pill Button",
       "kind": "button",
-      "refersTo": "button-volt",
-      "description": "Secondary high-contrast action button for direct email dispatch.",
-      "html": "<button type=\"button\" class=\"ds-btn-volt\"><span>ENVIAR CORREO</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\"/><polyline points=\"22,6 12,13 2,6\"/></svg></button>",
-      "css": ".ds-btn-volt { display: inline-flex; align-items: center; gap: 10px; background: #C9FF1F; color: #08090E; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase; padding: 15px 24px; border: 2.5px solid #08090E; cursor: pointer; transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s ease; } .ds-btn-volt:hover { background: #FF441F; transform: translateY(-2px); } .ds-btn-volt:focus-visible { outline: 3px solid #FF441F; outline-offset: 2px; }"
+      "refersTo": "button-glass",
+      "description": "Secondary smoked glass pill button for exploring projects or sending email.",
+      "html": "<button class=\"ds-btn-glass\"><span>Ver proyectos</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></button>",
+      "css": ".ds-btn-glass { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 12px 24px; border-radius: 999px; background: var(--glass-pill, rgba(18, 19, 25, 0.62)); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.19)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 12px 28px -8px rgba(0, 0, 0, 0.45); font-family: var(--font-display, 'Onest', sans-serif); font-size: 0.95rem; font-weight: 600; color: var(--ink-primary, #F5F6FA); cursor: pointer; transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s ease, border-color 0.28s ease; } .ds-btn-glass svg { width: 16px; height: 16px; transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-glass:hover { transform: translateY(-2px); background: rgba(34, 36, 46, 0.78); border-color: rgba(255, 255, 255, 0.38); } .ds-btn-glass:hover svg { transform: translate(2px, -2px); } .ds-btn-glass:focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; }"
     },
     {
-      "name": "Pitch Contrast Button",
-      "kind": "button",
-      "refersTo": "button-pitch",
-      "description": "Dark structural button for secondary navigation on saturated plates.",
-      "html": "<a href=\"#proyectos\" class=\"ds-btn-pitch\"><span>EXPLORAR PROYECTOS</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></a>",
-      "css": ".ds-btn-pitch { display: inline-flex; align-items: center; gap: 10px; background: #08090E; color: #F7F6F0; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; padding: 15px 24px; border: 2.5px solid #08090E; transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s ease, color 0.18s ease; } .ds-btn-pitch:hover { background: #6FD4FF; color: #08090E; transform: translateY(-2px); } .ds-btn-pitch:focus-visible { outline: 3px solid #C9FF1F; outline-offset: 2px; }"
-    },
-    {
-      "name": "Synoptic Node Selector Chip",
-      "kind": "chip",
-      "refersTo": "chip-node",
-      "description": "Sharp rectangular selector chip used in the synoptic visor bar and project configurator.",
-      "html": "<button type=\"button\" class=\"ds-chip\">GANANOVA OS</button>",
-      "css": ".ds-chip { font-family: 'Unbounded', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; padding: 6px 11px; border: 2px solid #08090E; background: #F7F6F0; color: #08090E; cursor: pointer; transition: background-color 0.16s ease, color 0.16s ease; } .ds-chip:hover { background: #C9FF1F; color: #08090E; } .ds-chip:focus-visible { outline: 3px solid #FF441F; outline-offset: 2px; }"
-    },
-    {
-      "name": "Lavender Structural Navbar",
+      "name": "Smoked Liquid Glass Navigation Capsule",
       "kind": "nav",
       "refersTo": "nav-capsule",
-      "description": "Cyber Lavender halftone header bar with rotary Acid Volt emblem and black command capsule.",
-      "html": "<div class=\"ds-nav\"><span class=\"ds-brand\"><span class=\"ds-disc\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#08090E\" stroke-width=\"2.4\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#08090E\"/></svg></span>CHV SYSTEMS</span><div class=\"ds-cap\"><span class=\"ds-tel\">ACTIVO · 0.4S</span><button type=\"button\" class=\"ds-pill\">EN</button></div></div>",
-      "css": ".ds-nav { background-color: #C589FF; background-image: radial-gradient(rgba(8,9,14,0.12) 1.2px, transparent 1.2px); background-size: 12px 12px; border: 2.5px solid #08090E; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: #08090E; } .ds-brand { display: inline-flex; align-items: center; gap: 10px; font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 0.9rem; } .ds-disc { width: 34px; height: 34px; border-radius: 50%; background: #C9FF1F; border: 2.5px solid #08090E; display: grid; place-items: center; transition: transform 0.3s ease; } .ds-brand:hover .ds-disc { transform: rotate(90deg); } .ds-cap { background: #08090E; color: #F7F6F0; border-radius: 999px; padding: 5px 8px 5px 14px; display: flex; align-items: center; gap: 8px; } .ds-tel { font-family: 'Azeret Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #C9FF1F; } .ds-pill { height: 28px; padding: 0 10px; border-radius: 999px; border: 1.5px solid rgba(247,246,240,0.3); background: #141826; color: #F7F6F0; font-family: 'Unbounded', sans-serif; font-size: 0.75rem; font-weight: 800; cursor: pointer; } .ds-pill:hover { background: #C9FF1F; color: #08090E; } .ds-pill:focus-visible { outline: 2px solid #C9FF1F; }"
+      "description": "Floating header capsule with 44px links, utility toggles, and ruby-rimmed action orb.",
+      "html": "<nav class=\"ds-nav-capsule\"><a href=\"#proyectos\" class=\"ds-nav-link\">Proyectos</a><a href=\"#servicios\" class=\"ds-nav-link\">Servicios</a><span class=\"ds-nav-div\"></span><button type=\"button\" class=\"ds-util\">EN</button><a href=\"#contacto\" class=\"ds-nav-orb\"><span>Hablemos</span><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></a></nav>",
+      "css": ".ds-nav-capsule { display: inline-flex; align-items: center; gap: 4px; padding: 5px 5px 5px 18px; border-radius: 999px; background: rgba(18, 19, 25, 0.62); backdrop-filter: blur(26px) saturate(170%); border: 1px solid rgba(255, 255, 255, 0.19); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 14px 34px -10px rgba(0, 0, 0, 0.55); font-family: 'Onest', sans-serif; } .ds-nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 13px; border-radius: 999px; font-size: 0.9rem; font-weight: 500; color: #C5C9D6; text-decoration: none; transition: color 0.2s, background-color 0.2s; } .ds-nav-link:hover { color: #F5F6FA; background: rgba(255, 255, 255, 0.08); } .ds-nav-div { width: 1px; height: 18px; background: rgba(255, 255, 255, 0.11); margin: 0 6px; } .ds-util { min-width: 44px; height: 44px; border-radius: 999px; border: none; background: transparent; color: #C5C9D6; font-weight: 600; font-size: 0.8rem; cursor: pointer; } .ds-util:hover { color: #F5F6FA; background: rgba(255, 255, 255, 0.10); } .ds-nav-orb { display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 18px; border-radius: 999px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(225, 29, 72, 0.26)); border: 1px solid rgba(255, 255, 255, 0.28); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42); font-size: 0.86rem; font-weight: 600; color: #F5F6FA; text-decoration: none; transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.24s; } .ds-nav-orb:hover { transform: scale(1.03); border-color: rgba(244, 63, 94, 0.42); } .ds-nav-link:focus-visible, .ds-util:focus-visible, .ds-nav-orb:focus-visible { outline: 2px solid #E11D48; outline-offset: 2px; }"
     },
     {
-      "name": "Acid Volt Mosaic Plate",
+      "name": "Project Inquiry Selector Chips",
+      "kind": "chip",
+      "refersTo": "chip-project",
+      "description": "44px pill selector chips used in the WhatsApp/email project configurator.",
+      "html": "<div class=\"ds-chip-row\"><button type=\"button\" class=\"ds-chip is-selected\">Página web para mi negocio</button><button type=\"button\" class=\"ds-chip\">Menú o catálogo digital</button></div>",
+      "css": ".ds-chip-row { display: flex; flex-wrap: wrap; gap: 10px; } .ds-chip { min-height: 44px; padding: 11px 18px; border-radius: 999px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.19); font-family: 'Onest', sans-serif; font-size: 0.92rem; font-weight: 600; color: #C5C9D6; cursor: pointer; transition: background 0.24s cubic-bezier(0.22, 1, 0.36, 1), color 0.24s, border-color 0.24s; } .ds-chip:hover { color: #F5F6FA; border-color: rgba(244, 63, 94, 0.42); } .ds-chip.is-selected { background: linear-gradient(135deg, rgba(225, 29, 72, 0.90), rgba(159, 18, 57, 0.90)); border-color: rgba(255, 185, 200, 0.5); color: #FFFFFF; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.45); } .ds-chip:focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; }"
+    },
+    {
+      "name": "Liquid Glass Solution Lens",
       "kind": "card",
-      "description": "Full-bleed halftone color-blocked structural cell with zero border-radius and 2.5px dark border.",
-      "html": "<div class=\"ds-plate\"><h3>CONVERSACIÓN INICIAL</h3><p>Aterrizamos qué vende tu negocio y qué acción concreta debe lograr la plataforma.</p><span class=\"ds-stamp\">MAPA DE OBJETIVOS</span></div>",
-      "css": ".ds-plate { background-color: #C9FF1F; background-image: radial-gradient(rgba(8,9,14,0.12) 1.2px, transparent 1.2px); background-size: 12px 12px; color: #08090E; border: 2.5px solid #08090E; padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; } .ds-plate h3 { font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 2rem; line-height: 0.98; text-transform: uppercase; margin: 0; } .ds-plate p { font-family: 'Manrope', sans-serif; font-size: 0.93rem; font-weight: 600; line-height: 1.55; margin: 0; } .ds-stamp { align-self: flex-start; background: #08090E; color: #C9FF1F; padding: 6px 12px; font-family: 'Unbounded', sans-serif; font-size: 0.75rem; font-weight: 800; }"
+      "refersTo": "glass-slab",
+      "description": "Refractive Liquid Glass container subdivided by 1px translucent hairlines.",
+      "html": "<div class=\"ds-glass-lens\"><h3>Programas a la medida para ordenar tu empresa</h3><p>Creamos un sistema privado hecho a la forma exacta en que trabaja tu negocio.</p><div class=\"ds-sys-grid\"><div>Clientes y citas</div><div>Ingresos y gastos</div></div></div>",
+      "css": ".ds-glass-lens { max-width: 440px; padding: 32px; border-radius: 26px; background: linear-gradient(145deg, rgba(255, 255, 255, 0.10) 0%, rgba(225, 29, 72, 0.15) 100%); backdrop-filter: blur(28px) saturate(168%); border: 1px solid rgba(244, 63, 94, 0.42); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.44), 0 28px 64px -16px rgba(0, 0, 0, 0.72); color: #F5F6FA; font-family: 'Figtree', sans-serif; } .ds-glass-lens h3 { margin: 0; font-family: 'Onest', sans-serif; font-size: 1.45rem; font-weight: 700; letter-spacing: -0.022em; line-height: 1.22; } .ds-glass-lens p { margin: 10px 0 22px; font-size: 0.96rem; line-height: 1.6; color: #F0DCE2; } .ds-sys-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255, 255, 255, 0.11); border-left: 1px solid rgba(255, 255, 255, 0.11); } .ds-sys-grid div { padding: 12px 14px; border-right: 1px solid rgba(255, 255, 255, 0.11); border-bottom: 1px solid rgba(255, 255, 255, 0.11); font-family: 'Onest', sans-serif; font-size: 0.88rem; font-weight: 600; }"
+    },
+    {
+      "name": "Monumental Frosted CHV Emblem Slab",
+      "kind": "custom",
+      "refersTo": "glass-slab",
+      "description": "Signature frosted Liquid Glass centerpiece with custom geometric CHV vector emblem and 4-point star glint.",
+      "html": "<div class=\"ds-hero-slab\" tabindex=\"0\"><svg class=\"ds-star\" viewBox=\"0 0 32 32\" fill=\"none\"><path d=\"M16 1L18.2 13.8L31 16L18.2 18.2L16 31L13.8 18.2L1 16L13.8 13.8L16 1Z\" fill=\"currentColor\"/></svg><svg class=\"ds-chv\" viewBox=\"0 0 360 90\" fill=\"none\"><path d=\"M36 10H114L101 28H38C30.8 28 26 32.8 26 40V50C26 57.2 30.8 62 38 62H108V80H36C18.4 80 8 69.6 8 52V38C8 20.4 18.4 10 36 10Z\" fill=\"#F5F6FA\"/><path d=\"M128 10H146V36H210V10H228V68L210 81V54H146V80H128V10Z\" fill=\"#E2E5EE\"/><path d=\"M234 10H254L292 60L330 10H350L301 75C296.5 80.8 287.5 80.8 283 75L234 10Z\" fill=\"#F5F6FA\"/></svg><span class=\"ds-sys-word\">SYSTEMS</span></div>",
+      "css": ".ds-hero-slab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 40px 48px; border-radius: 32px; background: linear-gradient(122deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 28%, rgba(255, 255, 255, 0.13) 48%, rgba(16, 17, 23, 0.32) 68%, rgba(225, 29, 72, 0.13) 100%); backdrop-filter: blur(26px) saturate(165%); border: 1px solid rgba(255, 255, 255, 0.32); box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.62), inset 0 -1.5px 0 rgba(255, 255, 255, 0.22), 0 32px 68px -18px rgba(0, 0, 0, 0.75); transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); } .ds-hero-slab:hover { border-color: rgba(253, 164, 175, 0.55); transform: translateY(-2px); } .ds-hero-slab:focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; } .ds-star { position: absolute; top: 18px; right: 22px; width: 22px; height: 22px; color: rgba(255, 255, 255, 0.88); } .ds-chv { width: 240px; height: auto; } .ds-sys-word { font-family: 'Onest', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.62em; text-indent: 0.62em; color: #F5F6FA; }"
     }
   ],
   "narrative": {
-    "northStar": "The Cyber-Pop Synoptic Mosaic",
-    "overview": "CHV Systems speaks with the authority of a live futuristic control board fused with an opulent Swiss-pop broadsheet poster. Instead of floating cards over an empty dark SaaS void, every piece of content inhabits a structural architectural grid chassis framed on all four viewport edges by a continuous kinetic marquee rail. Full-bleed color cells in Acid Volt, Hyper Vermilion, Cyber Lavender, and Signal Sky lock into exposed dark rulings, proving immediately that one systems engineer commands both bold visual design and live business software architecture.\n\nMotion is crisp, editorial, and mechanical: shutter clip-path reveals (0.55s cubic-bezier(0.16, 1, 0.3, 1)), instant bay switching, and a 60Hz vector sine-wave oscilloscope. Confirmed anti-references permanently banned from this system: cosmic star-dust backgrounds, frosted glassmorphism, 3D rotating wireframes/cubes, typewriter text cursors, 3D card tilt or magnetic cursor wobble, slow volumetric loaders, and uniform SaaS icon-card grids.",
+    "northStar": "The Ruby-Seamed Liquid Glass Monolith",
+    "overview": "CHV Systems presents custom web design and business software inside an architectural studio built from dark poured-concrete monoliths, faint hairline coordinate rulings, and genuine Apple-inspired Liquid Glass lenses warmed by restrained crimson-ruby light seams. Every glass slab, capsule pill, and crescent-lit sphere earns its translucency by refracting physical architectural planes behind it (`backdrop-filter: blur(28px) saturate(168%)`), framing real delivered client projects in Costa Rica and the United States with calm optical authority.\n\nWhile the material language is sculptural and modern, every word on the surface speaks in clear, everyday human Spanish and English so any business owner understands what CHV Systems builds within seconds. Motion stays tactile and GPU-composited: pointer-tracked optical caustics across glass surfaces, smooth pill-tab transitions (`cubic-bezier(0.22, 1, 0.36, 1)`), and a ~480ms smoked glass veil loader. Confirmed visual rejections permanently excluded from this world: cryptic technical telemetry (`0.4s`, `LOAD`, `60Hz`), uppercase kicker/eyebrow labels above headings, cards nested inside cards, uniform SaaS icon-card grids, 3D rotating wireframe cubes, typewriter text cursors, and 3D card-tilt wobble.",
     "keyCharacteristics": [
-      "Continuous 4-sided perimeter marquee ticker framing the viewport across both desktop (32px) and mobile (22px).",
-      "Exposed structural grid chassis (4px cell gutters and 2.5px crisp borders) with blueprint coordinate rulings.",
-      "Full-bleed saturated color-block plates enriched by CSS micro-dot halftones and high-contrast SVG op-art wave patterns.",
-      "Dual-axis display tension pairing ultra-condensed monumental blocks (Big Shoulders Display) with wide futuristic geometric caps (Unbounded).",
-      "Parity-first Dark and Light modes where Light mode preserves the exposed dark structural grid chassis framed in sky cyan while flipping neutral cells to crisp Chalk."
+      "Smoked refractive Liquid Glass slabs and pills (`26px`–`32px` and `999px` radii) with `1px` bright white specular rims and pointer-tracked caustic light.",
+      "Architectural poured-concrete studio ground (`obsidian-void` and `monolith-stone`) crossed by angled stone bevels and warm crimson-ruby seams so `backdrop-filter` visibly refracts edges throughout the scroll.",
+      "Crescent-rimmed translucent Liquid Glass spheres with directional specular falloff instead of flat uniform circle strokes.",
+      "Self-hosted `Onest` display typography paired with `Figtree` body prose for clean geometric authority and warm everyday readability.",
+      "Parity-first Dark and Light modes where Light mode shifts to daylight stone-pearl (`daylight-pearl`) with translucent smoked pearl glass and deep burgundy-crimson accents (`ruby-deep`)."
     ],
     "rules": [
       {
-        "name": "The Full-Bleed Cell Rule",
-        "body": "Saturated accents own entire structural grid cells edge-to-edge rather than appearing only as thin side stripes, tiny badges, or glowing borders.",
+        "name": "The Edge-Lit Ruby Discipline Rule",
+        "body": "Crimson-ruby lives in recessed architectural light seams, primary conversion pills, and subtle inline headline emphasis — never as full-screen neon washes or colored drop-shadow glows.",
         "section": "colors"
       },
       {
-        "name": "The Exposed Chassis Rule",
-        "body": "Both Dark and Light modes maintain the dark exposed structural grid chassis and crisp 2.5px dark borders; Light mode swaps neutral interior plates to Chalk (chalk) inside a sky-framed (light-sky-frame) dark coordinate grid rather than washing the page into a borderless white sheet.",
+        "name": "The Tinted-Surface Harmony Rule",
+        "body": "When a glass surface carries a ruby tint (such as the custom software lens), secondary body copy shifts to a warm rose-tinted foreground (`#F0DCE2` in Dark mode, `#4A1C29` in Light mode) rather than neutral cool slate.",
         "section": "colors"
       },
       {
-        "name": "The Strict Telemetry Mono Rule",
-        "body": "Azeret Mono is reserved exclusively for real telemetry values, URLs, coordinates, serial codes, and direct contact strings; prose role stamps, chips, sector tags, and marketing labels must use Unbounded or Manrope.",
+        "name": "The Everyday Plain-Language Rule",
+        "body": "Headings and labels name real business outcomes in plain words (\"Trabajos reales funcionando hoy\", \"Ordenar tu negocio\") — never uppercase category kickers, technical acronyms, or synthetic performance metrics.",
         "section": "typography"
       },
       {
-        "name": "The Zero Kicker Rule",
-        "body": "Headings lead their grid cells directly. Never place small uppercase eyebrow or phase labels (FASE 1, 01 //, SERVICIOS) above h1, h2, or h3 elements.",
-        "section": "typography"
-      },
-      {
-        "name": "The Zero Colored Glow Rule",
-        "body": "Never apply tinted orange, lime, or violet box-shadow halos; elevation uses crisp dark ink borders and neutral obsidian shadows only.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Flat Sibling Cell Rule",
-        "body": "Never nest bordered cards inside bordered wrapper cards; promote sub-items (credentials, audit metrics, contact channels) to direct sibling cells of the structural grid.",
+        "name": "The Neutral Shadow & Refractive Ground Rule",
+        "body": "`box-shadow` declarations use pure neutral black/slate alpha for physical depth and white alpha for inset specular rims — never colored neon `box-shadow` glows — and every glass section sits over an angled tonal plane so `backdrop-filter` refracts visible structure.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do keep all four perimeter marquee rails (.p-frame--top, --bottom, --left, --right) active across both desktop and mobile viewports.",
-      "Do give every major section and solution cell a distinct internal layout topology (e.g., QR placard split, action-step flow, proof banner, 2x2 subsystem matrix) rather than repeating identical icon-heading-paragraph cards.",
-      "Do use consistent-stroke inline <svg> icons for all arrows, stars, and indicators, and keep UI/label text at or above 0.75rem (12px).",
-      "Do badge any illustrative dashboard or workflow preview explicitly as synthetic demo data (SANDBOX SINTÉTICO · DATOS DEMO) and preserve factual project framing from PRODUCT.md."
+      "Do place Liquid Glass surfaces over visible architectural stone bevels, photography, or subtle ruby light seams so `backdrop-filter` visibly refracts tonal edges.",
+      "Do keep all user-facing Spanish and English copy in warm, everyday business language, and explicitly label any illustrative software sample numbers (`Ejemplo ilustrativo · Datos de muestra`).",
+      "Do render full-width real client screenshots (`gananova-preview.jpg`, `adefip-preview.jpg`, `puravida-preview.png`) uncropped inside matched dark frames (`height: auto`) so navigation menus and margins stay intact.",
+      "Do enforce `≥44x44px` touch targets on every button, tab, language/theme switch, and copy pill across both desktop and `390px` mobile viewports."
     ],
     "donts": [
-      "Don't reintroduce 3D rotating wireframes/cubes, typewriter text effects, 3D tilt/magnetic card wobble, cosmic particle canvases, or slow multi-second loaders.",
-      "Don't place uppercase kicker/eyebrow badges above headings or prepend decorative 01 // numbering to tab controls.",
-      "Don't use Unicode symbol glyphs (★, →, ↗, ⇄, ●, ↑) in place of inline SVGs.",
-      "Don't drift [data-theme=\"light\"] into a warm-cream borderless page or introduce off-palette third-party brand colors (such as #25D366 WhatsApp green) on floating chrome."
+      "Don't put `#E11D48` or colored neon tints into `box-shadow` declarations; express crimson-ruby strictly through surface gradients, borders, and recessed ambient backdrops.",
+      "Don't nest bordered cards inside `.liquid-glass` containers; subdivide interior layouts with `1px` translucent hairline rules (`--glass-divider`).",
+      "Don't reintroduce technical telemetry (`0.4s`, `LOAD`, `100%`, `CORE`, `60Hz`), unexplained acronyms (`CRM`, `ERP`, `OKR`), uppercase eyebrow kickers, 3D rotating cubes, typewriter cursors, or 3D card-tilt effects.",
+      "Don't clip multi-tab switchers behind hidden horizontal scrollbars on mobile; reflow pill tabs into a visible 2x2 grid on narrow viewports."
     ]
   }
 }

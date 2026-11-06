@@ -1,7 +1,7 @@
 /*!
- * CHV SYSTEMS — Futuristic Maximalist Grid Shutter Loader v3.0
- * Apertura mecánica ultrarrápida (0.65s) por paneles de color sólido y tipografía monumental.
- * Cero wireframes 3D lentos; respeta prefers-reduced-motion y ?loader=off.
+ * CHV SYSTEMS — Architectural Liquid Glass Veil Loader v4.0
+ * Entrada fluida y rápida (~480ms) en cristal ahumado con matiz rubí, sin tecnicismos ni 3D pesado.
+ * Respeta prefers-reduced-motion y ?loader=off.
  */
 (function () {
   'use strict';
@@ -9,8 +9,8 @@
   var script = document.currentScript || {};
   var ds = script.dataset || {};
   var BRAND = ds.brand || 'CHV SYSTEMS';
-  var MIN_MS = parseInt(ds.min, 10) || 620;
-  var MAX_MS = parseInt(ds.max, 10) || 2200;
+  var MIN_MS = parseInt(ds.min, 10) || 480;
+  var MAX_MS = parseInt(ds.max, 10) || 1800;
 
   var revealCbs = [];
   var doneCbs = [];
@@ -44,11 +44,11 @@
   if (!enabled) { skip(); return; }
 
   try {
-    if (param !== 'on' && sessionStorage.getItem('chv-shutter-seen')) {
+    if (param !== 'on' && sessionStorage.getItem('chv-glass-seen')) {
       skip();
       return;
     }
-    sessionStorage.setItem('chv-shutter-seen', '1');
+    sessionStorage.setItem('chv-glass-seen', '1');
   } catch (e) {}
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -56,20 +56,14 @@
 
   var css = [
     'html.chv-loading,html.chv-loading body{overflow:hidden!important}',
-    '#chv-loader{position:fixed;inset:0;z-index:2147483000;display:grid;grid-template-rows:1fr auto 1fr;background:#08090E;color:#F7F6F0;font-family:"Unbounded","Big Shoulders Display",system-ui,sans-serif;border:6px solid #C9FF1F;transition:clip-path .52s cubic-bezier(.76,0,.24,1);clip-path:inset(0 0 0 0)}',
+    '#chv-loader{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 72% 28%,rgba(225,29,72,.14),transparent 46%),#07070A;color:#F5F6FA;font-family:"Onest","Figtree",system-ui,sans-serif;opacity:1;transform:scale(1);transition:opacity .42s cubic-bezier(.22,1,.36,1),transform .42s cubic-bezier(.22,1,.36,1)}',
     '#chv-loader *{box-sizing:border-box;margin:0;padding:0}',
-    '#chv-loader.is-exit{clip-path:inset(0 0 100% 0);pointer-events:none}',
-    '#chv-loader .cl-band-top{display:grid;grid-template-columns:1fr 1fr;border-bottom:3px solid #08090E;background:#08090E;gap:3px}',
-    '#chv-loader .cl-cell-a{background:#C589FF;color:#08090E;padding:18px 24px;font-size:12px;font-weight:800;letter-spacing:.05em;display:flex;align-items:flex-start;justify-content:space-between;text-transform:uppercase}',
-    '#chv-loader .cl-cell-b{background:#FF441F;color:#08090E;padding:18px 24px;font-size:12px;font-weight:800;letter-spacing:.05em;display:flex;align-items:flex-start;justify-content:flex-end;text-transform:uppercase}',
-    '#chv-loader .cl-center{background:#08090E;padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}',
-    '#chv-loader .cl-title{font-size:clamp(2rem,6vw,4.2rem);font-weight:900;letter-spacing:-.03em;line-height:.95;text-transform:uppercase;color:#F7F6F0}',
-    '#chv-loader .cl-title span{background:#C9FF1F;color:#08090E;padding:0 12px;display:inline-block}',
-    '#chv-loader .cl-bar-wrap{width:min(360px,82vw);height:14px;border:2px solid #F7F6F0;background:#0F121C;padding:2px}',
-    '#chv-loader .cl-bar-fill{height:100%;width:100%;background:#C9FF1F;transform:scaleX(0);transform-origin:left center;transition:transform .06s linear}',
-    '#chv-loader .cl-band-bot{display:grid;grid-template-columns:1.4fr .6fr;border-top:3px solid #08090E;background:#08090E;gap:3px}',
-    '#chv-loader .cl-cell-c{background:#C9FF1F;color:#08090E;padding:18px 24px;font-size:12px;font-weight:800;letter-spacing:.04em;display:flex;align-items:flex-end;text-transform:uppercase}',
-    '#chv-loader .cl-cell-d{background:#6FD4FF;color:#08090E;padding:18px 24px;font-size:13px;font-weight:900;display:flex;align-items:flex-end;justify-content:flex-end;font-variant-numeric:tabular-nums}'
+    '#chv-loader.is-exit{opacity:0;transform:scale(1.02);pointer-events:none}',
+    '#chv-loader .cl-glass{position:relative;width:min(380px,88vw);padding:36px 32px 30px;border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.03) 55%,rgba(225,29,72,.07));backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(255,255,255,.12),0 28px 60px -16px rgba(0,0,0,.75);border:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}',
+    '#chv-loader .cl-mark{width:min(196px,62vw);height:auto;display:block}',
+    '#chv-loader .cl-sub{font-size:12px;font-weight:500;letter-spacing:.42em;text-indent:.42em;color:rgba(245,246,250,.76)}',
+    '#chv-loader .cl-track{width:100%;height:2px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}',
+    '#chv-loader .cl-fill{height:100%;width:100%;background:linear-gradient(90deg,rgba(255,255,255,.85),#E11D48);transform:scaleX(0);transform-origin:left center;transition:transform .06s linear}'
   ].join('');
 
   var style = document.createElement('style');
@@ -81,26 +75,23 @@
   root.id = 'chv-loader';
   root.setAttribute('role', 'status');
   root.setAttribute('aria-live', 'polite');
-  root.setAttribute('aria-label', 'Cargando ' + BRAND);
+  root.setAttribute('aria-label', 'Abriendo ' + BRAND);
   root.innerHTML =
-    '<div class="cl-band-top" aria-hidden="true">' +
-      '<div class="cl-cell-a"><span>CHV SYSTEMS</span><span>CR · USA</span></div>' +
-      '<div class="cl-cell-b"><span>0.4S ENGINE</span></div>' +
-    '</div>' +
-    '<div class="cl-center">' +
-      '<div class="cl-title">CHV <span>SYSTEMS</span></div>' +
-      '<div class="cl-bar-wrap" aria-hidden="true"><div class="cl-bar-fill" id="clBarFill"></div></div>' +
-    '</div>' +
-    '<div class="cl-band-bot" aria-hidden="true">' +
-      '<div class="cl-cell-c">WEB DESIGN &amp; DEVELOPMENT</div>' +
-      '<div class="cl-cell-d" id="clPctNum">00%</div>' +
+    '<div class="cl-glass">' +
+      '<svg class="cl-mark" viewBox="0 0 360 92" fill="none" aria-hidden="true">' +
+        '<defs><linearGradient id="clMetal" x1="0" y1="8" x2="0" y2="86" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#C8CBD4"/></linearGradient></defs>' +
+        '<path d="M36 12H114L101 29H38C30.8 29 26 33.8 26 41V51C26 58.2 30.8 63 38 63H108V80H36C18.4 80 8 69.6 8 52V40C8 22.4 18.4 12 36 12Z" fill="url(#clMetal)"/>' +
+        '<path d="M128 12H146V38H210V12H228V69L210 81V55H146V80H128V12Z" fill="url(#clMetal)"/>' +
+        '<path d="M234 12H254L292 61L330 12H350L301 76C296.5 81.8 287.5 81.8 283 76L234 12Z" fill="url(#clMetal)"/>' +
+      '</svg>' +
+      '<div class="cl-sub">SYSTEMS</div>' +
+      '<div class="cl-track" aria-hidden="true"><div class="cl-fill" id="clBarFill"></div></div>' +
     '</div>';
 
   document.documentElement.classList.add('chv-loading');
   (document.body || document.documentElement).appendChild(root);
 
   var barEl = root.querySelector('#clBarFill');
-  var pctEl = root.querySelector('#clPctNum');
   var start = performance.now();
   var pageLoaded = document.readyState === 'complete';
   var finished = false;
@@ -111,7 +102,6 @@
     if (finished) return;
     finished = true;
     if (barEl) barEl.style.transform = 'scaleX(1)';
-    if (pctEl) pctEl.textContent = '100%';
     document.documentElement.classList.remove('chv-loading');
     root.classList.add('is-exit');
     state.revealed = true;
@@ -122,7 +112,7 @@
       style.remove();
       state.done = true;
       fire(doneCbs, 'chv:loader-done');
-    }, 560);
+    }, 450);
   }
 
   setTimeout(complete, MAX_MS);
@@ -130,9 +120,8 @@
   function tick(now) {
     if (finished) return;
     var elapsed = now - start;
-    var pct = Math.min(100, Math.round((elapsed / MIN_MS) * 100));
-    if (barEl) barEl.style.transform = 'scaleX(' + (pct / 100).toFixed(3) + ')';
-    if (pctEl) pctEl.textContent = (pct < 10 ? '0' : '') + pct + '%';
+    var ratio = Math.min(1, elapsed / MIN_MS);
+    if (barEl) barEl.style.transform = 'scaleX(' + ratio.toFixed(3) + ')';
 
     if ((pageLoaded && elapsed >= MIN_MS) || forceFinish || elapsed >= MAX_MS) {
       complete();
